@@ -2,7 +2,7 @@
   "projects": [
     {
       "title": "Enterprise Crypto Data Lake: Multi-Account Ingestion",
-      "description": "End-to-end architecture for ingestion of transactional data from 50+ sub-accounts. I implemented an asynchronous extraction engine with an intelligent Rate Limiter that monitors API headers to prevent bans. The system uses Azure Key Vault for secret management and a high-performance PostgreSQL loader via COPY commands and temporary tables, ensuring idempotency and integrity at scale.",
+      "description": "End-to-end architecture for ingestion of transactional data to multiple accounts for crypto exchange. I implemented an asynchronous extraction engine with an intelligent Rate Limiter that monitors API headers to prevent bans. The system uses Azure Key Vault for secret management and a high-performance PostgreSQL loader via COPY commands and temporary tables, ensuring idempotency and integrity at scale.",
       "technologies": ["python", "postgresql", "azure","sql"],
       "difficulty": "advanced",
       "diagramImage": "./assets/images/crypto_data_lake_ingestion_architecture.webp",
@@ -10,14 +10,14 @@
       "techIcons": ["python", "postgresql"],
       "category": "Data Engineering",
       "caseStudy": {
-        "problem": "Aggressive API rate limits and credential management across 50+ simultaneous accounts.",
+        "problem": "Aggressive API rate limits and credential management across multiples simultaneous accounts.",
         "solution": "Header-based Rate Limiting using official API signals and Bulk Inserts via io.StringIO.",
         "impact": ">99.9% pipeline uptime and ingestion of millions of historical records."
       }
     },
     {
       "title": "Unified Multi-Chain Ledger Integrator",
-      "description": "Resilient pipeline for consolidating transactional data across 17+ blockchains (EVM and Solana). I replaced third-party indexers with raw RPC extraction using 'Reverse Check' algorithms, optimizing block scanning. The core differentiator is the Auto-Reconciliation engine (Pacemaker), which continuously audits the PostgreSQL database against network nodes, ensuring strict uniqueness and 100% integrity in balances.",
+      "description": "Resilient pipeline for consolidating transactional data across multiples blockchains and contracts (EVM and Solana). I replaced third-party indexers with raw RPC extraction using 'Reverse Check' algorithms, optimizing block scanning. The core differentiator is the Auto-Reconciliation engine (Pacemaker), which continuously audits the PostgreSQL database against network nodes, ensuring strict uniqueness and 100% integrity in balances.",
       "technologies": ["python", "postgresql", "azure","sql"],
       "difficulty": "advanced",
       "diagramImage": "./assets/images/unified_multi_chain_ledger_integrator.webp",

@@ -2,7 +2,7 @@
   "projects": [
     {
       "title": "Enterprise Crypto Data Lake: Ingestão Multi-Conta",
-      "description": "Arquitetura end-to-end para ingestão de dados transacionais de 50+ subcontas. Implementei um motor de extração assíncrono com Rate Limiter inteligente que monitora headers da API para evitar banimentos. O sistema utiliza Azure Key Vault para gestão de segredos e um carregador PostgreSQL de alta performance via comandos COPY e tabelas temporárias, garantindo idempotência e integridade em escala.",
+      "description": "Arquitetura end-to-end para ingestão transacional de múltiplas contas institucionais em exchanges de criptoativos. Implementei um motor de extração assíncrono com Rate Limiter inteligente que monitora headers da API para evitar banimentos. O sistema utiliza Azure Key Vault para gestão de segredos e um carregador PostgreSQL de alta performance via comandos COPY e tabelas temporárias, garantindo idempotência e integridade em escala.",
       "technologies": ["python", "postgresql", "azure","sql"],
       "difficulty": "advanced",
       "diagramImage": "./assets/images/crypto_data_lake_ingestion_architecture.webp", 
@@ -10,14 +10,14 @@
       "techIcons": ["python", "postgresql"],
       "category": "Engenharia de Dados",
       "caseStudy": {
-        "problem": "Limites de API agressivos e gestão de credenciais de 50+ contas simultâneas.",
+        "problem": "Limites de API agressivos e gestão de credenciais de múltiplas contas institucionais em exchanges de criptoativos.",
         "solution": "Rate Limiting baseado em headers oficiais e Bulk Inserts via io.StringIO.",
         "impact": ">99.9% de uptime no pipeline e ingestão de milhões de registros históricos."
       }
     },
     {
       "title": "Unified Multi-Chain Ledger Integrator",
-      "description": "Pipeline resiliente para consolidação transacional em 17+ blockchains (EVM e Solana). Substituí indexadores por extração RPC crua com algoritmos de 'Reverse Check', otimizando a varredura de blocos. O diferencial core é o motor de Auto-Reconciliação (Pacemaker), que audita continuamente o banco PostgreSQL contra os nós da rede, garantindo unicidade rigorosa e 100% de integridade nos balanços.",
+      "description": "Pipeline resiliente para consolidação transacional em dezenhas de blockchains e contratos (EVM e Solana). Substituí indexadores por extração RPC crua com algoritmos de 'Reverse Check', otimizando a varredura de blocos. O diferencial core é o motor de Auto-Reconciliação (Pacemaker), que audita continuamente o banco PostgreSQL contra os nós da rede, garantindo unicidade rigorosa e 100% de integridade nos balanços.",
       "technologies": ["python", "postgresql", "azure","sql"],
       "difficulty": "advanced",
       "diagramImage": "./assets/images/unified_multi_chain_ledger_integrator.webp", 
