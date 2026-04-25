@@ -44,6 +44,35 @@
         "solution": "Data pipeline orchestration with an isolated Feature Engine feeding live inference.",
         "impact": "Sustained algorithmic predictive accuracy of >68% across multiple seasons without manual intervention."
       }
-    }
+    },{
+  "title": "Institutional Digital Asset Custody Integrator",
+  "description": "Distributed integration architecture for managing institutional custody of crypto assets. I implemented an abstraction layer to orchestrate global master APIs, ensuring the segregated capture of transactional data by operating region. The system focuses on high security in secrets traffic and schema standardization to comply with international FinOps audits.",
+  "technologies": ["python", "rest-api", "azure", "postgresql"],
+  "difficulty": "advanced",
+  "diagramImage": "./assets/images/institutional_digital_asset_custody_integrator.webp",
+  "duration": "3 months",
+  "techIcons": ["python", "postgresql"],
+  "category": "Data Engineering",
+  "caseStudy": {
+    "problem": "Regional data fragmentation and complexity in managing multiple high-value custody keys.",
+    "solution": "Unification of regional pipelines under a centralized orchestrator with metadata isolation.",
+    "impact": "Reduction of regional reconciliation failures and full centralization of asset custody visibility."
+  }
+},
+{
+  "title": "BaaS & Financial Settlement Data Sink",
+  "description": "Development of a programmatic integration pipeline to centralize multi-bank financial settlement data (Banking-as-a-Service). The architecture was designed to ensure maximum security in communication between isolated systems. It uses corporate authentication via Azure Active Directory and tokens to orchestrate the capture of thousands of payments, converting them into immutable records in the Data Warehouse.",
+  "technologies": ["python", "azure", "rest-api", "postgresql"],
+  "difficulty": "advanced",
+  "diagramImage": "./assets/images/baas_financial_settlement_data_sink.webp",
+  "duration": "2 months",
+  "techIcons": ["python", "postgresql"],
+  "category": "Data Engineering",
+  "caseStudy": {
+    "problem": "Need for secure extraction of financial settlement data in highly critical isolated systems.",
+    "solution": "Implementation of a corporate authentication bridge via Azure AD for programmatic API consumption.",
+    "impact": "Automation of partner bank reconciliation and real-time cash flow consolidation for auditing."
+  }
+}
   ]
 }
