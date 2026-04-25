@@ -1,249 +1,39 @@
 {
-    "projects": [
-        {
-      "title": "Baby Names Analysis",
-      "description": "Performs a historical SQL analysis of baby name popularity, classifying names as “Classic” (appearing in 50+ years) or “Trendy” (fewer than 50 years), ranking the top 20 male names overall and locating the rank of “Paul,” and identifying female names appearing in both 1920 and 2020.",
-      "technologies": ["sql", "postgresql"],
-      "difficulty": "intermediate",
-      "githubLink": "https://github.com/lukasrozado/baby-names-analysis",
-      "duration": "2h",
-      "techIcons": ["sql", "postgresql"],
-      "category": "Data Analysis"
+  "projects": [
+    {
+      "title": "Enterprise Crypto Data Lake: Multi-Account Ingestion",
+      "description": "End-to-end architecture for ingesting transactional data from 50+ sub-accounts. I implemented an asynchronous extraction engine with an intelligent Rate Limiter (BinanceGuard) that monitors API headers to avoid bans. The system uses Azure Key Vault for secret management and a high-performance PostgreSQL loader via COPY commands and temporary tables, ensuring idempotency and integrity at scale.",
+      "technologies": ["python", "postgresql", "Azure Key Vault", "Docker", "Asyncio"],
+      "difficulty": "advanced",
+      "githubLink": "#",
+      "duration": "5 months",
+      "techIcons": ["python", "postgresql"],
+      "category": "Data Engineering",
+      "caseStudy": {
+        "problem": "Aggressive API limits and credential management for 50+ simultaneous accounts.",
+        "solution": "Header-based rate limiting using official API data and bulk inserts via io.StringIO.",
+        "impact": ">99.9% pipeline uptime and ingestion of millions of historical records."
+      }
     },
     {
-      "title": "Student Performance SQL Analysis",
-      "description": "Analyzes the impact of study hours, extracurricular activities, and other lifestyle factors on exam scores using SQL. Includes queries to compare scores for students studying over 10 hours with extracurriculars, to find the “sweet spot” study‑hour range, and to assign relative class ranks via window functions.",
-      "technologies": ["sql", "postgresql"],
-      "difficulty": "intermediate",
-      "githubLink": "https://github.com/lukasrozado/student-performance-sql-analysis",
-      "duration": "1h",
-      "techIcons": ["sql", "postgresql"],
-      "category": "Education Data Analysis"
+      "title": "Unified Multi-Chain Ledger Integrator (BRZ)",
+      "description": "Transactional data consolidation pipeline across 17+ blockchains (Ethereum, Polygon, Solana, etc.). I designed an event-fetching engine via RPC with a checkpointing system in Azure Blob Storage to ensure no transaction is lost in case of node failure, unifying the data into a canonical relational schema.",
+      "technologies": ["python", "Azure Functions", "Blockchain RPC", "postgresql"],
+      "difficulty": "advanced",
+      "githubLink": "#",
+      "duration": "5 months",
+      "techIcons": ["python", "postgresql"],
+      "category": "Data Engineering"
     },
     {
-      "title": "GoodThought Impact Analysis",
-      "description": "Examines GoodThought NGO initiatives by computing the top five assignments by total donation value (grouped by donor type) and identifying the highest-impact assignment in each region, ensuring each has received donations.",
-      "technologies": ["sql", "postgresql"],
-      "difficulty": "intermediate",
-      "githubLink": "https://github.com/lukasrozado/goodthought-impact-analysis",
-      "duration": "1h",
-      "techIcons": ["sql", "postgresql"],
-      "category": "Nonprofit Data Analysis"
-    },
-        {
-            "title": "Analysis of the Oldest Businesses by Continent and Category",
-            "description": "This project investigates the characteristics of the world's oldest continuously operating businesses using four CSV datasets (businesses, new_businesses, countries, categories). The analysis involves merging data to identify the oldest businesses per continent, the most enduring business categories, and historical patterns of enterprise longevity. Clustering and aggregation techniques reveal insights into the relationship between economic sectors, geographic location, and centuries-long sustainability.",
-            "technologies": ["python", "pandas", "data-merge", "data-analysis"],
-            "difficulty": "intermediate",
-            "githubLink": "https://github.com/lukasrozado/worlds-oldest-business-analysis",
-            "duration": "4h",
-            "techIcons": ["python", "pandas"],
-            "category": "Data Analysis"
-        },
-        {
-      "title": "Factories Creating Emissions",
-      "description": "This project explores greenhouse gas emissions attributable to products, taking into account the heat generation required for manufacturing and transportation. Based on public data from nature.com, the project uses information on the carbon footprint of products (PCF) by measuring the CO2 equivalent for different stages of production, from the protection of raw materials to operation and end use. Using a PostgreSQL database with the ‘product_emissions’ table, the analysis identifies the number of unique companies and the total carbon footprint by industry group for the most recent year. An applied SQL query allows filtering, grouping and sorting of the data, revealing which sectors have the highest emissions and contribute to sustainable innovation strategies.",
-      "technologies": ["sql", "postgresql", "data-analysis"],
-      "difficulty": "beginner",
-      "githubLink": "https://github.com/lukasrozado/industry-carbon-emissions",
-      "duration": "1h",
-      "techIcons": ["sql", "postgresql"],
-      "category": "Environmental Data Analysis"
-    },
-        {
-      "title": "Golden Age of Video Games Analysis",
-      "description": "Video games are big business: the global gaming market is projected to be worth over $300 billion by 2027. In this project, you'll analyze critic and user scores along with sales data for the top 400 video games released since 1977. The goal is to discover if a 'Golden Age' of video games exists by identifying the best-rated release years and by investigating the business side through best-selling titles. You will join multiple datasets—including game_sales, reviews, users_avg_year_rating, and critics_avg_year_rating—and use filtering, grouping, ordering, and set theory techniques in SQL to extract actionable insights on market trends.",
-      "technologies": ["sql", "postgresql"],
-      "difficulty": "intermediate",
-      "githubLink": "https://github.com/lukasrozado/video-game-golden-age-analysis",
-      "duration": "4-5h",
-      "techIcons": ["sql", "postgresql"],
-      "category": "Data Analysis"
-    },
-        {
-      "title": "Sports Apparel Analysis",
-      "description": "Analyzes product data from an online sports apparel retailer by merging multiple datasets to explore pricing strategies and consumer engagement. The project categorizes products into 'Budget', 'Average', 'Expensive', and 'Elite' based on listing price quartiles, calculates mean revenue for Adidas and Nike, and examines the relationship between product description lengths and average ratings using Python, pandas, seaborn, and matplotlib. This comprehensive analysis provides actionable insights for optimizing marketing strategies and improving revenue streams.",
-      "technologies": ["python", "pandas", "seaborn", "matplotlib"],
-      "difficulty": "intermediate",
-      "githubLink": "https://github.com/lukasrozado/sports-apparel-analysis",
-      "duration": "3h",
-      "techIcons": ["python", "pandas", "seaborn", "matplotlib"],
-      "category": "Data Analysis"
-    },
-        {
-            "title": "Online Shopping Purchase Analysis",
-            "description": "Analyzes online shopping session data to understand consumer behavior during the busiest shopping months (November and December). The project calculates purchase rates by customer type, investigates correlations among page durations, and forecasts the likelihood of achieving sales targets under a new marketing campaign using SQL queries and Python visualizations.",
-            "technologies": ["Python", "pandas", "seaborn", "matplotlib"],
-            "difficulty": "intermediate",
-            "githubLink": "https://github.com/lukasrozado/ecommerce-purchase-analysis",
-            "duration": "4h",
-            "techIcons": ["python", "pandas","seaborn","matplotlib"],
-            "category": "Data Analysis"
-          },
-          {
-            "title": "International Debt Analysis",
-            "description": "Analyzes international debt data collected by The World Bank to explore economic debt trends in developing countries. The project answers key questions such as the number of distinct countries, identifying which country has the highest debt, and which has the lowest principal repayments using SQL queries on a PostgreSQL database.",
-            "technologies": ["sql", "PostgreSQL"],
-            "difficulty": "beginner",
-            "githubLink": "https://github.com/lukasrozado/international-debt-analysis",
-            "duration": "1h",
-            "techIcons": ["sql", "postgresql"],
-            "category": "Data Analysis"
-          },
-          {
-            "title": "Mental Health Analysis of International Students",
-            "description": "Explores whether studying abroad affects students' mental health based on data from a 2018 survey at a Japanese international university. The project investigates depression scores, social connectedness, acculturative stress, and examines whether the length of stay influences mental health difficulties, using PostgreSQL for data exploration.",
-            "technologies": ["sql", "PostgreSQL"],
-            "difficulty": "beginner",
-            "githubLink": "https://github.com/lukasrozado/international-students-mental-health",
-            "duration": "1h",
-            "techIcons": ["sql", "postgresql"],
-            "category": "Data Analysis"
-          },
-        {
-  "title": "Super Bowl Data Analysis",
-  "description": "Analyzed data from 52 Super Bowls held until 2018 to explore TV viewership trends, game outcomes, and halftime musical performances. The analysis revealed that TV viewership has consistently grown, blowouts are rare, and halftime shows are a spectacle in their own right, with standout performances by artists like Justin Timberlake.",
-  "technologies": ["python", "pandas", "matplotlib", "seaborn"],
-  "difficulty": "beginner",
-  "githubLink": "https://github.com/lukasrozado/superbowl-analysis", 
-  "duration": "2-3h",
-  "techIcons": ["python", "pandas", "matplotlib"],
-  "category": "Data Analysis"
-    },
-        {
-  "title": "Lego Licensed Sets Analysis",
-  "description": "Analyzed the impact of licensed sets on Lego’s portfolio by focusing on the Star Wars franchise. The project revealed that 50% of licensed sets belong to Star Wars and identified 2016 as the peak release year. Data processing and analysis were performed using pandas (with optional numpy support) and pivot tables to extract key trends.",
-  "technologies": ["python", "pandas", "numpy", "data-analysis"],
-  "difficulty": "beginner",
-  "githubLink": "https://github.com/lukasrozado/lego-licensed-analysis",
-  "duration": "2h",
-  "techIcons": ["python", "pandas"],
-  "category": "Data Analysis"
-    },
-        {
-    "title": "SEM Campaign Builder for Furniture Retail",
-    "description": "Generated 930 exact/phrase match keywords targeting budget shoppers - excluded 17 luxury terms, prioritized 45 discount modifiers ('sale', 'cheap'). Structured 5 ad groups with product-keyword combinations.",
-    "technologies": ["python", "pandas", "sem-campaigns", "keyword-research"],
-    "difficulty": "beginner",
-    "githubLink": "https://github.com/lukasrozado/sem-sofas-keywords-campaign",
-    "duration": "1h",
-    "techIcons": ["python", "pandas"],
-    "category": "Digital Marketing"
-        },
-        
-        {
-            "title": "LCK Spring 2024 Esports Analytics",
-            "description": "Built 3 relational datasets from 1.2k matches: tracked 45 KPIs (KDA=4.2 avg, 63% win rate thresholds). Automated web scraping with Selenium/BeautifulSoup.",
-            "technologies": ["python", "pandas", "selenium", "beautifulsoup", "data-cleaning", "web-scraping", "scikit-learn"],
-            "difficulty": "intermediate",
-            "githubLink": "https://www.kaggle.com/datasets/lukasrozado/lck-spring-2024-players-statistics",
-            "duration": "6h",
-            "techIcons": ["python", "pandas", "selenium", "excel"],
-            "category": "Sports Analytics"
-        },
-        
-        {
-            "title": "LoL Esports Predictive Engine",
-            "description": "Developed & maintained 3+ years ML system: 68% match prediction accuracy (LCK/LCS/LEC). Processed 10k+ matches with 42 features (draft picks, obj timings, meta shifts). Daily Excel automation + Python retraining.",
-            "technologies": ["python", "excel", "scikit-learn", "xgboost", "time-series", "feature-engineering", "model-retraining", "data-scraping, machine-learning"],
-            "difficulty": "advanced",
-            "githubLink": "https://www.linkedin.com/in/lukasrozado/details/projects/1730398819832/single-media-viewer/?type=IMAGE&profileId=ACoAADtoY7gBV6hpvrc0IEoihZrxtELqXCQlBK4",
-            "duration": "3+ years",
-            "techIcons": ["python", "excel", "scikit-learn"],
-            "category": "Predictive Analytics"
-        },
-
-        {
-            "title": "Sales Pipeline Debugging",
-            "description": "Resolved 3 critical data issues: Tax calculation rounding errors (0.1% discrepancy), dynamic threshold validation for Total (±3σ), and NaN handling in 4.7% of Condition_1 checks. Achieved 100% data validation.",
-            "technologies": ["python", "pandas", "data-validation", "anomaly-detection", "data-merging", "time-series"],
-            "difficulty": "beginner",
-            "githubLink": "https://github.com/lukasrozado/debugging-a-Sales-Data-Workflow/",
-            "duration": "2-3h",
-            "techIcons": ["python", "pandas"],
-            "category": "Data Engineering"
-        },
-        {
-            "title": "EV Charging Network Optimization",
-            "description": "Identified 37% coverage gaps in rural areas, optimized fast-charger placement (150kW+ nodes), and correlated 92% EV adoption-growth with urban infrastructure. Processed geospatial + usage data from 5 government datasets.",
-            "technologies": ["python", "geopandas", "folium", "data-merge", "time-series", "spatial-analysis"],
-            "difficulty": "intermediate",
-            "githubLink": "https://github.com/lukasrozado/ev-charging-infrastructure-analysis",
-            "duration": "4-5h",
-            "techIcons": ["python", "pandas"],
-            "category": "Geospatial Analysis"
-        },
-        {
-            "title": "Sleep Health Risk Analysis",
-            "description": "Identified high-risk groups: Sales Reps (lowest sleep=5.8h, quality=4.2/10) & overweight/obese BMI (43%/40% insomnia rates). Analyzed 374 entries with occupation/BMI segmentation.",
-            "technologies": ["python", "pandas", "seaborn", "data-grouping", "ratio-analysis"],
-            "difficulty": "beginner",
-            "githubLink": "https://github.com/lukasrozado/getting-a-good-nights-sleep",
-            "duration": "2h",
-            "techIcons": ["python", "pandas", "seaborn"],
-            "category": "Data Analysis"
-        },
-        {
-            "title": "Netflix Content Trends Analysis",
-            "description": "Processed 8k+ titles data: identified top genres (Drama/Comedy), analyzed release year trends (2015-2020 peak), compared movie/show ratios (70% movies).",
-            "technologies": ["python", "pandas", "matplotlib", "data-cleaning", "datetime-analysis", "data-analysis"],
-            "difficulty": "beginner",
-            "githubLink": "https://github.com/lukasrozado/project-invetigating-data-netflix",
-            "duration": "2h",
-            "techIcons": ["python", "pandas", "matplotlib"],
-            "category": "Data Analysis"
-        },
-        {
-            "title": "NYC School SAT Analysis",
-            "description": "Identified top 10 math schools (score >640), calculated total SAT averages, compared borough performance. Tools: Python, Pandas for data processing.",
-            "technologies": ["python", "pandas", "data-analysis"],
-            "difficulty": "beginner",
-            "githubLink": "https://github.com/lukasrozado/data-analysis-nyc-schools/blob/main/notebook.ipynb",
-            "duration": "2h",
-            "techIcons": ["python", "pandas"],
-            "category": "Data Analysis"
-        },
-        {
-            "title": "Nobel Prize Trends Visualization",
-            "description": "Analyzed 900+ laureates: mapped category dominance (Physics/Medicine), country rankings (US/UK/DE), temporal trends (1901-2020), gender distribution (6% female).",
-            "technologies": ["python", "pandas", "matplotlib", "seaborn", "data-cleaning", "time-series", "data-viz"],
-            "difficulty": "beginner",
-            "githubLink": "https://github.com/lukasrozado/nobel-prize-history-visualization",
-            "duration": "2h",
-            "techIcons": ["python", "pandas", "matplotlib", "seaborn"],
-            "category": "Data Visualization"
-        },
-        {
-            "title": "LA Crime Pattern Analysis",
-            "description": "Identified peak crime hour (12h), top high-risk area (Central), and vulnerable age group (26-34 bracket). Processed 180k+ records with time conversion and age-binning.",
-            "technologies": ["python", "pandas", "seaborn", "data-cleaning", "time-conversion", "age-binning", "data-analysis"],
-            "difficulty": "intermediate",
-            "githubLink": "https://github.com/lukasrozado/analyzing-crime-in-la",
-            "duration": "2h",
-            "techIcons": ["python", "pandas", "matplotlib", "seaborn"],
-            "category": "Data Analysis"
-        },
-        {
-            "title": "Digital Fitness Demand Analysis",
-            "description": "Quantified COVID-19 impact: 300% home vs gym search growth (2020-2022). Key markets: US (score=85), Philippines leads SEA. Tools: Pandas time-series, multi-dataset merge.",
-            "technologies": ["python", "pandas", "matplotlib", "trends-analysis", "data-merge"],
-            "difficulty": "intermediate",
-            "githubLink": "https://github.com/lukasrozado/digital-fitness-market-analysis/blob/main/notebook.ipynb",
-            "duration": "2-3h",
-            "techIcons": ["python", "pandas", "matplotlib"],
-            "category": "Market Analysis"
-        },
-        {
-            "title": "Avocado Supply Chain Optimization",
-            "description": "Identified cost drivers: logistics (38% of total), seasonal price variance (±22%), Mexico dependency (72% imports). Merged 4 datasets (suppliers/transport/prices) with outlier handling.",
-            "technologies": ["python", "pandas", "seaborn", "data-merge", "missing-data-handling", "time-series"],
-            "difficulty": "intermediate",
-            "githubLink": "https://github.com/lukasrozado/avocado-Toast-Supply-Chain-Analysis/blob/main/notebook.ipynb",
-            "duration": "3-4h",
-            "techIcons": ["python", "pandas", "seaborn"],
-            "category": "Supply Chain Analysis"
-        }
-
-
-    ]
+      "title": "Predictive Pipeline and ML Engine (LoL)",
+      "description": "End-to-end automated system that ingests data via large-scale web scraping, processes 42 engineered features, and performs model retraining. The key differentiator is the automated data pipeline that feeds real-time inference, maintaining 68% accuracy through automated backfill cycles.",
+      "technologies": ["python", "Selenium", "Scikit-Learn", "postgresql", "PowerBI"],
+      "difficulty": "advanced",
+      "githubLink": "#",
+      "duration": "5+ years",
+      "techIcons": ["python", "scikit-learn", "postgresql"],
+      "category": "Data Engineering & ML"
+    }
+  ]
 }
