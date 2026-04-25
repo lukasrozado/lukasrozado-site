@@ -1,0 +1,67 @@
+/* =========================================
+   MODAL DE ARQUITETURA (SYSTEM DESIGN VIEW)
+   CORRIGIDO PARA LIGHTBOX
+   ========================================= */
+.architecture-modal {
+    position: fixed; /* FIXO NA TELA, NÃO NO DOCUMENTO */
+    top: 0;
+    left: 0;
+    width: 100vw; /* OCUPA TODA A LARGURA DA VIEWPORT */
+    height: 100vh; /* OCUPA TODA A ALTURA DA VIEWPORT */
+    background-color: rgba(11, 18, 32, 0.95); /* Fundo escuro fosco */
+    display: flex; /* PARA CENTRALIZAR O CONTEÚDO */
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* ACIMA DE TUDO (HEADER, FOOTER, ETC.) */
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* Classe ativada pelo JS */
+.architecture-modal.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Conteúdo centralizado do modal */
+.architecture-modal-content {
+    position: relative;
+    max-width: 90vw; /* Largura máxima da imagem */
+    max-height: 90vh; /* Altura máxima da imagem */
+    transform: scale(0.95); /* Efeito de 'pulo' inicial */
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Efeito quando ativo */
+.architecture-modal.active .architecture-modal-content {
+    transform: scale(1); /* Volta ao tamanho normal */
+}
+
+/* Estilo da imagem do diagrama */
+.architecture-modal img {
+    width: 100%;
+    height: auto;
+    max-height: 85vh; /* Garante que a imagem não corte */
+    object-fit: contain;
+    border-radius: 12px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    border: 1px solid #1e293b;
+}
+
+/* Botão de fechar (X) */
+.close-modal-btn {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    background: none;
+    border: none;
+    color: #00D4FF;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.close-modal-btn:hover {
+    color: #ffffff;
+}

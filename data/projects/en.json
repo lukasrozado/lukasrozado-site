@@ -2,38 +2,48 @@
   "projects": [
     {
       "title": "Enterprise Crypto Data Lake: Multi-Account Ingestion",
-      "description": "End-to-end architecture for ingesting transactional data from 50+ sub-accounts. I implemented an asynchronous extraction engine with an intelligent Rate Limiter (BinanceGuard) that monitors API headers to avoid bans. The system uses Azure Key Vault for secret management and a high-performance PostgreSQL loader via COPY commands and temporary tables, ensuring idempotency and integrity at scale.",
-      "technologies": ["python", "postgresql", "Azure Key Vault", "Docker", "Asyncio"],
+      "description": "End-to-end architecture for ingestion of transactional data from 50+ sub-accounts. I implemented an asynchronous extraction engine with an intelligent Rate Limiter that monitors API headers to prevent bans. The system uses Azure Key Vault for secret management and a high-performance PostgreSQL loader via COPY commands and temporary tables, ensuring idempotency and integrity at scale.",
+      "technologies": ["python", "postgresql", "azure","sql"],
       "difficulty": "advanced",
-      "githubLink": "#",
+      "diagramImage": "./assets/images/crypto_data_lake_ingestion_architecture.webp",
       "duration": "5 months",
       "techIcons": ["python", "postgresql"],
       "category": "Data Engineering",
       "caseStudy": {
-        "problem": "Aggressive API limits and credential management for 50+ simultaneous accounts.",
-        "solution": "Header-based rate limiting using official API data and bulk inserts via io.StringIO.",
+        "problem": "Aggressive API rate limits and credential management across 50+ simultaneous accounts.",
+        "solution": "Header-based Rate Limiting using official API signals and Bulk Inserts via io.StringIO.",
         "impact": ">99.9% pipeline uptime and ingestion of millions of historical records."
       }
     },
     {
-      "title": "Unified Multi-Chain Ledger Integrator (BRZ)",
-      "description": "Transactional data consolidation pipeline across 17+ blockchains (Ethereum, Polygon, Solana, etc.). I designed an event-fetching engine via RPC with a checkpointing system in Azure Blob Storage to ensure no transaction is lost in case of node failure, unifying the data into a canonical relational schema.",
-      "technologies": ["python", "Azure Functions", "Blockchain RPC", "postgresql"],
+      "title": "Unified Multi-Chain Ledger Integrator",
+      "description": "Resilient pipeline for consolidating transactional data across 17+ blockchains (EVM and Solana). I replaced third-party indexers with raw RPC extraction using 'Reverse Check' algorithms, optimizing block scanning. The core differentiator is the Auto-Reconciliation engine (Pacemaker), which continuously audits the PostgreSQL database against network nodes, ensuring strict uniqueness and 100% integrity in balances.",
+      "technologies": ["python", "postgresql", "azure","sql"],
       "difficulty": "advanced",
-      "githubLink": "#",
-      "duration": "5 months",
+      "diagramImage": "./assets/images/unified_multi_chain_ledger_integrator.webp",
+      "duration": "3 months",
       "techIcons": ["python", "postgresql"],
-      "category": "Data Engineering"
+      "category": "Data Engineering",
+      "caseStudy": {
+        "problem": "On-chain data fragmentation and integrity risks when using third-party indexers across 17 networks.",
+        "solution": "Raw RPC extraction combined with an internal auditing engine for continuous auto-reconciliation.",
+        "impact": "Canonical relational unification with absolute accuracy guarantees for transactions and cross-chain balances."
+      }
     },
     {
-      "title": "Predictive Pipeline and ML Engine (LoL)",
-      "description": "End-to-end automated system that ingests data via large-scale web scraping, processes 42 engineered features, and performs model retraining. The key differentiator is the automated data pipeline that feeds real-time inference, maintaining 68% accuracy through automated backfill cycles.",
-      "technologies": ["python", "Selenium", "Scikit-Learn", "postgresql", "PowerBI"],
+      "title": "Predictive Pipeline in Competitive and ML Engine",
+      "description": "End-to-end algorithmic engine orchestrated for quantitative trading. The architecture includes massive daily web scraping, rigorous normalization, and a Feature Engine optimized to feed the 'Model Factory' with 42 structured variables. The system autonomously manages retraining (backtesting) and live inference, sending high-precision signals for hedge strategies and dashboards.",
+      "technologies": ["python", "postgresql", "azure","sql","machine-learning"],
       "difficulty": "advanced",
-      "githubLink": "#",
+      "diagramImage": "./assets/images/automated_esports_quant_trader.webp",
       "duration": "5+ years",
       "techIcons": ["python", "scikit-learn", "postgresql"],
-      "category": "Data Engineering & ML"
+      "category": "Data Engineering & ML",
+      "caseStudy": {
+        "problem": "Lack of automated ingestion and real-time processing for volatile predictive decision-making.",
+        "solution": "Data pipeline orchestration with an isolated Feature Engine feeding live inference.",
+        "impact": "Sustained algorithmic predictive accuracy of >68% across multiple seasons without manual intervention."
+      }
     }
   ]
 }

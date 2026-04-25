@@ -2,10 +2,10 @@
   "projects": [
     {
       "title": "Enterprise Crypto Data Lake: Ingestão Multi-Conta",
-      "description": "Arquitetura end-to-end para ingestão de dados transacionais de 50+ subcontas. Implementei um motor de extração assíncrono com Rate Limiter inteligente (BinanceGuard) que monitora headers da API para evitar banimentos. O sistema utiliza Azure Key Vault para gestão de segredos e um carregador PostgreSQL de alta performance via comandos COPY e tabelas temporárias, garantindo idempotência e integridade em escala.",
-      "technologies": ["python", "postgresql", "Azure Key Vault", "Docker", "Asyncio"],
+      "description": "Arquitetura end-to-end para ingestão de dados transacionais de 50+ subcontas. Implementei um motor de extração assíncrono com Rate Limiter inteligente que monitora headers da API para evitar banimentos. O sistema utiliza Azure Key Vault para gestão de segredos e um carregador PostgreSQL de alta performance via comandos COPY e tabelas temporárias, garantindo idempotência e integridade em escala.",
+      "technologies": ["python", "postgresql", "azure","sql"],
       "difficulty": "advanced",
-      "githubLink": "#", 
+      "diagramImage": "./assets/images/crypto_data_lake_ingestion_architecture.webp", 
       "duration": "5 meses",
       "techIcons": ["python", "postgresql"],
       "category": "Engenharia de Dados",
@@ -16,24 +16,34 @@
       }
     },
     {
-      "title": "Unified Multi-Chain Ledger Integrator (BRZ)",
-      "description": "Pipeline de consolidação de dados transacionais em múltiplas blockchains 17+ (Ethereum, Polygon, Solana e etc). Estruturei um motor de busca de eventos via RPC com sistema de checkpointing no Azure Blob Storage para garantir que nenhuma transação fosse perdida em caso de falha no nó, unificando os dados em um esquema relacional canônico.",
-      "technologies": ["python", "Azure Functions", "Blockchain RPC", "postgresql"],
+      "title": "Unified Multi-Chain Ledger Integrator",
+      "description": "Pipeline resiliente para consolidação transacional em 17+ blockchains (EVM e Solana). Substituí indexadores por extração RPC crua com algoritmos de 'Reverse Check', otimizando a varredura de blocos. O diferencial core é o motor de Auto-Reconciliação (Pacemaker), que audita continuamente o banco PostgreSQL contra os nós da rede, garantindo unicidade rigorosa e 100% de integridade nos balanços.",
+      "technologies": ["python", "postgresql", "azure","sql"],
       "difficulty": "advanced",
-      "githubLink": "#",
-      "duration": "5 meses",
+      "diagramImage": "./assets/images/unified_multi_chain_ledger_integrator.webp", 
+      "duration": "3 meses",
       "techIcons": ["python", "postgresql"],
-      "category": "Engenharia de Dados"
+      "category": "Engenharia de Dados",
+      "caseStudy": {
+        "problem": "Fragmentação de dados on-chain e risco de integridade utilizando indexadores de terceiros em 17 redes.",
+        "solution": "Extração via RPC puro acoplada a um motor de auditoria interna para auto-reconciliação contínua.",
+        "impact": "Unificação relacional canônica com garantia absoluta de precisão em transações e balanços cruzados."
+      }
     },
     {
-      "title": "Pipeline Preditivo e ML Engine (LoL)",
-      "description": "Sistema automatizado de ponta a ponta que ingere dados via web scraping massivo, processa 42 features de engenharia e executa retreinamento de modelos. O diferencial está na automação do pipeline de dados que alimenta a inferência em tempo real, mantendo a precisão de 68% através de ciclos de backfill automatizados.",
-      "technologies": ["python", "Selenium", "Scikit-Learn", "postgresql", "PowerBI"],
+      "title": "Pipeline Preditivo no Competitivo e ML Engine",
+      "description": "Motor algorítmico end-to-end orquestrado para trading quantitativo. A arquitetura engloba web scraping massivo diário, normalização rigorosa e uma Feature Engine otimizada que alimenta a 'Model Factory' com 42 variáveis estruturais. O sistema gerencia autonomamente o retreinamento (backtesting) e a inferência ao vivo, enviando sinais de alta precisão para estratégias de hedge e dashboards.",
+      "technologies": ["python", "postgresql", "azure","sql","machine-learning"],
       "difficulty": "advanced",
-      "githubLink": "#",
+      "diagramImage": "./assets/images/automated_esports_quant_trader.webp",
       "duration": "5+ anos",
       "techIcons": ["python", "scikit-learn", "postgresql"],
-      "category": "Data Engineering & ML"
+      "category": "Engenharia de Dados & ML",
+      "caseStudy": {
+        "problem": "Falta de ingestão automatizada e processamento em tempo real para tomada de decisão preditiva volátil.",
+        "solution": "Orquestração de pipeline de dados com Feature Engine isolada alimentando inferência ao vivo.",
+        "impact": "Sustentação algorítmica de >68% de precisão preditiva ao longo de múltiplas temporadas sem intervenção manual."
+      }
     }
   ]
 }
