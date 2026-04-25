@@ -1,7 +1,7 @@
 
 # Professional Portfolio – Lukas Rozado
 
-This is my personal portfolio, fully developed from scratch to present my projects, skills, and background as a Data Scientist and Data Analyst. All content, structure, and design reflect my professional identity and were built with performance, clarity, and visual impact in mind.
+This is my personal portfolio, fully developed from scratch to present my projects, skills, and background as a Data Scientist, Data Analyst And Data Engineer. All content, structure, and design reflect my professional identity and were built with performance, clarity, and visual impact in mind.
 
 🔗 Visit: [lukasrozado.github.io](lukasrozado.github.io)
 
