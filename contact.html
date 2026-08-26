@@ -5,11 +5,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contato | Lukas Rozado</title>
+    <meta name="theme-color" content="#00D4FF">
+    <link rel="canonical" href="https://lukasrozado.github.io/contact.html">
+    <link rel="alternate" hreflang="pt-BR" href="https://lukasrozado.github.io/contact.html">
+    <link rel="alternate" hreflang="en" href="https://lukasrozado.github.io/contact-en.html">
+    <link rel="alternate" hreflang="x-default" href="https://lukasrozado.github.io/contact.html">
+
     <meta name="description" content="Entre em contato para projetos de ciência de dados e análise de dados.">
+    <meta name="author" content="Lukas Rozado">
+    <meta name="robots" content="index,follow">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://lukasrozado.github.io/contact.html">
+    <meta property="og:title" content="Contato | Lukas Rozado">
+    <meta property="og:description" content="Entre em contato para projetos de engenharia e ciência de dados.">
+    <meta property="og:image" content="https://lukasrozado.github.io/assets/images/og-image.webp">
+
+    <link rel="icon" href="./assets/icons/favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" href="./assets/icons/favicon-180x180.webp">
+    <link rel="manifest" href="./site.webmanifest">
     
     <!-- Restante do head igual ao index.html -->
-    <link rel="stylesheet" href="./styles/main.css" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="./styles/main.css"></noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <link rel="stylesheet" href="./styles/main.css">
 </head>
 <body>
     <!-- Header -->
@@ -27,8 +45,9 @@
                 <ul>
                     <li><a href="./index.html">Início</a></li>
                     <li><a href="./index.html#projects">Projetos</a></li>
+                    <li><a href="./writing/">Escritos</a></li>
                     <li><a href="./contact.html">Contato</a></li>
-                    <li><button class="lang-switch" data-lang="en">EN</button></li>
+                    <li><a class="lang-switch" href="./index-en.html" hreflang="en" data-lang="en" lang="en">EN</a></li>
                 </ul>
             </nav>
         </header>
@@ -74,20 +93,7 @@
     <!-- Mesmos scripts do index.html -->
     <script defer src="./assets/js/main-contact.js" type="module"></script>
     <script>
-        window.addEventListener('load', async function() {
-            if ('serviceWorker' in navigator) {
-                navigator.serviceWorker.register('./sw.js')
-                .then(registration => {
-                    console.log('ServiceWorker registrado');
-                })
-                .catch(err => {
-                    console.log('Falha no registro: ', err);
-                });
-            }
-        });
-    </script>
-    <script>
-        // Forçar atualização do Service Worker
+        // Desregistro o service worker legado (portfolio-v3) e limpa caches antigos
         if('serviceWorker' in navigator) {
           navigator.serviceWorker.getRegistrations().then(registrations => {
             for(let registration of registrations) {

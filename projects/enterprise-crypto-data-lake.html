@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-BR" itemscope itemtype="https://schema.org/Person">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enterprise Crypto Data Lake: Ingestão Multi-Conta | Lukas Rozado</title>
+    <meta name="theme-color" content="#00D4FF">
+
+    <link rel="canonical" href="https://lukasrozado.github.io/projects/enterprise-crypto-data-lake.html">
+    <link rel="alternate" hreflang="pt-BR" href="https://lukasrozado.github.io/projects/enterprise-crypto-data-lake.html">
+    <link rel="alternate" hreflang="en" href="https://lukasrozado.github.io/projects/enterprise-crypto-data-lake-en.html">
+    <link rel="alternate" hreflang="x-default" href="https://lukasrozado.github.io/projects/enterprise-crypto-data-lake.html">
+
+    <meta name="description" content="Arquitetura end-to-end para ingestão transacional de múltiplas contas institucionais em exchanges de criptoativos. Implementei um motor de extração...">
+    <meta name="author" content="Lukas Rozado">
+    <meta name="robots" content="index,follow,max-image-preview:large">
+
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://lukasrozado.github.io/projects/enterprise-crypto-data-lake.html">
+    <meta property="og:title" content="Enterprise Crypto Data Lake: Ingest&#227;o Multi-Conta | Case Study">
+    <meta property="og:description" content="Arquitetura end-to-end para ingestão transacional de múltiplas contas institucionais em exchanges de criptoativos. Implementei um motor de extração...">
+    <meta property="og:image" content="https://lukasrozado.github.io/assets/images/crypto_data_lake_ingestion_architecture.webp">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@RozadoLukas">
+    <meta name="twitter:title" content="Enterprise Crypto Data Lake: Ingest&#227;o Multi-Conta | Case Study">
+    <meta name="twitter:description" content="Arquitetura end-to-end para ingestão transacional de múltiplas contas institucionais em exchanges de criptoativos. Implementei um motor de extração...">
+    <meta name="twitter:image" content="https://lukasrozado.github.io/assets/images/crypto_data_lake_ingestion_architecture.webp">
+
+    <link rel="icon" href="../assets/icons/favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" href="../assets/icons/favicon-180x180.webp">
+    <link rel="manifest" href="../site.webmanifest">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <link rel="stylesheet" href="../styles/main.css">
+
+    <style>
+        body { font-family: 'Roboto', 'Arial', 'Helvetica', sans-serif; }
+    </style>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "CreativeWork",
+        "name": "Enterprise Crypto Data Lake: Ingestão Multi-Conta",
+        "description": "Arquitetura end-to-end para ingestão transacional de múltiplas contas institucionais em exchanges de criptoativos. Implementei um motor de extração assíncrono com Rate Limiter inteligente que monitora headers da API para evitar banimentos. O sistema utiliza Azure Key Vault para gestão de segredos e um carregador PostgreSQL de alta performance via comandos COPY e tabelas temporárias, garantindo idempotência e integridade em escala.",
+        "url": "https://lukasrozado.github.io/projects/enterprise-crypto-data-lake.html",
+        "image": "https://lukasrozado.github.io/assets/images/crypto_data_lake_ingestion_architecture.webp",
+        "inLanguage": "pt-BR",
+        "keywords": "python, postgresql, azure, sql",
+        "author": {
+            "@type": "Person",
+            "name": "Lukas Rozado",
+            "url": "https://lukasrozado.github.io/"
+        }
+    }
+    </script>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RD4581V881"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-RD4581V881');
+    </script>
+</head>
+<body>
+    <header role="banner">
+<header>
+    <nav id="navbar">
+        <div class="nav-header">
+            <a href="../index.html"><img src="../assets/images/logo-lukas-rozado.webp" alt="Lukas Rozado Logo"></a>
+            <div id="menu-toggle" class="menu-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <ul>
+            <li><a href="../index.html">Início</a></li>
+            <li><a href="../index.html#projects">Projetos</a></li>
+            <li><a href="../writing/">Escritos</a></li>
+            <li><a href="../contact.html">Contato</a></li>
+            <li><a class="lang-switch" href="../index-en.html" hreflang="en" data-lang="en" lang="en">EN</a></li>
+        </ul>
+    </nav>
+</header>
+    </header>
+
+    <main id="main-content" role="main">
+        <article class="project-page" itemscope itemtype="https://schema.org/CreativeWork">
+            <div class="project-meta">
+                <span class="project-tag">Engenharia de Dados</span>
+            </div>
+
+            <h1 itemprop="name">Enterprise Crypto Data Lake: Ingestão Multi-Conta</h1>
+
+
+            <p class="lead" itemprop="description">Arquitetura end-to-end para ingestão transacional de múltiplas contas institucionais em exchanges de criptoativos. Implementei um motor de extração assíncrono com Rate Limiter inteligente que monitora headers da API para evitar banimentos. O sistema utiliza Azure Key Vault para gestão de segredos e um carregador PostgreSQL de alta performance via comandos COPY e tabelas temporárias, garantindo idempotência e integridade em escala.</p>
+
+            <div class="project-tech-row">
+                <img src="../assets/icons/python.svg" alt="python" class="tech-icon" width="30" height="30">
+                <img src="../assets/icons/postgresql.svg" alt="postgresql" class="tech-icon" width="30" height="30">
+            </div>
+
+            <figure class="project-diagram">
+                <img src="../assets/images/crypto_data_lake_ingestion_architecture.webp" alt="Enterprise Crypto Data Lake: Ingestão Multi-Conta - diagrama de arquitetura" width="1200" height="800" loading="lazy" decoding="async" itemprop="image">
+                <figcaption>Arquitetura do sistema</figcaption>
+            </figure>
+            <section class="case-study" aria-labelledby="case-study-heading">
+                <h2 id="case-study-heading">Estudo de caso</h2>
+                <div class="case-block">
+                    <h3>Problema</h3>
+                    <p>Limites de API agressivos e gestão de credenciais de múltiplas contas institucionais em exchanges de criptoativos.</p>
+                </div>
+                <div class="case-block">
+                    <h3>Solu&ccedil;&atilde;o</h3>
+                    <p>Rate Limiting baseado em headers oficiais e Bulk Inserts via io.StringIO.</p>
+                </div>
+                <div class="case-block">
+                    <h3>Impacto</h3>
+                    <p>&gt;99.9% de uptime no pipeline e ingestão de milhões de registros históricos.</p>
+                </div>
+            </section>
+
+            <div class="project-actions">
+
+                <a class="btn-outline" href="../index.html#projects">&larr; Voltar aos projetos</a>
+                <a class="btn-outline" href="../contact.html">Falar sobre um projeto</a>
+            </div>
+        </article>
+    </main>
+
+    <footer role="contentinfo">
+<footer itemscope itemtype="https://schema.org/WPFooter" role="contentinfo">
+    <div class="footer-inner">
+        <div class="footer-cta">
+            <div class="footer-cta-text">
+                <p class="footer-newsletter-title">Dado Bruto</p>
+                <p class="footer-newsletter-desc">Newsletter de Engenharia de Dados no LinkedIn. Sem spam, direto ao ponto.</p>
+            </div>
+            <a class="btn-newsletter" href="https://www.linkedin.com/in/lukasrozado/" target="_blank" rel="noopener noreferrer">Assinar no LinkedIn <span aria-hidden="true">&nearr;</span></a>
+        </div>
+
+        <div class="footer-bottom">
+            <p class="footer-copy" itemprop="copyrightYear">&copy; 2026 <span itemprop="copyrightHolder">Lukas Rozado</span></p>
+
+            <div id="social-links" role="navigation" aria-label="Redes sociais profissionais">
+                <a href="https://github.com/lukasrozado"
+                   target="_blank"
+                   rel="noopener noreferrer nofollow"
+                   id="profile-link"
+                   aria-label="GitHub de Lukas Rozado"><img src="../assets/images/github-data-engineer-lukas-rozado.webp"
+                        alt="Lukas Rozado no GitHub - Projetos de Engenheiro de Dados"
+                        class="social-icon"
+                        style="filter: invert(1);"
+                        loading="lazy"
+                        aria-hidden="true"
+                        itemprop="sameAs"></a>
+
+                <a href="https://www.linkedin.com/in/lukasrozado/"
+                   target="_blank"
+                   rel="noopener noreferrer nofollow"
+                   aria-label="LinkedIn de Lukas Rozado"><img src="../assets/images/linkedin-data-engineer-lukas-rozado.webp"
+                        alt="Perfil LinkedIn de Lukas Rozado - Engenheiro de Dados"
+                        class="social-icon"
+                        style="filter: invert(1);"
+                        loading="lazy"
+                        aria-hidden="true"
+                        itemprop="sameAs"></a>
+
+                <a href="https://www.kaggle.com/datasets/lukasrozado/lck-spring-2024-players-statistics"
+                   target="_blank"
+                   rel="noopener noreferrer nofollow"
+                   aria-label="Dataset LCK Spring 2024 de Lukas Rozado no Kaggle"><img src="../assets/images/kaggle-data-engineer-lukas-rozado.webp"
+                        alt="Dataset LCK Spring 2024 de Lukas Rozado no Kaggle - Dados de Esports"
+                        class="social-icon"
+                        style="filter: invert(1);"
+                        loading="lazy"
+                        aria-hidden="true"
+                        itemprop="sameAs"></a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </footer>
+
+    <script type="module">
+        try {
+            const { initMenu } = await import("../assets/js/modules/menu.js");
+            initMenu();
+        } catch (error) {
+            console.error("Menu unavailable:", error);
+        }
+    </script>
+</body>
+</html>

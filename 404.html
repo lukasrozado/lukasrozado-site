@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 — Página não encontrada | Lukas Rozado</title>
+    <meta name="theme-color" content="#00D4FF">
+    <meta name="robots" content="noindex">
+    <meta name="description" content="Página não encontrada. Volte ao portfólio de Lukas Rozado.">
+    <link rel="icon" href="./assets/icons/favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" href="./assets/icons/favicon-180x180.webp">
+    <link rel="manifest" href="./site.webmanifest">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <link rel="stylesheet" href="./styles/main.css">
+    <style>
+        body{font-family:'Roboto','Arial','Helvetica',sans-serif}
+        .notfound{max-width:640px;margin:6rem auto 4rem;padding:0 1.5rem;text-align:center}
+        .notfound h1{color:#00D4FF;font-size:2.2rem;margin:0 0 .5rem}
+        .notfound p{color:#999;line-height:1.6;margin:0 0 1.5rem}
+        .notfound .btn-row{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:1.5rem}
+    </style>
+</head>
+<body>
+    <header role="banner">
+        <header>
+            <nav id="navbar">
+                <div class="nav-header">
+                    <a href="./index.html"><img src="./assets/images/logo-lukas-rozado.webp" alt="Lukas Rozado Logo"></a>
+                    <div id="menu-toggle" class="menu-icon"><span></span><span></span><span></span></div>
+                </div>
+                <ul>
+                    <li><a href="./index.html">Início</a></li>
+                    <li><a href="./index.html#projects">Projetos</a></li>
+                    <li><a href="./writing/">Escritos</a></li>
+                    <li><a href="./contact.html">Contato</a></li>
+                    <li><a class="lang-switch" href="./index-en.html" hreflang="en" data-lang="en" lang="en">EN</a></li>
+                </ul>
+            </nav>
+        </header>
+    </header>
+
+    <main id="main-content" role="main">
+        <section class="notfound">
+            <h1>404 — Página não encontrada</h1>
+            <p>A página que você procurou não existe ou foi movida. Continue explorando o portfólio.</p>
+            <div class="btn-row">
+                <a class="btn-newsletter" href="./index.html">Voltar ao início</a>
+                <a class="btn-newsletter" href="./projects/lck-spring-2024-dataset.html">Ver dataset LCK</a>
+                <a class="btn-newsletter" href="./writing/">Ver escritos</a>
+            </div>
+        </section>
+    </main>
+
+    <footer itemscope itemtype="https://schema.org/WPFooter" role="contentinfo">
+        <div class="footer-inner">
+            <div class="footer-cta">
+                <div class="footer-cta-text">
+                    <p class="footer-newsletter-title">Dado Bruto</p>
+                    <p class="footer-newsletter-desc">Newsletter de Engenharia de Dados no LinkedIn. Sem spam, direto ao ponto.</p>
+                </div>
+                <a class="btn-newsletter" href="https://www.linkedin.com/in/lukasrozado/" target="_blank" rel="noopener noreferrer">Assinar no LinkedIn <span aria-hidden="true">&nearr;</span></a>
+            </div>
+            <div class="footer-bottom">
+                <p class="footer-copy" itemprop="copyrightYear">&copy; 2026 <span itemprop="copyrightHolder">Lukas Rozado</span></p>
+                <div id="social-links" role="navigation" aria-label="Redes sociais profissionais">
+                    <a href="https://github.com/lukasrozado" target="_blank" rel="noopener noreferrer nofollow" id="profile-link" aria-label="GitHub de Lukas Rozado"><img src="./assets/images/github-data-engineer-lukas-rozado.webp" alt="GitHub" class="social-icon" style="filter:invert(1);" loading="lazy"></a>
+                    <a href="https://www.linkedin.com/in/lukasrozado/" target="_blank" rel="noopener noreferrer nofollow" aria-label="LinkedIn de Lukas Rozado"><img src="./assets/images/linkedin-data-engineer-lukas-rozado.webp" alt="LinkedIn" class="social-icon" style="filter:invert(1);" loading="lazy"></a>
+                    <a href="https://www.kaggle.com/datasets/lukasrozado/lck-spring-2024-players-statistics" target="_blank" rel="noopener noreferrer nofollow" aria-label="Dataset LCK Spring 2024 no Kaggle"><img src="./assets/images/kaggle-data-engineer-lukas-rozado.webp" alt="Dataset LCK" class="social-icon" style="filter:invert(1);" loading="lazy"></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module">
+        try { const { initMenu } = await import("./assets/js/modules/menu.js"); initMenu(); } catch(e){ console.error(e); }
+    </script>
+</body>
+</html>

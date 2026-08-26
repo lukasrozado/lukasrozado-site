@@ -2,6 +2,7 @@
   "projects": [
     {
       "title": "Enterprise Crypto Data Lake: Ingestão Multi-Conta",
+      "slug": "enterprise-crypto-data-lake",
       "description": "Arquitetura end-to-end para ingestão transacional de múltiplas contas institucionais em exchanges de criptoativos. Implementei um motor de extração assíncrono com Rate Limiter inteligente que monitora headers da API para evitar banimentos. O sistema utiliza Azure Key Vault para gestão de segredos e um carregador PostgreSQL de alta performance via comandos COPY e tabelas temporárias, garantindo idempotência e integridade em escala.",
       "technologies": ["python", "postgresql", "azure","sql"],
       "difficulty": "advanced",
@@ -17,6 +18,7 @@
     },
     {
       "title": "Unified Multi-Chain Ledger Integrator",
+      "slug": "multi-chain-ledger-integrator",
       "description": "Pipeline resiliente para consolidação transacional em dezenhas de blockchains e contratos (EVM e Solana). Substituí indexadores por extração RPC crua com algoritmos de 'Reverse Check', otimizando a varredura de blocos. O diferencial core é o motor de Auto-Reconciliação (Pacemaker), que audita continuamente o banco PostgreSQL contra os nós da rede, garantindo unicidade rigorosa e 100% de integridade nos balanços.",
       "technologies": ["python", "postgresql", "azure","sql"],
       "difficulty": "advanced",
@@ -25,13 +27,14 @@
       "techIcons": ["python", "postgresql"],
       "category": "Engenharia de Dados",
       "caseStudy": {
-        "problem": "Fragmentação de dados on-chain e risco de integridade utilizando indexadores de terceiros em 17 redes.",
+        "problem": "Fragmentação de dados on-chain e risco de integridade utilizando indexadores de terceiros em 15+ redes.",
         "solution": "Extração via RPC puro acoplada a um motor de auditoria interna para auto-reconciliação contínua.",
         "impact": "Unificação relacional canônica com garantia absoluta de precisão em transações e balanços cruzados."
       }
     },
     {
       "title": "Pipeline Preditivo no Competitivo e ML Engine",
+      "slug": "predictive-pipeline-ml",
       "description": "Motor algorítmico end-to-end orquestrado para trading quantitativo. A arquitetura engloba web scraping massivo diário, normalização rigorosa e uma Feature Engine otimizada que alimenta a 'Model Factory' com 42 variáveis estruturais. O sistema gerencia autonomamente o retreinamento (backtesting) e a inferência ao vivo, enviando sinais de alta precisão para estratégias de hedge e dashboards.",
       "technologies": ["python", "postgresql", "azure","sql","machine-learning"],
       "difficulty": "advanced",
@@ -46,6 +49,7 @@
       }
     },{
       "title": "Institutional Digital Asset Custody Integrator",
+      "slug": "institutional-digital-asset-custody",
       "description": "Arquitetura de integração distribuída para gerenciamento de custódia institucional de criptoativos. Implementei uma camada de abstração para orquestrar APIs mestras globais, garantindo a captura segregada de dados transacionais por região de operação. O sistema foca em alta segurança no tráfego de secrets e padronização de schemas para conformidade com auditorias internacionais de FinOps.",
       "technologies": ["python", "rest-api", "azure", "postgresql"],
       "difficulty": "advanced",
@@ -61,6 +65,7 @@
     },
     {
       "title": "BaaS & Financial Settlement Data Sink",
+      "slug": "baas-financial-settlement-data-sink",
       "description": "Desenvolvimento de um pipeline de integração programática para centralização de dados de liquidação financeira multibancos (Banking-as-a-Service). A arquitetura foi desenhada para garantir máxima segurança na comunicação entre sistemas isolados. Utiliza autenticação corporativa via Azure Active Directory e tokens para orquestrar a captura de milhares de pagamentos, convertendo-os em registros imutáveis no Data Warehouse.",
       "technologies": ["python", "azure", "rest-api", "postgresql"],
       "difficulty": "advanced",
@@ -72,6 +77,22 @@
         "problem": "Necessidade de extração segura de dados de liquidação financeira em sistemas isolados de alta criticidade.",
         "solution": "Implementação de ponte de autenticação corporativa via Azure AD para consumo programático de APIs.",
         "impact": "Automação da conciliação bancária de parceiros e consolidação do fluxo de caixa em tempo real para auditoria."
+      }
+    },
+    {
+      "title": "LCK Spring 2024 Players Statistics",
+      "slug": "lck-spring-2024-dataset",
+      "description": "Dataset público e verificável com estatísticas completas do split Spring 2024 da LCK (League of Legends Champions Korea): jogadores, campeões e partidas organizados em três tabelas relacionais. Coleta via web scraping com BeautifulSoup e Selenium sobre o Gol.gg, normalização rigorosa de métricas e organização pronta para EDA, visualização e modelagem preditiva. Publicado no Kaggle com nota máxima de usabilidade.",
+      "technologies": ["python", "web-scraping"],
+      "difficulty": "intermediate",
+      "duration": "Split Spring 2024",
+      "techIcons": ["python", "pandas", "selenium"],
+      "category": "Dados Abertos & Web Scraping",
+      "externalLink": "https://www.kaggle.com/datasets/lukasrozado/lck-spring-2024-players-statistics",
+      "caseStudy": {
+        "problem": "Estatísticas do LCK Spring 2024 dispersas em centenas de páginas individuais de partidas no Gol.gg, sem estrutura relacional para análise ou modelagem.",
+        "solution": "Pipeline de coleta híbrido (BeautifulSoup + Selenium), normalização de formatos inconsistentes (percentuais, durações MM:SS convertidas para segundos), deduplicação e três tabelas conectadas por Player ID sequencial.",
+        "impact": "Nota máxima de usabilidade (10.0) no Kaggle, licença CC BY 4.0, 300+ downloads e reuso por terceiros em notebooks de EDA — prova pública e auditável de engenharia de dados."
       }
     }
   ]

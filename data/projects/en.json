@@ -2,6 +2,7 @@
   "projects": [
     {
       "title": "Enterprise Crypto Data Lake: Multi-Account Ingestion",
+      "slug": "enterprise-crypto-data-lake",
       "description": "End-to-end architecture for ingestion of transactional data to multiple accounts for crypto exchange. I implemented an asynchronous extraction engine with an intelligent Rate Limiter that monitors API headers to prevent bans. The system uses Azure Key Vault for secret management and a high-performance PostgreSQL loader via COPY commands and temporary tables, ensuring idempotency and integrity at scale.",
       "technologies": ["python", "postgresql", "azure","sql"],
       "difficulty": "advanced",
@@ -17,6 +18,7 @@
     },
     {
       "title": "Unified Multi-Chain Ledger Integrator",
+      "slug": "multi-chain-ledger-integrator",
       "description": "Resilient pipeline for consolidating transactional data across multiples blockchains and contracts (EVM and Solana). I replaced third-party indexers with raw RPC extraction using 'Reverse Check' algorithms, optimizing block scanning. The core differentiator is the Auto-Reconciliation engine (Pacemaker), which continuously audits the PostgreSQL database against network nodes, ensuring strict uniqueness and 100% integrity in balances.",
       "technologies": ["python", "postgresql", "azure","sql"],
       "difficulty": "advanced",
@@ -25,13 +27,14 @@
       "techIcons": ["python", "postgresql"],
       "category": "Data Engineering",
       "caseStudy": {
-        "problem": "On-chain data fragmentation and integrity risks when using third-party indexers across 17 networks.",
+        "problem": "On-chain data fragmentation and integrity risks when using third-party indexers across 15+ networks.",
         "solution": "Raw RPC extraction combined with an internal auditing engine for continuous auto-reconciliation.",
         "impact": "Canonical relational unification with absolute accuracy guarantees for transactions and cross-chain balances."
       }
     },
     {
       "title": "Predictive Pipeline in Competitive and ML Engine",
+      "slug": "predictive-pipeline-ml",
       "description": "End-to-end algorithmic engine orchestrated for quantitative trading. The architecture includes massive daily web scraping, rigorous normalization, and a Feature Engine optimized to feed the 'Model Factory' with 42 structured variables. The system autonomously manages retraining (backtesting) and live inference, sending high-precision signals for hedge strategies and dashboards.",
       "technologies": ["python", "postgresql", "azure","sql","machine-learning"],
       "difficulty": "advanced",
@@ -46,6 +49,7 @@
       }
     },{
   "title": "Institutional Digital Asset Custody Integrator",
+  "slug": "institutional-digital-asset-custody",
   "description": "Distributed integration architecture for managing institutional custody of crypto assets. I implemented an abstraction layer to orchestrate global master APIs, ensuring the segregated capture of transactional data by operating region. The system focuses on high security in secrets traffic and schema standardization to comply with international FinOps audits.",
   "technologies": ["python", "rest-api", "azure", "postgresql"],
   "difficulty": "advanced",
@@ -61,6 +65,7 @@
 },
 {
   "title": "BaaS & Financial Settlement Data Sink",
+  "slug": "baas-financial-settlement-data-sink",
   "description": "Development of a programmatic integration pipeline to centralize multi-bank financial settlement data (Banking-as-a-Service). The architecture was designed to ensure maximum security in communication between isolated systems. It uses corporate authentication via Azure Active Directory and tokens to orchestrate the capture of thousands of payments, converting them into immutable records in the Data Warehouse.",
   "technologies": ["python", "azure", "rest-api", "postgresql"],
   "difficulty": "advanced",
@@ -72,6 +77,22 @@
     "problem": "Need for secure extraction of financial settlement data in highly critical isolated systems.",
     "solution": "Implementation of a corporate authentication bridge via Azure AD for programmatic API consumption.",
     "impact": "Automation of partner bank reconciliation and real-time cash flow consolidation for auditing."
+  }
+},
+{
+  "title": "LCK Spring 2024 Players Statistics",
+  "slug": "lck-spring-2024-dataset",
+  "description": "Public, fully verifiable dataset covering the complete LCK (League of Legends Champions Korea) Spring 2024 split: players, champions, and matches organized into three relational tables. Collected via web scraping with BeautifulSoup and Selenium from Gol.gg, with rigorous metric normalization, ready for EDA, visualization, and predictive modeling. Published on Kaggle with a maximum usability score.",
+  "technologies": ["python", "web-scraping"],
+  "difficulty": "intermediate",
+  "duration": "Spring 2024 Split",
+  "techIcons": ["python", "pandas", "selenium"],
+  "category": "Open Data & Web Scraping",
+  "externalLink": "https://www.kaggle.com/datasets/lukasrozado/lck-spring-2024-players-statistics",
+  "caseStudy": {
+    "problem": "LCK Spring 2024 statistics scattered across hundreds of individual match pages on Gol.gg, with no relational structure for analysis or modeling.",
+    "solution": "Hybrid collection pipeline (BeautifulSoup + Selenium), normalization of inconsistent formats (percentages, MM:SS durations converted to seconds), deduplication, and three tables connected by sequential Player IDs.",
+    "impact": "Maximum usability score (10.0) on Kaggle, CC BY 4.0 license, 300+ downloads, and third-party reuse in EDA notebooks — public, auditable proof of data engineering craft."
   }
 }
   ]

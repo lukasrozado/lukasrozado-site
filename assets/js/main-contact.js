@@ -1,1 +1,56 @@
-document.addEventListener("DOMContentLoaded",async()=>{const{initLanguageSystem:n}=await import("./modules/language.js");n();document.addEventListener("DOMContentLoaded",()=>{const n=document.body.innerText.toLowerCase(),e={pt:["python","dados","machine learning","análise","dashboard"],en:["python","data","machine learning","analysis","visualization"]}["pt-BR"===document.documentElement.lang?"pt":"en"].map(e=>({keyword:e,count:n.match(new RegExp(e,"gi"))?.length||0}));console.table(e)});try{await(async()=>{const n=window.location.pathname.includes("index-en.html")?"en":"pt",e=["footer"];for(const o of e)try{const e=document.querySelector(`[data-include="./components/${n}/${o}.html"]`);if(!e){console.warn(`Elemento não encontrado para: ${o}`);continue}const t=await fetch(`./components/${n}/${o}.html`);if(!t.ok)throw new Error(`${o} não encontrado`);const a=await t.text();e.innerHTML=a}catch(n){console.error(`Error loading ${o}:`,n)}})(),await(async()=>{try{const{loadProjects:n}=await import("./modules/projects-loader.js");await n()}catch(n){console.error("Error loading projects:",n)}})(),await(async()=>{try{const{initMenu:n}=await import("./modules/menu.js"),{initFilters:e}=await import("./modules/filters.js");n(),e()}catch(n){console.error("Error initializing modules:",n)}})()}catch(n){console.error("Critical error:",n),document.body.innerHTML=`\n            <div style="color: red; padding: 20px;">\n                ${window.location.pathname.includes("index-en.html")?"Critical error: Please reload the page":"Erro crítico: Recarregue a página"}\n            </div>\n        `}});
+document.addEventListener("DOMContentLoaded", async () => {
+  try {
+    const { initLanguageSystem } = await import("./modules/language.js");
+    initLanguageSystem();
+  } catch (error) {
+    console.error("Language system unavailable; serving static content:", error);
+  }
+
+  const loadFooter = async () => {
+    const lang =
+      window.location.pathname.includes("index-en.html") ||
+      window.location.pathname.includes("contact-en.html") ||
+      document.documentElement.lang === "en"
+        ? "en"
+        : "pt";
+    try {
+      const element = document.querySelector(`[data-include="./components/${lang}/footer.html"]`);
+      if (!element) return;
+      const response = await fetch(`./components/${lang}/footer.html`);
+      if (!response.ok) throw new Error("footer não encontrado");
+      element.innerHTML = await response.text();
+    } catch (error) {
+      console.error("Error loading footer:", error);
+    }
+  };
+
+  const initMenuModule = async () => {
+    try {
+      const { initMenu } = await import("./modules/menu.js");
+      initMenu();
+    } catch (error) {
+      console.error("Error initializing menu:", error);
+    }
+  };
+
+  try {
+    await loadFooter();
+    await initMenuModule();
+  } catch (error) {
+    console.error("Critical error:", error);
+    showNonDestructiveError();
+  }
+
+  function showNonDestructiveError() {
+    if (document.getElementById("critical-error-banner")) return;
+    const banner = document.createElement("div");
+    banner.id = "critical-error-banner";
+    banner.setAttribute("role", "alert");
+    banner.style.cssText =
+      "position:fixed;top:0;left:0;right:0;z-index:10000;padding:12px 20px;text-align:center;background:#ff4500;color:#fff;font-weight:600;";
+    banner.textContent = document.documentElement.lang === "en"
+      ? "Some interactive features failed to load. Please reload the page."
+      : "Alguns recursos interativos não carregaram. Recarregue a página.";
+    document.body.prepend(banner);
+  }
+});

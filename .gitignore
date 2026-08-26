@@ -1,0 +1,8 @@
+CLAUDE.md
+.claude/
+.opencode/
+.opencode.local/
+styles_backup/
+assets/js_backup/
+servir-local.ps1
+writing/_TEMPLATE.html
