@@ -14,9 +14,10 @@
     <meta name="description" content="Orquestrador de ingestão para custódia institucional de criptoativos, com workspace isolado por credencial e sobreposição de 5min no backfill.">
     <meta name="author" content="Lukas Rozado">
     <meta name="robots" content="index,follow,max-image-preview:large">
+    <meta http-equiv="content-language" content="pt-BR">
 
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://lukasrozado.pages.dev/projects/institutional-digital-asset-custody.html">
+    <meta property="og:url" content="https://lukasrozado.pages.dev/projects/institutional-digital-asset-custody">
     <meta property="og:title" content="Institutional Digital Asset Custody Integrator | Case Study">
     <meta property="og:description" content="Orquestrador de ingestão para custódia institucional de criptoativos, com workspace isolado por credencial e sobreposição de 5min no backfill.">
     <meta property="og:image" content="https://lukasrozado.pages.dev/assets/images/institutional_digital_asset_custody_integrator_v2.webp">
@@ -61,7 +62,7 @@
                 "@type": "ListItem",
                 "position": 3,
                 "name": "Institutional Digital Asset Custody Integrator",
-                "item": "https://lukasrozado.pages.dev/projects/institutional-digital-asset-custody.html"
+                "item": "https://lukasrozado.pages.dev/projects/institutional-digital-asset-custody"
             }
         ]
     },
@@ -70,7 +71,7 @@
         "@type": "TechArticle",
         "name": "Institutional Digital Asset Custody Integrator",
         "description": "Arquitetura de integração distribuída para gerenciamento de custódia institucional de criptoativos. Implementei uma camada de abstração para orquestrar APIs mestras globais, garantindo a captura segregada de dados transacionais por região de operação. O sistema foca em alta segurança no tráfego de secrets e padronização de schemas para conformidade com auditorias internacionais de FinOps.",
-        "url": "https://lukasrozado.pages.dev/projects/institutional-digital-asset-custody.html",
+        "url": "https://lukasrozado.pages.dev/projects/institutional-digital-asset-custody",
         "image": "https://lukasrozado.pages.dev/assets/images/institutional_digital_asset_custody_integrator_v2.webp",
         "inLanguage": "pt-BR",
         "keywords": "python, rest-api, azure, postgresql",
@@ -134,7 +135,7 @@
             <h1 itemprop="name">Institutional Digital Asset Custody Integrator</h1>
 
 
-            <p class="lead" itemprop="description">Custódia institucional de criptoativos, com cada workspace regional isolado, credencial própria via Key Vault e duas esteiras paralelas (transação e snapshot de saldo por vault) sob um único orquestrador de ingestão. Uma máquina de estado alterna sozinha entre backfill completo e modo incremental, com sobreposição de <strong>5 minutos</strong> na virada pra nunca perder registro na borda da janela. Um auditor separado, mais barato, revarre só as transações ainda em status não-terminal, a partir do registro pendente mais antigo, e faz UPSERT no que mudou, sem re-escanear o histórico inteiro pra pegar uma transação que demorou a fechar.</p>
+            <p class="lead" itemprop="description">Custódia institucional de ativos digitais (criptoativos), com cada workspace regional isolado, credencial própria via Key Vault e duas esteiras paralelas (transação e snapshot de saldo por vault) sob um único orquestrador de ingestão. Uma máquina de estado alterna sozinha entre backfill completo e modo incremental, com sobreposição de <strong>5 minutos</strong> na virada pra nunca perder registro na borda da janela. Um auditor separado, mais barato, revarre só as transações ainda em status não-terminal, a partir do registro pendente mais antigo, e faz UPSERT no que mudou, sem re-escanear o histórico inteiro pra pegar uma transação que demorou a fechar.</p>
 
             <div class="project-tech-row">
                 <img src="../assets/icons/python.svg" alt="python" class="tech-icon" width="30" height="30">
@@ -181,7 +182,7 @@
                         <div class="share-bar">
                 <a class="btn-outline" href="https://www.linkedin.com/sharing/share-offsite/?url=https://lukasrozado.pages.dev/projects/institutional-digital-asset-custody" target="_blank" rel="noopener">Compartilhar no LinkedIn</a>
                 <a class="btn-outline" href="https://twitter.com/intent/tweet?url=https://lukasrozado.pages.dev/projects/institutional-digital-asset-custody" target="_blank" rel="noopener">Compartilhar no X</a>
-                <button type="button" class="btn-outline copy-link-btn" data-url="https://lukasrozado.pages.dev/projects/institutional-digital-asset-custody.html" data-label="Copiar link" data-copied-label="Copiado!">Copiar link</button>
+                <button type="button" class="btn-outline copy-link-btn" data-url="https://lukasrozado.pages.dev/projects/institutional-digital-asset-custody" data-label="Copiar link" data-copied-label="Copiado!">Copiar link</button>
             </div>
 
             <div class="project-actions">

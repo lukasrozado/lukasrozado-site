@@ -11,20 +11,21 @@
     <link rel="alternate" hreflang="en" href="https://lukasrozado.pages.dev/projects/otc-desk-reconciliation-pipeline-en">
     <link rel="alternate" hreflang="x-default" href="https://lukasrozado.pages.dev/projects/otc-desk-reconciliation-pipeline">
 
-    <meta name="description" content="ETL diário que reconcilia planilha operacional sem chave primária estável, com fuzzy matching, blindagem de schema e Full Replace em vez de upsert incremental.">
+    <meta name="description" content="ETL diário que reconcilia planilha operacional sem chave primária estável, com fuzzy matching, blindagem de schema e Full Replace.">
     <meta name="author" content="Lukas Rozado">
     <meta name="robots" content="index,follow,max-image-preview:large">
+    <meta http-equiv="content-language" content="pt-BR">
 
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://lukasrozado.pages.dev/projects/otc-desk-reconciliation-pipeline.html">
+    <meta property="og:url" content="https://lukasrozado.pages.dev/projects/otc-desk-reconciliation-pipeline">
     <meta property="og:title" content="OTC Desk Reconciliation Pipeline | Case Study">
-    <meta property="og:description" content="ETL diário que reconcilia planilha operacional sem chave primária estável, com fuzzy matching, blindagem de schema e Full Replace em vez de upsert incremental.">
+    <meta property="og:description" content="ETL diário que reconcilia planilha operacional sem chave primária estável, com fuzzy matching, blindagem de schema e Full Replace.">
     <meta property="og:image" content="https://lukasrozado.pages.dev/assets/images/otc-desk-reconciliation-pipeline.webp">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@RozadoLukas">
     <meta name="twitter:title" content="OTC Desk Reconciliation Pipeline | Case Study">
-    <meta name="twitter:description" content="ETL diário que reconcilia planilha operacional sem chave primária estável, com fuzzy matching, blindagem de schema e Full Replace em vez de upsert incremental.">
+    <meta name="twitter:description" content="ETL diário que reconcilia planilha operacional sem chave primária estável, com fuzzy matching, blindagem de schema e Full Replace.">
     <meta name="twitter:image" content="https://lukasrozado.pages.dev/assets/images/otc-desk-reconciliation-pipeline.webp">
 
     <link rel="icon" href="../assets/icons/favicon.ico" sizes="any">
@@ -61,7 +62,7 @@
                 "@type": "ListItem",
                 "position": 3,
                 "name": "OTC Desk Reconciliation Pipeline",
-                "item": "https://lukasrozado.pages.dev/projects/otc-desk-reconciliation-pipeline.html"
+                "item": "https://lukasrozado.pages.dev/projects/otc-desk-reconciliation-pipeline"
             }
         ]
     },
@@ -70,7 +71,7 @@
         "@type": "TechArticle",
         "name": "OTC Desk Reconciliation Pipeline",
         "description": "ETL diário que reconcilia uma planilha operacional mantida por humanos, sem chave primária estável, para um data warehouse relacional: Full Replace em vez de upsert, deduplicação por hash SHA-256 com nonce, blindagem de schema e fuzzy matching de contraparte.",
-        "url": "https://lukasrozado.pages.dev/projects/otc-desk-reconciliation-pipeline.html",
+        "url": "https://lukasrozado.pages.dev/projects/otc-desk-reconciliation-pipeline",
         "image": "https://lukasrozado.pages.dev/assets/images/otc-desk-reconciliation-pipeline.webp",
         "inLanguage": "pt-BR",
         "keywords": "python, postgresql, sql, etl",
@@ -133,7 +134,7 @@
 
             <h1 itemprop="name">OTC Desk Reconciliation Pipeline</h1>
 
-            <p class="lead" itemprop="description">ETL diário que ingere planilha operacional mantida por humanos (sem chave primária estável, com linhas reordenadas, apagadas e recriadas na origem) pra um data warehouse relacional, resolvendo nome de contraparte digitado de forma inconsistente via fuzzy matching com limiar de <strong>92% de similaridade</strong>. Em vez de upsert incremental, a carga usa Full Replace (truncate + reload integral) a cada execução, garantindo que o banco seja sempre espelho fiel da planilha. Deduplicação roda por hash SHA-256 sobre a assinatura da transação mais um contador de ocorrência (nonce), preservando de propósito splits legítimos idênticos em vez de colapsá-los. Uma camada de blindagem de schema extrai estritamente as colunas financeiras esperadas e ignora qualquer coluna nova que a área de negócio adicione sem aviso, pra que edição de usuário não quebre a ingestão.</p>
+            <p class="lead" itemprop="description">ETL diário de reconciliação da mesa OTC, que ingere planilha operacional mantida por humanos (sem chave primária estável, com linhas reordenadas, apagadas e recriadas na origem) pra um data warehouse relacional, resolvendo nome de contraparte digitado de forma inconsistente via fuzzy matching com limiar de <strong>92% de similaridade</strong>. Em vez de upsert incremental, a carga usa Full Replace (truncate + reload integral) a cada execução, garantindo que o banco seja sempre espelho fiel da planilha. Deduplicação roda por hash SHA-256 sobre a assinatura da transação mais um contador de ocorrência (nonce), preservando de propósito splits legítimos idênticos em vez de colapsá-los. Uma camada de blindagem de schema extrai estritamente as colunas financeiras esperadas e ignora qualquer coluna nova que a área de negócio adicione sem aviso, pra que edição de usuário não quebre a ingestão.</p>
 
             <div class="project-tech-row">
                 <img src="../assets/icons/python.svg" alt="python" class="tech-icon" width="30" height="30">
@@ -176,7 +177,7 @@
                         <div class="share-bar">
                 <a class="btn-outline" href="https://www.linkedin.com/sharing/share-offsite/?url=https://lukasrozado.pages.dev/projects/otc-desk-reconciliation-pipeline" target="_blank" rel="noopener">Compartilhar no LinkedIn</a>
                 <a class="btn-outline" href="https://twitter.com/intent/tweet?url=https://lukasrozado.pages.dev/projects/otc-desk-reconciliation-pipeline" target="_blank" rel="noopener">Compartilhar no X</a>
-                <button type="button" class="btn-outline copy-link-btn" data-url="https://lukasrozado.pages.dev/projects/otc-desk-reconciliation-pipeline.html" data-label="Copiar link" data-copied-label="Copiado!">Copiar link</button>
+                <button type="button" class="btn-outline copy-link-btn" data-url="https://lukasrozado.pages.dev/projects/otc-desk-reconciliation-pipeline" data-label="Copiar link" data-copied-label="Copiado!">Copiar link</button>
             </div>
 
             <div class="project-actions">

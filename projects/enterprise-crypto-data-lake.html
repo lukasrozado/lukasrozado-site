@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enterprise Crypto Data Lake: Ingestão Multi-Conta | Lukas Rozado</title>
+    <title>Enterprise Crypto Data Lake | Lukas Rozado</title>
     <meta name="theme-color" content="#00D4FF">
 
     <link rel="canonical" href="https://lukasrozado.pages.dev/projects/enterprise-crypto-data-lake">
@@ -14,9 +14,10 @@
     <meta name="description" content="Pipeline de ingestão para dezenas de contas institucionais em exchange de cripto, com rate limiter por header oficial e >99,9% de uptime em produção.">
     <meta name="author" content="Lukas Rozado">
     <meta name="robots" content="index,follow,max-image-preview:large">
+    <meta http-equiv="content-language" content="pt-BR">
 
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://lukasrozado.pages.dev/projects/enterprise-crypto-data-lake.html">
+    <meta property="og:url" content="https://lukasrozado.pages.dev/projects/enterprise-crypto-data-lake">
     <meta property="og:title" content="Enterprise Crypto Data Lake: Ingest&#227;o Multi-Conta | Case Study">
     <meta property="og:description" content="Pipeline de ingestão para dezenas de contas institucionais em exchange de cripto, com rate limiter por header oficial e >99,9% de uptime em produção.">
     <meta property="og:image" content="https://lukasrozado.pages.dev/assets/images/crypto_data_lake_ingestion_architecture_v2.webp">
@@ -61,7 +62,7 @@
                 "@type": "ListItem",
                 "position": 3,
                 "name": "Enterprise Crypto Data Lake: Ingestão Multi-Conta",
-                "item": "https://lukasrozado.pages.dev/projects/enterprise-crypto-data-lake.html"
+                "item": "https://lukasrozado.pages.dev/projects/enterprise-crypto-data-lake"
             }
         ]
     },
@@ -70,7 +71,7 @@
         "@type": "TechArticle",
         "name": "Enterprise Crypto Data Lake: Ingestão Multi-Conta",
         "description": "Arquitetura end-to-end para ingestão transacional de múltiplas contas institucionais em exchanges de criptoativos. Implementei um motor de extração assíncrono com Rate Limiter inteligente que monitora headers da API para evitar banimentos. O sistema utiliza Azure Key Vault para gestão de segredos e um carregador PostgreSQL de alta performance via comandos COPY e tabelas temporárias, garantindo idempotência e integridade em escala.",
-        "url": "https://lukasrozado.pages.dev/projects/enterprise-crypto-data-lake.html",
+        "url": "https://lukasrozado.pages.dev/projects/enterprise-crypto-data-lake",
         "image": "https://lukasrozado.pages.dev/assets/images/crypto_data_lake_ingestion_architecture_v2.webp",
         "inLanguage": "pt-BR",
         "keywords": "python, postgresql, azure, sql",
@@ -134,7 +135,7 @@
             <h1 itemprop="name">Enterprise Crypto Data Lake: Ingestão Multi-Conta</h1>
 
 
-            <p class="lead" itemprop="description">Dezenas de contas institucionais numa exchange de criptoativos, auditadas de forma contínua com <strong>&gt;99,9%</strong> de uptime e backfill histórico completo desde a criação de cada uma. O núcleo é um rate limiter compartilhado entre processos que lê, em cada resposta HTTP, o header oficial de cota consumida (nunca uma estimativa por contagem de chamadas), o que elimina o padrão de bloqueio de IP que existia antes dessa arquitetura. Uma camada Bronze obrigatória guarda o payload bruto em JSONB e alimenta um modelo Medallion completo; a carga roda via <code>COPY</code> nativo do PostgreSQL, tabela temporária e UPSERT, sustentando dezenas de milhões de registros por ano com credenciais isoladas em Azure Key Vault.</p>
+            <p class="lead" itemprop="description">Ingestão multi-conta para dezenas de contas institucionais numa exchange de criptoativos, auditada de forma contínua com <strong>&gt;99,9%</strong> de uptime e backfill histórico completo desde a criação de cada uma. O núcleo é um rate limiter compartilhado entre processos que lê, em cada resposta HTTP, o header oficial de cota consumida (nunca uma estimativa por contagem de chamadas), o que elimina o padrão de bloqueio de IP que existia antes dessa arquitetura. Uma camada Bronze obrigatória guarda o payload bruto em JSONB e alimenta um modelo Medallion completo; a carga roda via <code>COPY</code> nativo do PostgreSQL, tabela temporária e UPSERT, sustentando dezenas de milhões de registros por ano com credenciais isoladas em Azure Key Vault.</p>
 
             <div class="project-tech-row">
                 <img src="../assets/icons/python.svg" alt="python" class="tech-icon" width="30" height="30">
@@ -181,7 +182,7 @@
                         <div class="share-bar">
                 <a class="btn-outline" href="https://www.linkedin.com/sharing/share-offsite/?url=https://lukasrozado.pages.dev/projects/enterprise-crypto-data-lake" target="_blank" rel="noopener">Compartilhar no LinkedIn</a>
                 <a class="btn-outline" href="https://twitter.com/intent/tweet?url=https://lukasrozado.pages.dev/projects/enterprise-crypto-data-lake" target="_blank" rel="noopener">Compartilhar no X</a>
-                <button type="button" class="btn-outline copy-link-btn" data-url="https://lukasrozado.pages.dev/projects/enterprise-crypto-data-lake.html" data-label="Copiar link" data-copied-label="Copiado!">Copiar link</button>
+                <button type="button" class="btn-outline copy-link-btn" data-url="https://lukasrozado.pages.dev/projects/enterprise-crypto-data-lake" data-label="Copiar link" data-copied-label="Copiado!">Copiar link</button>
             </div>
 
             <div class="project-actions">

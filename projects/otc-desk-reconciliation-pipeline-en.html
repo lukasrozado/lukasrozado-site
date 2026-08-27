@@ -11,20 +11,21 @@
     <link rel="alternate" hreflang="en" href="https://lukasrozado.pages.dev/projects/otc-desk-reconciliation-pipeline-en">
     <link rel="alternate" hreflang="x-default" href="https://lukasrozado.pages.dev/projects/otc-desk-reconciliation-pipeline">
 
-    <meta name="description" content="Daily ETL that reconciles an operational spreadsheet with no stable primary key, using fuzzy matching, schema shielding and Full Replace instead of incremental upsert.">
+    <meta name="description" content="Daily ETL that reconciles an operational spreadsheet with no stable primary key, using fuzzy matching, schema shielding and Full Replace.">
     <meta name="author" content="Lukas Rozado">
     <meta name="robots" content="index,follow,max-image-preview:large">
+    <meta http-equiv="content-language" content="en">
 
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://lukasrozado.pages.dev/projects/otc-desk-reconciliation-pipeline-en.html">
+    <meta property="og:url" content="https://lukasrozado.pages.dev/projects/otc-desk-reconciliation-pipeline-en">
     <meta property="og:title" content="OTC Desk Reconciliation Pipeline | Case Study">
-    <meta property="og:description" content="Daily ETL that reconciles an operational spreadsheet with no stable primary key, using fuzzy matching, schema shielding and Full Replace instead of incremental upsert.">
+    <meta property="og:description" content="Daily ETL that reconciles an operational spreadsheet with no stable primary key, using fuzzy matching, schema shielding and Full Replace.">
     <meta property="og:image" content="https://lukasrozado.pages.dev/assets/images/otc-desk-reconciliation-pipeline.webp">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@RozadoLukas">
     <meta name="twitter:title" content="OTC Desk Reconciliation Pipeline | Case Study">
-    <meta name="twitter:description" content="Daily ETL that reconciles an operational spreadsheet with no stable primary key, using fuzzy matching, schema shielding and Full Replace instead of incremental upsert.">
+    <meta name="twitter:description" content="Daily ETL that reconciles an operational spreadsheet with no stable primary key, using fuzzy matching, schema shielding and Full Replace.">
     <meta name="twitter:image" content="https://lukasrozado.pages.dev/assets/images/otc-desk-reconciliation-pipeline.webp">
 
     <link rel="icon" href="../assets/icons/favicon.ico" sizes="any">
@@ -61,7 +62,7 @@
                 "@type": "ListItem",
                 "position": 3,
                 "name": "OTC Desk Reconciliation Pipeline",
-                "item": "https://lukasrozado.pages.dev/projects/otc-desk-reconciliation-pipeline-en.html"
+                "item": "https://lukasrozado.pages.dev/projects/otc-desk-reconciliation-pipeline-en"
             }
         ]
     },
@@ -70,7 +71,7 @@
         "@type": "TechArticle",
         "name": "OTC Desk Reconciliation Pipeline",
         "description": "Daily ETL that reconciles a human-maintained operational spreadsheet with no stable primary key into a relational data warehouse: Full Replace instead of upsert, SHA-256 hash-plus-nonce deduplication, schema shielding and counterparty fuzzy matching.",
-        "url": "https://lukasrozado.pages.dev/projects/otc-desk-reconciliation-pipeline-en.html",
+        "url": "https://lukasrozado.pages.dev/projects/otc-desk-reconciliation-pipeline-en",
         "image": "https://lukasrozado.pages.dev/assets/images/otc-desk-reconciliation-pipeline.webp",
         "inLanguage": "en",
         "keywords": "python, postgresql, sql, etl",
@@ -133,7 +134,7 @@
 
             <h1 itemprop="name">OTC Desk Reconciliation Pipeline</h1>
 
-            <p class="lead" itemprop="description">Daily ETL that ingests a human-maintained operational spreadsheet (no stable primary key, with rows reordered, deleted and recreated at the source) into a relational data warehouse, resolving inconsistently typed counterparty names via fuzzy matching with a <strong>92% similarity threshold</strong>. Instead of incremental upsert, the load runs a Full Replace (truncate + full reload) on every execution, guaranteeing the database is always a faithful mirror of the spreadsheet. Deduplication runs on a SHA-256 hash over the transaction's signature plus an occurrence counter (nonce), deliberately preserving identical legitimate splits instead of collapsing them. A schema-shielding layer extracts strictly the expected financial columns and ignores any new column the business side adds without notice, so a business-user edit never breaks ingestion.</p>
+            <p class="lead" itemprop="description">Daily OTC desk reconciliation ETL that ingests a human-maintained operational spreadsheet (no stable primary key, with rows reordered, deleted and recreated at the source) into a relational data warehouse, resolving inconsistently typed counterparty names via fuzzy matching with a <strong>92% similarity threshold</strong>. Instead of incremental upsert, the load runs a Full Replace (truncate + full reload) on every execution, guaranteeing the database is always a faithful mirror of the spreadsheet. Deduplication runs on a SHA-256 hash over the transaction's signature plus an occurrence counter (nonce), deliberately preserving identical legitimate splits instead of collapsing them. A schema-shielding layer extracts strictly the expected financial columns and ignores any new column the business side adds without notice, so a business-user edit never breaks ingestion.</p>
 
             <div class="project-tech-row">
                 <img src="../assets/icons/python.svg" alt="python" class="tech-icon" width="30" height="30">
@@ -176,7 +177,7 @@
                         <div class="share-bar">
                 <a class="btn-outline" href="https://www.linkedin.com/sharing/share-offsite/?url=https://lukasrozado.pages.dev/projects/otc-desk-reconciliation-pipeline-en" target="_blank" rel="noopener">Share on LinkedIn</a>
                 <a class="btn-outline" href="https://twitter.com/intent/tweet?url=https://lukasrozado.pages.dev/projects/otc-desk-reconciliation-pipeline-en" target="_blank" rel="noopener">Share on X</a>
-                <button type="button" class="btn-outline copy-link-btn" data-url="https://lukasrozado.pages.dev/projects/otc-desk-reconciliation-pipeline-en.html" data-label="Copy link" data-copied-label="Copied!">Copy link</button>
+                <button type="button" class="btn-outline copy-link-btn" data-url="https://lukasrozado.pages.dev/projects/otc-desk-reconciliation-pipeline-en" data-label="Copy link" data-copied-label="Copied!">Copy link</button>
             </div>
 
             <div class="project-actions">
