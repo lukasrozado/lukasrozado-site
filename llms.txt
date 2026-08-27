@@ -22,7 +22,14 @@
 - LCK Dataset (public proof): https://lukasrozado.github.io/projects/lck-spring-2024-dataset.html
 
 ## Writing
-- Um monitoramento que afirma que deu sucesso, mas não valida: https://lukasrozado.github.io/writing/monitoramento-que-afirma-sucesso-mas-nao-valida.html
+- Um monitoramento que afirma que deu sucesso, mas não valida (PT, 2026-08-26): https://lukasrozado.github.io/writing/monitoramento-que-afirma-sucesso-mas-nao-valida.html
+- A monitor that reports success without validating (EN, 2026-08-26): https://lukasrozado.github.io/writing/a-monitor-that-reports-success-without-validating.html
+
+## Key facts (auditable)
+- Enterprise Crypto Data Lake: >99.9% uptime, tens of millions of records/year, full backfill since account inception (some since 2019).
+- LCK Spring 2024 Dataset: 10.0/10 Kaggle usability score, 300+ downloads, CC BY 4.0, publicly verifiable.
+- Predictive Pipeline & ML: >68% predictive accuracy across multiple seasons.
+- Financial Reconciliation Pipeline: batches up to 50k records, anti-join self-healing reconciliation.
 
 ## Note
-All case studies except the LCK dataset are anonymized for confidentiality. Metrics are auditable but client names are not disclosed. The LCK dataset is public and verifiable on Kaggle.
+All case studies except the LCK dataset are anonymized for confidentiality. Metrics are auditable but client names are not disclosed. The LCK dataset is public and verifiable on Kaggle. This site is last updated 2026-08-27; check page-level dateModified in JSON-LD for per-page freshness.

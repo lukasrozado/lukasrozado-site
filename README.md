@@ -1,88 +1,117 @@
+# lukasrozado.github.io
 
-# Professional Portfolio – Lukas Rozado
+Personal portfolio and technical writing site for Lukas Rozado, Data Engineer.
+Static HTML/CSS/JS, no build step, no framework, deployed via GitHub Pages.
 
-This is my personal portfolio, fully developed from scratch to present my projects, skills, and background as a Data Scientist, Data Analyst And Data Engineer. All content, structure, and design reflect my professional identity and were built with performance, clarity, and visual impact in mind.
+Live: https://lukasrozado.github.io
 
-🔗 Visit: [lukasrozado.github.io](lukasrozado.github.io)
+## Stack
 
----
+- HTML5, CSS3, vanilla JavaScript (ES modules) — no framework, no bundler.
+- Client-side component includes via `data-include` (see Architecture notes).
+- Formspree for the contact form backend.
+- Service Worker for offline/PWA support (`sw.js`).
+- Bilingual (PT-BR / EN) with parallel page pairs and `hreflang` alternates.
 
-## 🧠 About the Project
-
-This site was developed with a focus on:
-
-- Modern, responsive design  
-- Modular, reusable component structure  
-- Dynamic project filtering  
-- Functional contact form via Formspree  
-- Full support for two languages (EN/PT)  
-- SEO and Web Vitals optimization  
-- Custom SVG animations  
-- PWA (Progressive Web App) support  
-
----
-
-## 🛠️ Technologies Used
-
-- **HTML5 / CSS3 / JavaScript**
-- **Formspree** for form handling
-- **Service Worker (PWA)**
-- **SEO and accessibility optimizations**
-- **No external frameworks**
-
----
-
-## 📁 Folder Structure
+## Structure
 
 ```
-personal-page-portfolio/
+.
+├── index.html, index-en.html          Home page
+├── contact.html, contact-en.html      Contact page (Formspree form)
+├── 404.html                           Not-found page
+├── robots.txt, sitemap.xml,
+│   sitemap-images.xml, llms.txt       Crawler and AI-agent directives
+├── feed.xml                           RSS for /writing/
+├── site.webmanifest, sw.js            PWA manifest and service worker
+├── _headers                           HTTP security headers (CSP, HSTS, etc.)
 │
-├── assets/                  # Static assets
-│   ├── css/                 # Global styles and custom variables
-│   ├── js/                  # JavaScript files
-│   ├── images/              # Portfolio and preview images
-│   └── icons/               # Icons and favicons
+├── components/
+│   ├── pt/                            PT-BR component sources (header, hero, footer, ...)
+│   └── en/                            EN component sources
 │
-├── components/              # Reusable HTML components
+├── projects/                          Case study pages (PT + EN pairs)
+│   └── <slug>.html, <slug>-en.html
 │
-├── data/                    # Project content in JSON
-│   └── projects/
-│       ├── pt.json          # Projects (Portuguese)
-│       └── en.json          # Projects (English)
+├── writing/                           Long-form essays (PT + EN pairs)
+│   ├── index.html, index-en.html
+│   └── <slug>.html, <slug>-en.html
 │
-├── index.html               # Home page (Portuguese)
-├── index-en.html            # Home page (English)
+├── data/projects/
+│   ├── pt.json                        Project card data (Portuguese)
+│   └── en.json                        Project card data (English)
 │
-├── contact.html             # Contact page (Portuguese)
-├── contact-en.html          # Contact page (English)
+├── assets/
+│   ├── js/modules/                    ES modules (menu, projects-loader, filters, ...)
+│   ├── images/                        Diagrams, OG cards, photos
+│   ├── icons/                         Favicons and tech icons
+│   └── svg/                           Inline SVG assets
 │
-├── sw.js                    # Service Worker (PWA support)
-└── README.md                # Project documentation
+└── styles/main.css                    Global stylesheet
 ```
 
+## Architecture notes
 
+### Component includes
 
----
+Header, hero, footer, and the projects grid are marked with
+`data-include="./components/<lang>/<name>.html"`. Each of these `div`s also
+ships the component's rendered HTML inline as a static fallback, so the page
+is fully readable without JavaScript and without a build step. This means
+the same markup can exist in two places — the component source under
+`components/` and the inline copy on every page that includes it. Both must
+be kept in sync when editing shared copy (see `CONTRATO.md`, not tracked in
+this repository, for the full editing contract).
 
-## ⚙️ Customization
+### Project pages
 
-- Colors and variables: `assets/css/variables.css`  
-- Project content: `data/projects/pt.json` and `data/projects/en.json`  
-- Contact form: integrated via Formspree
+Each case study lives under `projects/` as a PT/EN pair sharing one slug
+(`<slug>.html` / `<slug>-en.html`). Pages include: breadcrumb navigation,
+JSON-LD (`BreadcrumbList` + `TechArticle` or `Dataset`), a lead paragraph
+with a concrete metric, a Problem/Solution/Impact block, a social-proof
+line, a primary contact CTA, a secondary newsletter CTA, related-project
+links, and share actions (LinkedIn, X, copy-link).
 
----
+Case studies describing contracted work are anonymized: no client, employer,
+or data-provider names, no disclosed financial volumes, no internal schema
+or table names. Only architectural decisions, trade-offs, and engineering
+metrics (throughput, latency, uptime, record counts) are published.
 
-## 🚫 Copyright
+### Writing
 
-This repository is **not open for reuse**.  
-The content, structure, design, and code were created exclusively for personal and professional purposes by **Lukas Rozado**.  
-Any reproduction, redistribution, or reuse without explicit permission is **not allowed**.
+`/writing/` holds long-form technical essays, published as static PT/EN
+HTML pairs with their own JSON-LD (`BlogPosting`) and an entry in
+`feed.xml`. `writing/_TEMPLATE.html` is the starting point for a new post
+(git-ignored, local-only).
 
----
+## Local development
 
-## 📬 Contact
+```powershell
+./servir-local.ps1
+```
 
-For business inquiries, collaborations, or professional connections:
+Serves the repository root over HTTP so `data-include` and module scripts
+resolve correctly (opening the files directly via `file://` breaks both).
 
-- **LinkedIn:** [@lukasrozado](https://www.linkedin.com/in/lukasrozado/)  
-- **Email:** lukasrozado@gmail.com
+## Customization
+
+- Global styles: `styles/main.css`.
+- Project card data: `data/projects/pt.json` and `data/projects/en.json`.
+- Shared header/hero/footer copy: `components/pt/` and `components/en/`
+  (remember to update both the component source and any inline fallback
+  copies — see Architecture notes above).
+- Contact form endpoint: `contact.html` / `contact-en.html`, Formspree form
+  ID in the `<form action>` attribute.
+
+## License
+
+This repository is not open for reuse. Content, structure, design, and code
+are created exclusively for the personal and professional use of Lukas
+Rozado. Reproduction, redistribution, or reuse without explicit permission
+is not permitted.
+
+## Contact
+
+- LinkedIn: https://www.linkedin.com/in/lukasrozado/
+- Email: lukasrozado@proton.me
+- Newsletter (Dado Bruto): https://www.linkedin.com/newsletters/dado-bruto-7498525638908321792/

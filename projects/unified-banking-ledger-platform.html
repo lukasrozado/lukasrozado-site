@@ -40,17 +40,32 @@
     </style>
 
     <script type="application/ld+json">
-        {
+[
+    {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",
-        "itemListElement": [{
-            "@type": "ListItem", "position": 1, "name": "Home", "item": "https://lukasrozado.github.io/"
-        },{
-            "@type": "ListItem", "position": 2, "name": "Projects", "item": "https://lukasrozado.github.io/#projects"
-        },{
-            "@type": "ListItem", "position": 3, "name": "unified-banking-ledger-platform"
-        }]
-    },{
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://lukasrozado.github.io/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Projects",
+                "item": "https://lukasrozado.github.io/#projects"
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Unified Banking Ledger Platform",
+                "item": "https://lukasrozado.github.io/projects/unified-banking-ledger-platform.html"
+            }
+        ]
+    },
+    {
         "@context": "https://schema.org",
         "@type": "TechArticle",
         "name": "Unified Banking Ledger Platform",
@@ -68,8 +83,11 @@
                 "https://github.com/lukasrozado",
                 "https://kaggle.com/lukasrozado"
             ]
-        }
+        },
+        "datePublished": "2026-08-26",
+        "dateModified": "2026-08-27"
     }
+]
     </script>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-RD4581V881"></script>
@@ -140,15 +158,16 @@
                     <h3>Impacto</h3>
                     <p>Dois pipelines viraram uma plataforma só, cobrindo banking, PIX, parceiros, ledger e mesa OTC (incluindo monitoramento de risco operacional e de liquidação), rodando persistente de minuto em minuto sem depender de reprocessamento manual. Estado por domínio significa que adicionar uma esteira nova não arrisca as que já rodam.</p>
                 </div>
-                <p class="newsletter-inline"><a href="https://www.linkedin.com/newsletters/dado-bruto-7498525638908321792/" target="_blank" rel="noopener noreferrer">Receba casos assim toda semana na newsletter <strong>Dado Bruto</strong> &nearr;</a></p>
             </section>
+
+
+            <div class="social-proof"><p><strong>Resultado:</strong> Caso anonimizado — plataforma validada em produção com múltiplos domínios isolados.</p></div>
 
                                                 <div class="mid-cta">
                 <p>Tem um caso parecido? Vamos desenhar a arquitetura que prova o resultado no seu contexto.</p>
                 <a class="btn-primary" href="../contact.html">Falar sobre seu caso</a>
             </div>
-            <div class="social-proof"><p><strong>Prova:</strong> Caso anonimizado — plataforma validada em produção com múltiplos domínios isolados.</p></div>
-
+                <p class="newsletter-inline"><a href="https://www.linkedin.com/newsletters/dado-bruto-7498525638908321792/" target="_blank" rel="noopener noreferrer">Receba casos assim toda semana na newsletter <strong>Dado Bruto</strong> &nearr;</a></p>
             <section class="related-projects" aria-labelledby="related-heading">
                 <h2 id="related-heading">Projetos relacionados</h2>
                 <div class="related-grid">
@@ -158,7 +177,9 @@
             </section>
 
                         <div class="share-bar">
-                <a class="btn-outline" href="https://www.linkedin.com/sharing/share-offsite/?url=https://lukasrozado.github.io/projects/unified-banking-ledger-platform.html" target="_blank" rel="noopener">Share on LinkedIn</a>
+                <a class="btn-outline" href="https://www.linkedin.com/sharing/share-offsite/?url=https://lukasrozado.github.io/projects/unified-banking-ledger-platform.html" target="_blank" rel="noopener">Compartilhar no LinkedIn</a>
+                <a class="btn-outline" href="https://twitter.com/intent/tweet?url=https://lukasrozado.github.io/projects/unified-banking-ledger-platform.html" target="_blank" rel="noopener">Compartilhar no X</a>
+                <button type="button" class="btn-outline copy-link-btn" data-url="https://lukasrozado.github.io/projects/unified-banking-ledger-platform.html" data-label="Copiar link" data-copied-label="Copiado!">Copiar link</button>
             </div>
 
             <div class="project-actions">
@@ -231,6 +252,17 @@
         } catch (error) {
             console.error("Menu unavailable:", error);
         }
+    </script>
+    <script>
+        document.querySelector('.copy-link-btn')?.addEventListener('click', function(){
+            const url = this.getAttribute('data-url');
+            const original = this.getAttribute('data-label') || this.textContent;
+            const copied = this.getAttribute('data-copied-label') || original;
+            navigator.clipboard.writeText(url).then(() => {
+                this.textContent = copied;
+                setTimeout(() => { this.textContent = original; }, 2000);
+            });
+        });
     </script>
 </body>
 </html>
