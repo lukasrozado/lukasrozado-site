@@ -3,13 +3,13 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
         
     <url>
-        <loc>https://lukasrozado.github.io/</loc>
+        <loc>https://lukasrozado.pages.dev/</loc>
         <image:image>
-            <image:loc>https://lukasrozado.github.io/assets/images/hero-data-engineer-lukas-rozado.webp</image:loc>
+            <image:loc>https://lukasrozado.pages.dev/assets/images/hero-data-engineer-lukas-rozado.webp</image:loc>
             <image:caption>Lukas Rozado - Engenheiro de Dados</image:caption>
         </image:image>
         <image:image>
-            <image:loc>https://lukasrozado.github.io/assets/images/og-image.webp</image:loc>
+            <image:loc>https://lukasrozado.pages.dev/assets/images/og-image.webp</image:loc>
             <image:title>Portfólio Profissional</image:title>
         </image:image>
     </url>
