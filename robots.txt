@@ -4,6 +4,22 @@ Disallow: /private/
 Disallow: /temp/
 Disallow: /drafts/
 
+# AI crawlers/citation bots — explicitly allowed
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
 Sitemap: https://lukasrozado.github.io/sitemap.xml
 Sitemap: https://lukasrozado.github.io/sitemap-images.xml
 
