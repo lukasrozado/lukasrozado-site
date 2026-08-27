@@ -1,5 +1,5 @@
 const currentLang = () =>
-  window.location.pathname.includes("index-en.html") || document.documentElement.lang === "en"
+  window.location.pathname.includes("index-en") || document.documentElement.lang === "en"
     ? "en"
     : "pt";
 
@@ -33,7 +33,7 @@ export async function loadProjects() {
     const lang = currentLang();
     const response = await fetch(`./data/projects/${lang}.json`);
     const data = await response.json();
-    const detailSuffix = lang === "en" ? "-en.html" : ".html";
+    const detailSuffix = lang === "en" ? "-en" : "";
 
     grid.innerHTML = "";
 
@@ -93,7 +93,7 @@ export async function loadProjects() {
     const counter = document.getElementById("project-count");
     if (counter) {
       counter.textContent =
-        window.location.pathname.includes("index-en.html")
+        window.location.pathname.includes("index-en")
           ? "Error loading projects"
           : "Erro ao carregar projetos";
     }

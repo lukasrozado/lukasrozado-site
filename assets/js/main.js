@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   const loadComponents = async () => {
     const lang =
-      window.location.pathname.includes("index-en.html") || document.documentElement.lang === "en"
+      window.location.pathname.includes("index-en") || document.documentElement.lang === "en"
         ? "en"
         : "pt";
     const components = ["header", "hero", "projects-section", "footer"];
@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     banner.setAttribute("role", "alert");
     banner.style.cssText =
       "position:fixed;top:0;left:0;right:0;z-index:10000;padding:12px 20px;text-align:center;background:#ff4500;color:#fff;font-weight:600;";
-    banner.textContent = window.location.pathname.includes("index-en.html")
+    banner.textContent = window.location.pathname.includes("index-en")
       ? "Some interactive features failed to load. Please reload the page."
       : "Alguns recursos interativos não carregaram. Recarregue a página.";
     document.body.prepend(banner);

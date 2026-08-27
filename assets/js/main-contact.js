@@ -8,8 +8,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   const loadFooter = async () => {
     const lang =
-      window.location.pathname.includes("index-en.html") ||
-      window.location.pathname.includes("contact-en.html") ||
+      window.location.pathname.includes("index-en") ||
+      window.location.pathname.includes("contact-en") ||
       document.documentElement.lang === "en"
         ? "en"
         : "pt";

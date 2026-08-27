@@ -9,8 +9,8 @@
     <lastBuildDate>Wed, 26 Aug 2026 18:00:00 +0000</lastBuildDate>
     <item>
       <title>Um monitoramento que afirma que deu sucesso, mas não valida</title>
-      <link>https://lukasrozado.pages.dev/writing/monitoramento-que-afirma-sucesso-mas-nao-valida.html</link>
-      <guid isPermaLink="true">https://lukasrozado.pages.dev/writing/monitoramento-que-afirma-sucesso-mas-nao-valida.html</guid>
+      <link>https://lukasrozado.pages.dev/writing/monitoramento-que-afirma-sucesso-mas-nao-valida</link>
+      <guid isPermaLink="true">https://lukasrozado.pages.dev/writing/monitoramento-que-afirma-sucesso-mas-nao-valida</guid>
       <pubDate>Wed, 26 Aug 2026 18:00:00 +0000</pubDate>
       <description><![CDATA[
 <p>Eu tinha uma aplicação de ingestão que publicava um snapshot para consumo. O painel estava verde, tudo parecia correto, mas algo me incomodava: a quantidade de dados não crescia como deveria. Fui olhar. O serving estava parado havia 14,71 dias, e o alarme permanecera verde o tempo inteiro. O check de frescor tinha SLA de 26 horas e era rearmado a cada 19 minutos pelo próprio publish que não publicava nada.</p>

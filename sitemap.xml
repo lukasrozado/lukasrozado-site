@@ -8,39 +8,39 @@
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
         <xhtml:link rel="alternate" hreflang="pt-BR" href="https://lukasrozado.pages.dev/"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://lukasrozado.pages.dev/index-en.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://lukasrozado.pages.dev/index-en"/>
         <xhtml:link rel="alternate" hreflang="x-default" href="https://lukasrozado.pages.dev/"/>
     </url>
 
     <url>
-        <loc>https://lukasrozado.pages.dev/index-en.html</loc>
+        <loc>https://lukasrozado.pages.dev/index-en</loc>
         <lastmod>2026-08-26</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
         <xhtml:link rel="alternate" hreflang="pt-BR" href="https://lukasrozado.pages.dev/"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://lukasrozado.pages.dev/index-en.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://lukasrozado.pages.dev/index-en"/>
         <xhtml:link rel="alternate" hreflang="x-default" href="https://lukasrozado.pages.dev/"/>
     </url>
 
     <!-- Contato -->
     <url>
-        <loc>https://lukasrozado.pages.dev/contact.html</loc>
+        <loc>https://lukasrozado.pages.dev/contact</loc>
         <lastmod>2026-08-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
-        <xhtml:link rel="alternate" hreflang="pt-BR" href="https://lukasrozado.pages.dev/contact.html"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://lukasrozado.pages.dev/contact-en.html"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://lukasrozado.pages.dev/contact.html"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="https://lukasrozado.pages.dev/contact"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://lukasrozado.pages.dev/contact-en"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://lukasrozado.pages.dev/contact"/>
     </url>
 
     <url>
-        <loc>https://lukasrozado.pages.dev/contact-en.html</loc>
+        <loc>https://lukasrozado.pages.dev/contact-en</loc>
         <lastmod>2026-08-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
-        <xhtml:link rel="alternate" hreflang="pt-BR" href="https://lukasrozado.pages.dev/contact.html"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://lukasrozado.pages.dev/contact-en.html"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://lukasrozado.pages.dev/contact.html"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="https://lukasrozado.pages.dev/contact"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://lukasrozado.pages.dev/contact-en"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://lukasrozado.pages.dev/contact"/>
     </url>
 
     <!-- Escritos -->
@@ -52,223 +52,223 @@
     </url>
 
     <url>
-        <loc>https://lukasrozado.pages.dev/writing/monitoramento-que-afirma-sucesso-mas-nao-valida.html</loc>
+        <loc>https://lukasrozado.pages.dev/writing/monitoramento-que-afirma-sucesso-mas-nao-valida</loc>
         <lastmod>2026-08-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
-        <xhtml:link rel="alternate" hreflang="pt-BR" href="https://lukasrozado.pages.dev/writing/monitoramento-que-afirma-sucesso-mas-nao-valida.html"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://lukasrozado.pages.dev/writing/a-monitor-that-reports-success-without-validating.html"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://lukasrozado.pages.dev/writing/monitoramento-que-afirma-sucesso-mas-nao-valida.html"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="https://lukasrozado.pages.dev/writing/monitoramento-que-afirma-sucesso-mas-nao-valida"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://lukasrozado.pages.dev/writing/a-monitor-that-reports-success-without-validating"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://lukasrozado.pages.dev/writing/monitoramento-que-afirma-sucesso-mas-nao-valida"/>
     </url>
 
     <!-- Projetos -->
     <url>
-        <loc>https://lukasrozado.pages.dev/projects/enterprise-crypto-data-lake.html</loc>
+        <loc>https://lukasrozado.pages.dev/projects/enterprise-crypto-data-lake</loc>
         <lastmod>2026-08-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
-        <xhtml:link rel="alternate" hreflang="pt-BR" href="https://lukasrozado.pages.dev/projects/enterprise-crypto-data-lake.html"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://lukasrozado.pages.dev/projects/enterprise-crypto-data-lake-en.html"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://lukasrozado.pages.dev/projects/enterprise-crypto-data-lake.html"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="https://lukasrozado.pages.dev/projects/enterprise-crypto-data-lake"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://lukasrozado.pages.dev/projects/enterprise-crypto-data-lake-en"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://lukasrozado.pages.dev/projects/enterprise-crypto-data-lake"/>
     </url>
 
     <url>
-        <loc>https://lukasrozado.pages.dev/projects/multi-chain-ledger-integrator.html</loc>
+        <loc>https://lukasrozado.pages.dev/projects/multi-chain-ledger-integrator</loc>
         <lastmod>2026-08-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
-        <xhtml:link rel="alternate" hreflang="pt-BR" href="https://lukasrozado.pages.dev/projects/multi-chain-ledger-integrator.html"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://lukasrozado.pages.dev/projects/multi-chain-ledger-integrator-en.html"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://lukasrozado.pages.dev/projects/multi-chain-ledger-integrator.html"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="https://lukasrozado.pages.dev/projects/multi-chain-ledger-integrator"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://lukasrozado.pages.dev/projects/multi-chain-ledger-integrator-en"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://lukasrozado.pages.dev/projects/multi-chain-ledger-integrator"/>
     </url>
 
     <url>
-        <loc>https://lukasrozado.pages.dev/projects/predictive-pipeline-ml.html</loc>
+        <loc>https://lukasrozado.pages.dev/projects/predictive-pipeline-ml</loc>
         <lastmod>2026-08-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
-        <xhtml:link rel="alternate" hreflang="pt-BR" href="https://lukasrozado.pages.dev/projects/predictive-pipeline-ml.html"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://lukasrozado.pages.dev/projects/predictive-pipeline-ml-en.html"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://lukasrozado.pages.dev/projects/predictive-pipeline-ml.html"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="https://lukasrozado.pages.dev/projects/predictive-pipeline-ml"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://lukasrozado.pages.dev/projects/predictive-pipeline-ml-en"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://lukasrozado.pages.dev/projects/predictive-pipeline-ml"/>
     </url>
 
     <url>
-        <loc>https://lukasrozado.pages.dev/projects/institutional-digital-asset-custody.html</loc>
+        <loc>https://lukasrozado.pages.dev/projects/institutional-digital-asset-custody</loc>
         <lastmod>2026-08-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
-        <xhtml:link rel="alternate" hreflang="pt-BR" href="https://lukasrozado.pages.dev/projects/institutional-digital-asset-custody.html"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://lukasrozado.pages.dev/projects/institutional-digital-asset-custody-en.html"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://lukasrozado.pages.dev/projects/institutional-digital-asset-custody.html"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="https://lukasrozado.pages.dev/projects/institutional-digital-asset-custody"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://lukasrozado.pages.dev/projects/institutional-digital-asset-custody-en"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://lukasrozado.pages.dev/projects/institutional-digital-asset-custody"/>
     </url>
 
     <url>
-        <loc>https://lukasrozado.pages.dev/projects/baas-financial-settlement-data-sink.html</loc>
+        <loc>https://lukasrozado.pages.dev/projects/baas-financial-settlement-data-sink</loc>
         <lastmod>2026-08-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
-        <xhtml:link rel="alternate" hreflang="pt-BR" href="https://lukasrozado.pages.dev/projects/baas-financial-settlement-data-sink.html"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://lukasrozado.pages.dev/projects/baas-financial-settlement-data-sink-en.html"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://lukasrozado.pages.dev/projects/baas-financial-settlement-data-sink.html"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="https://lukasrozado.pages.dev/projects/baas-financial-settlement-data-sink"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://lukasrozado.pages.dev/projects/baas-financial-settlement-data-sink-en"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://lukasrozado.pages.dev/projects/baas-financial-settlement-data-sink"/>
     </url>
 
     <url>
-        <loc>https://lukasrozado.pages.dev/projects/unified-banking-ledger-platform.html</loc>
+        <loc>https://lukasrozado.pages.dev/projects/unified-banking-ledger-platform</loc>
         <lastmod>2026-08-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
-        <xhtml:link rel="alternate" hreflang="pt-BR" href="https://lukasrozado.pages.dev/projects/unified-banking-ledger-platform.html"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://lukasrozado.pages.dev/projects/unified-banking-ledger-platform-en.html"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://lukasrozado.pages.dev/projects/unified-banking-ledger-platform.html"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="https://lukasrozado.pages.dev/projects/unified-banking-ledger-platform"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://lukasrozado.pages.dev/projects/unified-banking-ledger-platform-en"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://lukasrozado.pages.dev/projects/unified-banking-ledger-platform"/>
     </url>
 
     <url>
-        <loc>https://lukasrozado.pages.dev/projects/financial-reconciliation-pipeline.html</loc>
+        <loc>https://lukasrozado.pages.dev/projects/financial-reconciliation-pipeline</loc>
         <lastmod>2026-08-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
-        <xhtml:link rel="alternate" hreflang="pt-BR" href="https://lukasrozado.pages.dev/projects/financial-reconciliation-pipeline.html"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://lukasrozado.pages.dev/projects/financial-reconciliation-pipeline-en.html"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://lukasrozado.pages.dev/projects/financial-reconciliation-pipeline.html"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="https://lukasrozado.pages.dev/projects/financial-reconciliation-pipeline"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://lukasrozado.pages.dev/projects/financial-reconciliation-pipeline-en"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://lukasrozado.pages.dev/projects/financial-reconciliation-pipeline"/>
     </url>
 
     <url>
-        <loc>https://lukasrozado.pages.dev/projects/otc-desk-reconciliation-pipeline.html</loc>
+        <loc>https://lukasrozado.pages.dev/projects/otc-desk-reconciliation-pipeline</loc>
         <lastmod>2026-08-27</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
-        <xhtml:link rel="alternate" hreflang="pt-BR" href="https://lukasrozado.pages.dev/projects/otc-desk-reconciliation-pipeline.html"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://lukasrozado.pages.dev/projects/otc-desk-reconciliation-pipeline-en.html"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://lukasrozado.pages.dev/projects/otc-desk-reconciliation-pipeline.html"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="https://lukasrozado.pages.dev/projects/otc-desk-reconciliation-pipeline"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://lukasrozado.pages.dev/projects/otc-desk-reconciliation-pipeline-en"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://lukasrozado.pages.dev/projects/otc-desk-reconciliation-pipeline"/>
     </url>
 
     <url>
-        <loc>https://lukasrozado.pages.dev/projects/fiscal-document-consolidation-pipeline.html</loc>
+        <loc>https://lukasrozado.pages.dev/projects/fiscal-document-consolidation-pipeline</loc>
         <lastmod>2026-08-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
-        <xhtml:link rel="alternate" hreflang="pt-BR" href="https://lukasrozado.pages.dev/projects/fiscal-document-consolidation-pipeline.html"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://lukasrozado.pages.dev/projects/fiscal-document-consolidation-pipeline-en.html"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://lukasrozado.pages.dev/projects/fiscal-document-consolidation-pipeline.html"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="https://lukasrozado.pages.dev/projects/fiscal-document-consolidation-pipeline"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://lukasrozado.pages.dev/projects/fiscal-document-consolidation-pipeline-en"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://lukasrozado.pages.dev/projects/fiscal-document-consolidation-pipeline"/>
     </url>
 
     <url>
-        <loc>https://lukasrozado.pages.dev/projects/fiscal-document-consolidation-pipeline-en.html</loc>
+        <loc>https://lukasrozado.pages.dev/projects/fiscal-document-consolidation-pipeline-en</loc>
         <lastmod>2026-08-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
-        <xhtml:link rel="alternate" hreflang="pt-BR" href="https://lukasrozado.pages.dev/projects/fiscal-document-consolidation-pipeline.html"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://lukasrozado.pages.dev/projects/fiscal-document-consolidation-pipeline-en.html"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://lukasrozado.pages.dev/projects/fiscal-document-consolidation-pipeline.html"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="https://lukasrozado.pages.dev/projects/fiscal-document-consolidation-pipeline"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://lukasrozado.pages.dev/projects/fiscal-document-consolidation-pipeline-en"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://lukasrozado.pages.dev/projects/fiscal-document-consolidation-pipeline"/>
     </url>
 
     <url>
-        <loc>https://lukasrozado.pages.dev/projects/lck-spring-2024-dataset.html</loc>
+        <loc>https://lukasrozado.pages.dev/projects/lck-spring-2024-dataset</loc>
         <lastmod>2026-08-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
-        <xhtml:link rel="alternate" hreflang="pt-BR" href="https://lukasrozado.pages.dev/projects/lck-spring-2024-dataset.html"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://lukasrozado.pages.dev/projects/lck-spring-2024-dataset-en.html"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://lukasrozado.pages.dev/projects/lck-spring-2024-dataset.html"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="https://lukasrozado.pages.dev/projects/lck-spring-2024-dataset"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://lukasrozado.pages.dev/projects/lck-spring-2024-dataset-en"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://lukasrozado.pages.dev/projects/lck-spring-2024-dataset"/>
     </url>
 
     <url>
-        <loc>https://lukasrozado.pages.dev/writing/a-monitor-that-reports-success-without-validating.html</loc>
+        <loc>https://lukasrozado.pages.dev/writing/a-monitor-that-reports-success-without-validating</loc>
         <lastmod>2026-08-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
-        <xhtml:link rel="alternate" hreflang="pt-BR" href="https://lukasrozado.pages.dev/writing/monitoramento-que-afirma-sucesso-mas-nao-valida.html"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://lukasrozado.pages.dev/writing/a-monitor-that-reports-success-without-validating.html"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://lukasrozado.pages.dev/writing/monitoramento-que-afirma-sucesso-mas-nao-valida.html"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="https://lukasrozado.pages.dev/writing/monitoramento-que-afirma-sucesso-mas-nao-valida"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://lukasrozado.pages.dev/writing/a-monitor-that-reports-success-without-validating"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://lukasrozado.pages.dev/writing/monitoramento-que-afirma-sucesso-mas-nao-valida"/>
     </url>
 
     <url>
-        <loc>https://lukasrozado.pages.dev/projects/enterprise-crypto-data-lake-en.html</loc>
+        <loc>https://lukasrozado.pages.dev/projects/enterprise-crypto-data-lake-en</loc>
         <lastmod>2026-08-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
-        <xhtml:link rel="alternate" hreflang="pt-BR" href="https://lukasrozado.pages.dev/projects/enterprise-crypto-data-lake.html"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://lukasrozado.pages.dev/projects/enterprise-crypto-data-lake-en.html"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://lukasrozado.pages.dev/projects/enterprise-crypto-data-lake.html"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="https://lukasrozado.pages.dev/projects/enterprise-crypto-data-lake"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://lukasrozado.pages.dev/projects/enterprise-crypto-data-lake-en"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://lukasrozado.pages.dev/projects/enterprise-crypto-data-lake"/>
     </url>
 
     <url>
-        <loc>https://lukasrozado.pages.dev/projects/multi-chain-ledger-integrator-en.html</loc>
+        <loc>https://lukasrozado.pages.dev/projects/multi-chain-ledger-integrator-en</loc>
         <lastmod>2026-08-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
-        <xhtml:link rel="alternate" hreflang="pt-BR" href="https://lukasrozado.pages.dev/projects/multi-chain-ledger-integrator.html"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://lukasrozado.pages.dev/projects/multi-chain-ledger-integrator-en.html"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://lukasrozado.pages.dev/projects/multi-chain-ledger-integrator.html"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="https://lukasrozado.pages.dev/projects/multi-chain-ledger-integrator"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://lukasrozado.pages.dev/projects/multi-chain-ledger-integrator-en"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://lukasrozado.pages.dev/projects/multi-chain-ledger-integrator"/>
     </url>
 
     <url>
-        <loc>https://lukasrozado.pages.dev/projects/predictive-pipeline-ml-en.html</loc>
+        <loc>https://lukasrozado.pages.dev/projects/predictive-pipeline-ml-en</loc>
         <lastmod>2026-08-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
-        <xhtml:link rel="alternate" hreflang="pt-BR" href="https://lukasrozado.pages.dev/projects/predictive-pipeline-ml.html"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://lukasrozado.pages.dev/projects/predictive-pipeline-ml-en.html"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://lukasrozado.pages.dev/projects/predictive-pipeline-ml.html"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="https://lukasrozado.pages.dev/projects/predictive-pipeline-ml"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://lukasrozado.pages.dev/projects/predictive-pipeline-ml-en"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://lukasrozado.pages.dev/projects/predictive-pipeline-ml"/>
     </url>
 
     <url>
-        <loc>https://lukasrozado.pages.dev/projects/institutional-digital-asset-custody-en.html</loc>
+        <loc>https://lukasrozado.pages.dev/projects/institutional-digital-asset-custody-en</loc>
         <lastmod>2026-08-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
-        <xhtml:link rel="alternate" hreflang="pt-BR" href="https://lukasrozado.pages.dev/projects/institutional-digital-asset-custody.html"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://lukasrozado.pages.dev/projects/institutional-digital-asset-custody-en.html"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://lukasrozado.pages.dev/projects/institutional-digital-asset-custody.html"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="https://lukasrozado.pages.dev/projects/institutional-digital-asset-custody"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://lukasrozado.pages.dev/projects/institutional-digital-asset-custody-en"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://lukasrozado.pages.dev/projects/institutional-digital-asset-custody"/>
     </url>
 
     <url>
-        <loc>https://lukasrozado.pages.dev/projects/baas-financial-settlement-data-sink-en.html</loc>
+        <loc>https://lukasrozado.pages.dev/projects/baas-financial-settlement-data-sink-en</loc>
         <lastmod>2026-08-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
-        <xhtml:link rel="alternate" hreflang="pt-BR" href="https://lukasrozado.pages.dev/projects/baas-financial-settlement-data-sink.html"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://lukasrozado.pages.dev/projects/baas-financial-settlement-data-sink-en.html"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://lukasrozado.pages.dev/projects/baas-financial-settlement-data-sink.html"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="https://lukasrozado.pages.dev/projects/baas-financial-settlement-data-sink"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://lukasrozado.pages.dev/projects/baas-financial-settlement-data-sink-en"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://lukasrozado.pages.dev/projects/baas-financial-settlement-data-sink"/>
     </url>
 
     <url>
-        <loc>https://lukasrozado.pages.dev/projects/unified-banking-ledger-platform-en.html</loc>
+        <loc>https://lukasrozado.pages.dev/projects/unified-banking-ledger-platform-en</loc>
         <lastmod>2026-08-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
-        <xhtml:link rel="alternate" hreflang="pt-BR" href="https://lukasrozado.pages.dev/projects/unified-banking-ledger-platform.html"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://lukasrozado.pages.dev/projects/unified-banking-ledger-platform-en.html"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://lukasrozado.pages.dev/projects/unified-banking-ledger-platform.html"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="https://lukasrozado.pages.dev/projects/unified-banking-ledger-platform"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://lukasrozado.pages.dev/projects/unified-banking-ledger-platform-en"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://lukasrozado.pages.dev/projects/unified-banking-ledger-platform"/>
     </url>
 
     <url>
-        <loc>https://lukasrozado.pages.dev/projects/financial-reconciliation-pipeline-en.html</loc>
+        <loc>https://lukasrozado.pages.dev/projects/financial-reconciliation-pipeline-en</loc>
         <lastmod>2026-08-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
-        <xhtml:link rel="alternate" hreflang="pt-BR" href="https://lukasrozado.pages.dev/projects/financial-reconciliation-pipeline.html"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://lukasrozado.pages.dev/projects/financial-reconciliation-pipeline-en.html"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://lukasrozado.pages.dev/projects/financial-reconciliation-pipeline.html"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="https://lukasrozado.pages.dev/projects/financial-reconciliation-pipeline"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://lukasrozado.pages.dev/projects/financial-reconciliation-pipeline-en"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://lukasrozado.pages.dev/projects/financial-reconciliation-pipeline"/>
     </url>
 
     <url>
-        <loc>https://lukasrozado.pages.dev/projects/otc-desk-reconciliation-pipeline-en.html</loc>
+        <loc>https://lukasrozado.pages.dev/projects/otc-desk-reconciliation-pipeline-en</loc>
         <lastmod>2026-08-27</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
-        <xhtml:link rel="alternate" hreflang="pt-BR" href="https://lukasrozado.pages.dev/projects/otc-desk-reconciliation-pipeline.html"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://lukasrozado.pages.dev/projects/otc-desk-reconciliation-pipeline-en.html"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://lukasrozado.pages.dev/projects/otc-desk-reconciliation-pipeline.html"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="https://lukasrozado.pages.dev/projects/otc-desk-reconciliation-pipeline"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://lukasrozado.pages.dev/projects/otc-desk-reconciliation-pipeline-en"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://lukasrozado.pages.dev/projects/otc-desk-reconciliation-pipeline"/>
     </url>
 
     <url>
-        <loc>https://lukasrozado.pages.dev/projects/lck-spring-2024-dataset-en.html</loc>
+        <loc>https://lukasrozado.pages.dev/projects/lck-spring-2024-dataset-en</loc>
         <lastmod>2026-08-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
-        <xhtml:link rel="alternate" hreflang="pt-BR" href="https://lukasrozado.pages.dev/projects/lck-spring-2024-dataset.html"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://lukasrozado.pages.dev/projects/lck-spring-2024-dataset-en.html"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://lukasrozado.pages.dev/projects/lck-spring-2024-dataset.html"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="https://lukasrozado.pages.dev/projects/lck-spring-2024-dataset"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://lukasrozado.pages.dev/projects/lck-spring-2024-dataset-en"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://lukasrozado.pages.dev/projects/lck-spring-2024-dataset"/>
     </url>
 </urlset>

@@ -4,26 +4,26 @@
 
 ## Core
 - Home (PT): https://lukasrozado.pages.dev/
-- Home (EN): https://lukasrozado.pages.dev/index-en.html
+- Home (EN): https://lukasrozado.pages.dev/index-en
 - Projects: https://lukasrozado.pages.dev/#projects
 - Writing: https://lukasrozado.pages.dev/writing/
-- Contact: https://lukasrozado.pages.dev/contact.html
+- Contact: https://lukasrozado.pages.dev/contact
 - RSS: https://lukasrozado.pages.dev/feed.xml
 - Sitemap: https://lukasrozado.pages.dev/sitemap.xml
 
 ## Case Studies
-- Enterprise Crypto Data Lake: https://lukasrozado.pages.dev/projects/enterprise-crypto-data-lake.html
-- Unified Banking Ledger Platform: https://lukasrozado.pages.dev/projects/unified-banking-ledger-platform.html
-- Financial Reconciliation Pipeline: https://lukasrozado.pages.dev/projects/financial-reconciliation-pipeline.html
-- Multi-Chain Ledger Integrator: https://lukasrozado.pages.dev/projects/multi-chain-ledger-integrator.html
-- Institutional Custody Integrator: https://lukasrozado.pages.dev/projects/institutional-digital-asset-custody.html
-- BaaS Financial Settlement Data Sink: https://lukasrozado.pages.dev/projects/baas-financial-settlement-data-sink.html
-- Predictive Pipeline & ML: https://lukasrozado.pages.dev/projects/predictive-pipeline-ml.html
-- LCK Dataset (public proof): https://lukasrozado.pages.dev/projects/lck-spring-2024-dataset.html
+- Enterprise Crypto Data Lake: https://lukasrozado.pages.dev/projects/enterprise-crypto-data-lake
+- Unified Banking Ledger Platform: https://lukasrozado.pages.dev/projects/unified-banking-ledger-platform
+- Financial Reconciliation Pipeline: https://lukasrozado.pages.dev/projects/financial-reconciliation-pipeline
+- Multi-Chain Ledger Integrator: https://lukasrozado.pages.dev/projects/multi-chain-ledger-integrator
+- Institutional Custody Integrator: https://lukasrozado.pages.dev/projects/institutional-digital-asset-custody
+- BaaS Financial Settlement Data Sink: https://lukasrozado.pages.dev/projects/baas-financial-settlement-data-sink
+- Predictive Pipeline & ML: https://lukasrozado.pages.dev/projects/predictive-pipeline-ml
+- LCK Dataset (public proof): https://lukasrozado.pages.dev/projects/lck-spring-2024-dataset
 
 ## Writing
-- Um monitoramento que afirma que deu sucesso, mas não valida (PT, 2026-08-26): https://lukasrozado.pages.dev/writing/monitoramento-que-afirma-sucesso-mas-nao-valida.html
-- A monitor that reports success without validating (EN, 2026-08-26): https://lukasrozado.pages.dev/writing/a-monitor-that-reports-success-without-validating.html
+- Um monitoramento que afirma que deu sucesso, mas não valida (PT, 2026-08-26): https://lukasrozado.pages.dev/writing/monitoramento-que-afirma-sucesso-mas-nao-valida
+- A monitor that reports success without validating (EN, 2026-08-26): https://lukasrozado.pages.dev/writing/a-monitor-that-reports-success-without-validating
 
 ## Key facts (auditable)
 - Enterprise Crypto Data Lake: >99.9% uptime, tens of millions of records/year, full backfill since account inception (some since 2019).
