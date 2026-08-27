@@ -37,6 +37,16 @@ export async function loadProjects() {
                             <p>${project.description}</p>
                         </div>
 
+                        ${
+                          project.caseStudy
+                            ? `<div class="card-case-study">
+                            <p><strong>${lang === "en" ? "Problem:" : "Problema:"}</strong> ${project.caseStudy.problem}</p>
+                            <p><strong>${lang === "en" ? "Solution:" : "Solução:"}</strong> ${project.caseStudy.solution}</p>
+                            <p><strong>${lang === "en" ? "Impact:" : "Impacto:"}</strong> ${project.caseStudy.impact}</p>
+                        </div>`
+                            : ""
+                        }
+
                         <div class="card-footer">
                             <div class="tech-stack">
                                 ${project.techIcons ? project.techIcons.map((icon) => `
