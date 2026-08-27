@@ -3,29 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unified Multi-Chain Ledger Integrator | Lukas Rozado</title>
+    <title>Unified Banking Ledger Platform | Lukas Rozado</title>
     <meta name="theme-color" content="#00D4FF">
 
-    <link rel="canonical" href="https://lukasrozado.github.io/projects/multi-chain-ledger-integrator-en.html">
-    <link rel="alternate" hreflang="pt-BR" href="https://lukasrozado.github.io/projects/multi-chain-ledger-integrator.html">
-    <link rel="alternate" hreflang="en" href="https://lukasrozado.github.io/projects/multi-chain-ledger-integrator-en.html">
-    <link rel="alternate" hreflang="x-default" href="https://lukasrozado.github.io/projects/multi-chain-ledger-integrator.html">
+    <link rel="canonical" href="https://lukasrozado.github.io/projects/unified-banking-ledger-platform-en.html">
+    <link rel="alternate" hreflang="pt-BR" href="https://lukasrozado.github.io/projects/unified-banking-ledger-platform.html">
+    <link rel="alternate" hreflang="en" href="https://lukasrozado.github.io/projects/unified-banking-ledger-platform-en.html">
+    <link rel="alternate" hreflang="x-default" href="https://lukasrozado.github.io/projects/unified-banking-ledger-platform.html">
 
-    <meta name="description" content="Resilient pipeline for consolidating transactional data across multiples blockchains and contracts (EVM and Solana). I replaced third-party indexers...">
+    <meta name="description" content="Unified ingestion platform for banking, PIX, ledger and OTC desk data, with per-domain state isolation, watermark early-exit and a transaction lifecycle auditor.">
     <meta name="author" content="Lukas Rozado">
     <meta name="robots" content="index,follow,max-image-preview:large">
 
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://lukasrozado.github.io/projects/multi-chain-ledger-integrator-en.html">
-    <meta property="og:title" content="Unified Multi-Chain Ledger Integrator | Case Study">
-    <meta property="og:description" content="Resilient pipeline for consolidating transactional data across multiples blockchains and contracts (EVM and Solana). I replaced third-party indexers...">
-    <meta property="og:image" content="https://lukasrozado.github.io/assets/images/unified_multi_chain_ledger_integrator.webp">
+    <meta property="og:url" content="https://lukasrozado.github.io/projects/unified-banking-ledger-platform-en.html">
+    <meta property="og:title" content="Unified Banking Ledger Platform | Case Study">
+    <meta property="og:description" content="Unified ingestion platform for banking, PIX, ledger and OTC desk data, with per-domain state isolation, watermark early-exit and a transaction lifecycle auditor.">
+    <meta property="og:image" content="https://lukasrozado.github.io/assets/images/unified-banking-ledger-platform.webp">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@RozadoLukas">
-    <meta name="twitter:title" content="Unified Multi-Chain Ledger Integrator | Case Study">
-    <meta name="twitter:description" content="Resilient pipeline for consolidating transactional data across multiples blockchains and contracts (EVM and Solana). I replaced third-party indexers...">
-    <meta name="twitter:image" content="https://lukasrozado.github.io/assets/images/unified_multi_chain_ledger_integrator.webp">
+    <meta name="twitter:title" content="Unified Banking Ledger Platform | Case Study">
+    <meta name="twitter:description" content="Unified ingestion platform for banking, PIX, ledger and OTC desk data, with per-domain state isolation, watermark early-exit and a transaction lifecycle auditor.">
+    <meta name="twitter:image" content="https://lukasrozado.github.io/assets/images/unified-banking-ledger-platform.webp">
 
     <link rel="icon" href="../assets/icons/favicon.ico" sizes="any">
     <link rel="apple-touch-icon" href="../assets/icons/favicon-180x180.webp">
@@ -43,10 +43,10 @@
     {
         "@context": "https://schema.org",
         "@type": "CreativeWork",
-        "name": "Unified Multi-Chain Ledger Integrator",
-        "description": "Resilient pipeline for consolidating transactional data across multiples blockchains and contracts (EVM and Solana). I replaced third-party indexers with raw RPC extraction using 'Reverse Check' algorithms, optimizing block scanning. The core differentiator is the Auto-Reconciliation engine (Pacemaker), which continuously audits the PostgreSQL database against network nodes, ensuring strict uniqueness and 100% integrity in balances.",
-        "url": "https://lukasrozado.github.io/projects/multi-chain-ledger-integrator-en.html",
-        "image": "https://lukasrozado.github.io/assets/images/unified_multi_chain_ledger_integrator.webp",
+        "name": "Unified Banking Ledger Platform",
+        "description": "Unified ingestion platform for bank accounts, PIX, partners, ledger movements and OTC desk data, with a producer-consumer queue, per-domain isolated state, historical watermark early-exit, a dual balance-snapshot strategy (delta/full) and a lifecycle auditor for pending PIX transactions.",
+        "url": "https://lukasrozado.github.io/projects/unified-banking-ledger-platform-en.html",
+        "image": "https://lukasrozado.github.io/assets/images/unified-banking-ledger-platform.webp",
         "inLanguage": "en",
         "keywords": "python, postgresql, azure, sql",
         "author": {
@@ -79,7 +79,7 @@
         </div>
         <ul>
             <li><a href="../index-en.html">Home</a></li>
-            <li><a href="../index.html#projects">Projects</a></li>
+            <li><a href="../index-en.html#projects">Projects</a></li>
             <li><a href="../writing/">Writing</a></li>
             <li><a href="../contact-en.html">Contact</a></li>
             <li><a class="lang-switch" href="../index.html" hreflang="pt-BR" data-lang="pt" lang="pt-BR">PT</a></li>
@@ -94,10 +94,9 @@
                 <span class="project-tag">Data Engineering</span>
             </div>
 
-            <h1 itemprop="name">Unified Multi-Chain Ledger Integrator</h1>
+            <h1 itemprop="name">Unified Banking Ledger Platform</h1>
 
-
-            <p class="lead" itemprop="description">A resilient pipeline that consolidates transactions across dozens of blockchains and contracts (EVM and Solana), reading straight from the node via raw RPC (<code>eth_getLogs</code> filtered by event topic) instead of relying on a third-party indexer. Block ranges too dense for the API split recursively until they fit. The core differentiator is the self-healing reconciliation engine: it compares on-chain event counts against the database range by range, heals any mismatch on its own by deleting and re-extracting the batch, and closes with a final accounting check comparing total on-chain supply against the net supply computed in PostgreSQL.</p>
+            <p class="lead" itemprop="description">A platform that merged two separate financial pipelines, banking/PIX and ledger reconciliation, into a single system running every minute, persistent and orchestrated. Every data domain, accounts, PIX keys, PIX transactions, partners, ledger movements, OTC desk, gets its own producer-consumer queue, its own isolated cursor and watermark, and flushes in batches of 5,000 records straight to the database. Endpoints with no native delta filter use early-exit: they read from the top and stop on their own once N consecutive pages have already crossed the saved watermark, with no need to re-scan the entire history on every run. Partner balances run on two strategies, a 15-minute delta for whoever moved recently and a daily full refresh for everyone else. A separate lifecycle auditor fixes PIX transaction status that changes after capture, without re-scanning anything beyond what's needed.</p>
 
             <div class="project-tech-row">
                 <img src="../assets/icons/python.svg" alt="python" class="tech-icon" width="30" height="30">
@@ -105,22 +104,22 @@
             </div>
 
             <figure class="project-diagram">
-                <img src="../assets/images/unified_multi_chain_ledger_integrator.webp" alt="Unified Multi-Chain Ledger Integrator - architecture diagram" width="1200" height="800" loading="lazy" decoding="async" itemprop="image">
+                <img src="../assets/images/unified-banking-ledger-platform.webp" alt="Unified Banking Ledger Platform - architecture diagram" width="1200" height="800" loading="lazy" decoding="async" itemprop="image">
                 <figcaption>System architecture</figcaption>
             </figure>
             <section class="case-study" aria-labelledby="case-study-heading">
                 <h2 id="case-study-heading">Case Study</h2>
                 <div class="case-block">
                     <h3>Problem</h3>
-                    <p>A third-party indexer across 15+ networks scatters the data and gives no real integrity guarantee: each provider has its own lag, format and error rate, and there's no native way to know whether a block range landed incomplete in the database.</p>
+                    <p>Two financial systems grew apart, each with its own checkpoint model, and needed to become one without losing what already worked. Most endpoints have no native date filter, so capturing only what's new means reading from the start and guessing where to stop, or reprocessing everything, every minute, forever.</p>
                 </div>
                 <div class="case-block">
                     <h3>Solution</h3>
-                    <p>Direct extraction from the node via RPC, no middleman, with a block range that partitions itself when it's too dense for the API to answer. On top of that, a self-healing engine sweeps the history in batches, compares on-chain event counts against the database, and whenever it diverges deletes the whole batch and re-extracts it, with retry. At close, I compare the token's total supply straight from the contract against the net supply the database computes by summing mints and subtracting burns — that's the real accounting invariant, not just a row count.</p>
+                    <p>Every domain runs isolated, with its own cursor and its own watermark, so a failure in one "drawer" never blocks the others. For an endpoint with no date filter, reading starts from the top and stops on its own once N consecutive pages land on a date already covered before (watermark early-exit), avoiding both a full reprocess and stopping too early and losing a record. Partner balances run at two speeds: a 15-minute delta for whoever moved recently, a daily full refresh to close out the rest. A separate auditor covers the case neither strategy solves alone, a transaction already captured that changes status later, reading only from the oldest one still pending and upserting whatever changed.</p>
                 </div>
                 <div class="case-block">
                     <h3>Impact</h3>
-                    <p>Canonical relational unification of transactions and cross-chain balances between EVM and Solana, with reconciliation state persisted per network — a mid-run failure resumes from the last validated batch, never from zero.</p>
+                    <p>Two pipelines became a single platform, covering banking, PIX, partners, ledger and the OTC desk (trades, partner balances, stuck delivery, settlement drift and borrows), running persistently every minute with no manual reprocessing. Per-domain state means adding a new lane never risks the ones already running.</p>
                 </div>
             </section>
 
@@ -136,9 +135,9 @@
 <footer itemscope itemtype="https://schema.org/WPFooter" role="contentinfo">
     <div class="footer-inner">
         <div class="footer-cta">
-            <img src="../assets/images/logo-dado-bruto-600.png" alt="Dado Bruto" style="height:96px;width:auto;flex-shrink:0;border-radius:10px;filter:drop-shadow(0 2px 8px rgba(0,212,255,.25))">
             <div class="footer-cta-text">
-                <p class="footer-newsletter-desc"><strong style="color:#00D4FF">Dado Bruto</strong> — newsletter &middot; Real data engineering cases in production: architecture, trade-offs, and the metric that proves it.</p>
+                <p class="footer-newsletter-title">Dado Bruto</p>
+                <p class="footer-newsletter-desc">Data Engineering newsletter, published on LinkedIn. No spam, straight to the point.</p>
             </div>
             <a class="btn-newsletter" href="https://www.linkedin.com/newsletters/dado-bruto-7498525638908321792/" target="_blank" rel="noopener noreferrer">Subscribe on LinkedIn <span aria-hidden="true">&nearr;</span></a>
         </div>
@@ -146,13 +145,13 @@
         <div class="footer-bottom">
             <p class="footer-copy" itemprop="copyrightYear">&copy; 2026 <span itemprop="copyrightHolder">Lukas Rozado</span></p>
 
-            <div id="social-links" role="navigation" aria-label="Professional social networks">
+            <div id="social-links" role="navigation" aria-label="Professional social profiles">
                 <a href="https://github.com/lukasrozado"
                    target="_blank"
                    rel="noopener noreferrer nofollow"
                    id="profile-link"
                    aria-label="Lukas Rozado's GitHub"><img src="../assets/images/github-data-engineer-lukas-rozado.webp"
-                        alt="Lukas Rozado on GitHub - Data Engineer Projects"
+                        alt="Lukas Rozado's GitHub - Data Engineer Projects"
                         class="social-icon"
                         style="filter: invert(1);"
                         loading="lazy"
@@ -174,7 +173,7 @@
                    target="_blank"
                    rel="noopener noreferrer nofollow"
                    aria-label="Lukas Rozado's LCK Spring 2024 dataset on Kaggle"><img src="../assets/images/kaggle-data-engineer-lukas-rozado.webp"
-                        alt="Lukas Rozado's LCK Spring 2024 Dataset on Kaggle - Esports Data"
+                        alt="Lukas Rozado's LCK Spring 2024 dataset on Kaggle - Esports Data"
                         class="social-icon"
                         style="filter: invert(1);"
                         loading="lazy"
@@ -195,6 +194,5 @@
             console.error("Menu unavailable:", error);
         }
     </script>
-
 </body>
 </html>

@@ -19,13 +19,13 @@
     <meta property="og:url" content="https://lukasrozado.github.io/projects/enterprise-crypto-data-lake-en.html">
     <meta property="og:title" content="Enterprise Crypto Data Lake: Multi-Account Ingestion | Case Study">
     <meta property="og:description" content="End-to-end architecture for ingestion of transactional data to multiple accounts for crypto exchange. I implemented an asynchronous extraction engine...">
-    <meta property="og:image" content="https://lukasrozado.github.io/assets/images/crypto_data_lake_ingestion_architecture.webp">
+    <meta property="og:image" content="https://lukasrozado.github.io/assets/images/crypto_data_lake_ingestion_architecture_v2.webp">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@RozadoLukas">
     <meta name="twitter:title" content="Enterprise Crypto Data Lake: Multi-Account Ingestion | Case Study">
     <meta name="twitter:description" content="End-to-end architecture for ingestion of transactional data to multiple accounts for crypto exchange. I implemented an asynchronous extraction engine...">
-    <meta name="twitter:image" content="https://lukasrozado.github.io/assets/images/crypto_data_lake_ingestion_architecture.webp">
+    <meta name="twitter:image" content="https://lukasrozado.github.io/assets/images/crypto_data_lake_ingestion_architecture_v2.webp">
 
     <link rel="icon" href="../assets/icons/favicon.ico" sizes="any">
     <link rel="apple-touch-icon" href="../assets/icons/favicon-180x180.webp">
@@ -46,7 +46,7 @@
         "name": "Enterprise Crypto Data Lake: Multi-Account Ingestion",
         "description": "End-to-end architecture for ingestion of transactional data to multiple accounts for crypto exchange. I implemented an asynchronous extraction engine with an intelligent Rate Limiter that monitors API headers to prevent bans. The system uses Azure Key Vault for secret management and a high-performance PostgreSQL loader via COPY commands and temporary tables, ensuring idempotency and integrity at scale.",
         "url": "https://lukasrozado.github.io/projects/enterprise-crypto-data-lake-en.html",
-        "image": "https://lukasrozado.github.io/assets/images/crypto_data_lake_ingestion_architecture.webp",
+        "image": "https://lukasrozado.github.io/assets/images/crypto_data_lake_ingestion_architecture_v2.webp",
         "inLanguage": "en",
         "keywords": "python, postgresql, azure, sql",
         "author": {
@@ -97,30 +97,31 @@
             <h1 itemprop="name">Enterprise Crypto Data Lake: Multi-Account Ingestion</h1>
 
 
-            <p class="lead" itemprop="description">End-to-end architecture for ingestion of transactional data to multiple accounts for crypto exchange. I implemented an asynchronous extraction engine with an intelligent Rate Limiter that monitors API headers to prevent bans. The system uses Azure Key Vault for secret management and a high-performance PostgreSQL loader via COPY commands and temporary tables, ensuring idempotency and integrity at scale.</p>
+            <p class="lead" itemprop="description">Architecture for continuous financial auditing across dozens of institutional accounts on a crypto exchange, with full historical backfill from each account's inception. At its core, a rate limiter shared across processes reads the official consumed-quota header on every HTTP response, never an estimate from call counts, which eliminates the IP-ban pattern that existed before this architecture. A mandatory Bronze layer keeps the raw payload in JSONB and feeds a full Medallion model; loading runs through native PostgreSQL <code>COPY</code>, a temp table and UPSERT, sustaining tens of millions of records a year with credentials isolated in Azure Key Vault.</p>
 
             <div class="project-tech-row">
                 <img src="../assets/icons/python.svg" alt="python" class="tech-icon" width="30" height="30">
                 <img src="../assets/icons/postgresql.svg" alt="postgresql" class="tech-icon" width="30" height="30">
             </div>
 
-            <figure class="project-diagram">
-                <img src="../assets/images/crypto_data_lake_ingestion_architecture.webp" alt="Enterprise Crypto Data Lake: Multi-Account Ingestion - architecture diagram" width="1200" height="800" loading="lazy" decoding="async" itemprop="image">
-                <figcaption>System architecture</figcaption>
+            <figure class="project-diagram" data-v1="../assets/images/crypto_data_lake_ingestion_architecture.webp" data-v2="../assets/images/crypto_data_lake_ingestion_architecture_v2.webp">
+                <img id="diagram-img" src="../assets/images/crypto_data_lake_ingestion_architecture_v2.webp" alt="Enterprise Crypto Data Lake: Multi-Account Ingestion - architecture diagram" width="1200" height="800" loading="lazy" decoding="async" itemprop="image" data-showing="v2">
+                <figcaption>System architecture - <span class="diagram-version">v2</span></figcaption>
+                <button class="diagram-toggle" type="button" aria-label="View v1">View v1</button>
             </figure>
             <section class="case-study" aria-labelledby="case-study-heading">
                 <h2 id="case-study-heading">Case Study</h2>
                 <div class="case-block">
                     <h3>Problem</h3>
-                    <p>Aggressive API rate limits and credential management across multiples simultaneous accounts.</p>
+                    <p>Dozens of institutional accounts and sub-accounts on the same exchange needed continuous auditing, but the API quota ceiling was shared across <em>every</em> key, not per key, and each sub-system (spot, futures, convert, staking) returned a different response shape. Going over the limit banned the corporate IP over HTTP and stalled the entire audit until it lifted.</p>
                 </div>
                 <div class="case-block">
                     <h3>Solution</h3>
-                    <p>Header-based Rate Limiting using official API signals and Bulk Inserts via io.StringIO.</p>
+                    <p>A rate limiter reads the official consumed-weight header on every HTTP response, never an estimate, with state shared across processes through managed memory to respect a single per-minute quota ceiling. A carousel prioritizes accounts with recent activity and pushes idle ones onto wider cycles, so quota never gets spent on accounts that haven't changed. Every load runs in bulk through native <code>COPY</code>, a temp table and <code>UPSERT</code>, with a JSONB checkpoint that resumes from the exact point of any interruption.</p>
                 </div>
                 <div class="case-block">
                     <h3>Impact</h3>
-                    <p>&gt;99.9% pipeline uptime and ingestion of millions of historical records.</p>
+                    <p>Full historical backfill since each account's opening, some going back to 2019, and the end of the ban pattern that predated this architecture. Tens of millions of records processed per year, with the pipeline sustaining &gt;99.9% uptime.</p>
                 </div>
             </section>
 
@@ -136,9 +137,9 @@
 <footer itemscope itemtype="https://schema.org/WPFooter" role="contentinfo">
     <div class="footer-inner">
         <div class="footer-cta">
+            <img src="../assets/images/logo-dado-bruto-600.png" alt="Dado Bruto" style="height:96px;width:auto;flex-shrink:0;border-radius:10px;filter:drop-shadow(0 2px 8px rgba(0,212,255,.25))">
             <div class="footer-cta-text">
-                <p class="footer-newsletter-title">Dado Bruto</p>
-                <p class="footer-newsletter-desc">Data Engineering newsletter on LinkedIn. No fluff, straight to the point.</p>
+                <p class="footer-newsletter-desc"><strong style="color:#00D4FF">Dado Bruto</strong> — newsletter &middot; Real data engineering cases in production: architecture, trade-offs, and the metric that proves it.</p>
             </div>
             <a class="btn-newsletter" href="https://www.linkedin.com/newsletters/dado-bruto-7498525638908321792/" target="_blank" rel="noopener noreferrer">Subscribe on LinkedIn <span aria-hidden="true">&nearr;</span></a>
         </div>
@@ -194,6 +195,17 @@
         } catch (error) {
             console.error("Menu unavailable:", error);
         }
+    </script>
+    <script>
+        document.querySelector('.diagram-toggle')?.addEventListener('click', function(){
+            const fig = this.closest('.project-diagram');
+            const img = fig.querySelector('#diagram-img');
+            const showing = img.getAttribute('data-showing');
+            const v1 = fig.getAttribute('data-v1');
+            const v2 = fig.getAttribute('data-v2');
+            const label = fig.querySelector('.diagram-version');
+            if(showing === 'v2'){ img.src = v1; img.setAttribute('data-showing','v1'); label.textContent='v1'; this.textContent = 'View v2'; } else { img.src = v2; img.setAttribute('data-showing','v2'); label.textContent='v2'; this.textContent = 'View v1'; }
+        });
     </script>
 </body>
 </html>

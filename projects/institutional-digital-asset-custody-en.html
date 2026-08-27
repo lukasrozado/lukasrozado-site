@@ -19,13 +19,13 @@
     <meta property="og:url" content="https://lukasrozado.github.io/projects/institutional-digital-asset-custody-en.html">
     <meta property="og:title" content="Institutional Digital Asset Custody Integrator | Case Study">
     <meta property="og:description" content="Distributed integration architecture for managing institutional custody of crypto assets. I implemented an abstraction layer to orchestrate global...">
-    <meta property="og:image" content="https://lukasrozado.github.io/assets/images/institutional_digital_asset_custody_integrator.webp">
+    <meta property="og:image" content="https://lukasrozado.github.io/assets/images/institutional_digital_asset_custody_integrator_v2.webp">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@RozadoLukas">
     <meta name="twitter:title" content="Institutional Digital Asset Custody Integrator | Case Study">
     <meta name="twitter:description" content="Distributed integration architecture for managing institutional custody of crypto assets. I implemented an abstraction layer to orchestrate global...">
-    <meta name="twitter:image" content="https://lukasrozado.github.io/assets/images/institutional_digital_asset_custody_integrator.webp">
+    <meta name="twitter:image" content="https://lukasrozado.github.io/assets/images/institutional_digital_asset_custody_integrator_v2.webp">
 
     <link rel="icon" href="../assets/icons/favicon.ico" sizes="any">
     <link rel="apple-touch-icon" href="../assets/icons/favicon-180x180.webp">
@@ -46,7 +46,7 @@
         "name": "Institutional Digital Asset Custody Integrator",
         "description": "Distributed integration architecture for managing institutional custody of crypto assets. I implemented an abstraction layer to orchestrate global master APIs, ensuring the segregated capture of transactional data by operating region. The system focuses on high security in secrets traffic and schema standardization to comply with international FinOps audits.",
         "url": "https://lukasrozado.github.io/projects/institutional-digital-asset-custody-en.html",
-        "image": "https://lukasrozado.github.io/assets/images/institutional_digital_asset_custody_integrator.webp",
+        "image": "https://lukasrozado.github.io/assets/images/institutional_digital_asset_custody_integrator_v2.webp",
         "inLanguage": "en",
         "keywords": "python, rest-api, azure, postgresql",
         "author": {
@@ -97,30 +97,31 @@
             <h1 itemprop="name">Institutional Digital Asset Custody Integrator</h1>
 
 
-            <p class="lead" itemprop="description">Distributed integration architecture for managing institutional custody of crypto assets. I implemented an abstraction layer to orchestrate global master APIs, ensuring the segregated capture of transactional data by operating region. The system focuses on high security in secrets traffic and schema standardization to comply with international FinOps audits.</p>
+            <p class="lead" itemprop="description">An ingestion orchestrator for institutional crypto asset custody, with each regional workspace isolated, its own credential loaded from a vault, and two parallel lanes: transactions and per-vault balance snapshots. A state machine switches on its own between full backfill and incremental mode, with a 5-minute overlap at the handoff so no record is lost at the window's edge. A separate, lighter auditor re-scans only the transactions still in a non-terminal status, starting from the oldest pending record, and upserts whatever changed, with no need to re-scan the entire history to catch a transaction that took a while to settle.</p>
 
             <div class="project-tech-row">
                 <img src="../assets/icons/python.svg" alt="python" class="tech-icon" width="30" height="30">
                 <img src="../assets/icons/postgresql.svg" alt="postgresql" class="tech-icon" width="30" height="30">
             </div>
 
-            <figure class="project-diagram">
-                <img src="../assets/images/institutional_digital_asset_custody_integrator.webp" alt="Institutional Digital Asset Custody Integrator - architecture diagram" width="1200" height="800" loading="lazy" decoding="async" itemprop="image">
-                <figcaption>System architecture</figcaption>
+            <figure class="project-diagram" data-v1="../assets/images/institutional_digital_asset_custody_integrator.webp" data-v2="../assets/images/institutional_digital_asset_custody_integrator_v2.webp">
+                <img id="diagram-img" src="../assets/images/institutional_digital_asset_custody_integrator_v2.webp" alt="Institutional Digital Asset Custody Integrator - architecture diagram" width="1200" height="800" loading="lazy" decoding="async" itemprop="image" data-showing="v2">
+                <figcaption>System architecture - <span class="diagram-version">v2</span></figcaption>
+                <button class="diagram-toggle" type="button" aria-label="View v1">View v1</button>
             </figure>
             <section class="case-study" aria-labelledby="case-study-heading">
                 <h2 id="case-study-heading">Case Study</h2>
                 <div class="case-block">
                     <h3>Problem</h3>
-                    <p>Regional data fragmentation and complexity in managing multiple high-value custody keys.</p>
+                    <p>Each regional custody workspace had its own credential and its own pace, but a transaction in an intermediate status (pending, under approval) could change state hours or days later, with no way to know without reprocessing everything. Full backfill and incremental capture were competing for the same checkpoint logic.</p>
                 </div>
                 <div class="case-block">
                     <h3>Solution</h3>
-                    <p>Unification of regional pipelines under a centralized orchestrator with metadata isolation.</p>
+                    <p>A centralized orchestrator processes each workspace in isolation, with its own key loaded from a secrets vault. A state machine decides on its own whether it's still backfilling (checkpoint moves through the oldest processed record) or already incremental (checkpoint moves through the newest, with a 5-minute overlap at the handoff). Two lanes run per workspace, transactions and per-vault-account balance snapshots, both upserted by key. A separate, lighter auditor fetches only the earliest date among the still-open transactions and re-scans the API from there, never from the start.</p>
                 </div>
                 <div class="case-block">
                     <h3>Impact</h3>
-                    <p>Reduction of regional reconciliation failures and full centralization of asset custody visibility.</p>
+                    <p>A transaction that changes status after capture gets corrected without reprocessing the whole history. Each workspace keeps its own checkpoint and its own run history, so a failure in one never blocks the others. Balance snapshots and transactions always land in the same schema, ready for cross-auditing.</p>
                 </div>
             </section>
 
@@ -136,9 +137,9 @@
 <footer itemscope itemtype="https://schema.org/WPFooter" role="contentinfo">
     <div class="footer-inner">
         <div class="footer-cta">
+            <img src="../assets/images/logo-dado-bruto-600.png" alt="Dado Bruto" style="height:96px;width:auto;flex-shrink:0;border-radius:10px;filter:drop-shadow(0 2px 8px rgba(0,212,255,.25))">
             <div class="footer-cta-text">
-                <p class="footer-newsletter-title">Dado Bruto</p>
-                <p class="footer-newsletter-desc">Data Engineering newsletter on LinkedIn. No fluff, straight to the point.</p>
+                <p class="footer-newsletter-desc"><strong style="color:#00D4FF">Dado Bruto</strong> — newsletter &middot; Real data engineering cases in production: architecture, trade-offs, and the metric that proves it.</p>
             </div>
             <a class="btn-newsletter" href="https://www.linkedin.com/newsletters/dado-bruto-7498525638908321792/" target="_blank" rel="noopener noreferrer">Subscribe on LinkedIn <span aria-hidden="true">&nearr;</span></a>
         </div>
@@ -194,6 +195,17 @@
         } catch (error) {
             console.error("Menu unavailable:", error);
         }
+    </script>
+    <script>
+        document.querySelector('.diagram-toggle')?.addEventListener('click', function(){
+            const fig = this.closest('.project-diagram');
+            const img = fig.querySelector('#diagram-img');
+            const showing = img.getAttribute('data-showing');
+            const v1 = fig.getAttribute('data-v1');
+            const v2 = fig.getAttribute('data-v2');
+            const label = fig.querySelector('.diagram-version');
+            if(showing === 'v2'){ img.src = v1; img.setAttribute('data-showing','v1'); label.textContent='v1'; this.textContent = 'View v2'; } else { img.src = v2; img.setAttribute('data-showing','v2'); label.textContent='v2'; this.textContent = 'View v1'; }
+        });
     </script>
 </body>
 </html>

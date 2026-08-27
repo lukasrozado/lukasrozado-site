@@ -3,29 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enterprise Crypto Data Lake: Ingestão Multi-Conta | Lukas Rozado</title>
+    <title>Unified Banking Ledger Platform | Lukas Rozado</title>
     <meta name="theme-color" content="#00D4FF">
 
-    <link rel="canonical" href="https://lukasrozado.github.io/projects/enterprise-crypto-data-lake.html">
-    <link rel="alternate" hreflang="pt-BR" href="https://lukasrozado.github.io/projects/enterprise-crypto-data-lake.html">
-    <link rel="alternate" hreflang="en" href="https://lukasrozado.github.io/projects/enterprise-crypto-data-lake-en.html">
-    <link rel="alternate" hreflang="x-default" href="https://lukasrozado.github.io/projects/enterprise-crypto-data-lake.html">
+    <link rel="canonical" href="https://lukasrozado.github.io/projects/unified-banking-ledger-platform.html">
+    <link rel="alternate" hreflang="pt-BR" href="https://lukasrozado.github.io/projects/unified-banking-ledger-platform.html">
+    <link rel="alternate" hreflang="en" href="https://lukasrozado.github.io/projects/unified-banking-ledger-platform-en.html">
+    <link rel="alternate" hreflang="x-default" href="https://lukasrozado.github.io/projects/unified-banking-ledger-platform.html">
 
-    <meta name="description" content="Arquitetura end-to-end para ingestão transacional de múltiplas contas institucionais em exchanges de criptoativos. Implementei um motor de extração...">
+    <meta name="description" content="Plataforma unificada de ingestão bancária, PIX, ledger e mesa OTC, com isolamento de estado por domínio, early-exit por marca d'água e auditor de ciclo de vida.">
     <meta name="author" content="Lukas Rozado">
     <meta name="robots" content="index,follow,max-image-preview:large">
 
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://lukasrozado.github.io/projects/enterprise-crypto-data-lake.html">
-    <meta property="og:title" content="Enterprise Crypto Data Lake: Ingest&#227;o Multi-Conta | Case Study">
-    <meta property="og:description" content="Arquitetura end-to-end para ingestão transacional de múltiplas contas institucionais em exchanges de criptoativos. Implementei um motor de extração...">
-    <meta property="og:image" content="https://lukasrozado.github.io/assets/images/crypto_data_lake_ingestion_architecture_v2.webp">
+    <meta property="og:url" content="https://lukasrozado.github.io/projects/unified-banking-ledger-platform.html">
+    <meta property="og:title" content="Unified Banking Ledger Platform | Case Study">
+    <meta property="og:description" content="Plataforma unificada de ingestão bancária, PIX, ledger e mesa OTC, com isolamento de estado por domínio, early-exit por marca d'água e auditor de ciclo de vida.">
+    <meta property="og:image" content="https://lukasrozado.github.io/assets/images/unified-banking-ledger-platform.webp">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@RozadoLukas">
-    <meta name="twitter:title" content="Enterprise Crypto Data Lake: Ingest&#227;o Multi-Conta | Case Study">
-    <meta name="twitter:description" content="Arquitetura end-to-end para ingestão transacional de múltiplas contas institucionais em exchanges de criptoativos. Implementei um motor de extração...">
-    <meta name="twitter:image" content="https://lukasrozado.github.io/assets/images/crypto_data_lake_ingestion_architecture_v2.webp">
+    <meta name="twitter:title" content="Unified Banking Ledger Platform | Case Study">
+    <meta name="twitter:description" content="Plataforma unificada de ingestão bancária, PIX, ledger e mesa OTC, com isolamento de estado por domínio, early-exit por marca d'água e auditor de ciclo de vida.">
+    <meta name="twitter:image" content="https://lukasrozado.github.io/assets/images/unified-banking-ledger-platform.webp">
 
     <link rel="icon" href="../assets/icons/favicon.ico" sizes="any">
     <link rel="apple-touch-icon" href="../assets/icons/favicon-180x180.webp">
@@ -43,10 +43,10 @@
     {
         "@context": "https://schema.org",
         "@type": "CreativeWork",
-        "name": "Enterprise Crypto Data Lake: Ingestão Multi-Conta",
-        "description": "Arquitetura end-to-end para ingestão transacional de múltiplas contas institucionais em exchanges de criptoativos. Implementei um motor de extração assíncrono com Rate Limiter inteligente que monitora headers da API para evitar banimentos. O sistema utiliza Azure Key Vault para gestão de segredos e um carregador PostgreSQL de alta performance via comandos COPY e tabelas temporárias, garantindo idempotência e integridade em escala.",
-        "url": "https://lukasrozado.github.io/projects/enterprise-crypto-data-lake.html",
-        "image": "https://lukasrozado.github.io/assets/images/crypto_data_lake_ingestion_architecture_v2.webp",
+        "name": "Unified Banking Ledger Platform",
+        "description": "Plataforma unificada de ingestão para contas bancárias, PIX, parceiros, movimentos de ledger e mesa OTC, com fila produtor-consumidor, estado isolado por domínio, early-exit por marca d'água histórica, estratégia dupla de snapshot de saldo (delta/full) e auditor de ciclo de vida para transações PIX pendentes.",
+        "url": "https://lukasrozado.github.io/projects/unified-banking-ledger-platform.html",
+        "image": "https://lukasrozado.github.io/assets/images/unified-banking-ledger-platform.webp",
         "inLanguage": "pt-BR",
         "keywords": "python, postgresql, azure, sql",
         "author": {
@@ -94,34 +94,32 @@
                 <span class="project-tag">Engenharia de Dados</span>
             </div>
 
-            <h1 itemprop="name">Enterprise Crypto Data Lake: Ingestão Multi-Conta</h1>
+            <h1 itemprop="name">Unified Banking Ledger Platform</h1>
 
-
-            <p class="lead" itemprop="description">Arquitetura de auditoria financeira contínua para dezenas de contas institucionais numa exchange de criptoativos, com backfill histórico desde a criação de cada conta. O núcleo é um rate limiter compartilhado entre processos que lê, em cada resposta HTTP, o header oficial de cota consumida — nunca uma estimativa por contagem de chamadas — o que elimina o padrão de bloqueio de IP que existia antes dessa arquitetura. Uma camada Bronze obrigatória guarda o payload bruto em JSONB e alimenta um modelo Medallion completo; a carga roda via <code>COPY</code> nativo do PostgreSQL, tabela temporária e UPSERT, sustentando dezenas de milhões de registros por ano com credenciais isoladas em Azure Key Vault.</p>
+            <p class="lead" itemprop="description">Plataforma que unificou dois pipelines financeiros separados (banking/PIX e reconciliação de ledger) num só sistema, rodando de minuto em minuto, persistente e orquestrado. Cada domínio de dado — contas, chaves PIX, transações PIX, parceiros, movimentos de ledger, mesa OTC — tem fila produtor-consumidor própria, cursor e marca d'água isolados, e descarrega em lotes de 5 mil registros direto no banco. Endpoints sem filtro nativo de delta usam early-exit: leem do topo e param sozinhos assim que N páginas seguidas já cruzaram a marca d'água salva, sem precisar revarrer o histórico inteiro a cada execução. Saldo de parceiro roda em duas estratégias, delta a cada 15 minutos pra quem movimentou recente e full diário pra todo mundo. Um auditor de ciclo de vida separado corrige status de transação PIX que muda depois de capturada, sem re-escanear nada além do necessário.</p>
 
             <div class="project-tech-row">
                 <img src="../assets/icons/python.svg" alt="python" class="tech-icon" width="30" height="30">
                 <img src="../assets/icons/postgresql.svg" alt="postgresql" class="tech-icon" width="30" height="30">
             </div>
 
-            <figure class="project-diagram" data-v1="../assets/images/crypto_data_lake_ingestion_architecture.webp" data-v2="../assets/images/crypto_data_lake_ingestion_architecture_v2.webp">
-                <img id="diagram-img" src="../assets/images/crypto_data_lake_ingestion_architecture_v2.webp" alt="Enterprise Crypto Data Lake: Ingestão Multi-Conta - diagrama de arquitetura" width="1200" height="800" loading="lazy" decoding="async" itemprop="image" data-showing="v2">
-                <figcaption>Arquitetura do sistema - <span class="diagram-version">v2</span></figcaption>
-                <button class="diagram-toggle" type="button" aria-label="Ver v1">Ver v1</button>
+            <figure class="project-diagram">
+                <img src="../assets/images/unified-banking-ledger-platform.webp" alt="Unified Banking Ledger Platform - diagrama de arquitetura" width="1200" height="800" loading="lazy" decoding="async" itemprop="image">
+                <figcaption>Arquitetura do sistema</figcaption>
             </figure>
             <section class="case-study" aria-labelledby="case-study-heading">
                 <h2 id="case-study-heading">Estudo de caso</h2>
                 <div class="case-block">
                     <h3>Problema</h3>
-                    <p>Dezenas de contas institucionais e sub-contas numa mesma exchange precisavam de auditoria contínua, mas o teto de cota da API era compartilhado entre <em>todas</em> as chaves, não por chave, e cada sub-sistema (spot, futuros, conversão, staking) devolvia um formato de resposta diferente. Passar do limite bloqueava o IP corporativo por HTTP e travava a auditoria inteira até o desbloqueio.</p>
+                    <p>Dois sistemas financeiros cresceram separados, cada um com seu próprio modelo de checkpoint, e precisavam virar um só sem perder o que já funcionava. Boa parte dos endpoints não tem filtro de data nativo, então capturar só o que é novo significa ler do início e adivinhar onde parar — ou reprocessar tudo, todo minuto, pra sempre.</p>
                 </div>
                 <div class="case-block">
                     <h3>Solu&ccedil;&atilde;o</h3>
-                    <p>Um rate limiter lê o header oficial de peso já consumido em cada resposta HTTP, nunca uma estimativa, com o estado compartilhado entre processos via memória gerenciada, respeitando um teto único de cota por minuto. Um carrossel dá prioridade às contas com atividade recente e empurra as inativas pra ciclos mais espaçados, sem gastar cota em quem não mudou. Toda a carga acontece em bulk, via <code>COPY</code> nativo, tabela temporária e <code>UPSERT</code>, com checkpoint em JSONB pra retomar exatamente de onde parou depois de qualquer interrupção.</p>
+                    <p>Cada domínio roda isolado, com seu próprio cursor e sua própria marca d'água — uma falha numa "gaveta" não trava as outras. Pra endpoint sem filtro de data, a leitura começa do topo e para sozinha assim que N páginas seguidas caem numa data já coberta antes (early-exit por marca d'água), evitando tanto reprocessar tudo quanto parar cedo demais e perder registro. Saldo de parceiro roda em duas velocidades: delta de 15 minutos pra quem mexeu recente, full diário pra fechar o resto. Um auditor à parte cobre o caso que nenhuma das duas estratégias resolve sozinha: transação que já foi capturada mas muda de status depois — ele lê só a partir da mais antiga ainda pendente, e faz UPSERT no que mudou.</p>
                 </div>
                 <div class="case-block">
                     <h3>Impacto</h3>
-                    <p>Backfill histórico completo desde a abertura de cada conta, algumas remontando a 2019, e fim do padrão de bloqueio que existia antes dessa arquitetura. Dezenas de milhões de registros processados por ano, com o pipeline sustentando &gt;99,9% de uptime.</p>
+                    <p>Dois pipelines viraram uma plataforma só, cobrindo banking, PIX, parceiros, ledger e mesa OTC (trades, saldo de parceiro, entrega travada, desvio de liquidação e empréstimos), rodando persistente de minuto em minuto sem depender de reprocessamento manual. Estado por domínio significa que adicionar uma esteira nova não arrisca as que já rodam.</p>
                 </div>
             </section>
 
@@ -137,9 +135,9 @@
 <footer itemscope itemtype="https://schema.org/WPFooter" role="contentinfo">
     <div class="footer-inner">
         <div class="footer-cta">
-            <img src="../assets/images/logo-dado-bruto-600.png" alt="Dado Bruto" style="height:96px;width:auto;flex-shrink:0;border-radius:10px;filter:drop-shadow(0 2px 8px rgba(0,212,255,.25))">
             <div class="footer-cta-text">
-                <p class="footer-newsletter-desc"><strong style="color:#00D4FF">Dado Bruto</strong> — newsletter &middot; Casos reais de engenharia de dados em produ&ccedil;&atilde;o: arquitetura, trade-off e a m&eacute;trica que prova o resultado.</p>
+                <p class="footer-newsletter-title">Dado Bruto</p>
+                <p class="footer-newsletter-desc">Newsletter de Engenharia de Dados no LinkedIn. Sem spam, direto ao ponto.</p>
             </div>
             <a class="btn-newsletter" href="https://www.linkedin.com/newsletters/dado-bruto-7498525638908321792/" target="_blank" rel="noopener noreferrer">Assinar no LinkedIn <span aria-hidden="true">&nearr;</span></a>
         </div>
@@ -195,17 +193,6 @@
         } catch (error) {
             console.error("Menu unavailable:", error);
         }
-    </script>
-    <script>
-        document.querySelector('.diagram-toggle')?.addEventListener('click', function(){
-            const fig = this.closest('.project-diagram');
-            const img = fig.querySelector('#diagram-img');
-            const showing = img.getAttribute('data-showing');
-            const v1 = fig.getAttribute('data-v1');
-            const v2 = fig.getAttribute('data-v2');
-            const label = fig.querySelector('.diagram-version');
-            if(showing === 'v2'){ img.src = v1; img.setAttribute('data-showing','v1'); label.textContent='v1'; this.textContent = 'Ver v2'; } else { img.src = v2; img.setAttribute('data-showing','v2'); label.textContent='v2'; this.textContent = 'Ver v1'; }
-        });
     </script>
 </body>
 </html>

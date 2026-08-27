@@ -97,7 +97,7 @@
             <h1 itemprop="name">Unified Multi-Chain Ledger Integrator</h1>
 
 
-            <p class="lead" itemprop="description">Pipeline resiliente para consolidação transacional em dezenhas de blockchains e contratos (EVM e Solana). Substituí indexadores por extração RPC crua com algoritmos de 'Reverse Check', otimizando a varredura de blocos. O diferencial core é o motor de Auto-Reconciliação (Pacemaker), que audita continuamente o banco PostgreSQL contra os nós da rede, garantindo unicidade rigorosa e 100% de integridade nos balanços.</p>
+            <p class="lead" itemprop="description">Pipeline resiliente pra consolidar transações em dezenas de blockchains e contratos (EVM e Solana), lendo direto do nó via RPC crua (<code>eth_getLogs</code> filtrado por tópico de evento) em vez de depender de indexador de terceiro. Faixas de bloco densas demais pra API se dividem recursivamente até caber. O diferencial é o motor de auto-reconciliação: compara, faixa por faixa, a contagem de eventos on-chain contra o banco, cura sozinho qualquer divergência apagando e re-extraindo o lote, e fecha com uma checagem contábil final comparando o supply total on-chain contra o supply líquido calculado no PostgreSQL.</p>
 
             <div class="project-tech-row">
                 <img src="../assets/icons/python.svg" alt="python" class="tech-icon" width="30" height="30">
@@ -112,15 +112,15 @@
                 <h2 id="case-study-heading">Estudo de caso</h2>
                 <div class="case-block">
                     <h3>Problema</h3>
-                    <p>Fragmentação de dados on-chain e risco de integridade utilizando indexadores de terceiros em 15+ redes.</p>
+                    <p>Indexador de terceiro em 15+ redes espalha o dado e não dá garantia real de integridade: cada provedor tem seu próprio atraso, formato e taxa de erro, e não existe um jeito nativo de saber se uma faixa de blocos ficou incompleta no banco.</p>
                 </div>
                 <div class="case-block">
                     <h3>Solu&ccedil;&atilde;o</h3>
-                    <p>Extração via RPC puro acoplada a um motor de auditoria interna para auto-reconciliação contínua.</p>
+                    <p>Extração direta do nó via RPC, sem intermediário, com faixa de bloco que se particiona sozinha quando fica densa demais pra API responder. Por cima disso, um motor de auto-reconciliação varre o histórico em lotes, compara contagem de evento on-chain contra contagem no banco, e sempre que diverge apaga o lote inteiro e re-extrai do zero, com retry. No fechamento, comparo o supply total do token direto do contrato contra o supply líquido que o banco calcula somando mint e subtraindo burn — é o invariante contábil de verdade, não só contagem de linha.</p>
                 </div>
                 <div class="case-block">
                     <h3>Impacto</h3>
-                    <p>Unificação relacional canônica com garantia absoluta de precisão em transações e balanços cruzados.</p>
+                    <p>Unificação relacional canônica de transação e balanço cruzado entre EVM e Solana, com estado de reconciliação persistido por rede — uma falha no meio do processo retoma exatamente do último lote validado, nunca do zero.</p>
                 </div>
             </section>
 
@@ -136,9 +136,9 @@
 <footer itemscope itemtype="https://schema.org/WPFooter" role="contentinfo">
     <div class="footer-inner">
         <div class="footer-cta">
+            <img src="../assets/images/logo-dado-bruto-600.png" alt="Dado Bruto" style="height:96px;width:auto;flex-shrink:0;border-radius:10px;filter:drop-shadow(0 2px 8px rgba(0,212,255,.25))">
             <div class="footer-cta-text">
-                <p class="footer-newsletter-title">Dado Bruto</p>
-                <p class="footer-newsletter-desc">Newsletter de Engenharia de Dados no LinkedIn. Sem spam, direto ao ponto.</p>
+                <p class="footer-newsletter-desc"><strong style="color:#00D4FF">Dado Bruto</strong> — newsletter &middot; Casos reais de engenharia de dados em produ&ccedil;&atilde;o: arquitetura, trade-off e a m&eacute;trica que prova o resultado.</p>
             </div>
             <a class="btn-newsletter" href="https://www.linkedin.com/newsletters/dado-bruto-7498525638908321792/" target="_blank" rel="noopener noreferrer">Assinar no LinkedIn <span aria-hidden="true">&nearr;</span></a>
         </div>
@@ -195,5 +195,6 @@
             console.error("Menu unavailable:", error);
         }
     </script>
+
 </body>
 </html>

@@ -19,13 +19,13 @@
     <meta property="og:url" content="https://lukasrozado.github.io/projects/baas-financial-settlement-data-sink.html">
     <meta property="og:title" content="BaaS &amp; Financial Settlement Data Sink | Case Study">
     <meta property="og:description" content="Desenvolvimento de um pipeline de integração programática para centralização de dados de liquidação financeira multibancos (Banking-as-a-Service). A...">
-    <meta property="og:image" content="https://lukasrozado.github.io/assets/images/baas_financial_settlement_data_sink.webp">
+    <meta property="og:image" content="https://lukasrozado.github.io/assets/images/baas_financial_settlement_data_sink_v2.webp">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@RozadoLukas">
     <meta name="twitter:title" content="BaaS &amp; Financial Settlement Data Sink | Case Study">
     <meta name="twitter:description" content="Desenvolvimento de um pipeline de integração programática para centralização de dados de liquidação financeira multibancos (Banking-as-a-Service). A...">
-    <meta name="twitter:image" content="https://lukasrozado.github.io/assets/images/baas_financial_settlement_data_sink.webp">
+    <meta name="twitter:image" content="https://lukasrozado.github.io/assets/images/baas_financial_settlement_data_sink_v2.webp">
 
     <link rel="icon" href="../assets/icons/favicon.ico" sizes="any">
     <link rel="apple-touch-icon" href="../assets/icons/favicon-180x180.webp">
@@ -46,7 +46,7 @@
         "name": "BaaS & Financial Settlement Data Sink",
         "description": "Desenvolvimento de um pipeline de integração programática para centralização de dados de liquidação financeira multibancos (Banking-as-a-Service). A arquitetura foi desenhada para garantir máxima segurança na comunicação entre sistemas isolados. Utiliza autenticação corporativa via Azure Active Directory e tokens para orquestrar a captura de milhares de pagamentos, convertendo-os em registros imutáveis no Data Warehouse.",
         "url": "https://lukasrozado.github.io/projects/baas-financial-settlement-data-sink.html",
-        "image": "https://lukasrozado.github.io/assets/images/baas_financial_settlement_data_sink.webp",
+        "image": "https://lukasrozado.github.io/assets/images/baas_financial_settlement_data_sink_v2.webp",
         "inLanguage": "pt-BR",
         "keywords": "python, azure, rest-api, postgresql",
         "author": {
@@ -97,30 +97,31 @@
             <h1 itemprop="name">BaaS &amp; Financial Settlement Data Sink</h1>
 
 
-            <p class="lead" itemprop="description">Desenvolvimento de um pipeline de integração programática para centralização de dados de liquidação financeira multibancos (Banking-as-a-Service). A arquitetura foi desenhada para garantir máxima segurança na comunicação entre sistemas isolados. Utiliza autenticação corporativa via Azure Active Directory e tokens para orquestrar a captura de milhares de pagamentos, convertendo-os em registros imutáveis no Data Warehouse.</p>
+            <p class="lead" itemprop="description">Pipeline de integração programática que centraliza dados de liquidação financeira multibancos (Banking-as-a-Service), desenhado pra garantir segurança máxima na comunicação entre sistemas isolados, com autenticação corporativa via Azure Active Directory e tokens. Antes de qualquer <code>COPY</code> nativo do PostgreSQL, toda carga passa por uma camada de sanitização dedicada; um motor de flattening transforma logs aninhados em colunas de auditoria consultáveis direto, sem <em>join</em>; e o script de backfill histórico roda isolado do checkpoint de produção, sem risco de reprocessar ou corromper o incremental em andamento.</p>
 
             <div class="project-tech-row">
                 <img src="../assets/icons/python.svg" alt="python" class="tech-icon" width="30" height="30">
                 <img src="../assets/icons/postgresql.svg" alt="postgresql" class="tech-icon" width="30" height="30">
             </div>
 
-            <figure class="project-diagram">
-                <img src="../assets/images/baas_financial_settlement_data_sink.webp" alt="BaaS &amp; Financial Settlement Data Sink - diagrama de arquitetura" width="1200" height="800" loading="lazy" decoding="async" itemprop="image">
-                <figcaption>Arquitetura do sistema</figcaption>
+            <figure class="project-diagram" data-v1="../assets/images/baas_financial_settlement_data_sink.webp" data-v2="../assets/images/baas_financial_settlement_data_sink_v2.webp">
+                <img id="diagram-img" src="../assets/images/baas_financial_settlement_data_sink_v2.webp" alt="BaaS &amp; Financial Settlement Data Sink - diagrama de arquitetura" width="1200" height="800" loading="lazy" decoding="async" itemprop="image" data-showing="v2">
+                <figcaption>Arquitetura do sistema - <span class="diagram-version">v2</span></figcaption>
+                <button class="diagram-toggle" type="button" aria-label="Ver v1">Ver v1</button>
             </figure>
             <section class="case-study" aria-labelledby="case-study-heading">
                 <h2 id="case-study-heading">Estudo de caso</h2>
                 <div class="case-block">
                     <h3>Problema</h3>
-                    <p>Necessidade de extração segura de dados de liquidação financeira em sistemas isolados de alta criticidade.</p>
+                    <p>Payload financeiro chegava com listas nativas que quebravam o carregador bulk do PostgreSQL. Log de transação normalizado em tabela própria só respondia com <em>join</em> lento, e perdia o retrato exato do instante da operação. E rodar uma carga histórica retroativa corria o risco de sobrescrever o checkpoint do pipeline de produção, prendendo-o num loop.</p>
                 </div>
                 <div class="case-block">
                     <h3>Solu&ccedil;&atilde;o</h3>
-                    <p>Implementação de ponte de autenticação corporativa via Azure AD para consumo programático de APIs.</p>
+                    <p>Antes de qualquer <code>COPY</code>, um motor de sanitização dedicado converte cada lista pro formato nativo de array do Postgres. Na camada Silver, o flattening é total: o transformer abre o payload aninhado e joga suas colunas, já prefixadas, direto na tabela de log — auditoria vira um <code>SELECT</code> só. O script de backfill é passivo por completo, nunca grava no checkpoint de produção, e cada extrator trata endpoint sem contrato como volume zero, sem derrubar o resto do pipeline.</p>
                 </div>
                 <div class="case-block">
                     <h3>Impacto</h3>
-                    <p>Automação da conciliação bancária de parceiros e consolidação do fluxo de caixa em tempo real para auditoria.</p>
+                    <p>Ingestão contínua de dado de liquidação de alta criticidade sem risco de corromper o estado de produção. Trilha de auditoria imutável, consultável direto, sem <em>join</em>. Resiliente a produto parcialmente contratado, sem precisar de intervenção manual.</p>
                 </div>
             </section>
 
@@ -136,9 +137,9 @@
 <footer itemscope itemtype="https://schema.org/WPFooter" role="contentinfo">
     <div class="footer-inner">
         <div class="footer-cta">
+            <img src="../assets/images/logo-dado-bruto-600.png" alt="Dado Bruto" style="height:96px;width:auto;flex-shrink:0;border-radius:10px;filter:drop-shadow(0 2px 8px rgba(0,212,255,.25))">
             <div class="footer-cta-text">
-                <p class="footer-newsletter-title">Dado Bruto</p>
-                <p class="footer-newsletter-desc">Newsletter de Engenharia de Dados no LinkedIn. Sem spam, direto ao ponto.</p>
+                <p class="footer-newsletter-desc"><strong style="color:#00D4FF">Dado Bruto</strong> — newsletter &middot; Casos reais de engenharia de dados em produ&ccedil;&atilde;o: arquitetura, trade-off e a m&eacute;trica que prova o resultado.</p>
             </div>
             <a class="btn-newsletter" href="https://www.linkedin.com/newsletters/dado-bruto-7498525638908321792/" target="_blank" rel="noopener noreferrer">Assinar no LinkedIn <span aria-hidden="true">&nearr;</span></a>
         </div>
@@ -194,6 +195,17 @@
         } catch (error) {
             console.error("Menu unavailable:", error);
         }
+    </script>
+    <script>
+        document.querySelector('.diagram-toggle')?.addEventListener('click', function(){
+            const fig = this.closest('.project-diagram');
+            const img = fig.querySelector('#diagram-img');
+            const showing = img.getAttribute('data-showing');
+            const v1 = fig.getAttribute('data-v1');
+            const v2 = fig.getAttribute('data-v2');
+            const label = fig.querySelector('.diagram-version');
+            if(showing === 'v2'){ img.src = v1; img.setAttribute('data-showing','v1'); label.textContent='v1'; this.textContent = 'Ver v2'; } else { img.src = v2; img.setAttribute('data-showing','v2'); label.textContent='v2'; this.textContent = 'Ver v1'; }
+        });
     </script>
 </body>
 </html>

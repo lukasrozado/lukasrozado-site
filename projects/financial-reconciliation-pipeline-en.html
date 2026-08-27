@@ -3,29 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unified Multi-Chain Ledger Integrator | Lukas Rozado</title>
+    <title>High-Concurrency Financial Reconciliation Pipeline | Lukas Rozado</title>
     <meta name="theme-color" content="#00D4FF">
 
-    <link rel="canonical" href="https://lukasrozado.github.io/projects/multi-chain-ledger-integrator-en.html">
-    <link rel="alternate" hreflang="pt-BR" href="https://lukasrozado.github.io/projects/multi-chain-ledger-integrator.html">
-    <link rel="alternate" hreflang="en" href="https://lukasrozado.github.io/projects/multi-chain-ledger-integrator-en.html">
-    <link rel="alternate" hreflang="x-default" href="https://lukasrozado.github.io/projects/multi-chain-ledger-integrator.html">
+    <link rel="canonical" href="https://lukasrozado.github.io/projects/financial-reconciliation-pipeline-en.html">
+    <link rel="alternate" hreflang="pt-BR" href="https://lukasrozado.github.io/projects/financial-reconciliation-pipeline.html">
+    <link rel="alternate" hreflang="en" href="https://lukasrozado.github.io/projects/financial-reconciliation-pipeline-en.html">
+    <link rel="alternate" hreflang="x-default" href="https://lukasrozado.github.io/projects/financial-reconciliation-pipeline.html">
 
-    <meta name="description" content="Resilient pipeline for consolidating transactional data across multiples blockchains and contracts (EVM and Solana). I replaced third-party indexers...">
+    <meta name="description" content="Hybrid financial ingestion and reconciliation pipeline, with anti-join self-heal, per-page checkpoint and isolated sequential backfill for high-transaction data.">
     <meta name="author" content="Lukas Rozado">
     <meta name="robots" content="index,follow,max-image-preview:large">
 
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://lukasrozado.github.io/projects/multi-chain-ledger-integrator-en.html">
-    <meta property="og:title" content="Unified Multi-Chain Ledger Integrator | Case Study">
-    <meta property="og:description" content="Resilient pipeline for consolidating transactional data across multiples blockchains and contracts (EVM and Solana). I replaced third-party indexers...">
-    <meta property="og:image" content="https://lukasrozado.github.io/assets/images/unified_multi_chain_ledger_integrator.webp">
+    <meta property="og:url" content="https://lukasrozado.github.io/projects/financial-reconciliation-pipeline-en.html">
+    <meta property="og:title" content="High-Concurrency Financial Reconciliation Pipeline | Case Study">
+    <meta property="og:description" content="Hybrid financial ingestion and reconciliation pipeline, with anti-join self-heal, per-page checkpoint and isolated sequential backfill for high-transaction data.">
+    <meta property="og:image" content="https://lukasrozado.github.io/assets/images/financial-reconciliation-pipeline.webp">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@RozadoLukas">
-    <meta name="twitter:title" content="Unified Multi-Chain Ledger Integrator | Case Study">
-    <meta name="twitter:description" content="Resilient pipeline for consolidating transactional data across multiples blockchains and contracts (EVM and Solana). I replaced third-party indexers...">
-    <meta name="twitter:image" content="https://lukasrozado.github.io/assets/images/unified_multi_chain_ledger_integrator.webp">
+    <meta name="twitter:title" content="High-Concurrency Financial Reconciliation Pipeline | Case Study">
+    <meta name="twitter:description" content="Hybrid financial ingestion and reconciliation pipeline, with anti-join self-heal, per-page checkpoint and isolated sequential backfill for high-transaction data.">
+    <meta name="twitter:image" content="https://lukasrozado.github.io/assets/images/financial-reconciliation-pipeline.webp">
 
     <link rel="icon" href="../assets/icons/favicon.ico" sizes="any">
     <link rel="apple-touch-icon" href="../assets/icons/favicon-180x180.webp">
@@ -43,10 +43,10 @@
     {
         "@context": "https://schema.org",
         "@type": "CreativeWork",
-        "name": "Unified Multi-Chain Ledger Integrator",
-        "description": "Resilient pipeline for consolidating transactional data across multiples blockchains and contracts (EVM and Solana). I replaced third-party indexers with raw RPC extraction using 'Reverse Check' algorithms, optimizing block scanning. The core differentiator is the Auto-Reconciliation engine (Pacemaker), which continuously audits the PostgreSQL database against network nodes, ensuring strict uniqueness and 100% integrity in balances.",
-        "url": "https://lukasrozado.github.io/projects/multi-chain-ledger-integrator-en.html",
-        "image": "https://lukasrozado.github.io/assets/images/unified_multi_chain_ledger_integrator.webp",
+        "name": "High-Concurrency Financial Reconciliation Pipeline",
+        "description": "Hybrid financial ingestion and reconciliation pipeline (near real-time API + D-1 CSV self-heal), with producer-consumer architecture, per-page checkpoint, isolated sequential backfill and COPY + UPSERT loading into high-transaction tables.",
+        "url": "https://lukasrozado.github.io/projects/financial-reconciliation-pipeline-en.html",
+        "image": "https://lukasrozado.github.io/assets/images/financial-reconciliation-pipeline.webp",
         "inLanguage": "en",
         "keywords": "python, postgresql, azure, sql",
         "author": {
@@ -79,7 +79,7 @@
         </div>
         <ul>
             <li><a href="../index-en.html">Home</a></li>
-            <li><a href="../index.html#projects">Projects</a></li>
+            <li><a href="../index-en.html#projects">Projects</a></li>
             <li><a href="../writing/">Writing</a></li>
             <li><a href="../contact-en.html">Contact</a></li>
             <li><a class="lang-switch" href="../index.html" hreflang="pt-BR" data-lang="pt" lang="pt-BR">PT</a></li>
@@ -94,10 +94,9 @@
                 <span class="project-tag">Data Engineering</span>
             </div>
 
-            <h1 itemprop="name">Unified Multi-Chain Ledger Integrator</h1>
+            <h1 itemprop="name">High-Concurrency Financial Reconciliation Pipeline</h1>
 
-
-            <p class="lead" itemprop="description">A resilient pipeline that consolidates transactions across dozens of blockchains and contracts (EVM and Solana), reading straight from the node via raw RPC (<code>eth_getLogs</code> filtered by event topic) instead of relying on a third-party indexer. Block ranges too dense for the API split recursively until they fit. The core differentiator is the self-healing reconciliation engine: it compares on-chain event counts against the database range by range, heals any mismatch on its own by deleting and re-extracting the batch, and closes with a final accounting check comparing total on-chain supply against the net supply computed in PostgreSQL.</p>
+            <p class="lead" itemprop="description">A hybrid ingestion pipeline for high-transaction financial data: a near real-time API lane driven by a high-water mark, and a daily lane that downloads a CSV and anti-joins it against the database to recover gaps invisible to the API (pagination offset drift). Extraction runs on a producer-consumer architecture with a bounded queue, and checkpoint state lives per page, not per day, resuming from the exact point of interruption after any failure. Historical backfill runs in a strictly sequential procedural process, isolated from the production ingestion.</p>
 
             <div class="project-tech-row">
                 <img src="../assets/icons/python.svg" alt="python" class="tech-icon" width="30" height="30">
@@ -105,22 +104,22 @@
             </div>
 
             <figure class="project-diagram">
-                <img src="../assets/images/unified_multi_chain_ledger_integrator.webp" alt="Unified Multi-Chain Ledger Integrator - architecture diagram" width="1200" height="800" loading="lazy" decoding="async" itemprop="image">
+                <img src="../assets/images/financial-reconciliation-pipeline.webp" alt="High-Concurrency Financial Reconciliation Pipeline - architecture diagram" width="1200" height="800" loading="lazy" decoding="async" itemprop="image">
                 <figcaption>System architecture</figcaption>
             </figure>
             <section class="case-study" aria-labelledby="case-study-heading">
                 <h2 id="case-study-heading">Case Study</h2>
                 <div class="case-block">
                     <h3>Problem</h3>
-                    <p>A third-party indexer across 15+ networks scatters the data and gives no real integrity guarantee: each provider has its own lag, format and error rate, and there's no native way to know whether a block range landed incomplete in the database.</p>
+                    <p>The source system returned inconsistent timestamps, omitted critical metadata, and suffered pagination offset drift, with records silently disappearing or duplicating. Real-time ingestion, running every minute, kept colliding with the historical load in lock contention, exhausting the connection pool and stalling writes.</p>
                 </div>
                 <div class="case-block">
                     <h3>Solution</h3>
-                    <p>Direct extraction from the node via RPC, no middleman, with a block range that partitions itself when it's too dense for the API to answer. On top of that, a self-healing engine sweeps the history in batches, compares on-chain event counts against the database, and whenever it diverges deletes the whole batch and re-extracts it, with retry. At close, I compare the token's total supply straight from the contract against the net supply the database computes by summing mints and subtracting burns — that's the real accounting invariant, not just a row count.</p>
+                    <p>A hybrid model: the API covers near real-time ingestion via a high-water mark, and a daily routine downloads the consolidated CSV report and runs an anti-join against the database to fill exactly the gap the API missed. The producer-consumer architecture, with a bounded queue, decouples the HTTP call from the database write; checkpoint state is saved per page in JSONB, so a failure resumes from the exact point. Backfill runs in a sequential procedural process, one day at a time, single session, which removes the race condition a concurrent approach would cause. New indexes are built with <code>CONCURRENTLY</code> so they never block production writes, and loading runs through <code>COPY</code>, a temp table and <code>UPSERT</code>, with in-memory deduplication by primary key before every batch of up to 50 thousand records.</p>
                 </div>
                 <div class="case-block">
                     <h3>Impact</h3>
-                    <p>Canonical relational unification of transactions and cross-chain balances between EVM and Solana, with reconciliation state persisted per network — a mid-run failure resumes from the last validated batch, never from zero.</p>
+                    <p>Full historical backfill of the highest-volume asset since the source's inception, with the CSV layer recovering on its own the gap the API alone would never capture. The pipeline served as the transition ledger of the financial system until the full migration to the definitive platform, and was decommissioned once it had served its purpose.</p>
                 </div>
             </section>
 
@@ -136,9 +135,9 @@
 <footer itemscope itemtype="https://schema.org/WPFooter" role="contentinfo">
     <div class="footer-inner">
         <div class="footer-cta">
-            <img src="../assets/images/logo-dado-bruto-600.png" alt="Dado Bruto" style="height:96px;width:auto;flex-shrink:0;border-radius:10px;filter:drop-shadow(0 2px 8px rgba(0,212,255,.25))">
             <div class="footer-cta-text">
-                <p class="footer-newsletter-desc"><strong style="color:#00D4FF">Dado Bruto</strong> — newsletter &middot; Real data engineering cases in production: architecture, trade-offs, and the metric that proves it.</p>
+                <p class="footer-newsletter-title">Dado Bruto</p>
+                <p class="footer-newsletter-desc">Data Engineering newsletter, published on LinkedIn. No spam, straight to the point.</p>
             </div>
             <a class="btn-newsletter" href="https://www.linkedin.com/newsletters/dado-bruto-7498525638908321792/" target="_blank" rel="noopener noreferrer">Subscribe on LinkedIn <span aria-hidden="true">&nearr;</span></a>
         </div>
@@ -146,13 +145,13 @@
         <div class="footer-bottom">
             <p class="footer-copy" itemprop="copyrightYear">&copy; 2026 <span itemprop="copyrightHolder">Lukas Rozado</span></p>
 
-            <div id="social-links" role="navigation" aria-label="Professional social networks">
+            <div id="social-links" role="navigation" aria-label="Professional social profiles">
                 <a href="https://github.com/lukasrozado"
                    target="_blank"
                    rel="noopener noreferrer nofollow"
                    id="profile-link"
                    aria-label="Lukas Rozado's GitHub"><img src="../assets/images/github-data-engineer-lukas-rozado.webp"
-                        alt="Lukas Rozado on GitHub - Data Engineer Projects"
+                        alt="Lukas Rozado's GitHub - Data Engineer Projects"
                         class="social-icon"
                         style="filter: invert(1);"
                         loading="lazy"
@@ -174,7 +173,7 @@
                    target="_blank"
                    rel="noopener noreferrer nofollow"
                    aria-label="Lukas Rozado's LCK Spring 2024 dataset on Kaggle"><img src="../assets/images/kaggle-data-engineer-lukas-rozado.webp"
-                        alt="Lukas Rozado's LCK Spring 2024 Dataset on Kaggle - Esports Data"
+                        alt="Lukas Rozado's LCK Spring 2024 dataset on Kaggle - Esports Data"
                         class="social-icon"
                         style="filter: invert(1);"
                         loading="lazy"
@@ -195,6 +194,5 @@
             console.error("Menu unavailable:", error);
         }
     </script>
-
 </body>
 </html>
