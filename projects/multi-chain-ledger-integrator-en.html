@@ -117,11 +117,11 @@
                 </div>
                 <div class="case-block">
                     <h3>Solution</h3>
-                    <p>Direct extraction from the node via RPC, no middleman, with a block range that partitions itself when it's too dense for the API to answer. On top of that, a self-healing engine sweeps the history in batches, compares on-chain event counts against the database, and whenever it diverges deletes the whole batch and re-extracts it, with retry. At close, I compare the token's total supply straight from the contract against the net supply the database computes by summing mints and subtracting burns â€” that's the real accounting invariant, not just a row count.</p>
+                    <p>Direct extraction from the node via RPC, no middleman, with a block range that partitions itself when it's too dense for the API to answer. On top of that, a self-healing engine sweeps the history in batches, compares on-chain event counts against the database, and whenever it diverges deletes the whole batch and re-extracts it, with retry. At close, I compare the token's total supply straight from the contract against the net supply the database computes by summing mints and subtracting burns — that's the real accounting invariant, not just a row count.</p>
                 </div>
                 <div class="case-block">
                     <h3>Impact</h3>
-                    <p>Canonical relational unification of transactions and cross-chain balances between EVM and Solana, with reconciliation state persisted per network â€” a mid-run failure resumes from the last validated batch, never from zero.</p>
+                    <p>Canonical relational unification of transactions and cross-chain balances between EVM and Solana, with reconciliation state persisted per network — a mid-run failure resumes from the last validated batch, never from zero.</p>
                 </div>
             </section>
 
@@ -139,7 +139,7 @@
         <div class="footer-cta">
             <img src="../assets/images/logo-dado-bruto-600.png" alt="Dado Bruto" style="height:96px;width:auto;flex-shrink:0;border-radius:10px;filter:drop-shadow(0 2px 8px rgba(0,212,255,.25))">
             <div class="footer-cta-text">
-                <p class="footer-newsletter-desc"><strong style="color:#00D4FF">Dado Bruto</strong> â€” newsletter &middot; Real data engineering cases in production: architecture, trade-offs, and the metric that proves it.</p>
+                <p class="footer-newsletter-desc"><strong style="color:#00D4FF">Dado Bruto</strong> — newsletter &middot; Real data engineering cases in production: architecture, trade-offs, and the metric that proves it.</p>
             </div>
             <a class="btn-newsletter" href="https://www.linkedin.com/newsletters/dado-bruto-7498525638908321792/" target="_blank" rel="noopener noreferrer">Subscribe on LinkedIn <span aria-hidden="true">&nearr;</span></a>
         </div>

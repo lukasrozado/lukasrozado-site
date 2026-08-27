@@ -11,20 +11,20 @@
     <link rel="alternate" hreflang="en" href="https://lukasrozado.github.io/projects/multi-chain-ledger-integrator-en.html">
     <link rel="alternate" hreflang="x-default" href="https://lukasrozado.github.io/projects/multi-chain-ledger-integrator.html">
 
-    <meta name="description" content="Pipeline resiliente para consolidaÃ§Ã£o transacional em dezenhas de blockchains e contratos (EVM e Solana). SubstituÃ­ indexadores por extraÃ§Ã£o RPC crua...">
+    <meta name="description" content="Pipeline resiliente para consolidação transacional em dezenhas de blockchains e contratos (EVM e Solana). Substituí indexadores por extração RPC crua...">
     <meta name="author" content="Lukas Rozado">
     <meta name="robots" content="index,follow,max-image-preview:large">
 
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://lukasrozado.github.io/projects/multi-chain-ledger-integrator.html">
     <meta property="og:title" content="Unified Multi-Chain Ledger Integrator | Case Study">
-    <meta property="og:description" content="Pipeline resiliente para consolidaÃ§Ã£o transacional em dezenhas de blockchains e contratos (EVM e Solana). SubstituÃ­ indexadores por extraÃ§Ã£o RPC crua...">
+    <meta property="og:description" content="Pipeline resiliente para consolidação transacional em dezenhas de blockchains e contratos (EVM e Solana). Substituí indexadores por extração RPC crua...">
     <meta property="og:image" content="https://lukasrozado.github.io/assets/images/unified_multi_chain_ledger_integrator_v2.webp">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@RozadoLukas">
     <meta name="twitter:title" content="Unified Multi-Chain Ledger Integrator | Case Study">
-    <meta name="twitter:description" content="Pipeline resiliente para consolidaÃ§Ã£o transacional em dezenhas de blockchains e contratos (EVM e Solana). SubstituÃ­ indexadores por extraÃ§Ã£o RPC crua...">
+    <meta name="twitter:description" content="Pipeline resiliente para consolidação transacional em dezenhas de blockchains e contratos (EVM e Solana). Substituí indexadores por extração RPC crua...">
     <meta name="twitter:image" content="https://lukasrozado.github.io/assets/images/unified_multi_chain_ledger_integrator_v2.webp">
 
     <link rel="icon" href="../assets/icons/favicon.ico" sizes="any">
@@ -44,7 +44,7 @@
         "@context": "https://schema.org",
         "@type": "CreativeWork",
         "name": "Unified Multi-Chain Ledger Integrator",
-        "description": "Pipeline resiliente para consolidaÃ§Ã£o transacional em dezenhas de blockchains e contratos (EVM e Solana). SubstituÃ­ indexadores por extraÃ§Ã£o RPC crua com algoritmos de 'Reverse Check', otimizando a varredura de blocos. O diferencial core Ã© o motor de Auto-ReconciliaÃ§Ã£o (Pacemaker), que audita continuamente o banco PostgreSQL contra os nÃ³s da rede, garantindo unicidade rigorosa e 100% de integridade nos balanÃ§os.",
+        "description": "Pipeline resiliente para consolidação transacional em dezenhas de blockchains e contratos (EVM e Solana). Substituí indexadores por extração RPC crua com algoritmos de 'Reverse Check', otimizando a varredura de blocos. O diferencial core é o motor de Auto-Reconciliação (Pacemaker), que audita continuamente o banco PostgreSQL contra os nós da rede, garantindo unicidade rigorosa e 100% de integridade nos balanços.",
         "url": "https://lukasrozado.github.io/projects/multi-chain-ledger-integrator.html",
         "image": "https://lukasrozado.github.io/assets/images/unified_multi_chain_ledger_integrator_v2.webp",
         "inLanguage": "pt-BR",
@@ -78,7 +78,7 @@
             </div>
         </div>
         <ul>
-            <li><a href="../index.html">InÃ­cio</a></li>
+            <li><a href="../index.html">Início</a></li>
             <li><a href="../index.html#projects">Projetos</a></li>
             <li><a href="../writing/">Escritos</a></li>
             <li><a href="../contact.html">Contato</a></li>
@@ -97,7 +97,7 @@
             <h1 itemprop="name">Unified Multi-Chain Ledger Integrator</h1>
 
 
-            <p class="lead" itemprop="description">Pipeline resiliente pra consolidar transaÃ§Ãµes em dezenas de blockchains e contratos (EVM e Solana), lendo direto do nÃ³ via RPC crua (<code>eth_getLogs</code> filtrado por tÃ³pico de evento) em vez de depender de indexador de terceiro. Faixas de bloco densas demais pra API se dividem recursivamente atÃ© caber. O diferencial Ã© o motor de auto-reconciliaÃ§Ã£o: compara, faixa por faixa, a contagem de eventos on-chain contra o banco, cura sozinho qualquer divergÃªncia apagando e re-extraindo o lote, e fecha com uma checagem contÃ¡bil final comparando o supply total on-chain contra o supply lÃ­quido calculado no PostgreSQL.</p>
+            <p class="lead" itemprop="description">Pipeline resiliente pra consolidar transações em dezenas de blockchains e contratos (EVM e Solana), lendo direto do nó via RPC crua (<code>eth_getLogs</code> filtrado por tópico de evento) em vez de depender de indexador de terceiro. Faixas de bloco densas demais pra API se dividem recursivamente até caber. O diferencial é o motor de auto-reconciliação: compara, faixa por faixa, a contagem de eventos on-chain contra o banco, cura sozinho qualquer divergência apagando e re-extraindo o lote, e fecha com uma checagem contábil final comparando o supply total on-chain contra o supply líquido calculado no PostgreSQL.</p>
 
             <div class="project-tech-row">
                 <img src="../assets/icons/python.svg" alt="python" class="tech-icon" width="30" height="30">
@@ -113,15 +113,15 @@
                 <h2 id="case-study-heading">Estudo de caso</h2>
                 <div class="case-block">
                     <h3>Problema</h3>
-                    <p>Indexador de terceiro em 15+ redes espalha o dado e nÃ£o dÃ¡ garantia real de integridade: cada provedor tem seu prÃ³prio atraso, formato e taxa de erro, e nÃ£o existe um jeito nativo de saber se uma faixa de blocos ficou incompleta no banco.</p>
+                    <p>Indexador de terceiro em 15+ redes espalha o dado e não dá garantia real de integridade: cada provedor tem seu próprio atraso, formato e taxa de erro, e não existe um jeito nativo de saber se uma faixa de blocos ficou incompleta no banco.</p>
                 </div>
                 <div class="case-block">
                     <h3>Solu&ccedil;&atilde;o</h3>
-                    <p>ExtraÃ§Ã£o direta do nÃ³ via RPC, sem intermediÃ¡rio, com faixa de bloco que se particiona sozinha quando fica densa demais pra API responder. Por cima disso, um motor de auto-reconciliaÃ§Ã£o varre o histÃ³rico em lotes, compara contagem de evento on-chain contra contagem no banco, e sempre que diverge apaga o lote inteiro e re-extrai do zero, com retry. No fechamento, comparo o supply total do token direto do contrato contra o supply lÃ­quido que o banco calcula somando mint e subtraindo burn â€” Ã© o invariante contÃ¡bil de verdade, nÃ£o sÃ³ contagem de linha.</p>
+                    <p>Extração direta do nó via RPC, sem intermediário, com faixa de bloco que se particiona sozinha quando fica densa demais pra API responder. Por cima disso, um motor de auto-reconciliação varre o histórico em lotes, compara contagem de evento on-chain contra contagem no banco, e sempre que diverge apaga o lote inteiro e re-extrai do zero, com retry. No fechamento, comparo o supply total do token direto do contrato contra o supply líquido que o banco calcula somando mint e subtraindo burn — é o invariante contábil de verdade, não só contagem de linha.</p>
                 </div>
                 <div class="case-block">
                     <h3>Impacto</h3>
-                    <p>UnificaÃ§Ã£o relacional canÃ´nica de transaÃ§Ã£o e balanÃ§o cruzado entre EVM e Solana, com estado de reconciliaÃ§Ã£o persistido por rede â€” uma falha no meio do processo retoma exatamente do Ãºltimo lote validado, nunca do zero.</p>
+                    <p>Unificação relacional canônica de transação e balanço cruzado entre EVM e Solana, com estado de reconciliação persistido por rede — uma falha no meio do processo retoma exatamente do último lote validado, nunca do zero.</p>
                 </div>
             </section>
 
