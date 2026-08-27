@@ -93,7 +93,8 @@
         "problem": "A fonte de dado era uma planilha operacional de alta complexidade, mantida manualmente por uma equipe de negócio, sem qualquer chave primária estável: linhas eram inseridas, apagadas e reordenadas o tempo todo, sem rastreabilidade. A área de negócio adicionava colunas de cálculo novas sem aviso prévio, quebrando scripts de automação tradicionais. E o nome da contraparte de cada operação era digitado à mão, frequentemente de forma inconsistente.",
         "solution": "Sem chave primária, upsert incremental viraria fonte de registros fantasmas assim que uma linha fosse reordenada ou apagada na origem. A carga usa Full Replace: a cada execução, a tabela de fatos é truncada por inteiro e recarregada via protocolo COPY do PostgreSQL. Cada transação recebe um fingerprint SHA-256 sobre a assinatura lógica da linha combinada com um contador de ocorrência (nonce), preservando splits legítimos idênticos em vez de colapsá-los. A extração aplica blindagem de schema, ignorando qualquer coluna desconhecida ou temporária. O nome de contraparte passa por resolução em cascata: alias explícito, depois match exato, e só então fuzzy matching (limiar de 92% de similaridade).",
         "impact": "A planilha da mesa de operações deixou de ser um ponto único de fragilidade para servir como fonte confiável de um data warehouse relacional, sem etapa manual de triagem de contraparte e sem quebrar a cada coluna nova que a área de negócio adicionasse."
-      }
+      },
+      "diagramImage": "assets/images/otc_desk_reconciliation_pipeline_v1.webp"
     },
     {
       "title": "Fiscal Document Consolidation Pipeline",
@@ -115,7 +116,8 @@
         "problem": "O documento fiscal chega da API já em XML, mas o payload não traz de forma confiável uma referência explícita de qual empresa do grupo é a dona daquele documento; a marcação de contraparte na origem é inconsistente entre emissores. Sem um jeito robusto de resolver o dono, a consolidação por empresa vira triagem manual todo mês.",
         "solution": "Em vez de depender de uma tag de referência, a resolução de propriedade varre o conteúdo bruto decodificado do XML procurando, por substring match, o identificador tributário de cada entidade cadastrada; o dono é a primeira empresa cujo identificador aparece literalmente no texto do documento. A extração roda de forma incremental, filtra estritamente pela data de emissão real parseada do XML, e a consolidação mensal escreve um ZIP geral organizado por empresa/tipo de documento mais um ZIP individual por empresa, limpando o staging ao final.",
         "impact": "Consolidação mensal de documentos fiscais totalmente automatizada, sem etapa manual de triagem por empresa, mesmo com marcação de contraparte inconsistente na fonte. O substring match elimina a dependência de uma tag que a origem nem sempre preenche corretamente."
-      }
+      },
+      "diagramImage": "assets/images/fiscal_document_consolidation_pipeline_v1.webp"
     },
     {
       "title": "Unified Multi-Chain Ledger Integrator",

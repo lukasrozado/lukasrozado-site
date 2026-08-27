@@ -93,7 +93,8 @@
         "problem": "The data source was a highly complex operational spreadsheet, manually maintained by a business team, with no stable primary key whatsoever: rows were inserted, deleted and reordered constantly, with no traceability. The business side kept adding new calculation columns without notice, breaking traditional automation scripts. And each trade's counterparty name was typed by hand, often inconsistently.",
         "solution": "With no primary key, incremental upsert would turn into a source of ghost records the moment a row got reordered or deleted at the source. The load runs a Full Replace: on every execution, the fact table is truncated entirely and reloaded through PostgreSQL's COPY protocol. Every transaction gets a SHA-256 fingerprint over the row's logical signature combined with an occurrence counter (nonce), preserving identical legitimate splits instead of collapsing them. Extraction applies schema shielding, ignoring any unknown or temporary column. Counterparty name resolution runs in cascade: explicit alias, then exact match, and only then fuzzy matching (92% similarity threshold).",
         "impact": "The trading desk's spreadsheet stopped being a single point of fragility and became a reliable source for a relational data warehouse, with no manual counterparty triage step and no breakage every time the business side added a new column."
-      }
+      },
+      "diagramImage": "assets/images/otc_desk_reconciliation_pipeline_v1.webp"
     },
     {
       "title": "Fiscal Document Consolidation Pipeline",
@@ -115,7 +116,8 @@
         "problem": "Fiscal documents arrive from the API already as XML, but the payload doesn't reliably carry an explicit reference to which entity in the group owns that document; counterpart tagging at the source is inconsistent across issuers. Without a robust way to resolve ownership, per-entity consolidation turns into manual triage every month.",
         "solution": "Instead of depending on a reference tag, ownership resolution scans the raw decoded XML content for a substring match of each registered entity's tax identifier; the owner is the first entity whose identifier appears literally in the document text. Extraction runs incrementally, filters strictly by the real issuance date parsed from the XML, and monthly consolidation writes one combined ZIP organized by entity/document type plus one per-entity ZIP, clearing staging afterward.",
         "impact": "Fully automated monthly fiscal document consolidation, with no manual per-entity triage step, even with inconsistent counterpart tagging at the source. The substring match removes the dependency on a tag the source doesn't always populate correctly."
-      }
+      },
+      "diagramImage": "assets/images/fiscal_document_consolidation_pipeline_v1.webp"
     },
     {
       "title": "Unified Multi-Chain Ledger Integrator",
