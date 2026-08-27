@@ -1,4 +1,4 @@
-# Lukas Rozado — Data Engineering & Cloud Architecture
+# Lukas Rozado: Data Engineering & Cloud Architecture
 
 > Site hub for data engineering case studies, pipelines and writing. POSSE: publish on own site, syndicate elsewhere.
 

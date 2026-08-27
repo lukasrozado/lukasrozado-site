@@ -134,7 +134,7 @@
             <h1 itemprop="name">Unified Multi-Chain Ledger Integrator</h1>
 
 
-            <p class="lead" itemprop="description">Transações em dezenas de blockchains e contratos (EVM e Solana), consolidadas por um pipeline resiliente que lê direto do nó via RPC crua (<code>eth_getLogs</code> filtrado por tópico de evento) em vez de depender de indexador de terceiro. Faixas de bloco densas demais pra API se dividem recursivamente até caber. O diferencial é o motor de auto-reconciliação: compara, faixa por faixa, a contagem de eventos on-chain contra o banco, cura sozinho qualquer divergência apagando e re-extraindo o lote, e fecha com uma checagem contábil final comparando o supply total on-chain contra o supply líquido calculado no PostgreSQL — <strong>100%</strong> de integridade, sem exceção.</p>
+            <p class="lead" itemprop="description">Transações em dezenas de blockchains e contratos (EVM e Solana), consolidadas por um pipeline resiliente que lê direto do nó via RPC crua (<code>eth_getLogs</code> filtrado por tópico de evento) em vez de depender de indexador de terceiro. Faixas de bloco densas demais pra API se dividem recursivamente até caber. O diferencial é o motor de auto-reconciliação: compara, faixa por faixa, a contagem de eventos on-chain contra o banco, cura sozinho qualquer divergência apagando e re-extraindo o lote, e fecha com uma checagem contábil final comparando o supply total on-chain contra o supply líquido calculado no PostgreSQL: <strong>100%</strong> de integridade, sem exceção.</p>
 
             <div class="project-tech-row">
                 <img src="../assets/icons/python.svg" alt="python" class="tech-icon" width="30" height="30">
@@ -154,22 +154,22 @@
                 </div>
                 <div class="case-block">
                     <h3>Solu&ccedil;&atilde;o</h3>
-                    <p>Extração direta do nó via RPC, sem intermediário, com faixa de bloco que se particiona sozinha quando fica densa demais pra API responder. Por cima disso, um motor de auto-reconciliação varre o histórico em lotes, compara contagem de evento on-chain contra contagem no banco, e sempre que diverge apaga o lote inteiro e re-extrai do zero, com retry. No fechamento, comparo o supply total do token direto do contrato contra o supply líquido que o banco calcula somando mint e subtraindo burn — é o invariante contábil de verdade, não só contagem de linha.</p>
+                    <p>Extração direta do nó via RPC, sem intermediário, com faixa de bloco que se particiona sozinha quando fica densa demais pra API responder. Por cima disso, um motor de auto-reconciliação varre o histórico em lotes, compara contagem de evento on-chain contra contagem no banco, e sempre que diverge apaga o lote inteiro e re-extrai do zero, com retry. No fechamento, comparo o supply total do token direto do contrato contra o supply líquido que o banco calcula somando mint e subtraindo burn; é o invariante contábil de verdade, não só contagem de linha.</p>
                 </div>
                 <div class="case-block">
                     <h3>Impacto</h3>
-                    <p>Unificação relacional canônica de transação e balanço cruzado entre EVM e Solana, com estado de reconciliação persistido por rede — uma falha no meio do processo retoma exatamente do último lote validado, nunca do zero.</p>
+                    <p>Unificação relacional canônica de transação e balanço cruzado entre EVM e Solana, com estado de reconciliação persistido por rede; uma falha no meio do processo retoma exatamente do último lote validado, nunca do zero.</p>
                 </div>
             </section>
 
 
-            <div class="social-proof"><p><strong>Resultado:</strong> Caso anonimizado — reconciliação validada via contagem on-chain vs banco.</p></div>
+            <div class="social-proof"><p><strong>Resultado:</strong> Caso anonimizado: reconciliação validada via contagem on-chain vs banco.</p></div>
 
                                                 <div class="mid-cta">
                 <p>Tem um caso parecido? Vamos desenhar a arquitetura que prova o resultado no seu contexto.</p>
                 <a class="btn-primary" href="../contact.html">Falar sobre seu caso</a>
             </div>
-                <p class="newsletter-inline"><a href="https://www.linkedin.com/newsletters/dado-bruto-7498525638908321792/" target="_blank" rel="noopener noreferrer">Receba casos assim toda semana na newsletter <strong>Dado Bruto</strong> &nearr;</a></p>
+                <p class="newsletter-inline"><a href="https://www.linkedin.com/newsletters/dado-bruto-7498525638908321792/" target="_blank" rel="noopener noreferrer">Receba casos assim todo mês na newsletter <strong>Dado Bruto</strong> &nearr;</a></p>
             <section class="related-projects" aria-labelledby="related-heading">
                 <h2 id="related-heading">Projetos relacionados</h2>
                 <div class="related-grid">
@@ -198,7 +198,7 @@
         <div class="footer-cta">
             <img src="../assets/images/logo-dado-bruto-600.png" alt="Dado Bruto" style="height:96px;width:auto;flex-shrink:0;border-radius:10px;filter:drop-shadow(0 2px 8px rgba(0,212,255,.25))">
             <div class="footer-cta-text">
-                <p class="footer-newsletter-desc"><strong style="color:#00D4FF">Dado Bruto</strong> — newsletter &middot; Casos reais de engenharia de dados em produ&ccedil;&atilde;o: arquitetura, trade-off e o n&uacute;mero real por tr&aacute;s da decis&atilde;o.</p>
+                <p class="footer-newsletter-desc"><strong style="color:#00D4FF">Dado Bruto</strong>, newsletter &middot; Casos reais de engenharia de dados em produ&ccedil;&atilde;o: arquitetura, trade-off e o n&uacute;mero real por tr&aacute;s da decis&atilde;o.</p>
             </div>
             <a class="btn-newsletter" href="https://www.linkedin.com/newsletters/dado-bruto-7498525638908321792/" target="_blank" rel="noopener noreferrer">Assinar no LinkedIn <span aria-hidden="true">&nearr;</span></a>
         </div>

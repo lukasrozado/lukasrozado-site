@@ -102,13 +102,13 @@
             <div class="article-body">
                 <p>I had an ingestion app that published a snapshot for consumption. The dashboard was green, everything looked fine, but something felt off: the data volume wasn't growing as it should. I checked. Serving had been down for 14.71 days, and the alarm had stayed green the entire time. The freshness check had a 26-hour SLA and was being rearmed every 19 minutes by the very publish that wasn't publishing anything.</p>
 
-                <p>The ETL trigger fired normally. At load time, it failed. Dagster's Asset Check rearmed anyway, because the monitoring signal came from the same path that was broken. For the alarm to fire, 82 consecutive cycles without rearm would be needed — impossible by construction. No amount of bad luck would make that alarm ring. And the underlying defect is worse than silence: the failure the watcher should report was the same thing that kept it quiet, which inverts the instrument's function — the worse the system state, the stronger the health signal.</p>
+                <p>The ETL trigger fired normally. At load time, it failed. Dagster's Asset Check rearmed anyway, because the monitoring signal came from the same path that was broken. For the alarm to fire, 82 consecutive cycles without rearm would be needed; impossible by construction. No amount of bad luck would make that alarm ring. And the underlying defect is worse than silence: the failure the watcher should report was the same thing that kept it quiet, which inverts the instrument's function; the worse the system state, the stronger the health signal.</p>
 
                 <p>If I have a gate that guarantees the quality of my projects and, upon identifying an app with VETO or BUGS, blocks the commit when it doesn't pass CI, that gate needs to effectively be a protective barrier.</p>
 
                 <p>If, on the other hand, it's possible to exclude a prefix, a rule, or any other point to bypass it, the problem isn't simply that the bypass exists. The exclusion pushes the obligation to guarantee quality onto each route inside that scope, without that responsibility having been explicitly decided or assumed. That's where the same error occurs: the gate keeps reporting “passed,” but “passed” starts meaning different things depending on where the commit landed. Anyone looking at the result can't distinguish between “verified and approved” and “out of scope.” The exclusion, therefore, doesn't turn the gate off; it makes the gate say “approved” about something it never looked at.</p>
 
-                <p>If a code change is made, with a new implementation, but the CI/CD verification is prevented from running due to limitations imposed by the Git provider — for example, the limit allowed by GitHub Actions, or any other platform restriction mechanism — you cannot consider that quality validation happened. The absence of that verification compromises the integrity guarantee, especially when CI/CD is responsible for controlling the quantity or size of a file and ensuring that, if that measurement is exceeded after a change, the application isn't compromised and the change is atomically blocked. The job didn't fail. It didn't happen. And not having happened is indistinguishable from having passed for anyone looking later.</p>
+                <p>If a code change is made, with a new implementation, but the CI/CD verification is prevented from running due to limitations imposed by the Git provider (for example, the limit allowed by GitHub Actions, or any other platform restriction mechanism), you cannot consider that quality validation happened. The absence of that verification compromises the integrity guarantee, especially when CI/CD is responsible for controlling the quantity or size of a file and ensuring that, if that measurement is exceeded after a change, the application isn't compromised and the change is atomically blocked. The job didn't fail. It didn't happen. And not having happened is indistinguishable from having passed for anyone looking later.</p>
 
                 <p>There is a complex case, similar to one in a novel where an industrialist outsources the decision about protecting his most precious asset: a metal that took ten years to develop. By delegating that choice to an operator in Washington, he lets someone outside his domain determine the fate of what took a decade to build, paving the way for the project's ruin.</p>
 
@@ -116,7 +116,7 @@
 
                 <p><strong>The strongest objection to all of this is another one.</strong></p>
 
-                <p>The cost of verifying is real and immediate; the cost of not verifying is hypothetical and deferred. In most systems, absence of verification and successful verification produce exactly the same result — and do so for years. If the false green dashboard caused no concrete loss, the problem isn't the false positive: it's you demanding rigor where criticality doesn't justify it. Verification without proportion to consequence is ceremony, not engineering.</p>
+                <p>The cost of verifying is real and immediate; the cost of not verifying is hypothetical and deferred. In most systems, absence of verification and successful verification produce exactly the same result; and do so for years. If the false green dashboard caused no concrete loss, the problem isn't the false positive: it's you demanding rigor where criticality doesn't justify it. Verification without proportion to consequence is ceremony, not engineering.</p>
 
                 <p>Indeed, not every system needs a <em>check</em>, and it's fine to remove what isn't justified. But there is a fundamental difference between a system that is actually working, a system that has no verification mechanism at all, and a system that produces a signal that it's working when, in reality, it isn't.</p>
 
@@ -139,7 +139,7 @@
         <section class="newsletter-cta footer-cta" aria-labelledby="newsletter-heading">
             <img src="../assets/images/logo-dado-bruto-600.png" alt="Dado Bruto" style="height:96px;width:auto;flex-shrink:0;border-radius:10px;filter:drop-shadow(0 2px 8px rgba(0,212,255,.25))">
             <div class="footer-cta-text">
-                <p class="footer-newsletter-desc"><strong style="color:#00D4FF">Dado Bruto</strong> — newsletter &middot; Real data engineering cases in production: architecture, trade-offs, and the real number behind the decision.</p>
+                <p class="footer-newsletter-desc"><strong style="color:#00D4FF">Dado Bruto</strong>, newsletter &middot; Real data engineering cases in production: architecture, trade-offs, and the real number behind the decision.</p>
             </div>
             <a class="btn-newsletter" href="https://www.linkedin.com/newsletters/dado-bruto-7498525638908321792/" target="_blank" rel="noopener noreferrer">Subscribe on LinkedIn <span aria-hidden="true">&nearr;</span></a>
         </section>
@@ -151,7 +151,7 @@
         <div class="footer-cta">
             <img src="../assets/images/logo-dado-bruto-600.png" alt="Dado Bruto" style="height:96px;width:auto;flex-shrink:0;border-radius:10px;filter:drop-shadow(0 2px 8px rgba(0,212,255,.25))">
             <div class="footer-cta-text">
-                <p class="footer-newsletter-desc"><strong style="color:#00D4FF">Dado Bruto</strong> — newsletter &middot; Real data engineering cases in production: architecture, trade-offs, and the real number behind the decision.</p>
+                <p class="footer-newsletter-desc"><strong style="color:#00D4FF">Dado Bruto</strong>, newsletter &middot; Real data engineering cases in production: architecture, trade-offs, and the real number behind the decision.</p>
             </div>
             <a class="btn-newsletter" href="https://www.linkedin.com/newsletters/dado-bruto-7498525638908321792/" target="_blank" rel="noopener noreferrer">Subscribe on LinkedIn <span aria-hidden="true">&nearr;</span></a>
         </div>

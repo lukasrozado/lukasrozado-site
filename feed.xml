@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Lukas Rozado — Ensaios de Engenharia de Dados</title>
+    <title>Lukas Rozado: Ensaios de Engenharia de Dados</title>
     <link>https://lukasrozado.github.io/writing/</link>
     <description>Ensaios sobre engenharia de dados: arquitetura de pipelines, ingestão em escala, bancos relacionais e decisões de engenharia em produção. Full-text.</description>
     <language>pt-br</language>

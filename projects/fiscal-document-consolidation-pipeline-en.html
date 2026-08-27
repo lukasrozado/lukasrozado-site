@@ -1,31 +1,31 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" itemscope itemtype="https://schema.org/Person">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unified Banking Ledger Platform | Lukas Rozado</title>
+    <title>Fiscal Document Consolidation Pipeline | Lukas Rozado</title>
     <meta name="theme-color" content="#00D4FF">
 
-    <link rel="canonical" href="https://lukasrozado.github.io/projects/unified-banking-ledger-platform-en.html">
-    <link rel="alternate" hreflang="pt-BR" href="https://lukasrozado.github.io/projects/unified-banking-ledger-platform.html">
-    <link rel="alternate" hreflang="en" href="https://lukasrozado.github.io/projects/unified-banking-ledger-platform-en.html">
-    <link rel="alternate" hreflang="x-default" href="https://lukasrozado.github.io/projects/unified-banking-ledger-platform.html">
+    <link rel="canonical" href="https://lukasrozado.github.io/projects/fiscal-document-consolidation-pipeline-en.html">
+    <link rel="alternate" hreflang="pt-BR" href="https://lukasrozado.github.io/projects/fiscal-document-consolidation-pipeline.html">
+    <link rel="alternate" hreflang="en" href="https://lukasrozado.github.io/projects/fiscal-document-consolidation-pipeline-en.html">
+    <link rel="alternate" hreflang="x-default" href="https://lukasrozado.github.io/projects/fiscal-document-consolidation-pipeline.html">
 
-    <meta name="description" content="Unified ingestion platform for banking, PIX, ledger and OTC desk data, with per-domain state isolation, watermark early-exit and a transaction lifecycle auditor.">
+    <meta name="description" content="Monthly pipeline that downloads fiscal document XML/PDF pairs via API, resolves document ownership by substring-matching the tax identifier in the raw content, and consolidates output per entity.">
     <meta name="author" content="Lukas Rozado">
     <meta name="robots" content="index,follow,max-image-preview:large">
 
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://lukasrozado.github.io/projects/unified-banking-ledger-platform-en.html">
-    <meta property="og:title" content="Unified Banking Ledger Platform | Case Study">
-    <meta property="og:description" content="Unified ingestion platform for banking, PIX, ledger and OTC desk data, with per-domain state isolation, watermark early-exit and a transaction lifecycle auditor.">
-    <meta property="og:image" content="https://lukasrozado.github.io/assets/images/unified-banking-ledger-platform.webp">
+    <meta property="og:url" content="https://lukasrozado.github.io/projects/fiscal-document-consolidation-pipeline-en.html">
+    <meta property="og:title" content="Fiscal Document Consolidation Pipeline | Case Study">
+    <meta property="og:description" content="Monthly pipeline that downloads fiscal document XML/PDF pairs via API, resolves document ownership by substring-matching the tax identifier in the raw content, and consolidates output per entity.">
+    <meta property="og:image" content="https://lukasrozado.github.io/assets/images/og-image.webp">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@RozadoLukas">
-    <meta name="twitter:title" content="Unified Banking Ledger Platform | Case Study">
-    <meta name="twitter:description" content="Unified ingestion platform for banking, PIX, ledger and OTC desk data, with per-domain state isolation, watermark early-exit and a transaction lifecycle auditor.">
-    <meta name="twitter:image" content="https://lukasrozado.github.io/assets/images/unified-banking-ledger-platform.webp">
+    <meta name="twitter:title" content="Fiscal Document Consolidation Pipeline | Case Study">
+    <meta name="twitter:description" content="Monthly pipeline that downloads fiscal document XML/PDF pairs via API, resolves document ownership by substring-matching the tax identifier in the raw content, and consolidates output per entity.">
+    <meta name="twitter:image" content="https://lukasrozado.github.io/assets/images/og-image.webp">
 
     <link rel="icon" href="../assets/icons/favicon.ico" sizes="any">
     <link rel="apple-touch-icon" href="../assets/icons/favicon-180x180.webp">
@@ -60,20 +60,20 @@
             {
                 "@type": "ListItem",
                 "position": 3,
-                "name": "Unified Banking Ledger Platform",
-                "item": "https://lukasrozado.github.io/projects/unified-banking-ledger-platform-en.html"
+                "name": "Fiscal Document Consolidation Pipeline",
+                "item": "https://lukasrozado.github.io/projects/fiscal-document-consolidation-pipeline-en.html"
             }
         ]
     },
     {
         "@context": "https://schema.org",
         "@type": "TechArticle",
-        "name": "Unified Banking Ledger Platform",
-        "description": "Unified ingestion platform for bank accounts, PIX, partners, ledger movements and OTC desk data, with a producer-consumer queue, per-domain isolated state, historical watermark early-exit, a dual balance-snapshot strategy (delta/full) and a lifecycle auditor for pending PIX transactions.",
-        "url": "https://lukasrozado.github.io/projects/unified-banking-ledger-platform-en.html",
-        "image": "https://lukasrozado.github.io/assets/images/unified-banking-ledger-platform.webp",
+        "name": "Fiscal Document Consolidation Pipeline",
+        "description": "Monthly incremental pipeline that downloads XML+PDF pairs of fiscal documents via a fiscal document provider's API, resolves the owning legal entity for each document by substring-matching the entity's tax identifier inside the raw decoded content (never trusting an explicit reference tag), and consolidates output into one combined ZIP plus one per-entity ZIP, organized by document type and date.",
+        "url": "https://lukasrozado.github.io/projects/fiscal-document-consolidation-pipeline-en.html",
+        "image": "https://lukasrozado.github.io/assets/images/og-image.webp",
         "inLanguage": "en",
-        "keywords": "python, postgresql, azure, sql",
+        "keywords": "python, postgresql, rest-api",
         "author": {
             "@type": "Person",
             "name": "Lukas Rozado",
@@ -85,7 +85,7 @@
             ]
         },
         "datePublished": "2026-08-26",
-        "dateModified": "2026-08-27"
+        "dateModified": "2026-08-26"
     }
 ]
     </script>
@@ -124,44 +124,40 @@
     <main id="main-content" role="main">
         <article class="project-page" itemscope itemtype="https://schema.org/CreativeWork">
                         <nav class="breadcrumb" aria-label="Breadcrumb">
-                <a href="../index-en.html">Home</a> <span aria-hidden="true">›</span> <a href="../index-en.html#projects">Projects</a> <span aria-hidden="true">›</span> <span aria-current="page">unified banking ledger platform</span>
+                <a href="../index-en.html">Home</a> <span aria-hidden="true">›</span> <a href="../index-en.html#projects">Projects</a> <span aria-hidden="true">›</span> <span aria-current="page">fiscal document consolidation pipeline</span>
             </nav>
 
             <div class="project-meta">
                 <span class="project-tag">Data Engineering</span>
             </div>
 
-            <h1 itemprop="name">Unified Banking Ledger Platform</h1>
+            <h1 itemprop="name">Fiscal Document Consolidation Pipeline</h1>
 
-            <p class="lead" itemprop="description">A platform that merged two separate financial pipelines, banking/PIX and ledger reconciliation, into a single system running every minute, persistent and orchestrated. Every data domain, accounts, PIX keys, PIX transactions, partners, ledger movements, OTC desk, gets its own producer-consumer queue, its own isolated cursor and watermark, and flushes in batches of 5,000 records straight to the database. Endpoints with no native delta filter use early-exit: they read from the top and stop on their own once N consecutive pages have already crossed the saved watermark, with no need to re-scan the entire history on every run. Partner balances run on two strategies, a 15-minute delta for whoever moved recently and a daily full refresh for everyone else. A separate lifecycle auditor fixes PIX transaction status that changes after capture, without re-scanning anything beyond what's needed.</p>
+            <p class="lead" itemprop="description">A monthly incremental pipeline that resolves the owning legal entity for each fiscal document by <strong>substring-matching the entity's tax identifier inside the raw XML content</strong>, instead of trusting an explicit reference tag, a resilience choice that tolerates inconsistent tagging at the source. The job downloads the XML+PDF pair for each document from the fiscal document provider's API, decodes base64-wrapped payloads when needed, and filters strictly by the real issuance date parsed from the XML itself, not the record's creation date in the API.</p>
 
             <div class="project-tech-row">
                 <img src="../assets/icons/python.svg" alt="python" class="tech-icon" width="30" height="30">
                 <img src="../assets/icons/postgresql.svg" alt="postgresql" class="tech-icon" width="30" height="30">
             </div>
 
-            <figure class="project-diagram">
-                <img src="../assets/images/unified-banking-ledger-platform.webp" alt="Unified Banking Ledger Platform - architecture diagram" width="1200" height="800" loading="lazy" decoding="async" itemprop="image">
-                <figcaption>System architecture</figcaption>
-            </figure>
             <section class="case-study" aria-labelledby="case-study-heading">
                 <h2 id="case-study-heading">Case Study</h2>
                 <div class="case-block">
                     <h3>Problem</h3>
-                    <p>Two financial systems grew apart, each with its own checkpoint model, and needed to become one without losing what already worked. Most endpoints have no native date filter, so capturing only what's new means reading from the start and guessing where to stop, or reprocessing everything, every minute, forever.</p>
+                    <p>Fiscal documents arrive from the API already as XML (sometimes base64-wrapped), but the payload doesn't reliably carry an explicit, normalized reference to which entity in the group owns that document; counterpart tagging at the source is inconsistent across issuers. Without a robust way to resolve ownership, per-entity consolidation turns into a manual, file-by-file triage process every month.</p>
                 </div>
                 <div class="case-block">
                     <h3>Solution</h3>
-                    <p>Every domain runs isolated, with its own cursor and its own watermark, so a failure in one "drawer" never blocks the others. For an endpoint with no date filter, reading starts from the top and stops on its own once N consecutive pages land on a date already covered before (watermark early-exit), avoiding both a full reprocess and stopping too early and losing a record. Partner balances run at two speeds: a 15-minute delta for whoever moved recently, a daily full refresh to close out the rest. A separate auditor covers the case neither strategy solves alone, a transaction already captured that changes status later, reading only from the oldest one still pending and upserting whatever changed.</p>
+                    <p>Instead of depending on a reference tag (which can be missing, empty, or follow a different convention per issuer), ownership resolution scans the raw decoded XML content for a <em>substring match</em> of each registered entity's tax identifier; the owner is the first entity whose identifier appears literally in the document text. This choice tolerates inconsistent tagging at the source without breaking the pipeline. Extraction runs incrementally (the full previous month, computed automatically), pages through the API's native cursor/continuation-URL, and filters strictly by the real issuance date parsed via regex from the XML itself, not the record's creation date, which can diverge. Each document's PDF and XML are downloaded as a pair and written to local staging; at month end, consolidation decodes every XML, resolves ownership by substring match, and writes two artifacts: one combined ZIP with every document organized under <code>Entity/DocumentType/</code>, and one per-entity ZIP with the same slice. Staging is cleaned up after every successful consolidation, and the final report goes out by email.</p>
                 </div>
                 <div class="case-block">
                     <h3>Impact</h3>
-                    <p>Two pipelines became a single platform, covering banking, PIX, partners, ledger and the OTC desk (including operational and settlement risk monitoring), running persistently every minute with no manual reprocessing. Per-domain state means adding a new lane never risks the ones already running.</p>
+                    <p>Fully automated monthly fiscal document consolidation, with no manual per-entity triage step, even with inconsistent counterpart tagging at the source. The substring-match mechanism removes the dependency on a specific tag the source doesn't always populate correctly, making the pipeline resilient to format drift on the provider's side.</p>
                 </div>
             </section>
 
 
-            <div class="social-proof"><p><strong>Outcome:</strong> Anonymized case: platform validated in production across multiple isolated domains.</p></div>
+            <div class="social-proof"><p><strong>Outcome:</strong> Anonymized case: monthly fiscal document consolidation running with no manual intervention since deployment.</p></div>
 
                                                 <div class="mid-cta">
                 <p>Have a similar case? Let's design the architecture that proves the outcome in your context.</p>
@@ -172,15 +168,14 @@
                 <h2 id="related-heading">Related projects</h2>
                 <div class="related-grid">
                 <a class="related-card" href="./financial-reconciliation-pipeline-en.html">High-Concurrency Financial Reconciliation Pipeline</a>
-                <a class="related-card" href="./multi-chain-ledger-integrator-en.html">Unified Multi-Chain Ledger Integrator</a>
-                <a class="related-card" href="./otc-desk-reconciliation-pipeline-en.html">OTC Desk Reconciliation Pipeline</a>
+                <a class="related-card" href="./baas-financial-settlement-data-sink-en.html">BaaS &amp; Financial Settlement Data Sink</a>
                 </div>
             </section>
 
                         <div class="share-bar">
-                <a class="btn-outline" href="https://www.linkedin.com/sharing/share-offsite/?url=https://lukasrozado.github.io/projects/unified-banking-ledger-platform-en.html" target="_blank" rel="noopener">Share on LinkedIn</a>
-                <a class="btn-outline" href="https://twitter.com/intent/tweet?url=https://lukasrozado.github.io/projects/unified-banking-ledger-platform-en.html" target="_blank" rel="noopener">Share on X</a>
-                <button type="button" class="btn-outline copy-link-btn" data-url="https://lukasrozado.github.io/projects/unified-banking-ledger-platform-en.html" data-label="Copy link" data-copied-label="Copied!">Copy link</button>
+                <a class="btn-outline" href="https://www.linkedin.com/sharing/share-offsite/?url=https://lukasrozado.github.io/projects/fiscal-document-consolidation-pipeline-en.html" target="_blank" rel="noopener">Share on LinkedIn</a>
+                <a class="btn-outline" href="https://twitter.com/intent/tweet?url=https://lukasrozado.github.io/projects/fiscal-document-consolidation-pipeline-en.html" target="_blank" rel="noopener">Share on X</a>
+                <button type="button" class="btn-outline copy-link-btn" data-url="https://lukasrozado.github.io/projects/fiscal-document-consolidation-pipeline-en.html" data-label="Copy link" data-copied-label="Copied!">Copy link</button>
             </div>
 
             <div class="project-actions">

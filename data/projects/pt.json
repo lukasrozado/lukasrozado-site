@@ -3,7 +3,7 @@
     {
       "title": "Enterprise Crypto Data Lake: Ingestão Multi-Conta",
       "slug": "enterprise-crypto-data-lake",
-      "description": "Arquitetura de auditoria financeira contínua para dezenas de contas institucionais numa exchange de criptoativos, com backfill histórico desde a criação de cada conta. O núcleo é um rate limiter compartilhado entre processos que lê, em cada resposta HTTP, o header oficial de cota consumida — nunca uma estimativa por contagem de chamadas — o que elimina o padrão de bloqueio de IP que existia antes dessa arquitetura. Uma camada Bronze obrigatória guarda o payload bruto em JSONB e alimenta um modelo Medallion completo; a carga roda via COPY nativo do PostgreSQL, tabela temporária e UPSERT, sustentando dezenas de milhões de registros por ano com credenciais isoladas em Azure Key Vault.",
+      "description": "Arquitetura de auditoria financeira contínua para dezenas de contas institucionais numa exchange de criptoativos, com backfill histórico desde a criação de cada conta. O núcleo é um rate limiter compartilhado entre processos que lê, em cada resposta HTTP, o header oficial de cota consumida (nunca uma estimativa por contagem de chamadas), o que elimina o padrão de bloqueio de IP que existia antes dessa arquitetura. Uma camada Bronze obrigatória guarda o payload bruto em JSONB e alimenta um modelo Medallion completo; a carga roda via COPY nativo do PostgreSQL, tabela temporária e UPSERT, sustentando dezenas de milhões de registros por ano com credenciais isoladas em Azure Key Vault.",
       "technologies": [
         "python",
         "postgresql",
@@ -21,14 +21,14 @@
       "caseStudy": {
         "problem": "Dezenas de contas institucionais e sub-contas numa mesma exchange precisavam de auditoria contínua, mas o teto de cota da API era compartilhado entre todas as chaves, não por chave, e cada sub-sistema (spot, futuros, conversão, staking) devolvia um formato de resposta diferente. Passar do limite bloqueava o IP corporativo por HTTP e travava a auditoria inteira até o desbloqueio.",
         "solution": "Um rate limiter lê o header oficial de peso já consumido em cada resposta HTTP, nunca uma estimativa, com o estado compartilhado entre processos via memória gerenciada, respeitando um teto único de cota por minuto. Um carrossel dá prioridade às contas com atividade recente e empurra as inativas pra ciclos mais espaçados, sem gastar cota em quem não mudou. Toda a carga acontece em bulk, via COPY nativo, tabela temporária e UPSERT, com checkpoint em JSONB pra retomar exatamente de onde parou depois de qualquer interrupção.",
-        "impact": "Backfill histórico completo desde a abertura de cada conta, algumas remontando a 2019, e fim do padrão de bloqueio que existia antes dessa arquitetura. Dezenas de milhões de registros processados por ano, com o pipeline sustentando >99,9% de uptime."
+        "impact": "Backfill histórico completo desde a abertura de cada conta, algumas remontando a 2019, e fim do padrão de bloqueio que existia antes dessa arquitetura, com o pipeline em produção sustentando >99,9% de uptime em dezenas de milhões de registros processados por ano."
       },
       "diagramImageV1": "./assets/images/crypto_data_lake_ingestion_architecture.webp"
     },
     {
       "title": "Unified Banking Ledger Platform",
       "slug": "unified-banking-ledger-platform",
-      "description": "Plataforma que unificou dois pipelines financeiros separados (banking/PIX e reconciliação de ledger) num só sistema, rodando de minuto em minuto, persistente e orquestrado. Cada domínio de dado — contas, chaves PIX, transações PIX, parceiros, movimentos de ledger, mesa OTC — tem fila produtor-consumidor própria, cursor e marca d'água isolados, e descarrega em lotes de 5 mil registros direto no banco. Endpoints sem filtro nativo de delta usam early-exit: leem do topo e param sozinhos assim que N páginas seguidas já cruzaram a marca d'água salva, sem precisar revarrer o histórico inteiro a cada execução. Saldo de parceiro roda em duas estratégias, delta a cada 15 minutos pra quem movimentou recente e full diário pra todo mundo. Um auditor de ciclo de vida separado corrige status de transação PIX que muda depois de capturada, sem re-escanear nada além do necessário.",
+      "description": "Plataforma que unificou dois pipelines financeiros separados (banking/PIX e reconciliação de ledger) num só sistema, rodando de minuto em minuto, persistente e orquestrado. Cada domínio de dado (contas, chaves PIX, transações PIX, parceiros, movimentos de ledger, mesa OTC) tem fila produtor-consumidor própria, cursor e marca d'água isolados, e descarrega em lotes de 5 mil registros direto no banco. Endpoints sem filtro nativo de delta usam early-exit: leem do topo e param sozinhos assim que N páginas seguidas já cruzaram a marca d'água salva, sem precisar revarrer o histórico inteiro a cada execução. Saldo de parceiro roda em duas estratégias, delta a cada 15 minutos pra quem movimentou recente e full diário pra todo mundo. Um auditor de ciclo de vida separado corrige status de transação PIX que muda depois de capturada, sem re-escanear nada além do necessário.",
       "technologies": [
         "python",
         "postgresql",
@@ -36,7 +36,7 @@
         "sql"
       ],
       "difficulty": "advanced",
-      "duration": "—",
+      "duration": "-",
       "techIcons": [
         "python",
         "postgresql"
@@ -44,8 +44,8 @@
       "category": "Engenharia de Dados",
       "diagramImage": "./assets/images/unified-banking-ledger-platform.webp",
       "caseStudy": {
-        "problem": "Dois sistemas financeiros cresceram separados, cada um com seu próprio modelo de checkpoint, e precisavam virar um só sem perder o que já funcionava. Boa parte dos endpoints não tem filtro de data nativo, então capturar só o que é novo significa ler do início e adivinhar onde parar — ou reprocessar tudo, todo minuto, pra sempre.",
-        "solution": "Cada domínio roda isolado, com seu próprio cursor e sua própria marca d'água — uma falha numa \"gaveta\" não trava as outras. Pra endpoint sem filtro de data, a leitura começa do topo e para sozinha assim que N páginas seguidas caem numa data já coberta antes (early-exit por marca d'água), evitando tanto reprocessar tudo quanto parar cedo demais e perder registro. Saldo de parceiro roda em duas velocidades: delta de 15 minutos pra quem mexeu recente, full diário pra fechar o resto. Um auditor à parte cobre o caso que nenhuma das duas estratégias resolve sozinha: transação que já foi capturada mas muda de status depois — ele lê só a partir da mais antiga ainda pendente, e faz UPSERT no que mudou.",
+        "problem": "Dois sistemas financeiros cresceram separados, cada um com seu próprio modelo de checkpoint, e precisavam virar um só sem perder o que já funcionava. Boa parte dos endpoints não tem filtro de data nativo, então capturar só o que é novo significa ler do início e adivinhar onde parar, ou reprocessar tudo, todo minuto, pra sempre.",
+        "solution": "Cada domínio roda isolado, com seu próprio cursor e sua própria marca d'água; uma falha numa \"gaveta\" não trava as outras. Pra endpoint sem filtro de data, a leitura começa do topo e para sozinha assim que N páginas seguidas caem numa data já coberta antes (early-exit por marca d'água), evitando tanto reprocessar tudo quanto parar cedo demais e perder registro. Saldo de parceiro roda em duas velocidades: delta de 15 minutos pra quem mexeu recente, full diário pra fechar o resto. Um auditor à parte cobre o caso que nenhuma das duas estratégias resolve sozinha: transação que já foi capturada mas muda de status depois; ele lê só a partir da mais antiga ainda pendente, e faz UPSERT no que mudou.",
         "impact": "Dois pipelines viraram uma plataforma só, cobrindo banking, PIX, parceiros, ledger e mesa OTC (trades, saldo de parceiro, entrega travada, desvio de liquidação e empréstimos), rodando persistente de minuto em minuto sem depender de reprocessamento manual. Estado por domínio significa que adicionar uma esteira nova não arrisca as que já rodam."
       }
     },
@@ -60,7 +60,7 @@
         "sql"
       ],
       "difficulty": "advanced",
-      "duration": "—",
+      "duration": "-",
       "techIcons": [
         "python",
         "postgresql"
@@ -68,9 +68,53 @@
       "category": "Engenharia de Dados",
       "diagramImage": "./assets/images/financial-reconciliation-pipeline.webp",
       "caseStudy": {
-        "problem": "O sistema de origem devolvia timestamp inconsistente, omitia metadado crítico e sofria offset drift na paginação — registro sumindo ou duplicando sem aviso. A ingestão em tempo real, rodando a cada minuto, entrava em contenção de lock com a carga histórica, esgotava o pool de conexões e travava escrita.",
+        "problem": "O sistema de origem devolvia timestamp inconsistente, omitia metadado crítico e sofria offset drift na paginação: registro sumindo ou duplicando sem aviso. A ingestão em tempo real, rodando a cada minuto, entrava em contenção de lock com a carga histórica, esgotava o pool de conexões e travava escrita.",
         "solution": "Modelo híbrido: a API cobre ingestão quase em tempo real via high-water mark, e uma rotina diária baixa o relatório consolidado em CSV e roda um anti-join contra o banco pra preencher exatamente a lacuna que a API deixou passar. A arquitetura producer-consumer, com fila limitada, desacopla a chamada HTTP da escrita em banco; o checkpoint fica gravado por página em JSONB, então uma falha retoma do ponto exato. O backfill roda em processo procedural sequencial, um dia de cada vez, sessão única, o que elimina a condição de corrida que uma abordagem concorrente causaria. Índice novo nasce com CONCURRENTLY pra não bloquear escrita em produção, e a carga usa COPY, tabela temporária e UPSERT, com deduplicação em memória por chave primária antes de cada lote de até 50 mil registros.",
         "impact": "Backfill histórico completo do ativo de maior volume desde a origem da fonte, com a camada CSV recuperando sozinha a lacuna que a API jamais capturaria. O pipeline funcionou como livro-razão de transição do sistema financeiro até a migração completa pra plataforma definitiva, sendo desativado depois de cumprir seu papel."
+      }
+    },
+    {
+      "title": "OTC Desk Reconciliation Pipeline",
+      "slug": "otc-desk-reconciliation-pipeline",
+      "description": "ETL diário que ingere planilha operacional mantida por humanos (sem chave primária estável, com linhas reordenadas, apagadas e recriadas na origem) pra um data warehouse relacional, resolvendo nome de contraparte digitado de forma inconsistente via fuzzy matching com limiar de 92% de similaridade. Em vez de upsert incremental, a carga usa Full Replace (truncate + reload integral) a cada execução. Deduplicação roda por hash SHA-256 sobre a assinatura da transação mais um contador de ocorrência (nonce), preservando de propósito splits legítimos idênticos em vez de colapsá-los. Uma camada de blindagem de schema extrai estritamente as colunas financeiras esperadas e ignora qualquer coluna nova que a área de negócio adicione sem aviso.",
+      "technologies": [
+        "python",
+        "postgresql",
+        "sql"
+      ],
+      "difficulty": "intermediate",
+      "duration": "-",
+      "techIcons": [
+        "python",
+        "postgresql"
+      ],
+      "category": "Engenharia de Dados",
+      "caseStudy": {
+        "problem": "A fonte de dado era uma planilha operacional de alta complexidade, mantida manualmente por uma equipe de negócio, sem qualquer chave primária estável: linhas eram inseridas, apagadas e reordenadas o tempo todo, sem rastreabilidade. A área de negócio adicionava colunas de cálculo novas sem aviso prévio, quebrando scripts de automação tradicionais. E o nome da contraparte de cada operação era digitado à mão, frequentemente de forma inconsistente.",
+        "solution": "Sem chave primária, upsert incremental viraria fonte de registros fantasmas assim que uma linha fosse reordenada ou apagada na origem. A carga usa Full Replace: a cada execução, a tabela de fatos é truncada por inteiro e recarregada via protocolo COPY do PostgreSQL. Cada transação recebe um fingerprint SHA-256 sobre a assinatura lógica da linha combinada com um contador de ocorrência (nonce), preservando splits legítimos idênticos em vez de colapsá-los. A extração aplica blindagem de schema, ignorando qualquer coluna desconhecida ou temporária. O nome de contraparte passa por resolução em cascata: alias explícito, depois match exato, e só então fuzzy matching (limiar de 92% de similaridade).",
+        "impact": "A planilha da mesa de operações deixou de ser um ponto único de fragilidade para servir como fonte confiável de um data warehouse relacional, sem etapa manual de triagem de contraparte e sem quebrar a cada coluna nova que a área de negócio adicionasse."
+      }
+    },
+    {
+      "title": "Fiscal Document Consolidation Pipeline",
+      "slug": "fiscal-document-consolidation-pipeline",
+      "description": "Pipeline mensal incremental que baixa pares XML+PDF de documentos fiscais via API de um provedor de documentos fiscais, resolve a empresa dona de cada documento por substring match do identificador tributário no conteúdo bruto decodificado, sem depender de tag explícita de referência, e consolida a saída num ZIP geral mais um ZIP por empresa, organizados por tipo de documento e data.",
+      "technologies": [
+        "python",
+        "postgresql",
+        "rest-api"
+      ],
+      "difficulty": "intermediate",
+      "duration": "-",
+      "techIcons": [
+        "python",
+        "postgresql"
+      ],
+      "category": "Engenharia de Dados",
+      "caseStudy": {
+        "problem": "O documento fiscal chega da API já em XML, mas o payload não traz de forma confiável uma referência explícita de qual empresa do grupo é a dona daquele documento; a marcação de contraparte na origem é inconsistente entre emissores. Sem um jeito robusto de resolver o dono, a consolidação por empresa vira triagem manual todo mês.",
+        "solution": "Em vez de depender de uma tag de referência, a resolução de propriedade varre o conteúdo bruto decodificado do XML procurando, por substring match, o identificador tributário de cada entidade cadastrada; o dono é a primeira empresa cujo identificador aparece literalmente no texto do documento. A extração roda de forma incremental, filtra estritamente pela data de emissão real parseada do XML, e a consolidação mensal escreve um ZIP geral organizado por empresa/tipo de documento mais um ZIP individual por empresa, limpando o staging ao final.",
+        "impact": "Consolidação mensal de documentos fiscais totalmente automatizada, sem etapa manual de triagem por empresa, mesmo com marcação de contraparte inconsistente na fonte. O substring match elimina a dependência de uma tag que a origem nem sempre preenche corretamente."
       }
     },
     {
@@ -93,14 +137,14 @@
       "category": "Engenharia de Dados",
       "caseStudy": {
         "problem": "Indexador de terceiro em 15+ redes espalha o dado e não dá garantia real de integridade: cada provedor tem seu próprio atraso, formato e taxa de erro, e não existe um jeito nativo de saber se uma faixa de blocos ficou incompleta no banco.",
-        "solution": "Extração direta do nó via RPC, sem intermediário, com faixa de bloco que se particiona sozinha quando fica densa demais pra API responder. Por cima disso, um motor de auto-reconciliação varre o histórico em lotes, compara contagem de evento on-chain contra contagem no banco, e sempre que diverge apaga o lote inteiro e re-extrai do zero, com retry. No fechamento, comparo o supply total do token direto do contrato contra o supply líquido que o banco calcula somando mint e subtraindo burn — é o invariante contábil de verdade, não só contagem de linha.",
-        "impact": "Unificação relacional canônica de transação e balanço cruzado entre EVM e Solana, com estado de reconciliação persistido por rede — uma falha no meio do processo retoma exatamente do último lote validado, nunca do zero."
+        "solution": "Extração direta do nó via RPC, sem intermediário, com faixa de bloco que se particiona sozinha quando fica densa demais pra API responder. Por cima disso, um motor de auto-reconciliação varre o histórico em lotes, compara contagem de evento on-chain contra contagem no banco, e sempre que diverge apaga o lote inteiro e re-extrai do zero, com retry. No fechamento, comparo o supply total do token direto do contrato contra o supply líquido que o banco calcula somando mint e subtraindo burn; é o invariante contábil de verdade, não só contagem de linha.",
+        "impact": "Unificação relacional canônica de transação e balanço cruzado entre EVM e Solana, com estado de reconciliação persistido por rede; uma falha no meio do processo retoma exatamente do último lote validado, nunca do zero."
       }
     },
     {
       "title": "Institutional Digital Asset Custody Integrator",
       "slug": "institutional-digital-asset-custody",
-      "description": "Orquestrador de ingestão pra custódia institucional de criptoativos, com cada workspace regional isolado, credencial própria via Key Vault e duas esteiras paralelas: transação e snapshot de saldo por vault. Uma máquina de estado alterna sozinha entre backfill completo e modo incremental, com sobreposição de 5 minutos na virada pra nunca perder registro na borda da janela. Um auditor separado, mais barato, revarre só as transações ainda em status não-terminal, a partir do registro pendente mais antigo, e faz UPSERT no que mudou — sem re-escanear o histórico inteiro pra pegar uma transação que demorou a fechar.",
+      "description": "Orquestrador de ingestão pra custódia institucional de criptoativos, com cada workspace regional isolado, credencial própria via Key Vault e duas esteiras paralelas: transação e snapshot de saldo por vault. Uma máquina de estado alterna sozinha entre backfill completo e modo incremental, com sobreposição de 5 minutos na virada pra nunca perder registro na borda da janela. Um auditor separado, mais barato, revarre só as transações ainda em status não-terminal, a partir do registro pendente mais antigo, e faz UPSERT no que mudou, sem re-escanear o histórico inteiro pra pegar uma transação que demorou a fechar.",
       "technologies": [
         "python",
         "rest-api",
@@ -117,7 +161,7 @@
       "category": "Engenharia de Dados",
       "caseStudy": {
         "problem": "Cada workspace regional de custódia tinha sua própria credencial e seu próprio ritmo, mas transação em status intermediário (pendente, em aprovação) podia mudar de estado horas ou dias depois, e não tinha como saber isso sem reprocessar tudo de novo. Backfill completo e captura incremental competiam pela mesma lógica de checkpoint.",
-        "solution": "Orquestrador centralizado processa cada workspace isolado, com sua própria chave carregada de um cofre de segredos. Uma máquina de estado decide sozinha se ainda está em backfill (checkpoint anda pelo registro mais antigo processado) ou já em modo incremental (checkpoint anda pelo mais novo, com 5 minutos de sobreposição na virada). Duas esteiras rodam por workspace: transação e snapshot de saldo por conta de vault, ambas em UPSERT por chave. Um auditor separado, mais leve, busca só a menor data entre as transações ainda não fechadas e revarre a API a partir dali — nunca do início.",
+        "solution": "Orquestrador centralizado processa cada workspace isolado, com sua própria chave carregada de um cofre de segredos. Uma máquina de estado decide sozinha se ainda está em backfill (checkpoint anda pelo registro mais antigo processado) ou já em modo incremental (checkpoint anda pelo mais novo, com 5 minutos de sobreposição na virada). Duas esteiras rodam por workspace: transação e snapshot de saldo por conta de vault, ambas em UPSERT por chave. Um auditor separado, mais leve, busca só a menor data entre as transações ainda não fechadas e revarre a API a partir dali, nunca do início.",
         "impact": "Transação que muda de status depois de capturada é corrigida sem reprocessar histórico inteiro. Cada workspace mantém seu próprio checkpoint e seu próprio histórico de execução, então uma falha num não trava os outros. Snapshot de saldo e transação ficam sempre no mesmo schema, prontos pra auditoria cruzada."
       },
       "diagramImageV1": "./assets/images/institutional_digital_asset_custody_integrator.webp"
@@ -142,7 +186,7 @@
       "category": "Engenharia de Dados",
       "caseStudy": {
         "problem": "Payload financeiro chegava com listas nativas que quebravam o carregador bulk do PostgreSQL. Log de transação normalizado em tabela própria só respondia com join lento, e perdia o retrato exato do instante da operação. E rodar uma carga histórica retroativa corria o risco de sobrescrever o checkpoint do pipeline de produção, prendendo-o num loop.",
-        "solution": "Antes de qualquer COPY, um motor de sanitização dedicado converte cada lista pro formato nativo de array do Postgres. Na camada Silver, o flattening é total: o transformer abre o payload aninhado e joga suas colunas, já prefixadas, direto na tabela de log — auditoria vira um SELECT só. O script de backfill é passivo por completo, nunca grava no checkpoint de produção, e cada extrator trata endpoint sem contrato como volume zero, sem derrubar o resto do pipeline.",
+        "solution": "Antes de qualquer COPY, um motor de sanitização dedicado converte cada lista pro formato nativo de array do Postgres. Na camada Silver, o flattening é total: o transformer abre o payload aninhado e joga suas colunas, já prefixadas, direto na tabela de log; auditoria vira um SELECT só. O script de backfill é passivo por completo, nunca grava no checkpoint de produção, e cada extrator trata endpoint sem contrato como volume zero, sem derrubar o resto do pipeline.",
         "impact": "Ingestão contínua de dado de liquidação de alta criticidade sem risco de corromper o estado de produção. Trilha de auditoria imutável, consultável direto, sem join. Resiliente a produto parcialmente contratado, sem precisar de intervenção manual."
       },
       "diagramImageV1": "./assets/images/baas_financial_settlement_data_sink.webp"
@@ -193,7 +237,7 @@
       "caseStudy": {
         "problem": "Estatísticas do LCK Spring 2024 dispersas em centenas de páginas individuais de partidas no Gol.gg, sem estrutura relacional para análise ou modelagem.",
         "solution": "Pipeline de coleta híbrido (BeautifulSoup + Selenium), normalização de formatos inconsistentes (percentuais, durações MM:SS convertidas para segundos), deduplicação e três tabelas conectadas por Player ID sequencial.",
-        "impact": "Nota máxima de usabilidade (10.0) no Kaggle, licença CC BY 4.0, 300+ downloads e reuso por terceiros em notebooks de EDA — prova pública e auditável de engenharia de dados."
+        "impact": "Nota máxima de usabilidade (10.0) no Kaggle, licença CC BY 4.0, 300+ downloads e reuso por terceiros em notebooks de EDA, prova pública e auditável de engenharia de dados."
       }
     }
   ]

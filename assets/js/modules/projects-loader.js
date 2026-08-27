@@ -3,6 +3,28 @@ const currentLang = () =>
     ? "en"
     : "pt";
 
+const PROJECTS_VISIBLE_LIMIT = 6;
+
+function initProjectsLimit(grid, lang) {
+  document.getElementById("projects-load-more")?.remove();
+  const cards = Array.from(grid.querySelectorAll(".project-card"));
+  if (cards.length <= PROJECTS_VISIBLE_LIMIT) return;
+
+  cards.slice(PROJECTS_VISIBLE_LIMIT).forEach((card) => card.classList.add("project-card--collapsed"));
+
+  const button = document.createElement("button");
+  button.id = "projects-load-more";
+  button.className = "filter-btn";
+  button.style.margin = "2rem auto 0";
+  button.style.display = "block";
+  button.textContent = lang === "en" ? "Show more projects" : "Ver mais projetos";
+  button.addEventListener("click", () => {
+    cards.forEach((card) => card.classList.remove("project-card--collapsed"));
+    button.remove();
+  });
+  grid.insertAdjacentElement("afterend", button);
+}
+
 export async function loadProjects() {
   try {
     const grid = document.querySelector(".projects-grid");
@@ -65,6 +87,7 @@ export async function loadProjects() {
     });
 
     initArchitectureModal();
+    initProjectsLimit(grid, lang);
   } catch (error) {
     console.error("Error loading projects:", error);
     const counter = document.getElementById("project-count");

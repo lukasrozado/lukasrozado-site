@@ -133,6 +133,36 @@
     </url>
 
     <url>
+        <loc>https://lukasrozado.github.io/projects/otc-desk-reconciliation-pipeline.html</loc>
+        <lastmod>2026-08-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="https://lukasrozado.github.io/projects/otc-desk-reconciliation-pipeline.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://lukasrozado.github.io/projects/otc-desk-reconciliation-pipeline-en.html"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://lukasrozado.github.io/projects/otc-desk-reconciliation-pipeline.html"/>
+    </url>
+
+    <url>
+        <loc>https://lukasrozado.github.io/projects/fiscal-document-consolidation-pipeline.html</loc>
+        <lastmod>2026-08-26</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="https://lukasrozado.github.io/projects/fiscal-document-consolidation-pipeline.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://lukasrozado.github.io/projects/fiscal-document-consolidation-pipeline-en.html"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://lukasrozado.github.io/projects/fiscal-document-consolidation-pipeline.html"/>
+    </url>
+
+    <url>
+        <loc>https://lukasrozado.github.io/projects/fiscal-document-consolidation-pipeline-en.html</loc>
+        <lastmod>2026-08-26</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="https://lukasrozado.github.io/projects/fiscal-document-consolidation-pipeline.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://lukasrozado.github.io/projects/fiscal-document-consolidation-pipeline-en.html"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://lukasrozado.github.io/projects/fiscal-document-consolidation-pipeline.html"/>
+    </url>
+
+    <url>
         <loc>https://lukasrozado.github.io/projects/lck-spring-2024-dataset.html</loc>
         <lastmod>2026-08-26</lastmod>
         <changefreq>monthly</changefreq>
@@ -220,6 +250,16 @@
         <xhtml:link rel="alternate" hreflang="pt-BR" href="https://lukasrozado.github.io/projects/financial-reconciliation-pipeline.html"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://lukasrozado.github.io/projects/financial-reconciliation-pipeline-en.html"/>
         <xhtml:link rel="alternate" hreflang="x-default" href="https://lukasrozado.github.io/projects/financial-reconciliation-pipeline.html"/>
+    </url>
+
+    <url>
+        <loc>https://lukasrozado.github.io/projects/otc-desk-reconciliation-pipeline-en.html</loc>
+        <lastmod>2026-08-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="https://lukasrozado.github.io/projects/otc-desk-reconciliation-pipeline.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://lukasrozado.github.io/projects/otc-desk-reconciliation-pipeline-en.html"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://lukasrozado.github.io/projects/otc-desk-reconciliation-pipeline.html"/>
     </url>
 
     <url>

@@ -1,31 +1,31 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR" itemscope itemtype="https://schema.org/Person">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>High-Concurrency Financial Reconciliation Pipeline | Lukas Rozado</title>
+    <title>Fiscal Document Consolidation Pipeline | Lukas Rozado</title>
     <meta name="theme-color" content="#00D4FF">
 
-    <link rel="canonical" href="https://lukasrozado.github.io/projects/financial-reconciliation-pipeline.html">
-    <link rel="alternate" hreflang="pt-BR" href="https://lukasrozado.github.io/projects/financial-reconciliation-pipeline.html">
-    <link rel="alternate" hreflang="en" href="https://lukasrozado.github.io/projects/financial-reconciliation-pipeline-en.html">
-    <link rel="alternate" hreflang="x-default" href="https://lukasrozado.github.io/projects/financial-reconciliation-pipeline.html">
+    <link rel="canonical" href="https://lukasrozado.github.io/projects/fiscal-document-consolidation-pipeline.html">
+    <link rel="alternate" hreflang="pt-BR" href="https://lukasrozado.github.io/projects/fiscal-document-consolidation-pipeline.html">
+    <link rel="alternate" hreflang="en" href="https://lukasrozado.github.io/projects/fiscal-document-consolidation-pipeline-en.html">
+    <link rel="alternate" hreflang="x-default" href="https://lukasrozado.github.io/projects/fiscal-document-consolidation-pipeline.html">
 
-    <meta name="description" content="Pipeline híbrido de ingestão e reconciliação financeira, com auto-cura via anti-join, checkpoint por página e backfill sequencial isolado para dados de alta transacionalidade.">
+    <meta name="description" content="Pipeline mensal que baixa XML e PDF de documentos fiscais via API, resolve o dono de cada documento por substring match do identificador tributário no conteúdo bruto, e consolida por empresa.">
     <meta name="author" content="Lukas Rozado">
     <meta name="robots" content="index,follow,max-image-preview:large">
 
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://lukasrozado.github.io/projects/financial-reconciliation-pipeline.html">
-    <meta property="og:title" content="High-Concurrency Financial Reconciliation Pipeline | Case Study">
-    <meta property="og:description" content="Pipeline híbrido de ingestão e reconciliação financeira, com auto-cura via anti-join, checkpoint por página e backfill sequencial isolado para dados de alta transacionalidade.">
-    <meta property="og:image" content="https://lukasrozado.github.io/assets/images/financial-reconciliation-pipeline.webp">
+    <meta property="og:url" content="https://lukasrozado.github.io/projects/fiscal-document-consolidation-pipeline.html">
+    <meta property="og:title" content="Fiscal Document Consolidation Pipeline | Case Study">
+    <meta property="og:description" content="Pipeline mensal que baixa XML e PDF de documentos fiscais via API, resolve o dono de cada documento por substring match do identificador tributário no conteúdo bruto, e consolida por empresa.">
+    <meta property="og:image" content="https://lukasrozado.github.io/assets/images/og-image.webp">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@RozadoLukas">
-    <meta name="twitter:title" content="High-Concurrency Financial Reconciliation Pipeline | Case Study">
-    <meta name="twitter:description" content="Pipeline híbrido de ingestão e reconciliação financeira, com auto-cura via anti-join, checkpoint por página e backfill sequencial isolado para dados de alta transacionalidade.">
-    <meta name="twitter:image" content="https://lukasrozado.github.io/assets/images/financial-reconciliation-pipeline.webp">
+    <meta name="twitter:title" content="Fiscal Document Consolidation Pipeline | Case Study">
+    <meta name="twitter:description" content="Pipeline mensal que baixa XML e PDF de documentos fiscais via API, resolve o dono de cada documento por substring match do identificador tributário no conteúdo bruto, e consolida por empresa.">
+    <meta name="twitter:image" content="https://lukasrozado.github.io/assets/images/og-image.webp">
 
     <link rel="icon" href="../assets/icons/favicon.ico" sizes="any">
     <link rel="apple-touch-icon" href="../assets/icons/favicon-180x180.webp">
@@ -60,20 +60,20 @@
             {
                 "@type": "ListItem",
                 "position": 3,
-                "name": "High-Concurrency Financial Reconciliation Pipeline",
-                "item": "https://lukasrozado.github.io/projects/financial-reconciliation-pipeline.html"
+                "name": "Fiscal Document Consolidation Pipeline",
+                "item": "https://lukasrozado.github.io/projects/fiscal-document-consolidation-pipeline.html"
             }
         ]
     },
     {
         "@context": "https://schema.org",
         "@type": "TechArticle",
-        "name": "High-Concurrency Financial Reconciliation Pipeline",
-        "description": "Pipeline híbrido de ingestão e reconciliação financeira (API near real-time + auto-cura via CSV D-1), com arquitetura producer-consumer, checkpoint por página, backfill sequencial isolado e carga via COPY + UPSERT em tabelas de alta transacionalidade.",
-        "url": "https://lukasrozado.github.io/projects/financial-reconciliation-pipeline.html",
-        "image": "https://lukasrozado.github.io/assets/images/financial-reconciliation-pipeline.webp",
+        "name": "Fiscal Document Consolidation Pipeline",
+        "description": "Pipeline mensal incremental que baixa pares XML+PDF de documentos fiscais via API de um provedor de documentos fiscais, resolve a empresa dona de cada documento por substring match do identificador tributário no conteúdo bruto decodificado (não confiando em tag explícita de referência), e consolida a saída num ZIP geral mais um ZIP por empresa, organizados por tipo de documento e data.",
+        "url": "https://lukasrozado.github.io/projects/fiscal-document-consolidation-pipeline.html",
+        "image": "https://lukasrozado.github.io/assets/images/og-image.webp",
         "inLanguage": "pt-BR",
-        "keywords": "python, postgresql, azure, sql",
+        "keywords": "python, postgresql, rest-api",
         "author": {
             "@type": "Person",
             "name": "Lukas Rozado",
@@ -85,7 +85,7 @@
             ]
         },
         "datePublished": "2026-08-26",
-        "dateModified": "2026-08-27"
+        "dateModified": "2026-08-26"
     }
 ]
     </script>
@@ -124,44 +124,40 @@
     <main id="main-content" role="main">
         <article class="project-page" itemscope itemtype="https://schema.org/CreativeWork">
                         <nav class="breadcrumb" aria-label="Breadcrumb">
-                <a href="../index.html">Início</a> <span aria-hidden="true">›</span> <a href="../index.html#projects">Projetos</a> <span aria-hidden="true">›</span> <span aria-current="page">financial reconciliation pipeline</span>
+                <a href="../index.html">Início</a> <span aria-hidden="true">›</span> <a href="../index.html#projects">Projetos</a> <span aria-hidden="true">›</span> <span aria-current="page">fiscal document consolidation pipeline</span>
             </nav>
 
             <div class="project-meta">
                 <span class="project-tag">Engenharia de Dados</span>
             </div>
 
-            <h1 itemprop="name">High-Concurrency Financial Reconciliation Pipeline</h1>
+            <h1 itemprop="name">Fiscal Document Consolidation Pipeline</h1>
 
-            <p class="lead" itemprop="description">Dado financeiro de alta transacionalidade, ingerido em lotes de até <strong>50 mil registros</strong> por um pipeline híbrido: uma via de API quase em tempo real, guiada por high-water mark, e uma via diária que baixa CSV e faz anti-join contra o banco pra recuperar lacuna invisível à API (offset drift de paginação). A extração roda em arquitetura producer-consumer com fila limitada, e o checkpoint fica por página, não por dia, pra retomar do ponto exato de interrupção depois de qualquer falha. O backfill histórico roda num processo procedural estritamente sequencial, isolado da ingestão em produção.</p>
+            <p class="lead" itemprop="description">Pipeline mensal incremental que resolve a empresa dona de cada documento fiscal por <strong>substring match do identificador tributário dentro do conteúdo bruto do XML</strong>, em vez de confiar numa tag de referência explícita, uma escolha de resiliência que tolera marcação inconsistente na origem. O job baixa o par XML+PDF de cada documento via API do provedor de documentos fiscais, decodifica payload em base64 quando necessário, e filtra estritamente pela data de emissão real extraída do próprio XML, não pela data de criação do registro na API.</p>
 
             <div class="project-tech-row">
                 <img src="../assets/icons/python.svg" alt="python" class="tech-icon" width="30" height="30">
                 <img src="../assets/icons/postgresql.svg" alt="postgresql" class="tech-icon" width="30" height="30">
             </div>
 
-            <figure class="project-diagram">
-                <img src="../assets/images/financial-reconciliation-pipeline.webp" alt="High-Concurrency Financial Reconciliation Pipeline - diagrama de arquitetura" width="1200" height="800" loading="lazy" decoding="async" itemprop="image">
-                <figcaption>Arquitetura do sistema</figcaption>
-            </figure>
             <section class="case-study" aria-labelledby="case-study-heading">
                 <h2 id="case-study-heading">Estudo de caso</h2>
                 <div class="case-block">
                     <h3>Problema</h3>
-                    <p>O sistema de origem devolvia timestamp inconsistente, omitia metadado crítico e sofria <em>offset drift</em> na paginação: registro sumindo ou duplicando sem aviso. A ingestão em tempo real, rodando a cada minuto, entrava em contenção de lock com a carga histórica, esgotava o pool de conexões e travava escrita.</p>
+                    <p>O documento fiscal chega da API já em XML (às vezes envelopado em base64), mas o payload não traz de forma confiável uma referência explícita e normalizada de qual empresa do grupo é a dona daquele documento; a marcação de contraparte na origem é inconsistente entre emissores. Sem um jeito robusto de resolver o dono, a consolidação por empresa vira um processo manual de triagem, arquivo por arquivo, todo mês.</p>
                 </div>
                 <div class="case-block">
                     <h3>Solu&ccedil;&atilde;o</h3>
-                    <p>Modelo híbrido: a API cobre ingestão quase em tempo real via <em>high-water mark</em>, e uma rotina diária baixa o relatório consolidado em CSV e roda um <em>anti-join</em> contra o banco pra preencher exatamente a lacuna que a API deixou passar. A arquitetura producer-consumer, com fila limitada, desacopla a chamada HTTP da escrita em banco; o checkpoint fica gravado por página em JSONB, então uma falha retoma do ponto exato. O backfill roda em processo procedural sequencial, um dia de cada vez, sessão única, o que elimina a condição de corrida que uma abordagem concorrente causaria. Índice novo nasce com <code>CONCURRENTLY</code> pra não bloquear escrita em produção, e a carga usa <code>COPY</code>, tabela temporária e <code>UPSERT</code>, com deduplicação em memória por chave primária antes de cada lote de até 50 mil registros.</p>
+                    <p>Em vez de depender de uma tag de referência (que pode faltar, vir vazia ou usar convenção diferente por emissor), a resolução de propriedade varre o conteúdo bruto decodificado do XML procurando, por <em>substring match</em>, o identificador tributário de cada entidade cadastrada; o dono é a primeira empresa cujo identificador aparece literalmente no texto do documento. Essa escolha tolera a inconsistência de marcação na origem sem quebrar o pipeline. A extração roda de forma incremental (mês anterior completo, calculado automaticamente), pagina via cursor/URL-de-continuação nativo da API, e filtra estritamente pela data de emissão real parseada via regex do próprio XML, não pela data de criação do registro, que pode divergir. PDF e XML de cada documento são baixados como par e gravados num staging local; ao final do mês, a consolidação decodifica cada XML, resolve o dono por substring match, e escreve dois artefatos: um ZIP geral com todos os documentos organizados em <code>Empresa/TipoDeDocumento/</code>, e um ZIP individual por empresa com o mesmo recorte. O staging é limpo depois de cada consolidação bem-sucedida, e o relatório final segue por e-mail.</p>
                 </div>
                 <div class="case-block">
                     <h3>Impacto</h3>
-                    <p>Backfill histórico completo do ativo de maior volume desde a origem da fonte, com a camada CSV recuperando sozinha a lacuna que a API jamais capturaria. O pipeline funcionou como livro-razão de transição do sistema financeiro até a migração completa pra plataforma definitiva, sendo desativado depois de cumprir seu papel.</p>
+                    <p>Consolidação mensal de documentos fiscais totalmente automatizada, sem etapa manual de triagem por empresa, mesmo com marcação de contraparte inconsistente na fonte. O mecanismo de substring match elimina a dependência de uma tag específica que a origem nem sempre preenche corretamente, tornando o pipeline resiliente a mudança de formato do lado do provedor.</p>
                 </div>
             </section>
 
 
-            <div class="social-proof"><p><strong>Resultado:</strong> Caso anonimizado: pipeline validado como livro-razão de transição até migração completa.</p></div>
+            <div class="social-proof"><p><strong>Resultado:</strong> Caso anonimizado: consolidação mensal de documentos fiscais rodando sem intervenção manual desde a implantação.</p></div>
 
                                                 <div class="mid-cta">
                 <p>Tem um caso parecido? Vamos desenhar a arquitetura que prova o resultado no seu contexto.</p>
@@ -171,17 +167,15 @@
             <section class="related-projects" aria-labelledby="related-heading">
                 <h2 id="related-heading">Projetos relacionados</h2>
                 <div class="related-grid">
-                <a class="related-card" href="./unified-banking-ledger-platform.html">Unified Banking Ledger Platform</a>
+                <a class="related-card" href="./financial-reconciliation-pipeline.html">High-Concurrency Financial Reconciliation Pipeline</a>
                 <a class="related-card" href="./baas-financial-settlement-data-sink.html">BaaS &amp; Financial Settlement Data Sink</a>
-                <a class="related-card" href="./fiscal-document-consolidation-pipeline.html">Fiscal Document Consolidation Pipeline</a>
-                <a class="related-card" href="../writing/monitoramento-que-afirma-sucesso-mas-nao-valida.html">Por que reconciliação de verdade importa (ensaio)</a>
                 </div>
             </section>
 
                         <div class="share-bar">
-                <a class="btn-outline" href="https://www.linkedin.com/sharing/share-offsite/?url=https://lukasrozado.github.io/projects/financial-reconciliation-pipeline.html" target="_blank" rel="noopener">Compartilhar no LinkedIn</a>
-                <a class="btn-outline" href="https://twitter.com/intent/tweet?url=https://lukasrozado.github.io/projects/financial-reconciliation-pipeline.html" target="_blank" rel="noopener">Compartilhar no X</a>
-                <button type="button" class="btn-outline copy-link-btn" data-url="https://lukasrozado.github.io/projects/financial-reconciliation-pipeline.html" data-label="Copiar link" data-copied-label="Copiado!">Copiar link</button>
+                <a class="btn-outline" href="https://www.linkedin.com/sharing/share-offsite/?url=https://lukasrozado.github.io/projects/fiscal-document-consolidation-pipeline.html" target="_blank" rel="noopener">Compartilhar no LinkedIn</a>
+                <a class="btn-outline" href="https://twitter.com/intent/tweet?url=https://lukasrozado.github.io/projects/fiscal-document-consolidation-pipeline.html" target="_blank" rel="noopener">Compartilhar no X</a>
+                <button type="button" class="btn-outline copy-link-btn" data-url="https://lukasrozado.github.io/projects/fiscal-document-consolidation-pipeline.html" data-label="Copiar link" data-copied-label="Copiado!">Copiar link</button>
             </div>
 
             <div class="project-actions">

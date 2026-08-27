@@ -134,7 +134,7 @@
             <h1 itemprop="name">Unified Multi-Chain Ledger Integrator</h1>
 
 
-            <p class="lead" itemprop="description">Transactions across dozens of blockchains and contracts (EVM and Solana), consolidated by a resilient pipeline reading straight from the node via raw RPC (<code>eth_getLogs</code> filtered by event topic) instead of relying on a third-party indexer. Block ranges too dense for the API split recursively until they fit. The core differentiator is the self-healing reconciliation engine: it compares on-chain event counts against the database range by range, heals any mismatch on its own by deleting and re-extracting the batch, and closes with a final accounting check comparing total on-chain supply against the net supply computed in PostgreSQL — <strong>100%</strong> integrity, no exceptions.</p>
+            <p class="lead" itemprop="description">Transactions across dozens of blockchains and contracts (EVM and Solana), consolidated by a resilient pipeline reading straight from the node via raw RPC (<code>eth_getLogs</code> filtered by event topic) instead of relying on a third-party indexer. Block ranges too dense for the API split recursively until they fit. The core differentiator is the self-healing reconciliation engine: it compares on-chain event counts against the database range by range, heals any mismatch on its own by deleting and re-extracting the batch, and closes with a final accounting check comparing total on-chain supply against the net supply computed in PostgreSQL: <strong>100%</strong> integrity, no exceptions.</p>
 
             <div class="project-tech-row">
                 <img src="../assets/icons/python.svg" alt="python" class="tech-icon" width="30" height="30">
@@ -154,22 +154,22 @@
                 </div>
                 <div class="case-block">
                     <h3>Solution</h3>
-                    <p>Direct extraction from the node via RPC, no middleman, with a block range that partitions itself when it's too dense for the API to answer. On top of that, a self-healing engine sweeps the history in batches, compares on-chain event counts against the database, and whenever it diverges deletes the whole batch and re-extracts it, with retry. At close, I compare the token's total supply straight from the contract against the net supply the database computes by summing mints and subtracting burns — that's the real accounting invariant, not just a row count.</p>
+                    <p>Direct extraction from the node via RPC, no middleman, with a block range that partitions itself when it's too dense for the API to answer. On top of that, a self-healing engine sweeps the history in batches, compares on-chain event counts against the database, and whenever it diverges deletes the whole batch and re-extracts it, with retry. At close, I compare the token's total supply straight from the contract against the net supply the database computes by summing mints and subtracting burns; that's the real accounting invariant, not just a row count.</p>
                 </div>
                 <div class="case-block">
                     <h3>Impact</h3>
-                    <p>Canonical relational unification of transactions and cross-chain balances between EVM and Solana, with reconciliation state persisted per network — a mid-run failure resumes from the last validated batch, never from zero.</p>
+                    <p>Canonical relational unification of transactions and cross-chain balances between EVM and Solana, with reconciliation state persisted per network; a mid-run failure resumes from the last validated batch, never from zero.</p>
                 </div>
             </section>
 
 
-            <div class="social-proof"><p><strong>Outcome:</strong> Anonymized case — reconciliation validated via on-chain vs DB count.</p></div>
+            <div class="social-proof"><p><strong>Outcome:</strong> Anonymized case: reconciliation validated via on-chain vs DB count.</p></div>
 
                                                 <div class="mid-cta">
                 <p>Have a similar case? Let's design the architecture that proves the outcome in your context.</p>
                 <a class="btn-primary" href="../contact-en.html">Discuss your case</a>
             </div>
-                <p class="newsletter-inline"><a href="https://www.linkedin.com/newsletters/dado-bruto-7498525638908321792/" target="_blank" rel="noopener noreferrer">Get cases like this every week in the <strong>Dado Bruto</strong> newsletter &nearr;</a></p>
+                <p class="newsletter-inline"><a href="https://www.linkedin.com/newsletters/dado-bruto-7498525638908321792/" target="_blank" rel="noopener noreferrer">Get cases like this every month in the <strong>Dado Bruto</strong> newsletter &nearr;</a></p>
             <section class="related-projects" aria-labelledby="related-heading">
                 <h2 id="related-heading">Related projects</h2>
                 <div class="related-grid">
@@ -198,7 +198,7 @@
         <div class="footer-cta">
             <img src="../assets/images/logo-dado-bruto-600.png" alt="Dado Bruto" style="height:96px;width:auto;flex-shrink:0;border-radius:10px;filter:drop-shadow(0 2px 8px rgba(0,212,255,.25))">
             <div class="footer-cta-text">
-                <p class="footer-newsletter-desc"><strong style="color:#00D4FF">Dado Bruto</strong> — newsletter &middot; Real data engineering cases in production: architecture, trade-offs, and the real number behind the decision.</p>
+                <p class="footer-newsletter-desc"><strong style="color:#00D4FF">Dado Bruto</strong>, newsletter &middot; Real data engineering cases in production: architecture, trade-offs, and the real number behind the decision.</p>
             </div>
             <a class="btn-newsletter" href="https://www.linkedin.com/newsletters/dado-bruto-7498525638908321792/" target="_blank" rel="noopener noreferrer">Subscribe on LinkedIn <span aria-hidden="true">&nearr;</span></a>
         </div>

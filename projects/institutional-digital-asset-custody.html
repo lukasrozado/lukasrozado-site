@@ -134,7 +134,7 @@
             <h1 itemprop="name">Institutional Digital Asset Custody Integrator</h1>
 
 
-            <p class="lead" itemprop="description">Custódia institucional de criptoativos, com cada workspace regional isolado, credencial própria via Key Vault e duas esteiras paralelas — transação e snapshot de saldo por vault — sob um único orquestrador de ingestão. Uma máquina de estado alterna sozinha entre backfill completo e modo incremental, com sobreposição de <strong>5 minutos</strong> na virada pra nunca perder registro na borda da janela. Um auditor separado, mais barato, revarre só as transações ainda em status não-terminal, a partir do registro pendente mais antigo, e faz UPSERT no que mudou — sem re-escanear o histórico inteiro pra pegar uma transação que demorou a fechar.</p>
+            <p class="lead" itemprop="description">Custódia institucional de criptoativos, com cada workspace regional isolado, credencial própria via Key Vault e duas esteiras paralelas (transação e snapshot de saldo por vault) sob um único orquestrador de ingestão. Uma máquina de estado alterna sozinha entre backfill completo e modo incremental, com sobreposição de <strong>5 minutos</strong> na virada pra nunca perder registro na borda da janela. Um auditor separado, mais barato, revarre só as transações ainda em status não-terminal, a partir do registro pendente mais antigo, e faz UPSERT no que mudou, sem re-escanear o histórico inteiro pra pegar uma transação que demorou a fechar.</p>
 
             <div class="project-tech-row">
                 <img src="../assets/icons/python.svg" alt="python" class="tech-icon" width="30" height="30">
@@ -154,7 +154,7 @@
                 </div>
                 <div class="case-block">
                     <h3>Solu&ccedil;&atilde;o</h3>
-                    <p>Orquestrador centralizado processa cada workspace isolado, com sua própria chave carregada de um cofre de segredos. Uma máquina de estado decide sozinha se ainda está em backfill (checkpoint anda pelo registro mais antigo processado) ou já em modo incremental (checkpoint anda pelo mais novo, com 5 minutos de sobreposição na virada). Duas esteiras rodam por workspace: transação e snapshot de saldo por conta de vault, ambas em <code>UPSERT</code> por chave. Um auditor separado, mais leve, busca só a menor data entre as transações ainda não fechadas e revarre a API a partir dali — nunca do início.</p>
+                    <p>Orquestrador centralizado processa cada workspace isolado, com sua própria chave carregada de um cofre de segredos. Uma máquina de estado decide sozinha se ainda está em backfill (checkpoint anda pelo registro mais antigo processado) ou já em modo incremental (checkpoint anda pelo mais novo, com 5 minutos de sobreposição na virada). Duas esteiras rodam por workspace: transação e snapshot de saldo por conta de vault, ambas em <code>UPSERT</code> por chave. Um auditor separado, mais leve, busca só a menor data entre as transações ainda não fechadas e revarre a API a partir dali, nunca do início.</p>
                 </div>
                 <div class="case-block">
                     <h3>Impacto</h3>
@@ -163,13 +163,13 @@
             </section>
 
 
-            <div class="social-proof"><p><strong>Resultado:</strong> Caso anonimizado — auditoria validada com workspaces regionais isolados.</p></div>
+            <div class="social-proof"><p><strong>Resultado:</strong> Caso anonimizado: auditoria validada com workspaces regionais isolados.</p></div>
 
                                                 <div class="mid-cta">
                 <p>Tem um caso parecido? Vamos desenhar a arquitetura que prova o resultado no seu contexto.</p>
                 <a class="btn-primary" href="../contact.html">Falar sobre seu caso</a>
             </div>
-                <p class="newsletter-inline"><a href="https://www.linkedin.com/newsletters/dado-bruto-7498525638908321792/" target="_blank" rel="noopener noreferrer">Receba casos assim toda semana na newsletter <strong>Dado Bruto</strong> &nearr;</a></p>
+                <p class="newsletter-inline"><a href="https://www.linkedin.com/newsletters/dado-bruto-7498525638908321792/" target="_blank" rel="noopener noreferrer">Receba casos assim todo mês na newsletter <strong>Dado Bruto</strong> &nearr;</a></p>
             <section class="related-projects" aria-labelledby="related-heading">
                 <h2 id="related-heading">Projetos relacionados</h2>
                 <div class="related-grid">
@@ -198,7 +198,7 @@
         <div class="footer-cta">
             <img src="../assets/images/logo-dado-bruto-600.png" alt="Dado Bruto" style="height:96px;width:auto;flex-shrink:0;border-radius:10px;filter:drop-shadow(0 2px 8px rgba(0,212,255,.25))">
             <div class="footer-cta-text">
-                <p class="footer-newsletter-desc"><strong style="color:#00D4FF">Dado Bruto</strong> — newsletter &middot; Casos reais de engenharia de dados em produ&ccedil;&atilde;o: arquitetura, trade-off e o n&uacute;mero real por tr&aacute;s da decis&atilde;o.</p>
+                <p class="footer-newsletter-desc"><strong style="color:#00D4FF">Dado Bruto</strong>, newsletter &middot; Casos reais de engenharia de dados em produ&ccedil;&atilde;o: arquitetura, trade-off e o n&uacute;mero real por tr&aacute;s da decis&atilde;o.</p>
             </div>
             <a class="btn-newsletter" href="https://www.linkedin.com/newsletters/dado-bruto-7498525638908321792/" target="_blank" rel="noopener noreferrer">Assinar no LinkedIn <span aria-hidden="true">&nearr;</span></a>
         </div>

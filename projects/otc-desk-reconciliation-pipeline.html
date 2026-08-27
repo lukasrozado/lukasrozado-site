@@ -1,31 +1,31 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR" itemscope itemtype="https://schema.org/Person">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>High-Concurrency Financial Reconciliation Pipeline | Lukas Rozado</title>
+    <title>OTC Desk Reconciliation Pipeline | Lukas Rozado</title>
     <meta name="theme-color" content="#00D4FF">
 
-    <link rel="canonical" href="https://lukasrozado.github.io/projects/financial-reconciliation-pipeline.html">
-    <link rel="alternate" hreflang="pt-BR" href="https://lukasrozado.github.io/projects/financial-reconciliation-pipeline.html">
-    <link rel="alternate" hreflang="en" href="https://lukasrozado.github.io/projects/financial-reconciliation-pipeline-en.html">
-    <link rel="alternate" hreflang="x-default" href="https://lukasrozado.github.io/projects/financial-reconciliation-pipeline.html">
+    <link rel="canonical" href="https://lukasrozado.github.io/projects/otc-desk-reconciliation-pipeline.html">
+    <link rel="alternate" hreflang="pt-BR" href="https://lukasrozado.github.io/projects/otc-desk-reconciliation-pipeline.html">
+    <link rel="alternate" hreflang="en" href="https://lukasrozado.github.io/projects/otc-desk-reconciliation-pipeline-en.html">
+    <link rel="alternate" hreflang="x-default" href="https://lukasrozado.github.io/projects/otc-desk-reconciliation-pipeline.html">
 
-    <meta name="description" content="Pipeline híbrido de ingestão e reconciliação financeira, com auto-cura via anti-join, checkpoint por página e backfill sequencial isolado para dados de alta transacionalidade.">
+    <meta name="description" content="ETL diário que reconcilia planilha operacional sem chave primária estável, com fuzzy matching, blindagem de schema e Full Replace em vez de upsert incremental.">
     <meta name="author" content="Lukas Rozado">
     <meta name="robots" content="index,follow,max-image-preview:large">
 
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://lukasrozado.github.io/projects/financial-reconciliation-pipeline.html">
-    <meta property="og:title" content="High-Concurrency Financial Reconciliation Pipeline | Case Study">
-    <meta property="og:description" content="Pipeline híbrido de ingestão e reconciliação financeira, com auto-cura via anti-join, checkpoint por página e backfill sequencial isolado para dados de alta transacionalidade.">
-    <meta property="og:image" content="https://lukasrozado.github.io/assets/images/financial-reconciliation-pipeline.webp">
+    <meta property="og:url" content="https://lukasrozado.github.io/projects/otc-desk-reconciliation-pipeline.html">
+    <meta property="og:title" content="OTC Desk Reconciliation Pipeline | Case Study">
+    <meta property="og:description" content="ETL diário que reconcilia planilha operacional sem chave primária estável, com fuzzy matching, blindagem de schema e Full Replace em vez de upsert incremental.">
+    <meta property="og:image" content="https://lukasrozado.github.io/assets/images/otc-desk-reconciliation-pipeline.webp">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@RozadoLukas">
-    <meta name="twitter:title" content="High-Concurrency Financial Reconciliation Pipeline | Case Study">
-    <meta name="twitter:description" content="Pipeline híbrido de ingestão e reconciliação financeira, com auto-cura via anti-join, checkpoint por página e backfill sequencial isolado para dados de alta transacionalidade.">
-    <meta name="twitter:image" content="https://lukasrozado.github.io/assets/images/financial-reconciliation-pipeline.webp">
+    <meta name="twitter:title" content="OTC Desk Reconciliation Pipeline | Case Study">
+    <meta name="twitter:description" content="ETL diário que reconcilia planilha operacional sem chave primária estável, com fuzzy matching, blindagem de schema e Full Replace em vez de upsert incremental.">
+    <meta name="twitter:image" content="https://lukasrozado.github.io/assets/images/otc-desk-reconciliation-pipeline.webp">
 
     <link rel="icon" href="../assets/icons/favicon.ico" sizes="any">
     <link rel="apple-touch-icon" href="../assets/icons/favicon-180x180.webp">
@@ -60,20 +60,20 @@
             {
                 "@type": "ListItem",
                 "position": 3,
-                "name": "High-Concurrency Financial Reconciliation Pipeline",
-                "item": "https://lukasrozado.github.io/projects/financial-reconciliation-pipeline.html"
+                "name": "OTC Desk Reconciliation Pipeline",
+                "item": "https://lukasrozado.github.io/projects/otc-desk-reconciliation-pipeline.html"
             }
         ]
     },
     {
         "@context": "https://schema.org",
         "@type": "TechArticle",
-        "name": "High-Concurrency Financial Reconciliation Pipeline",
-        "description": "Pipeline híbrido de ingestão e reconciliação financeira (API near real-time + auto-cura via CSV D-1), com arquitetura producer-consumer, checkpoint por página, backfill sequencial isolado e carga via COPY + UPSERT em tabelas de alta transacionalidade.",
-        "url": "https://lukasrozado.github.io/projects/financial-reconciliation-pipeline.html",
-        "image": "https://lukasrozado.github.io/assets/images/financial-reconciliation-pipeline.webp",
+        "name": "OTC Desk Reconciliation Pipeline",
+        "description": "ETL diário que reconcilia uma planilha operacional mantida por humanos, sem chave primária estável, para um data warehouse relacional: Full Replace em vez de upsert, deduplicação por hash SHA-256 com nonce, blindagem de schema e fuzzy matching de contraparte.",
+        "url": "https://lukasrozado.github.io/projects/otc-desk-reconciliation-pipeline.html",
+        "image": "https://lukasrozado.github.io/assets/images/otc-desk-reconciliation-pipeline.webp",
         "inLanguage": "pt-BR",
-        "keywords": "python, postgresql, azure, sql",
+        "keywords": "python, postgresql, sql, etl",
         "author": {
             "@type": "Person",
             "name": "Lukas Rozado",
@@ -84,7 +84,7 @@
                 "https://kaggle.com/lukasrozado"
             ]
         },
-        "datePublished": "2026-08-26",
+        "datePublished": "2026-08-27",
         "dateModified": "2026-08-27"
     }
 ]
@@ -124,47 +124,43 @@
     <main id="main-content" role="main">
         <article class="project-page" itemscope itemtype="https://schema.org/CreativeWork">
                         <nav class="breadcrumb" aria-label="Breadcrumb">
-                <a href="../index.html">Início</a> <span aria-hidden="true">›</span> <a href="../index.html#projects">Projetos</a> <span aria-hidden="true">›</span> <span aria-current="page">financial reconciliation pipeline</span>
+                <a href="../index.html">Início</a> <span aria-hidden="true">›</span> <a href="../index.html#projects">Projetos</a> <span aria-hidden="true">›</span> <span aria-current="page">OTC desk reconciliation pipeline</span>
             </nav>
 
             <div class="project-meta">
                 <span class="project-tag">Engenharia de Dados</span>
             </div>
 
-            <h1 itemprop="name">High-Concurrency Financial Reconciliation Pipeline</h1>
+            <h1 itemprop="name">OTC Desk Reconciliation Pipeline</h1>
 
-            <p class="lead" itemprop="description">Dado financeiro de alta transacionalidade, ingerido em lotes de até <strong>50 mil registros</strong> por um pipeline híbrido: uma via de API quase em tempo real, guiada por high-water mark, e uma via diária que baixa CSV e faz anti-join contra o banco pra recuperar lacuna invisível à API (offset drift de paginação). A extração roda em arquitetura producer-consumer com fila limitada, e o checkpoint fica por página, não por dia, pra retomar do ponto exato de interrupção depois de qualquer falha. O backfill histórico roda num processo procedural estritamente sequencial, isolado da ingestão em produção.</p>
+            <p class="lead" itemprop="description">ETL diário que ingere planilha operacional mantida por humanos (sem chave primária estável, com linhas reordenadas, apagadas e recriadas na origem) pra um data warehouse relacional, resolvendo nome de contraparte digitado de forma inconsistente via fuzzy matching com limiar de <strong>92% de similaridade</strong>. Em vez de upsert incremental, a carga usa Full Replace (truncate + reload integral) a cada execução, garantindo que o banco seja sempre espelho fiel da planilha. Deduplicação roda por hash SHA-256 sobre a assinatura da transação mais um contador de ocorrência (nonce), preservando de propósito splits legítimos idênticos em vez de colapsá-los. Uma camada de blindagem de schema extrai estritamente as colunas financeiras esperadas e ignora qualquer coluna nova que a área de negócio adicione sem aviso, pra que edição de usuário não quebre a ingestão.</p>
 
             <div class="project-tech-row">
                 <img src="../assets/icons/python.svg" alt="python" class="tech-icon" width="30" height="30">
                 <img src="../assets/icons/postgresql.svg" alt="postgresql" class="tech-icon" width="30" height="30">
             </div>
 
-            <figure class="project-diagram">
-                <img src="../assets/images/financial-reconciliation-pipeline.webp" alt="High-Concurrency Financial Reconciliation Pipeline - diagrama de arquitetura" width="1200" height="800" loading="lazy" decoding="async" itemprop="image">
-                <figcaption>Arquitetura do sistema</figcaption>
-            </figure>
             <section class="case-study" aria-labelledby="case-study-heading">
                 <h2 id="case-study-heading">Estudo de caso</h2>
                 <div class="case-block">
                     <h3>Problema</h3>
-                    <p>O sistema de origem devolvia timestamp inconsistente, omitia metadado crítico e sofria <em>offset drift</em> na paginação: registro sumindo ou duplicando sem aviso. A ingestão em tempo real, rodando a cada minuto, entrava em contenção de lock com a carga histórica, esgotava o pool de conexões e travava escrita.</p>
+                    <p>A fonte de dado era uma planilha operacional de alta complexidade, mantida manualmente por uma equipe de negócio, sem qualquer chave primária estável: linhas eram inseridas, apagadas e reordenadas o tempo todo, sem rastreabilidade. A área de negócio adicionava colunas de cálculo novas sem aviso prévio, quebrando scripts de automação tradicionais. E o nome da contraparte de cada operação era digitado à mão, frequentemente de forma inconsistente; a mesma contraparte aparecendo grafada de jeitos diferentes na mesma planilha.</p>
                 </div>
                 <div class="case-block">
                     <h3>Solu&ccedil;&atilde;o</h3>
-                    <p>Modelo híbrido: a API cobre ingestão quase em tempo real via <em>high-water mark</em>, e uma rotina diária baixa o relatório consolidado em CSV e roda um <em>anti-join</em> contra o banco pra preencher exatamente a lacuna que a API deixou passar. A arquitetura producer-consumer, com fila limitada, desacopla a chamada HTTP da escrita em banco; o checkpoint fica gravado por página em JSONB, então uma falha retoma do ponto exato. O backfill roda em processo procedural sequencial, um dia de cada vez, sessão única, o que elimina a condição de corrida que uma abordagem concorrente causaria. Índice novo nasce com <code>CONCURRENTLY</code> pra não bloquear escrita em produção, e a carga usa <code>COPY</code>, tabela temporária e <code>UPSERT</code>, com deduplicação em memória por chave primária antes de cada lote de até 50 mil registros.</p>
+                    <p>Sem chave primária, upsert incremental viraria uma fonte de registros fantasmas assim que uma linha fosse reordenada ou apagada na origem. A carga usa <strong>Full Replace</strong> em vez disso: a cada execução, a tabela de fatos é truncada por inteiro e recarregada via protocolo <code>COPY</code> do PostgreSQL, garantindo que o banco seja sempre um espelho exato do estado atual da planilha, sem herdar histórico incoerente. Como não existe PK pra deduplicar contra, cada transação recebe um <em>fingerprint</em> SHA-256 calculado sobre a assinatura lógica da linha (tipo de operação, contraparte, ativo, quantidade, data, hash de origem) combinada com um contador de ocorrência, o nonce. Isso preserva de propósito splits legítimos idênticos em vez de colapsá-los como se fossem duplicata acidental. A extração aplica uma blindagem de schema: em vez de ler a planilha inteira, ela extrai estritamente uma lista fechada de colunas financeiras esperadas e ignora qualquer coluna desconhecida, temporária ou de cálculo solto; uma edição de usuário de negócio na planilha não derruba a ingestão do dia seguinte. Por fim, o nome de contraparte passa por resolução em cascata: primeiro contra uma tabela de alias explícita, depois por correspondência exata contra a dimensão já conhecida, e só depois por fuzzy matching (limiar de 92% de similaridade) contra a lista de contrapartes cadastradas; abaixo do limiar, o nome é sinalizado como cliente novo em vez de forçado a um match errado.</p>
                 </div>
                 <div class="case-block">
                     <h3>Impacto</h3>
-                    <p>Backfill histórico completo do ativo de maior volume desde a origem da fonte, com a camada CSV recuperando sozinha a lacuna que a API jamais capturaria. O pipeline funcionou como livro-razão de transição do sistema financeiro até a migração completa pra plataforma definitiva, sendo desativado depois de cumprir seu papel.</p>
+                    <p>A planilha da mesa de operações deixou de ser um ponto único de fragilidade para servir como fonte confiável de um data warehouse relacional, sem etapa manual de triagem de contraparte e sem quebrar a cada coluna nova que a área de negócio adicionasse. A reconciliação diária, execução após execução, garante que o banco nunca acumule registro fantasma nem perca operação legítima duplicada por engano.</p>
                 </div>
             </section>
 
 
-            <div class="social-proof"><p><strong>Resultado:</strong> Caso anonimizado: pipeline validado como livro-razão de transição até migração completa.</p></div>
+            <div class="social-proof"><p><strong>Resultado:</strong> Caso anonimizado: pipeline validado em produção como reconciliador diário da mesa de operações contra o data warehouse.</p></div>
 
                                                 <div class="mid-cta">
-                <p>Tem um caso parecido? Vamos desenhar a arquitetura que prova o resultado no seu contexto.</p>
+                <p>Tem uma fonte de dado sem chave primária te dando dor de cabeça? Vamos desenhar a reconciliação que resolve isso de verdade.</p>
                 <a class="btn-primary" href="../contact.html">Falar sobre seu caso</a>
             </div>
                 <p class="newsletter-inline"><a href="https://www.linkedin.com/newsletters/dado-bruto-7498525638908321792/" target="_blank" rel="noopener noreferrer">Receba casos assim todo mês na newsletter <strong>Dado Bruto</strong> &nearr;</a></p>
@@ -172,16 +168,15 @@
                 <h2 id="related-heading">Projetos relacionados</h2>
                 <div class="related-grid">
                 <a class="related-card" href="./unified-banking-ledger-platform.html">Unified Banking Ledger Platform</a>
+                <a class="related-card" href="./financial-reconciliation-pipeline.html">High-Concurrency Financial Reconciliation Pipeline</a>
                 <a class="related-card" href="./baas-financial-settlement-data-sink.html">BaaS &amp; Financial Settlement Data Sink</a>
-                <a class="related-card" href="./fiscal-document-consolidation-pipeline.html">Fiscal Document Consolidation Pipeline</a>
-                <a class="related-card" href="../writing/monitoramento-que-afirma-sucesso-mas-nao-valida.html">Por que reconciliação de verdade importa (ensaio)</a>
                 </div>
             </section>
 
                         <div class="share-bar">
-                <a class="btn-outline" href="https://www.linkedin.com/sharing/share-offsite/?url=https://lukasrozado.github.io/projects/financial-reconciliation-pipeline.html" target="_blank" rel="noopener">Compartilhar no LinkedIn</a>
-                <a class="btn-outline" href="https://twitter.com/intent/tweet?url=https://lukasrozado.github.io/projects/financial-reconciliation-pipeline.html" target="_blank" rel="noopener">Compartilhar no X</a>
-                <button type="button" class="btn-outline copy-link-btn" data-url="https://lukasrozado.github.io/projects/financial-reconciliation-pipeline.html" data-label="Copiar link" data-copied-label="Copiado!">Copiar link</button>
+                <a class="btn-outline" href="https://www.linkedin.com/sharing/share-offsite/?url=https://lukasrozado.github.io/projects/otc-desk-reconciliation-pipeline.html" target="_blank" rel="noopener">Compartilhar no LinkedIn</a>
+                <a class="btn-outline" href="https://twitter.com/intent/tweet?url=https://lukasrozado.github.io/projects/otc-desk-reconciliation-pipeline.html" target="_blank" rel="noopener">Compartilhar no X</a>
+                <button type="button" class="btn-outline copy-link-btn" data-url="https://lukasrozado.github.io/projects/otc-desk-reconciliation-pipeline.html" data-label="Copiar link" data-copied-label="Copiado!">Copiar link</button>
             </div>
 
             <div class="project-actions">

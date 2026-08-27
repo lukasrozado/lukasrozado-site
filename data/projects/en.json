@@ -21,7 +21,7 @@
       "caseStudy": {
         "problem": "Dozens of institutional accounts and sub-accounts on the same exchange needed continuous auditing, but the API quota ceiling was shared across every key, not per key, and each sub-system (spot, futures, convert, staking) returned a different response shape. Going over the limit banned the corporate IP over HTTP and stalled the entire audit until it lifted.",
         "solution": "A rate limiter reads the official consumed-weight header on every HTTP response, never an estimate, with state shared across processes through managed memory to respect a single per-minute quota ceiling. A carousel prioritizes accounts with recent activity and pushes idle ones onto wider cycles, so quota never gets spent on accounts that haven't changed. Every load runs in bulk through native COPY, a temp table and UPSERT, with a JSONB checkpoint that resumes from the exact point of any interruption.",
-        "impact": "Full historical backfill since each account's opening, some going back to 2019, and the end of the ban pattern that predated this architecture. Tens of millions of records processed per year, with the pipeline sustaining >99.9% uptime."
+        "impact": "Full historical backfill since each account's opening, some going back to 2019, and the end of the ban pattern that predated this architecture, with the pipeline in production sustaining >99.9% uptime across tens of millions of records processed per year."
       },
       "diagramImageV1": "./assets/images/crypto_data_lake_ingestion_architecture.webp"
     },
@@ -36,7 +36,7 @@
         "sql"
       ],
       "difficulty": "advanced",
-      "duration": "—",
+      "duration": "-",
       "techIcons": [
         "python",
         "postgresql"
@@ -60,7 +60,7 @@
         "sql"
       ],
       "difficulty": "advanced",
-      "duration": "—",
+      "duration": "-",
       "techIcons": [
         "python",
         "postgresql"
@@ -71,6 +71,50 @@
         "problem": "The source system returned inconsistent timestamps, omitted critical metadata, and suffered pagination offset drift, with records silently disappearing or duplicating. Real-time ingestion, running every minute, kept colliding with the historical load in lock contention, exhausting the connection pool and stalling writes.",
         "solution": "A hybrid model: the API covers near real-time ingestion via a high-water mark, and a daily routine downloads the consolidated CSV report and runs an anti-join against the database to fill exactly the gap the API missed. The producer-consumer architecture, with a bounded queue, decouples the HTTP call from the database write; checkpoint state is saved per page in JSONB, so a failure resumes from the exact point. Backfill runs in a sequential procedural process, one day at a time, single session, which removes the race condition a concurrent approach would cause. New indexes are built with CONCURRENTLY so they never block production writes, and loading runs through COPY, a temp table and UPSERT, with in-memory deduplication by primary key before every batch of up to 50 thousand records.",
         "impact": "Full historical backfill of the highest-volume asset since the source's inception, with the CSV layer recovering on its own the gap the API alone would never capture. The pipeline served as the transition ledger of the financial system until the full migration to the definitive platform, and was decommissioned once it had served its purpose."
+      }
+    },
+    {
+      "title": "OTC Desk Reconciliation Pipeline",
+      "slug": "otc-desk-reconciliation-pipeline",
+      "description": "Daily ETL that ingests a human-maintained operational spreadsheet (no stable primary key, with rows reordered, deleted and recreated at the source) into a relational data warehouse, resolving inconsistently typed counterparty names via fuzzy matching with a 92% similarity threshold. Instead of incremental upsert, the load runs a Full Replace (truncate + full reload) on every execution. Deduplication runs on a SHA-256 hash over the transaction's signature plus an occurrence counter (nonce), deliberately preserving identical legitimate splits instead of collapsing them. A schema-shielding layer extracts strictly the expected financial columns and ignores any new column the business side adds without notice.",
+      "technologies": [
+        "python",
+        "postgresql",
+        "sql"
+      ],
+      "difficulty": "intermediate",
+      "duration": "-",
+      "techIcons": [
+        "python",
+        "postgresql"
+      ],
+      "category": "Data Engineering",
+      "caseStudy": {
+        "problem": "The data source was a highly complex operational spreadsheet, manually maintained by a business team, with no stable primary key whatsoever: rows were inserted, deleted and reordered constantly, with no traceability. The business side kept adding new calculation columns without notice, breaking traditional automation scripts. And each trade's counterparty name was typed by hand, often inconsistently.",
+        "solution": "With no primary key, incremental upsert would turn into a source of ghost records the moment a row got reordered or deleted at the source. The load runs a Full Replace: on every execution, the fact table is truncated entirely and reloaded through PostgreSQL's COPY protocol. Every transaction gets a SHA-256 fingerprint over the row's logical signature combined with an occurrence counter (nonce), preserving identical legitimate splits instead of collapsing them. Extraction applies schema shielding, ignoring any unknown or temporary column. Counterparty name resolution runs in cascade: explicit alias, then exact match, and only then fuzzy matching (92% similarity threshold).",
+        "impact": "The trading desk's spreadsheet stopped being a single point of fragility and became a reliable source for a relational data warehouse, with no manual counterparty triage step and no breakage every time the business side added a new column."
+      }
+    },
+    {
+      "title": "Fiscal Document Consolidation Pipeline",
+      "slug": "fiscal-document-consolidation-pipeline",
+      "description": "A monthly incremental pipeline that downloads XML+PDF pairs of fiscal documents via a fiscal document provider's API, resolves the owning entity for each document by substring-matching the tax identifier inside the raw decoded content, never trusting an explicit reference tag, and consolidates output into one combined ZIP plus one per-entity ZIP, organized by document type and date.",
+      "technologies": [
+        "python",
+        "postgresql",
+        "rest-api"
+      ],
+      "difficulty": "intermediate",
+      "duration": "-",
+      "techIcons": [
+        "python",
+        "postgresql"
+      ],
+      "category": "Data Engineering",
+      "caseStudy": {
+        "problem": "Fiscal documents arrive from the API already as XML, but the payload doesn't reliably carry an explicit reference to which entity in the group owns that document; counterpart tagging at the source is inconsistent across issuers. Without a robust way to resolve ownership, per-entity consolidation turns into manual triage every month.",
+        "solution": "Instead of depending on a reference tag, ownership resolution scans the raw decoded XML content for a substring match of each registered entity's tax identifier; the owner is the first entity whose identifier appears literally in the document text. Extraction runs incrementally, filters strictly by the real issuance date parsed from the XML, and monthly consolidation writes one combined ZIP organized by entity/document type plus one per-entity ZIP, clearing staging afterward.",
+        "impact": "Fully automated monthly fiscal document consolidation, with no manual per-entity triage step, even with inconsistent counterpart tagging at the source. The substring match removes the dependency on a tag the source doesn't always populate correctly."
       }
     },
     {
@@ -93,8 +137,8 @@
       "category": "Data Engineering",
       "caseStudy": {
         "problem": "A third-party indexer across 15+ networks scatters the data and gives no real integrity guarantee: each provider has its own lag, format and error rate, and there's no native way to know whether a block range landed incomplete in the database.",
-        "solution": "Direct extraction from the node via RPC, no middleman, with a block range that partitions itself when it's too dense for the API to answer. On top of that, a self-healing engine sweeps the history in batches, compares on-chain event counts against the database, and whenever it diverges deletes the whole batch and re-extracts it, with retry. At close, I compare the token's total supply straight from the contract against the net supply the database computes by summing mints and subtracting burns — that's the real accounting invariant, not just a row count.",
-        "impact": "Canonical relational unification of transactions and cross-chain balances between EVM and Solana, with reconciliation state persisted per network — a mid-run failure resumes from the last validated batch, never from zero."
+        "solution": "Direct extraction from the node via RPC, no middleman, with a block range that partitions itself when it's too dense for the API to answer. On top of that, a self-healing engine sweeps the history in batches, compares on-chain event counts against the database, and whenever it diverges deletes the whole batch and re-extracts it, with retry. At close, I compare the token's total supply straight from the contract against the net supply the database computes by summing mints and subtracting burns; that's the real accounting invariant, not just a row count.",
+        "impact": "Canonical relational unification of transactions and cross-chain balances between EVM and Solana, with reconciliation state persisted per network; a mid-run failure resumes from the last validated batch, never from zero."
       }
     },
     {
@@ -193,7 +237,7 @@
       "caseStudy": {
         "problem": "LCK Spring 2024 statistics scattered across hundreds of individual match pages on Gol.gg, with no relational structure for analysis or modeling.",
         "solution": "Hybrid collection pipeline (BeautifulSoup + Selenium), normalization of inconsistent formats (percentages, MM:SS durations converted to seconds), deduplication, and three tables connected by sequential Player IDs.",
-        "impact": "Maximum usability score (10.0) on Kaggle, CC BY 4.0 license, 300+ downloads, and third-party reuse in EDA notebooks — public, auditable proof of data engineering craft."
+        "impact": "Maximum usability score (10.0) on Kaggle, CC BY 4.0 license, 300+ downloads, and third-party reuse in EDA notebooks, public, auditable proof of data engineering craft."
       }
     }
   ]
