@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR" itemscope itemtype="https://schema.org/Person">
 <head>
     <meta charset="UTF-8">
@@ -40,9 +40,19 @@
     </style>
 
     <script type="application/ld+json">
-    {
+        {
         "@context": "https://schema.org",
-        "@type": "CreativeWork",
+        "@type": "BreadcrumbList",
+        "itemListElement": [{
+            "@type": "ListItem", "position": 1, "name": "Home", "item": "https://lukasrozado.github.io/"
+        },{
+            "@type": "ListItem", "position": 2, "name": "Projects", "item": "https://lukasrozado.github.io/#projects"
+        },{
+            "@type": "ListItem", "position": 3, "name": "enterprise-crypto-data-lake"
+        }]
+    },{
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
         "name": "Enterprise Crypto Data Lake: Ingestão Multi-Conta",
         "description": "Arquitetura end-to-end para ingestão transacional de múltiplas contas institucionais em exchanges de criptoativos. Implementei um motor de extração assíncrono com Rate Limiter inteligente que monitora headers da API para evitar banimentos. O sistema utiliza Azure Key Vault para gestão de segredos e um carregador PostgreSQL de alta performance via comandos COPY e tabelas temporárias, garantindo idempotência e integridade em escala.",
         "url": "https://lukasrozado.github.io/projects/enterprise-crypto-data-lake.html",
@@ -52,7 +62,12 @@
         "author": {
             "@type": "Person",
             "name": "Lukas Rozado",
-            "url": "https://lukasrozado.github.io/"
+            "url": "https://lukasrozado.github.io/",
+            "sameAs": [
+                "https://linkedin.com/in/lukasrozado",
+                "https://github.com/lukasrozado",
+                "https://kaggle.com/lukasrozado"
+            ]
         }
     }
     </script>
@@ -90,6 +105,10 @@
 
     <main id="main-content" role="main">
         <article class="project-page" itemscope itemtype="https://schema.org/CreativeWork">
+                        <nav class="breadcrumb" aria-label="Breadcrumb">
+                <a href="../index.html">Início</a> <span aria-hidden="true">›</span> <a href="../index.html#projects">Projetos</a> <span aria-hidden="true">›</span> <span aria-current="page">enterprise crypto data lake</span>
+            </nav>
+
             <div class="project-meta">
                 <span class="project-tag">Engenharia de Dados</span>
             </div>
@@ -97,7 +116,7 @@
             <h1 itemprop="name">Enterprise Crypto Data Lake: Ingestão Multi-Conta</h1>
 
 
-            <p class="lead" itemprop="description">Dezenas de contas institucionais numa exchange de criptoativos, auditadas de forma contínua, com backfill histórico completo desde a criação de cada uma. O núcleo é um rate limiter compartilhado entre processos que lê, em cada resposta HTTP, o header oficial de cota consumida — nunca uma estimativa por contagem de chamadas — o que elimina o padrão de bloqueio de IP que existia antes dessa arquitetura. Uma camada Bronze obrigatória guarda o payload bruto em JSONB e alimenta um modelo Medallion completo; a carga roda via <code>COPY</code> nativo do PostgreSQL, tabela temporária e UPSERT, sustentando dezenas de milhões de registros por ano com credenciais isoladas em Azure Key Vault.</p>
+            <p class="lead" itemprop="description">Esse pipeline sustenta <strong>&gt;99,9%</strong> de uptime processando dezenas de milhões de registros por ano. Dezenas de contas institucionais numa exchange de criptoativos, auditadas de forma contínua, com backfill histórico completo desde a criação de cada uma. O núcleo é um rate limiter compartilhado entre processos que lê, em cada resposta HTTP, o header oficial de cota consumida — nunca uma estimativa por contagem de chamadas — o que elimina o padrão de bloqueio de IP que existia antes dessa arquitetura. Uma camada Bronze obrigatória guarda o payload bruto em JSONB e alimenta um modelo Medallion completo; a carga roda via <code>COPY</code> nativo do PostgreSQL, tabela temporária e UPSERT, sustentando dezenas de milhões de registros por ano com credenciais isoladas em Azure Key Vault.</p>
 
             <div class="project-tech-row">
                 <img src="../assets/icons/python.svg" alt="python" class="tech-icon" width="30" height="30">
@@ -123,12 +142,31 @@
                     <h3>Impacto</h3>
                     <p>Backfill histórico completo desde a abertura de cada conta, algumas remontando a 2019, e fim do padrão de bloqueio que existia antes dessa arquitetura. Dezenas de milhões de registros processados por ano, com o pipeline sustentando &gt;99,9% de uptime.</p>
                 </div>
+                <p class="newsletter-inline"><a href="https://www.linkedin.com/newsletters/dado-bruto-7498525638908321792/" target="_blank" rel="noopener noreferrer">Gostou desse caso? Recebo casos assim toda semana na newsletter <strong>Dado Bruto</strong> &nearr;</a></p>
             </section>
+
+                                                <div class="mid-cta">
+                <p>Tem um caso parecido? Vamos desenhar a arquitetura que prova o resultado no seu contexto.</p>
+                <a class="btn-primary" href="../contact.html">Falar sobre seu caso</a>
+            </div>
+            <div class="social-proof"><p><strong>Prova:</strong> Caso anonimizado por confidencialidade — métricas de uptime e volume auditáveis em logs anonimizados.</p></div>
+
+            <section class="related-projects" aria-labelledby="related-heading">
+                <h2 id="related-heading">Projetos relacionados</h2>
+                <div class="related-grid">
+                <a class="related-card" href="./institutional-digital-asset-custody.html">Institutional Digital Asset Custody Integrator</a>
+                <a class="related-card" href="./baas-financial-settlement-data-sink.html">BaaS &amp; Financial Settlement Data Sink</a>
+                </div>
+            </section>
+
+                        <div class="share-bar">
+                <a class="btn-outline" href="https://www.linkedin.com/sharing/share-offsite/?url=https://lukasrozado.github.io/projects/enterprise-crypto-data-lake.html" target="_blank" rel="noopener">Share on LinkedIn</a>
+            </div>
 
             <div class="project-actions">
 
                 <a class="btn-outline" href="../index.html#projects">&larr; Voltar aos projetos</a>
-                <a class="btn-outline" href="../contact.html">Falar sobre um projeto</a>
+                <a class="btn-primary" href="../contact.html">Falar sobre seu caso</a>
             </div>
         </article>
     </main>

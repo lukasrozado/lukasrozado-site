@@ -1,0 +1,28 @@
+# Lukas Rozado — Data Engineering & Cloud Architecture
+
+> Site hub for data engineering case studies, pipelines and writing. POSSE: publish on own site, syndicate elsewhere.
+
+## Core
+- Home (PT): https://lukasrozado.github.io/
+- Home (EN): https://lukasrozado.github.io/index-en.html
+- Projects: https://lukasrozado.github.io/#projects
+- Writing: https://lukasrozado.github.io/writing/
+- Contact: https://lukasrozado.github.io/contact.html
+- RSS: https://lukasrozado.github.io/feed.xml
+- Sitemap: https://lukasrozado.github.io/sitemap.xml
+
+## Case Studies
+- Enterprise Crypto Data Lake: https://lukasrozado.github.io/projects/enterprise-crypto-data-lake.html
+- Unified Banking Ledger Platform: https://lukasrozado.github.io/projects/unified-banking-ledger-platform.html
+- Financial Reconciliation Pipeline: https://lukasrozado.github.io/projects/financial-reconciliation-pipeline.html
+- Multi-Chain Ledger Integrator: https://lukasrozado.github.io/projects/multi-chain-ledger-integrator.html
+- Institutional Custody Integrator: https://lukasrozado.github.io/projects/institutional-digital-asset-custody.html
+- BaaS Financial Settlement Data Sink: https://lukasrozado.github.io/projects/baas-financial-settlement-data-sink.html
+- Predictive Pipeline & ML: https://lukasrozado.github.io/projects/predictive-pipeline-ml.html
+- LCK Dataset (public proof): https://lukasrozado.github.io/projects/lck-spring-2024-dataset.html
+
+## Writing
+- Um monitoramento que afirma que deu sucesso, mas não valida: https://lukasrozado.github.io/writing/monitoramento-que-afirma-sucesso-mas-nao-valida.html
+
+## Note
+All case studies except the LCK dataset are anonymized for confidentiality. Metrics are auditable but client names are not disclosed. The LCK dataset is public and verifiable on Kaggle.

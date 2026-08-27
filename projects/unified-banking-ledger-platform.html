@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR" itemscope itemtype="https://schema.org/Person">
 <head>
     <meta charset="UTF-8">
@@ -40,9 +40,19 @@
     </style>
 
     <script type="application/ld+json">
-    {
+        {
         "@context": "https://schema.org",
-        "@type": "CreativeWork",
+        "@type": "BreadcrumbList",
+        "itemListElement": [{
+            "@type": "ListItem", "position": 1, "name": "Home", "item": "https://lukasrozado.github.io/"
+        },{
+            "@type": "ListItem", "position": 2, "name": "Projects", "item": "https://lukasrozado.github.io/#projects"
+        },{
+            "@type": "ListItem", "position": 3, "name": "unified-banking-ledger-platform"
+        }]
+    },{
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
         "name": "Unified Banking Ledger Platform",
         "description": "Plataforma unificada de ingestão para contas bancárias, PIX, parceiros, movimentos de ledger e mesa OTC, com fila produtor-consumidor, estado isolado por domínio, early-exit por marca d'água histórica, estratégia dupla de snapshot de saldo (delta/full) e auditor de ciclo de vida para transações PIX pendentes.",
         "url": "https://lukasrozado.github.io/projects/unified-banking-ledger-platform.html",
@@ -52,7 +62,12 @@
         "author": {
             "@type": "Person",
             "name": "Lukas Rozado",
-            "url": "https://lukasrozado.github.io/"
+            "url": "https://lukasrozado.github.io/",
+            "sameAs": [
+                "https://linkedin.com/in/lukasrozado",
+                "https://github.com/lukasrozado",
+                "https://kaggle.com/lukasrozado"
+            ]
         }
     }
     </script>
@@ -90,13 +105,17 @@
 
     <main id="main-content" role="main">
         <article class="project-page" itemscope itemtype="https://schema.org/CreativeWork">
+                        <nav class="breadcrumb" aria-label="Breadcrumb">
+                <a href="../index.html">Início</a> <span aria-hidden="true">›</span> <a href="../index.html#projects">Projetos</a> <span aria-hidden="true">›</span> <span aria-current="page">unified banking ledger platform</span>
+            </nav>
+
             <div class="project-meta">
                 <span class="project-tag">Engenharia de Dados</span>
             </div>
 
             <h1 itemprop="name">Unified Banking Ledger Platform</h1>
 
-            <p class="lead" itemprop="description">Plataforma que unificou dois pipelines financeiros separados (banking/PIX e reconciliação de ledger) num só sistema, rodando de minuto em minuto, persistente e orquestrado. Cada domínio de dado — contas, chaves PIX, transações PIX, parceiros, movimentos de ledger, mesa OTC — tem fila produtor-consumidor própria, cursor e marca d'água isolados, e descarrega em lotes de 5 mil registros direto no banco. Endpoints sem filtro nativo de delta usam early-exit: leem do topo e param sozinhos assim que N páginas seguidas já cruzaram a marca d'água salva, sem precisar revarrer o histórico inteiro a cada execução. Saldo de parceiro roda em duas estratégias, delta a cada 15 minutos pra quem movimentou recente e full diário pra todo mundo. Um auditor de ciclo de vida separado corrige status de transação PIX que muda depois de capturada, sem re-escanear nada além do necessário.</p>
+            <p class="lead" itemprop="description">Plataforma que unificou dois pipelines financeiros separados (banking/PIX e reconciliação de ledger) num só sistema, rodando de minuto em minuto, persistente e orquestrado. Cada domínio de dado — contas, chaves PIX, transações PIX, parceiros, movimentos de ledger, mesa OTC — tem fila produtor-consumidor própria, cursor e marca d'água isolados, e descarrega em lotes de <strong>5 mil registros</strong> direto no banco. Endpoints sem filtro nativo de delta usam early-exit: leem do topo e param sozinhos assim que N páginas seguidas já cruzaram a marca d'água salva, sem precisar revarrer o histórico inteiro a cada execução. Saldo de parceiro roda em duas estratégias, delta a cada 15 minutos pra quem movimentou recente e full diário pra todo mundo. Um auditor de ciclo de vida separado corrige status de transação PIX que muda depois de capturada, sem re-escanear nada além do necessário.</p>
 
             <div class="project-tech-row">
                 <img src="../assets/icons/python.svg" alt="python" class="tech-icon" width="30" height="30">
@@ -121,12 +140,31 @@
                     <h3>Impacto</h3>
                     <p>Dois pipelines viraram uma plataforma só, cobrindo banking, PIX, parceiros, ledger e mesa OTC (incluindo monitoramento de risco operacional e de liquidação), rodando persistente de minuto em minuto sem depender de reprocessamento manual. Estado por domínio significa que adicionar uma esteira nova não arrisca as que já rodam.</p>
                 </div>
+                <p class="newsletter-inline"><a href="https://www.linkedin.com/newsletters/dado-bruto-7498525638908321792/" target="_blank" rel="noopener noreferrer">Gostou desse caso? Recebo casos assim toda semana na newsletter <strong>Dado Bruto</strong> &nearr;</a></p>
             </section>
+
+                                                <div class="mid-cta">
+                <p>Tem um caso parecido? Vamos desenhar a arquitetura que prova o resultado no seu contexto.</p>
+                <a class="btn-primary" href="../contact.html">Falar sobre seu caso</a>
+            </div>
+            <div class="social-proof"><p><strong>Prova:</strong> Caso anonimizado — plataforma validada em produção com múltiplos domínios isolados.</p></div>
+
+            <section class="related-projects" aria-labelledby="related-heading">
+                <h2 id="related-heading">Projetos relacionados</h2>
+                <div class="related-grid">
+                <a class="related-card" href="./financial-reconciliation-pipeline.html">High-Concurrency Financial Reconciliation Pipeline</a>
+                <a class="related-card" href="./multi-chain-ledger-integrator.html">Unified Multi-Chain Ledger Integrator</a>
+                </div>
+            </section>
+
+                        <div class="share-bar">
+                <a class="btn-outline" href="https://www.linkedin.com/sharing/share-offsite/?url=https://lukasrozado.github.io/projects/unified-banking-ledger-platform.html" target="_blank" rel="noopener">Share on LinkedIn</a>
+            </div>
 
             <div class="project-actions">
 
                 <a class="btn-outline" href="../index.html#projects">&larr; Voltar aos projetos</a>
-                <a class="btn-outline" href="../contact.html">Falar sobre um projeto</a>
+                <a class="btn-primary" href="../contact.html">Falar sobre seu caso</a>
             </div>
         </article>
     </main>

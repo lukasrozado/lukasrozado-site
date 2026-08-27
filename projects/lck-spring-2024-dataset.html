@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR" itemscope itemtype="https://schema.org/Person">
 <head>
     <meta charset="UTF-8">
@@ -19,13 +19,13 @@
     <meta property="og:url" content="https://lukasrozado.github.io/projects/lck-spring-2024-dataset.html">
     <meta property="og:title" content="LCK Spring 2024 Players Statistics | Case Study">
     <meta property="og:description" content="Dataset público e verificável com estatísticas completas do split Spring 2024 da LCK (League of Legends Champions Korea): jogadores, campeões e...">
-    <meta property="og:image" content="https://lukasrozado.github.io/assets/images/og-image.webp">
+    <meta property="og:image" content="https://lukasrozado.github.io/assets/images/lck_spring_2024_dataset_og.webp">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@RozadoLukas">
     <meta name="twitter:title" content="LCK Spring 2024 Players Statistics | Case Study">
     <meta name="twitter:description" content="Dataset público e verificável com estatísticas completas do split Spring 2024 da LCK (League of Legends Champions Korea): jogadores, campeões e...">
-    <meta name="twitter:image" content="https://lukasrozado.github.io/assets/images/og-image.webp">
+    <meta name="twitter:image" content="https://lukasrozado.github.io/assets/images/lck_spring_2024_dataset_og.webp">
 
     <link rel="icon" href="../assets/icons/favicon.ico" sizes="any">
     <link rel="apple-touch-icon" href="../assets/icons/favicon-180x180.webp">
@@ -40,9 +40,19 @@
     </style>
 
     <script type="application/ld+json">
-    {
+        {
         "@context": "https://schema.org",
-        "@type": "CreativeWork",
+        "@type": "BreadcrumbList",
+        "itemListElement": [{
+            "@type": "ListItem", "position": 1, "name": "Home", "item": "https://lukasrozado.github.io/"
+        },{
+            "@type": "ListItem", "position": 2, "name": "Projects", "item": "https://lukasrozado.github.io/#projects"
+        },{
+            "@type": "ListItem", "position": 3, "name": "lck-spring-2024-dataset"
+        }]
+    },{
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
         "name": "LCK Spring 2024 Players Statistics",
         "description": "Dataset público e verificável com estatísticas completas do split Spring 2024 da LCK (League of Legends Champions Korea): jogadores, campeões e partidas organizados em três tabelas relacionais. Coleta via web scraping com BeautifulSoup e Selenium sobre o Gol.gg, normalização rigorosa de métricas e organização pronta para EDA, visualização e modelagem preditiva. Publicado no Kaggle com nota máxima de usabilidade.",
         "url": "https://lukasrozado.github.io/projects/lck-spring-2024-dataset.html",
@@ -55,7 +65,12 @@
         "author": {
             "@type": "Person",
             "name": "Lukas Rozado",
-            "url": "https://lukasrozado.github.io/"
+            "url": "https://lukasrozado.github.io/",
+            "sameAs": [
+                "https://linkedin.com/in/lukasrozado",
+                "https://github.com/lukasrozado",
+                "https://kaggle.com/lukasrozado"
+            ]
         }
     }
     </script>
@@ -93,6 +108,10 @@
 
     <main id="main-content" role="main">
         <article class="project-page" itemscope itemtype="https://schema.org/CreativeWork">
+                        <nav class="breadcrumb" aria-label="Breadcrumb">
+                <a href="../index.html">Início</a> <span aria-hidden="true">›</span> <a href="../index.html#projects">Projetos</a> <span aria-hidden="true">›</span> <span aria-current="page">lck spring 2024 dataset</span>
+            </nav>
+
             <div class="project-meta">
                 <span class="project-tag">Dados Abertos &amp; Web Scraping</span>
             </div>
@@ -100,7 +119,7 @@
             <h1 itemprop="name">LCK Spring 2024 Players Statistics</h1>
 
             <p class="proof-note">Diferente dos demais cases &mdash; trabalho contratado apresentado de forma anonimizada por sigilo &mdash;, este projeto &eacute; aberto: dataset p&uacute;blico, audit&aacute;vel e verific&aacute;vel por qualquer pessoa no Kaggle.</p>
-            <p class="lead" itemprop="description">Dataset público e verificável com estatísticas completas do split Spring 2024 da LCK (League of Legends Champions Korea): jogadores, campeões e partidas organizados em três tabelas relacionais. Coleta via web scraping com BeautifulSoup e Selenium sobre o Gol.gg, normalização rigorosa de métricas e organização pronta para EDA, visualização e modelagem preditiva. Publicado no Kaggle com nota máxima de usabilidade.</p>
+            <p class="lead" itemprop="description">Este dataset recebeu nota <strong>10.0</strong> de usabilidade no Kaggle — o máximo possível. Dataset público e verificável com estatísticas completas do split Spring 2024 da LCK (League of Legends Champions Korea): jogadores, campeões e partidas organizados em três tabelas relacionais. Coleta via web scraping com BeautifulSoup e Selenium sobre o Gol.gg, normalização rigorosa de métricas e organização pronta para EDA, visualização e modelagem preditiva. Publicado no Kaggle com nota máxima de usabilidade.</p>
 
             <div class="project-tech-row">
                 <img src="../assets/icons/python.svg" alt="python" class="tech-icon" width="30" height="30">
@@ -123,12 +142,31 @@
                     <h3>Impacto</h3>
                     <p>Nota máxima de usabilidade (10.0) no Kaggle, licença CC BY 4.0, 300+ downloads e reuso por terceiros em notebooks de EDA — prova pública e auditável de engenharia de dados.</p>
                 </div>
+                <p class="newsletter-inline"><a href="https://www.linkedin.com/newsletters/dado-bruto-7498525638908321792/" target="_blank" rel="noopener noreferrer">Gostou desse caso? Recebo casos assim toda semana na newsletter <strong>Dado Bruto</strong> &nearr;</a></p>
             </section>
+
+                                                <div class="mid-cta">
+                <p>Tem um caso parecido? Vamos desenhar a arquitetura que prova o resultado no seu contexto.</p>
+                <a class="btn-primary" href="../contact.html">Falar sobre seu caso</a>
+            </div>
+            <div class="social-proof"><p><strong>Prova:</strong> Prova pública: dataset com nota 10.0 no Kaggle, 300+ downloads e notebooks de terceiros — verificável em https://www.kaggle.com/datasets/lukasrozado/lck-spring-2024-players-statistics</p></div>
+
+            <section class="related-projects" aria-labelledby="related-heading">
+                <h2 id="related-heading">Projetos relacionados</h2>
+                <div class="related-grid">
+                <a class="related-card" href="./predictive-pipeline-ml.html">Pipeline Preditivo no Competitivo e ML Engine</a>
+                <a class="related-card" href="./multi-chain-ledger-integrator.html">Unified Multi-Chain Ledger Integrator</a>
+                </div>
+            </section>
+
+                        <div class="share-bar">
+                <a class="btn-outline" href="https://www.linkedin.com/sharing/share-offsite/?url=https://lukasrozado.github.io/projects/lck-spring-2024-dataset.html" target="_blank" rel="noopener">Share on LinkedIn</a>
+            </div>
 
             <div class="project-actions">
                 <a class="btn-outline" href="https://www.kaggle.com/datasets/lukasrozado/lck-spring-2024-players-statistics" target="_blank" rel="noopener noreferrer">Ver dataset no Kaggle &nearr;</a>
                 <a class="btn-outline" href="../index.html#projects">&larr; Voltar aos projetos</a>
-                <a class="btn-outline" href="../contact.html">Falar sobre um projeto</a>
+                <a class="btn-primary" href="../contact.html">Falar sobre seu caso</a>
             </div>
         </article>
     </main>

@@ -40,9 +40,19 @@
     </style>
 
     <script type="application/ld+json">
-    {
+        {
         "@context": "https://schema.org",
-        "@type": "CreativeWork",
+        "@type": "BreadcrumbList",
+        "itemListElement": [{
+            "@type": "ListItem", "position": 1, "name": "Home", "item": "https://lukasrozado.github.io/"
+        },{
+            "@type": "ListItem", "position": 2, "name": "Projects", "item": "https://lukasrozado.github.io/#projects"
+        },{
+            "@type": "ListItem", "position": 3, "name": "multi-chain-ledger-integrator"
+        }]
+    },{
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
         "name": "Unified Multi-Chain Ledger Integrator",
         "description": "Pipeline resiliente para consolidação transacional em dezenhas de blockchains e contratos (EVM e Solana). Substituí indexadores por extração RPC crua com algoritmos de 'Reverse Check', otimizando a varredura de blocos. O diferencial core é o motor de Auto-Reconciliação (Pacemaker), que audita continuamente o banco PostgreSQL contra os nós da rede, garantindo unicidade rigorosa e 100% de integridade nos balanços.",
         "url": "https://lukasrozado.github.io/projects/multi-chain-ledger-integrator.html",
@@ -52,7 +62,12 @@
         "author": {
             "@type": "Person",
             "name": "Lukas Rozado",
-            "url": "https://lukasrozado.github.io/"
+            "url": "https://lukasrozado.github.io/",
+            "sameAs": [
+                "https://linkedin.com/in/lukasrozado",
+                "https://github.com/lukasrozado",
+                "https://kaggle.com/lukasrozado"
+            ]
         }
     }
     </script>
@@ -90,6 +105,10 @@
 
     <main id="main-content" role="main">
         <article class="project-page" itemscope itemtype="https://schema.org/CreativeWork">
+                        <nav class="breadcrumb" aria-label="Breadcrumb">
+                <a href="../index.html">Início</a> <span aria-hidden="true">›</span> <a href="../index.html#projects">Projetos</a> <span aria-hidden="true">›</span> <span aria-current="page">multi chain ledger integrator</span>
+            </nav>
+
             <div class="project-meta">
                 <span class="project-tag">Engenharia de Dados</span>
             </div>
@@ -97,7 +116,7 @@
             <h1 itemprop="name">Unified Multi-Chain Ledger Integrator</h1>
 
 
-            <p class="lead" itemprop="description">Transações em dezenas de blockchains e contratos (EVM e Solana), consolidadas por um pipeline resiliente que lê direto do nó via RPC crua (<code>eth_getLogs</code> filtrado por tópico de evento) em vez de depender de indexador de terceiro. Faixas de bloco densas demais pra API se dividem recursivamente até caber. O diferencial é o motor de auto-reconciliação: compara, faixa por faixa, a contagem de eventos on-chain contra o banco, cura sozinho qualquer divergência apagando e re-extraindo o lote, e fecha com uma checagem contábil final comparando o supply total on-chain contra o supply líquido calculado no PostgreSQL.</p>
+            <p class="lead" itemprop="description">Todo saldo fecha com <strong>100%</strong> de integridade contra o supply on-chain, sem exceção. Transações em dezenas de blockchains e contratos (EVM e Solana), consolidadas por um pipeline resiliente que lê direto do nó via RPC crua (<code>eth_getLogs</code> filtrado por tópico de evento) em vez de depender de indexador de terceiro. Faixas de bloco densas demais pra API se dividem recursivamente até caber. O diferencial é o motor de auto-reconciliação: compara, faixa por faixa, a contagem de eventos on-chain contra o banco, cura sozinho qualquer divergência apagando e re-extraindo o lote, e fecha com uma checagem contábil final comparando o supply total on-chain contra o supply líquido calculado no PostgreSQL.</p>
 
             <div class="project-tech-row">
                 <img src="../assets/icons/python.svg" alt="python" class="tech-icon" width="30" height="30">
@@ -123,12 +142,31 @@
                     <h3>Impacto</h3>
                     <p>Unificação relacional canônica de transação e balanço cruzado entre EVM e Solana, com estado de reconciliação persistido por rede — uma falha no meio do processo retoma exatamente do último lote validado, nunca do zero.</p>
                 </div>
+                <p class="newsletter-inline"><a href="https://www.linkedin.com/newsletters/dado-bruto-7498525638908321792/" target="_blank" rel="noopener noreferrer">Gostou desse caso? Recebo casos assim toda semana na newsletter <strong>Dado Bruto</strong> &nearr;</a></p>
             </section>
+
+                                                <div class="mid-cta">
+                <p>Tem um caso parecido? Vamos desenhar a arquitetura que prova o resultado no seu contexto.</p>
+                <a class="btn-primary" href="../contact.html">Falar sobre seu caso</a>
+            </div>
+            <div class="social-proof"><p><strong>Prova:</strong> Caso anonimizado — reconciliação validada via contagem on-chain vs banco.</p></div>
+
+            <section class="related-projects" aria-labelledby="related-heading">
+                <h2 id="related-heading">Projetos relacionados</h2>
+                <div class="related-grid">
+                <a class="related-card" href="./enterprise-crypto-data-lake.html">Enterprise Crypto Data Lake: Ingestão Multi-Conta</a>
+                <a class="related-card" href="./institutional-digital-asset-custody.html">Institutional Digital Asset Custody Integrator</a>
+                </div>
+            </section>
+
+                        <div class="share-bar">
+                <a class="btn-outline" href="https://www.linkedin.com/sharing/share-offsite/?url=https://lukasrozado.github.io/projects/multi-chain-ledger-integrator.html" target="_blank" rel="noopener">Share on LinkedIn</a>
+            </div>
 
             <div class="project-actions">
 
                 <a class="btn-outline" href="../index.html#projects">&larr; Voltar aos projetos</a>
-                <a class="btn-outline" href="../contact.html">Falar sobre um projeto</a>
+                <a class="btn-primary" href="../contact.html">Falar sobre seu caso</a>
             </div>
         </article>
     </main>

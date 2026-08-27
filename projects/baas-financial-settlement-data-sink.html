@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR" itemscope itemtype="https://schema.org/Person">
 <head>
     <meta charset="UTF-8">
@@ -40,9 +40,19 @@
     </style>
 
     <script type="application/ld+json">
-    {
+        {
         "@context": "https://schema.org",
-        "@type": "CreativeWork",
+        "@type": "BreadcrumbList",
+        "itemListElement": [{
+            "@type": "ListItem", "position": 1, "name": "Home", "item": "https://lukasrozado.github.io/"
+        },{
+            "@type": "ListItem", "position": 2, "name": "Projects", "item": "https://lukasrozado.github.io/#projects"
+        },{
+            "@type": "ListItem", "position": 3, "name": "baas-financial-settlement-data-sink"
+        }]
+    },{
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
         "name": "BaaS & Financial Settlement Data Sink",
         "description": "Desenvolvimento de um pipeline de integração programática para centralização de dados de liquidação financeira multibancos (Banking-as-a-Service). A arquitetura foi desenhada para garantir máxima segurança na comunicação entre sistemas isolados. Utiliza autenticação corporativa via Azure Active Directory e tokens para orquestrar a captura de milhares de pagamentos, convertendo-os em registros imutáveis no Data Warehouse.",
         "url": "https://lukasrozado.github.io/projects/baas-financial-settlement-data-sink.html",
@@ -52,7 +62,12 @@
         "author": {
             "@type": "Person",
             "name": "Lukas Rozado",
-            "url": "https://lukasrozado.github.io/"
+            "url": "https://lukasrozado.github.io/",
+            "sameAs": [
+                "https://linkedin.com/in/lukasrozado",
+                "https://github.com/lukasrozado",
+                "https://kaggle.com/lukasrozado"
+            ]
         }
     }
     </script>
@@ -90,6 +105,10 @@
 
     <main id="main-content" role="main">
         <article class="project-page" itemscope itemtype="https://schema.org/CreativeWork">
+                        <nav class="breadcrumb" aria-label="Breadcrumb">
+                <a href="../index.html">Início</a> <span aria-hidden="true">›</span> <a href="../index.html#projects">Projetos</a> <span aria-hidden="true">›</span> <span aria-current="page">baas financial settlement data sink</span>
+            </nav>
+
             <div class="project-meta">
                 <span class="project-tag">Engenharia de Dados</span>
             </div>
@@ -97,7 +116,7 @@
             <h1 itemprop="name">BaaS &amp; Financial Settlement Data Sink</h1>
 
 
-            <p class="lead" itemprop="description">Dados de liquidação financeira espalhados entre múltiplos bancos (Banking-as-a-Service), centralizados por um pipeline de integração programática desenhado pra segurança máxima na comunicação entre sistemas isolados, com autenticação corporativa via Azure Active Directory e tokens. Antes de qualquer <code>COPY</code> nativo do PostgreSQL, toda carga passa por uma camada de sanitização dedicada; um motor de flattening transforma logs aninhados em colunas de auditoria consultáveis direto, sem <em>join</em>; e o script de backfill histórico roda isolado do checkpoint de produção, sem risco de reprocessar ou corromper o incremental em andamento.</p>
+            <p class="lead" itemprop="description">O pipeline orquestra a captura de <strong>milhares de pagamentos</strong>, convertendo-os em registros imutáveis no Data Warehouse. Dados de liquidação financeira espalhados entre múltiplos bancos (Banking-as-a-Service), centralizados por um pipeline de integração programática desenhado pra segurança máxima na comunicação entre sistemas isolados, com autenticação corporativa via Azure Active Directory e tokens. Antes de qualquer <code>COPY</code> nativo do PostgreSQL, toda carga passa por uma camada de sanitização dedicada; um motor de flattening transforma logs aninhados em colunas de auditoria consultáveis direto, sem <em>join</em>; e o script de backfill histórico roda isolado do checkpoint de produção, sem risco de reprocessar ou corromper o incremental em andamento.</p>
 
             <div class="project-tech-row">
                 <img src="../assets/icons/python.svg" alt="python" class="tech-icon" width="30" height="30">
@@ -123,12 +142,31 @@
                     <h3>Impacto</h3>
                     <p>Ingestão contínua de dado de liquidação de alta criticidade sem risco de corromper o estado de produção. Trilha de auditoria imutável, consultável direto, sem <em>join</em>. Resiliente a produto parcialmente contratado, sem precisar de intervenção manual.</p>
                 </div>
+                <p class="newsletter-inline"><a href="https://www.linkedin.com/newsletters/dado-bruto-7498525638908321792/" target="_blank" rel="noopener noreferrer">Gostou desse caso? Recebo casos assim toda semana na newsletter <strong>Dado Bruto</strong> &nearr;</a></p>
             </section>
+
+                                                <div class="mid-cta">
+                <p>Tem um caso parecido? Vamos desenhar a arquitetura que prova o resultado no seu contexto.</p>
+                <a class="btn-primary" href="../contact.html">Falar sobre seu caso</a>
+            </div>
+            <div class="social-proof"><p><strong>Prova:</strong> Caso anonimizado — trilha de auditoria imutável validada em produção.</p></div>
+
+            <section class="related-projects" aria-labelledby="related-heading">
+                <h2 id="related-heading">Projetos relacionados</h2>
+                <div class="related-grid">
+                <a class="related-card" href="./institutional-digital-asset-custody.html">Institutional Digital Asset Custody Integrator</a>
+                <a class="related-card" href="./financial-reconciliation-pipeline.html">High-Concurrency Financial Reconciliation Pipeline</a>
+                </div>
+            </section>
+
+                        <div class="share-bar">
+                <a class="btn-outline" href="https://www.linkedin.com/sharing/share-offsite/?url=https://lukasrozado.github.io/projects/baas-financial-settlement-data-sink.html" target="_blank" rel="noopener">Share on LinkedIn</a>
+            </div>
 
             <div class="project-actions">
 
                 <a class="btn-outline" href="../index.html#projects">&larr; Voltar aos projetos</a>
-                <a class="btn-outline" href="../contact.html">Falar sobre um projeto</a>
+                <a class="btn-primary" href="../contact.html">Falar sobre seu caso</a>
             </div>
         </article>
     </main>
