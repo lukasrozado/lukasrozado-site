@@ -10,8 +10,9 @@ export function initLanguageSystem() {
     window.location.href = newLang === "pt" ? "index.html" : "index-en.html";
   });
 
-  const currentPage = window.location.pathname.split("/").pop();
-  const isIndexPage = INDEX_PAGES.includes(currentPage);
+  const rawPage = window.location.pathname.split("/").pop();
+  const currentPage = rawPage === "" ? "index.html" : rawPage;
+  const isIndexPage = INDEX_PAGES.includes(rawPage);
   const savedLang = localStorage.getItem("preferredLang");
   const browserLang = navigator.language.startsWith("pt") ? "pt" : "en";
 
