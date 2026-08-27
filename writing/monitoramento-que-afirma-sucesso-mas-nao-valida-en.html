@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A monitor that reports success without validating | Lukas Rozado - Engenheiro de Dados</title>
+    <meta name="theme-color" content="#00D4FF">
+
+    <link rel="canonical" href="https://lukasrozado.github.io/writing/monitoramento-que-afirma-sucesso-mas-nao-valida-en.html">
+    <link rel="alternate" hreflang="pt-BR" href="https://lukasrozado.github.io/writing/monitoramento-que-afirma-sucesso-mas-nao-valida.html">
+    <link rel="alternate" hreflang="en" href="https://lukasrozado.github.io/writing/monitoramento-que-afirma-sucesso-mas-nao-valida-en.html">
+    <link rel="alternate" hreflang="x-default" href="https://lukasrozado.github.io/writing/monitoramento-que-afirma-sucesso-mas-nao-valida.html">
+    <link rel="alternate" type="application/rss+xml" title="Lukas Rozado &mdash; Ensaios (RSS)" href="/feed.xml">
+
+    <meta name="description" content="The dashboard stayed green for 14.71 days while serving was down. When the health signal comes from the same path it should audit, worsening the system strengthens the green.">
+    <meta name="author" content="Lukas Rozado">
+    <meta name="robots" content="index,follow,max-image-preview:large">
+
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://lukasrozado.github.io/writing/monitoramento-que-afirma-sucesso-mas-nao-valida-en.html">
+    <meta property="og:title" content="A monitor that reports success without validating">
+    <meta property="og:description" content="The dashboard stayed green for 14.71 days while serving was down. When the health signal comes from the same path it should audit, worsening the system strengthens the green.">
+    <meta property="og:image" content="https://lukasrozado.github.io/assets/images/og-image.webp">
+    <meta property="article:published_time" content="2026-08-26">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@RozadoLukas">
+    <meta name="twitter:title" content="A monitor that reports success without validating">
+    <meta name="twitter:description" content="The dashboard stayed green for 14.71 days while serving was down. When the health signal comes from the same path it should audit, worsening the system strengthens the green.">
+
+    <link rel="icon" href="../assets/icons/favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" href="../assets/icons/favicon-180x180.webp">
+    <link rel="manifest" href="../site.webmanifest">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <link rel="stylesheet" href="../styles/main.css">
+
+    <style>
+        body { font-family: 'Roboto', 'Arial', 'Helvetica', sans-serif; }
+    </style>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "A monitor that reports success without validating",
+        "description": "The dashboard stayed green for 14.71 days while serving was down. When the health signal comes from the same path it should audit, worsening the system strengthens the green.",
+        "url": "https://lukasrozado.github.io/writing/monitoramento-que-afirma-sucesso-mas-nao-valida-en.html",
+        "datePublished": "2026-08-26",
+        "inLanguage": "en",
+        "author": {
+            "@type": "Person",
+            "name": "Lukas Rozado",
+            "url": "https://lukasrozado.github.io/"
+        },
+        "publisher": {
+            "@type": "Person",
+            "name": "Lukas Rozado"
+        }
+    }
+    </script>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RD4581V881"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-RD4581V881');
+    </script>
+</head>
+<body>
+    <header role="banner">
+        <header>
+            <nav id="navbar">
+                <div class="nav-header">
+                    <a href="../index.html"><img src="../assets/images/logo-lukas-rozado.webp" alt="Lukas Rozado Logo"></a>
+                    <div id="menu-toggle" class="menu-icon">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+                <ul>
+                    <li><a href="../index.html">Início</a></li>
+                    <li><a href="../index.html#projects">Projetos</a></li>
+                    <li><a href="./">Escritos</a></li>
+                    <li><a href="../contact.html">Contato</a></li>
+                    <li><a class="lang-switch" href="../index-en.html" hreflang="en" data-lang="en" lang="en">EN</a></li>
+                </ul>
+            </nav>
+        </header>
+    </header>
+
+    <main id="main-content" role="main">
+        <article class="article">
+            <header class="post-header">
+                <h1>A monitor that reports success without validating</h1>
+                <time datetime="2026-08-26">August 26, 2026</time>
+            </header>
+
+            <div class="article-body">
+                <p>I had an ingestion app that published a snapshot for consumption. The dashboard was green, everything looked fine, but something felt off: the data volume wasn't growing as it should. I checked. Serving had been down for 14.71 days, and the alarm had stayed green the entire time. The freshness check had a 26-hour SLA and was being rearmed every 19 minutes by the very publish that wasn't publishing anything.</p>
+
+                <p>The ETL trigger fired normally. At load time, it failed. Dagster's Asset Check rearmed anyway, because the monitoring signal came from the same path that was broken. For the alarm to fire, 82 consecutive cycles without rearm would be needed — impossible by construction. No amount of bad luck would make that alarm ring. And the underlying defect is worse than silence: the failure the watcher should report was the same thing that kept it quiet, which inverts the instrument's function — the worse the system state, the stronger the health signal.</p>
+
+                <p>If I have a gate that guarantees the quality of my projects and, upon identifying an app with VETO or BUGS, blocks the commit when it doesn't pass CI, that gate needs to effectively be a protective barrier.</p>
+
+                <p>If, on the other hand, it's possible to exclude a prefix, a rule, or any other point to bypass it, the problem isn't simply that the bypass exists. The exclusion pushes the obligation to guarantee quality onto each route inside that scope, without that responsibility having been explicitly decided or assumed. That's where the same error occurs: the gate keeps reporting “passed,” but “passed” starts meaning different things depending on where the commit landed. Anyone looking at the result can't distinguish between “verified and approved” and “out of scope.” The exclusion, therefore, doesn't turn the gate off; it makes the gate say “approved” about something it never looked at.</p>
+
+                <p>If a code change is made, with a new implementation, but the CI/CD verification is prevented from running due to limitations imposed by the Git provider — for example, the limit allowed by GitHub Actions, or any other platform restriction mechanism — you cannot consider that quality validation happened. The absence of that verification compromises the integrity guarantee, especially when CI/CD is responsible for controlling the quantity or size of a file and ensuring that, if that measurement is exceeded after a change, the application isn't compromised and the change is atomically blocked. The job didn't fail. It didn't happen. And not having happened is indistinguishable from having passed for anyone looking later.</p>
+
+                <p>There is a complex case, similar to one in a novel where an industrialist outsources the decision about protecting his most precious asset: a metal that took ten years to develop. By delegating that choice to an operator in Washington, he lets someone outside his domain determine the fate of what took a decade to build, paving the way for the project's ruin.</p>
+
+                <p>The point is not just having delegated. It's having taken that operator's approval as if it were the verification itself. Without checking the result, he received the external decision with the sense of duty done that only direct examination would give. The stamp took the place of proof. It's the same green as the other cases, only generated by a person instead of a machine: judgment was displaced and treated as if the fact had already been proven. The form changed, not the error: taking as verified what was never verified.</p>
+
+                <p><strong>The strongest objection to all of this is another one.</strong></p>
+
+                <p>The cost of verifying is real and immediate; the cost of not verifying is hypothetical and deferred. In most systems, absence of verification and successful verification produce exactly the same result — and do so for years. If the false green dashboard caused no concrete loss, the problem isn't the false positive: it's you demanding rigor where criticality doesn't justify it. Verification without proportion to consequence is ceremony, not engineering.</p>
+
+                <p>Indeed, not every system needs a <em>check</em>, and it's fine to remove what isn't justified. But there is a fundamental difference between a system that is actually working, a system that has no verification mechanism at all, and a system that produces a signal that it's working when, in reality, it isn't.</p>
+
+                <p>In the first case, you have traceability, security, and monitoring: if something happens, there is evidence that the system was being verified and mechanisms to identify the problem and restore the application quickly. In the second, you simply don't know. It may be working or not, but there is no mechanism to determine that. The third is the worst case: there is something attesting that it's working, you believe that signal and, precisely because you believe it, you stop noticing the problem that's happening. It's like having a knife stuck in your back without feeling pain: you don't know there's a problem, but it's still there.</p>
+
+                <p>That's why <em>Quality Assurance</em> comes in as a reconciliation mechanism: it's not enough to verify continuously; you need to verify that the verification itself keeps working. The previous verification needs to be confronted with real evidence that what it should detect can still be detected.</p>
+
+                <p>That's where the data ingestion app becomes relevant. If a vendor delivered a system whose health signal was produced by the very process it should audit, would you accept that system as reliable?</p>
+
+                <p>And yet, that is exactly what happened in my own system: the dashboard stayed green for days, and I kept looking at it as evidence that everything was working. The problem wasn't just the absence of a verification; it was believing in a verification that had never been reconciled with reality.</p>
+            </div>
+
+            <div class="project-actions">
+                <a class="btn-outline" href="./">&larr; Todos os escritos</a>
+            </div>
+        </article>
+
+        <section class="newsletter-cta" aria-labelledby="newsletter-heading">
+            <h2 id="newsletter-heading">Dado Bruto</h2>
+            <p>Newsletter sobre engenharia de dados, publicada no LinkedIn.</p>
+            <a class="btn-outline" href="https://www.linkedin.com/newsletters/dado-bruto-7498525638908321792/" target="_blank" rel="noopener noreferrer">Assinar pelo LinkedIn</a>
+        </section>
+    </main>
+
+    <footer role="contentinfo">
+        <footer itemscope itemtype="https://schema.org/WPFooter" role="contentinfo">
+    <div class="footer-inner">
+        <div class="footer-cta">
+            <img src="../assets/images/logo-dado-bruto-600.png" alt="Dado Bruto" style="height:96px;width:auto;flex-shrink:0;border-radius:10px;filter:drop-shadow(0 2px 8px rgba(0,212,255,.25))">
+            <div class="footer-cta-text">
+                <p class="footer-newsletter-desc"><strong style="color:#00D4FF">Dado Bruto</strong> — newsletter &middot; Casos reais de engenharia de dados em produ&ccedil;&atilde;o: arquitetura, trade-off e a m&eacute;trica que prova o resultado.</p>
+            </div>
+            <a class="btn-newsletter" href="https://www.linkedin.com/newsletters/dado-bruto-7498525638908321792/" target="_blank" rel="noopener noreferrer">Assinar no LinkedIn <span aria-hidden="true">&nearr;</span></a>
+        </div>
+
+        <div class="footer-bottom">
+            <p class="footer-copy" itemprop="copyrightYear">&copy; 2026 <span itemprop="copyrightHolder">Lukas Rozado</span></p>
+
+            <div id="social-links" role="navigation" aria-label="Redes sociais profissionais">
+                <a href="https://github.com/lukasrozado"
+                   target="_blank"
+                   rel="noopener noreferrer nofollow"
+                   id="profile-link"
+                   aria-label="GitHub de Lukas Rozado"><img src="../assets/images/github-data-engineer-lukas-rozado.webp"
+                        alt="Lukas Rozado no GitHub - Projetos de Engenheiro de Dados"
+                        class="social-icon"
+                        style="filter: invert(1);"
+                        loading="lazy"
+                        aria-hidden="true"
+                        itemprop="sameAs"></a>
+
+                <a href="https://www.linkedin.com/in/lukasrozado/"
+                   target="_blank"
+                   rel="noopener noreferrer nofollow"
+                   aria-label="LinkedIn de Lukas Rozado"><img src="../assets/images/linkedin-data-engineer-lukas-rozado.webp"
+                        alt="Perfil LinkedIn de Lukas Rozado - Engenheiro de Dados"
+                        class="social-icon"
+                        style="filter: invert(1);"
+                        loading="lazy"
+                        aria-hidden="true"
+                        itemprop="sameAs"></a>
+
+                <a href="https://www.kaggle.com/datasets/lukasrozado/lck-spring-2024-players-statistics"
+                   target="_blank"
+                   rel="noopener noreferrer nofollow"
+                   aria-label="Dataset LCK Spring 2024 de Lukas Rozado no Kaggle"><img src="../assets/images/kaggle-data-engineer-lukas-rozado.webp"
+                        alt="Dataset LCK Spring 2024 de Lukas Rozado no Kaggle - Dados de Esports"
+                        class="social-icon"
+                        style="filter: invert(1);"
+                        loading="lazy"
+                        aria-hidden="true"
+                        itemprop="sameAs"></a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+    </footer>
+
+    <script type="module">
+        try {
+            const { initMenu } = await import("../assets/js/modules/menu.js");
+            initMenu();
+        } catch (error) {
+            console.error("Menu unavailable:", error);
+        }
+    </script>
+</body>
+</html>

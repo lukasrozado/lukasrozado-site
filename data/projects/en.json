@@ -3,97 +3,198 @@
     {
       "title": "Enterprise Crypto Data Lake: Multi-Account Ingestion",
       "slug": "enterprise-crypto-data-lake",
-      "description": "End-to-end architecture for ingestion of transactional data to multiple accounts for crypto exchange. I implemented an asynchronous extraction engine with an intelligent Rate Limiter that monitors API headers to prevent bans. The system uses Azure Key Vault for secret management and a high-performance PostgreSQL loader via COPY commands and temporary tables, ensuring idempotency and integrity at scale.",
-      "technologies": ["python", "postgresql", "azure","sql"],
+      "description": "Architecture for continuous financial auditing across dozens of institutional accounts on a crypto exchange, with full historical backfill from each account's inception. At its core, a rate limiter shared across processes reads the official consumed-quota header on every HTTP response, never an estimate from call counts, which eliminates the IP-ban pattern that existed before this architecture. A mandatory Bronze layer keeps the raw payload in JSONB and feeds a full Medallion model; loading runs through native PostgreSQL COPY, a temp table and UPSERT, sustaining tens of millions of records a year with credentials isolated in Azure Key Vault.",
+      "technologies": [
+        "python",
+        "postgresql",
+        "azure",
+        "sql"
+      ],
       "difficulty": "advanced",
-      "diagramImage": "./assets/images/crypto_data_lake_ingestion_architecture.webp",
+      "diagramImage": "./assets/images/crypto_data_lake_ingestion_architecture_v2.webp",
       "duration": "5 months",
-      "techIcons": ["python", "postgresql"],
+      "techIcons": [
+        "python",
+        "postgresql"
+      ],
       "category": "Data Engineering",
       "caseStudy": {
-        "problem": "Aggressive API rate limits and credential management across multiples simultaneous accounts.",
-        "solution": "Header-based Rate Limiting using official API signals and Bulk Inserts via io.StringIO.",
-        "impact": ">99.9% pipeline uptime and ingestion of millions of historical records."
+        "problem": "Dozens of institutional accounts and sub-accounts on the same exchange needed continuous auditing, but the API quota ceiling was shared across every key, not per key, and each sub-system (spot, futures, convert, staking) returned a different response shape. Going over the limit banned the corporate IP over HTTP and stalled the entire audit until it lifted.",
+        "solution": "A rate limiter reads the official consumed-weight header on every HTTP response, never an estimate, with state shared across processes through managed memory to respect a single per-minute quota ceiling. A carousel prioritizes accounts with recent activity and pushes idle ones onto wider cycles, so quota never gets spent on accounts that haven't changed. Every load runs in bulk through native COPY, a temp table and UPSERT, with a JSONB checkpoint that resumes from the exact point of any interruption.",
+        "impact": "Full historical backfill since each account's opening, some going back to 2019, and the end of the ban pattern that predated this architecture. Tens of millions of records processed per year, with the pipeline sustaining >99.9% uptime."
+      },
+      "diagramImageV1": "./assets/images/crypto_data_lake_ingestion_architecture.webp"
+    },
+    {
+      "title": "Unified Banking Ledger Platform",
+      "slug": "unified-banking-ledger-platform",
+      "description": "A platform that merged two separate financial pipelines, banking/PIX and ledger reconciliation, into a single system running every minute, persistent and orchestrated. Every data domain, accounts, PIX keys, PIX transactions, partners, ledger movements, OTC desk, gets its own producer-consumer queue, its own isolated cursor and watermark, and flushes in batches of 5,000 records straight to the database. Endpoints with no native delta filter use early-exit: they read from the top and stop on their own once N consecutive pages have already crossed the saved watermark, with no need to re-scan the entire history on every run. Partner balances run on two strategies, a 15-minute delta for whoever moved recently and a daily full refresh for everyone else. A separate lifecycle auditor fixes PIX transaction status that changes after capture, without re-scanning anything beyond what's needed.",
+      "technologies": [
+        "python",
+        "postgresql",
+        "azure",
+        "sql"
+      ],
+      "difficulty": "advanced",
+      "duration": "—",
+      "techIcons": [
+        "python",
+        "postgresql"
+      ],
+      "category": "Data Engineering",
+      "diagramImage": "./assets/images/unified-banking-ledger-platform.webp",
+      "caseStudy": {
+        "problem": "Two financial systems grew apart, each with its own checkpoint model, and needed to become one without losing what already worked. Most endpoints have no native date filter, so capturing only what's new means reading from the start and guessing where to stop, or reprocessing everything, every minute, forever.",
+        "solution": "Every domain runs isolated, with its own cursor and its own watermark, so a failure in one \"drawer\" never blocks the others. For an endpoint with no date filter, reading starts from the top and stops on its own once N consecutive pages land on a date already covered before (watermark early-exit), avoiding both a full reprocess and stopping too early and losing a record. Partner balances run at two speeds: a 15-minute delta for whoever moved recently, a daily full refresh to close out the rest. A separate auditor covers the case neither strategy solves alone, a transaction already captured that changes status later, reading only from the oldest one still pending and upserting whatever changed.",
+        "impact": "Two pipelines became a single platform, covering banking, PIX, partners, ledger and the OTC desk (trades, partner balances, stuck delivery, settlement drift and borrows), running persistently every minute with no manual reprocessing. Per-domain state means adding a new lane never risks the ones already running."
+      }
+    },
+    {
+      "title": "High-Concurrency Financial Reconciliation Pipeline",
+      "slug": "financial-reconciliation-pipeline",
+      "description": "A hybrid ingestion pipeline for high-transaction financial data: a near real-time API lane driven by a high-water mark, and a daily lane that downloads a CSV and anti-joins it against the database to recover gaps invisible to the API (pagination offset drift). Extraction runs on a producer-consumer architecture with a bounded queue, and checkpoint state lives per page, not per day, resuming from the exact point of interruption after any failure. Historical backfill runs in a strictly sequential procedural process, isolated from the production ingestion.",
+      "technologies": [
+        "python",
+        "postgresql",
+        "azure",
+        "sql"
+      ],
+      "difficulty": "advanced",
+      "duration": "—",
+      "techIcons": [
+        "python",
+        "postgresql"
+      ],
+      "category": "Data Engineering",
+      "diagramImage": "./assets/images/financial-reconciliation-pipeline.webp",
+      "caseStudy": {
+        "problem": "The source system returned inconsistent timestamps, omitted critical metadata, and suffered pagination offset drift, with records silently disappearing or duplicating. Real-time ingestion, running every minute, kept colliding with the historical load in lock contention, exhausting the connection pool and stalling writes.",
+        "solution": "A hybrid model: the API covers near real-time ingestion via a high-water mark, and a daily routine downloads the consolidated CSV report and runs an anti-join against the database to fill exactly the gap the API missed. The producer-consumer architecture, with a bounded queue, decouples the HTTP call from the database write; checkpoint state is saved per page in JSONB, so a failure resumes from the exact point. Backfill runs in a sequential procedural process, one day at a time, single session, which removes the race condition a concurrent approach would cause. New indexes are built with CONCURRENTLY so they never block production writes, and loading runs through COPY, a temp table and UPSERT, with in-memory deduplication by primary key before every batch of up to 50 thousand records.",
+        "impact": "Full historical backfill of the highest-volume asset since the source's inception, with the CSV layer recovering on its own the gap the API alone would never capture. The pipeline served as the transition ledger of the financial system until the full migration to the definitive platform, and was decommissioned once it had served its purpose."
       }
     },
     {
       "title": "Unified Multi-Chain Ledger Integrator",
       "slug": "multi-chain-ledger-integrator",
-      "description": "Resilient pipeline for consolidating transactional data across multiples blockchains and contracts (EVM and Solana). I replaced third-party indexers with raw RPC extraction using 'Reverse Check' algorithms, optimizing block scanning. The core differentiator is the Auto-Reconciliation engine (Pacemaker), which continuously audits the PostgreSQL database against network nodes, ensuring strict uniqueness and 100% integrity in balances.",
-      "technologies": ["python", "postgresql", "azure","sql"],
+      "description": "A resilient pipeline that consolidates transactions across dozens of blockchains and contracts (EVM and Solana), reading straight from the node via raw RPC (eth_getLogs filtered by event topic) instead of relying on a third-party indexer. Block ranges too dense for the API split recursively until they fit. The core differentiator is the self-healing reconciliation engine: it compares on-chain event counts against the database range by range, heals any mismatch on its own by deleting and re-extracting the batch, and closes with a final accounting check comparing total on-chain supply against the net supply computed in PostgreSQL.",
+      "technologies": [
+        "python",
+        "postgresql",
+        "azure",
+        "sql"
+      ],
       "difficulty": "advanced",
       "diagramImage": "./assets/images/unified_multi_chain_ledger_integrator.webp",
       "duration": "3 months",
-      "techIcons": ["python", "postgresql"],
+      "techIcons": [
+        "python",
+        "postgresql"
+      ],
       "category": "Data Engineering",
       "caseStudy": {
-        "problem": "On-chain data fragmentation and integrity risks when using third-party indexers across 15+ networks.",
-        "solution": "Raw RPC extraction combined with an internal auditing engine for continuous auto-reconciliation.",
-        "impact": "Canonical relational unification with absolute accuracy guarantees for transactions and cross-chain balances."
+        "problem": "A third-party indexer across 15+ networks scatters the data and gives no real integrity guarantee: each provider has its own lag, format and error rate, and there's no native way to know whether a block range landed incomplete in the database.",
+        "solution": "Direct extraction from the node via RPC, no middleman, with a block range that partitions itself when it's too dense for the API to answer. On top of that, a self-healing engine sweeps the history in batches, compares on-chain event counts against the database, and whenever it diverges deletes the whole batch and re-extracts it, with retry. At close, I compare the token's total supply straight from the contract against the net supply the database computes by summing mints and subtracting burns — that's the real accounting invariant, not just a row count.",
+        "impact": "Canonical relational unification of transactions and cross-chain balances between EVM and Solana, with reconciliation state persisted per network — a mid-run failure resumes from the last validated batch, never from zero."
       }
+    },
+    {
+      "title": "Institutional Digital Asset Custody Integrator",
+      "slug": "institutional-digital-asset-custody",
+      "description": "An ingestion orchestrator for institutional crypto asset custody, with each regional workspace isolated, its own credential loaded from a vault, and two parallel lanes: transactions and per-vault balance snapshots. A state machine switches on its own between full backfill and incremental mode, with a 5-minute overlap at the handoff so no record is lost at the window's edge. A separate, lighter auditor re-scans only the transactions still in a non-terminal status, starting from the oldest pending record, and upserts whatever changed, with no need to re-scan the entire history to catch a transaction that took a while to settle.",
+      "technologies": [
+        "python",
+        "rest-api",
+        "azure",
+        "postgresql"
+      ],
+      "difficulty": "advanced",
+      "diagramImage": "./assets/images/institutional_digital_asset_custody_integrator_v2.webp",
+      "duration": "3 months",
+      "techIcons": [
+        "python",
+        "postgresql"
+      ],
+      "category": "Data Engineering",
+      "caseStudy": {
+        "problem": "Each regional custody workspace had its own credential and its own pace, but a transaction in an intermediate status (pending, under approval) could change state hours or days later, with no way to know without reprocessing everything. Full backfill and incremental capture were competing for the same checkpoint logic.",
+        "solution": "A centralized orchestrator processes each workspace in isolation, with its own key loaded from a secrets vault. A state machine decides on its own whether it's still backfilling (checkpoint moves through the oldest processed record) or already incremental (checkpoint moves through the newest, with a 5-minute overlap at the handoff). Two lanes run per workspace, transactions and per-vault-account balance snapshots, both upserted by key. A separate, lighter auditor fetches only the earliest date among the still-open transactions and re-scans the API from there, never from the start.",
+        "impact": "A transaction that changes status after capture gets corrected without reprocessing the whole history. Each workspace keeps its own checkpoint and its own run history, so a failure in one never blocks the others. Balance snapshots and transactions always land in the same schema, ready for cross-auditing."
+      },
+      "diagramImageV1": "./assets/images/institutional_digital_asset_custody_integrator.webp"
+    },
+    {
+      "title": "BaaS & Financial Settlement Data Sink",
+      "slug": "baas-financial-settlement-data-sink",
+      "description": "A programmatic integration pipeline that centralizes multi-bank financial settlement data (Banking-as-a-Service), designed for maximum security between isolated systems, with corporate authentication via Azure Active Directory and tokens. Before any native PostgreSQL COPY, every load passes through a dedicated sanitization layer; a flattening engine turns nested logs into audit columns queryable directly, with no join; and the historical backfill script runs isolated from the production checkpoint, with no risk of reprocessing or corrupting the incremental in progress.",
+      "technologies": [
+        "python",
+        "azure",
+        "rest-api",
+        "postgresql"
+      ],
+      "difficulty": "advanced",
+      "diagramImage": "./assets/images/baas_financial_settlement_data_sink_v2.webp",
+      "duration": "2 months",
+      "techIcons": [
+        "python",
+        "postgresql"
+      ],
+      "category": "Data Engineering",
+      "caseStudy": {
+        "problem": "Financial payloads arrived with native lists that broke PostgreSQL's bulk loader. Transaction logs in a normalized table only answered through slow joins, and lost the exact snapshot of the moment the operation happened. And running a retroactive historical load risked overwriting the production pipeline's checkpoint, trapping it in a loop.",
+        "solution": "Before any COPY, a dedicated sanitization engine converts every list into Postgres's native array format. At the Silver layer, flattening is total: the transformer opens the nested payload and writes its columns, already prefixed, straight into the log table, so an audit becomes a single SELECT. The backfill script is fully passive, never writes to the production checkpoint, and every extractor treats an uncontracted endpoint as zero volume without bringing down the rest of the pipeline.",
+        "impact": "Continuous ingestion of high-criticality settlement data with no risk of corrupting production state. An immutable audit trail, queryable directly, with no join. Resilient to a partially contracted product, with no manual intervention."
+      },
+      "diagramImageV1": "./assets/images/baas_financial_settlement_data_sink.webp"
     },
     {
       "title": "Predictive Pipeline in Competitive and ML Engine",
       "slug": "predictive-pipeline-ml",
       "description": "End-to-end algorithmic engine orchestrated for quantitative trading. The architecture includes massive daily web scraping, rigorous normalization, and a Feature Engine optimized to feed the 'Model Factory' with 42 structured variables. The system autonomously manages retraining (backtesting) and live inference, sending high-precision signals for hedge strategies and dashboards.",
-      "technologies": ["python", "postgresql", "azure","sql","machine-learning"],
+      "technologies": [
+        "python",
+        "postgresql",
+        "azure",
+        "sql",
+        "machine-learning"
+      ],
       "difficulty": "advanced",
       "diagramImage": "./assets/images/automated_esports_quant_trader.webp",
       "duration": "5+ years",
-      "techIcons": ["python", "scikit-learn", "postgresql"],
+      "techIcons": [
+        "python",
+        "scikit-learn",
+        "postgresql"
+      ],
       "category": "Data Engineering & ML",
       "caseStudy": {
         "problem": "Lack of automated ingestion and real-time processing for volatile predictive decision-making.",
         "solution": "Data pipeline orchestration with an isolated Feature Engine feeding live inference.",
         "impact": "Sustained algorithmic predictive accuracy of >68% across multiple seasons without manual intervention."
       }
-    },{
-  "title": "Institutional Digital Asset Custody Integrator",
-  "slug": "institutional-digital-asset-custody",
-  "description": "Distributed integration architecture for managing institutional custody of crypto assets. I implemented an abstraction layer to orchestrate global master APIs, ensuring the segregated capture of transactional data by operating region. The system focuses on high security in secrets traffic and schema standardization to comply with international FinOps audits.",
-  "technologies": ["python", "rest-api", "azure", "postgresql"],
-  "difficulty": "advanced",
-  "diagramImage": "./assets/images/institutional_digital_asset_custody_integrator.webp",
-  "duration": "3 months",
-  "techIcons": ["python", "postgresql"],
-  "category": "Data Engineering",
-  "caseStudy": {
-    "problem": "Regional data fragmentation and complexity in managing multiple high-value custody keys.",
-    "solution": "Unification of regional pipelines under a centralized orchestrator with metadata isolation.",
-    "impact": "Reduction of regional reconciliation failures and full centralization of asset custody visibility."
-  }
-},
-{
-  "title": "BaaS & Financial Settlement Data Sink",
-  "slug": "baas-financial-settlement-data-sink",
-  "description": "Development of a programmatic integration pipeline to centralize multi-bank financial settlement data (Banking-as-a-Service). The architecture was designed to ensure maximum security in communication between isolated systems. It uses corporate authentication via Azure Active Directory and tokens to orchestrate the capture of thousands of payments, converting them into immutable records in the Data Warehouse.",
-  "technologies": ["python", "azure", "rest-api", "postgresql"],
-  "difficulty": "advanced",
-  "diagramImage": "./assets/images/baas_financial_settlement_data_sink.webp",
-  "duration": "2 months",
-  "techIcons": ["python", "postgresql"],
-  "category": "Data Engineering",
-  "caseStudy": {
-    "problem": "Need for secure extraction of financial settlement data in highly critical isolated systems.",
-    "solution": "Implementation of a corporate authentication bridge via Azure AD for programmatic API consumption.",
-    "impact": "Automation of partner bank reconciliation and real-time cash flow consolidation for auditing."
-  }
-},
-{
-  "title": "LCK Spring 2024 Players Statistics",
-  "slug": "lck-spring-2024-dataset",
-  "description": "Public, fully verifiable dataset covering the complete LCK (League of Legends Champions Korea) Spring 2024 split: players, champions, and matches organized into three relational tables. Collected via web scraping with BeautifulSoup and Selenium from Gol.gg, with rigorous metric normalization, ready for EDA, visualization, and predictive modeling. Published on Kaggle with a maximum usability score.",
-  "technologies": ["python", "web-scraping"],
-  "difficulty": "intermediate",
-  "duration": "Spring 2024 Split",
-  "techIcons": ["python", "pandas", "selenium"],
-  "category": "Open Data & Web Scraping",
-  "externalLink": "https://www.kaggle.com/datasets/lukasrozado/lck-spring-2024-players-statistics",
-  "caseStudy": {
-    "problem": "LCK Spring 2024 statistics scattered across hundreds of individual match pages on Gol.gg, with no relational structure for analysis or modeling.",
-    "solution": "Hybrid collection pipeline (BeautifulSoup + Selenium), normalization of inconsistent formats (percentages, MM:SS durations converted to seconds), deduplication, and three tables connected by sequential Player IDs.",
-    "impact": "Maximum usability score (10.0) on Kaggle, CC BY 4.0 license, 300+ downloads, and third-party reuse in EDA notebooks — public, auditable proof of data engineering craft."
-  }
-}
+    },
+    {
+      "title": "LCK Spring 2024 Players Statistics",
+      "slug": "lck-spring-2024-dataset",
+      "description": "Public, fully verifiable dataset covering the complete LCK (League of Legends Champions Korea) Spring 2024 split: players, champions, and matches organized into three relational tables. Collected via web scraping with BeautifulSoup and Selenium from Gol.gg, with rigorous metric normalization, ready for EDA, visualization, and predictive modeling. Published on Kaggle with a maximum usability score.",
+      "technologies": [
+        "python",
+        "web-scraping"
+      ],
+      "difficulty": "intermediate",
+      "duration": "Spring 2024 Split",
+      "techIcons": [
+        "python",
+        "pandas",
+        "selenium"
+      ],
+      "category": "Open Data & Web Scraping",
+      "externalLink": "https://www.kaggle.com/datasets/lukasrozado/lck-spring-2024-players-statistics",
+      "caseStudy": {
+        "problem": "LCK Spring 2024 statistics scattered across hundreds of individual match pages on Gol.gg, with no relational structure for analysis or modeling.",
+        "solution": "Hybrid collection pipeline (BeautifulSoup + Selenium), normalization of inconsistent formats (percentages, MM:SS durations converted to seconds), deduplication, and three tables connected by sequential Player IDs.",
+        "impact": "Maximum usability score (10.0) on Kaggle, CC BY 4.0 license, 300+ downloads, and third-party reuse in EDA notebooks — public, auditable proof of data engineering craft."
+      }
+    }
   ]
 }

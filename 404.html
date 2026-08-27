@@ -53,24 +53,59 @@
     </main>
 
     <footer itemscope itemtype="https://schema.org/WPFooter" role="contentinfo">
-        <div class="footer-inner">
-            <div class="footer-cta">
-                <div class="footer-cta-text">
-                    <p class="footer-newsletter-title">Dado Bruto</p>
-                    <p class="footer-newsletter-desc">Newsletter de Engenharia de Dados no LinkedIn. Sem spam, direto ao ponto.</p>
-                </div>
-                <a class="btn-newsletter" href="https://www.linkedin.com/newsletters/dado-bruto-7498525638908321792/" target="_blank" rel="noopener noreferrer">Assinar no LinkedIn <span aria-hidden="true">&nearr;</span></a>
+    <div class="footer-inner">
+        <div class="footer-cta">
+            <img src="./assets/images/logo-dado-bruto-600.png" alt="Dado Bruto" style="height:96px;width:auto;flex-shrink:0;border-radius:10px;filter:drop-shadow(0 2px 8px rgba(0,212,255,.25))">
+            <div class="footer-cta-text">
+                <p class="footer-newsletter-desc"><strong style="color:#00D4FF">Dado Bruto</strong> — newsletter &middot; Casos reais de engenharia de dados em produ&ccedil;&atilde;o: arquitetura, trade-off e a m&eacute;trica que prova o resultado.</p>
             </div>
-            <div class="footer-bottom">
-                <p class="footer-copy" itemprop="copyrightYear">&copy; 2026 <span itemprop="copyrightHolder">Lukas Rozado</span></p>
-                <div id="social-links" role="navigation" aria-label="Redes sociais profissionais">
-                    <a href="https://github.com/lukasrozado" target="_blank" rel="noopener noreferrer nofollow" id="profile-link" aria-label="GitHub de Lukas Rozado"><img src="./assets/images/github-data-engineer-lukas-rozado.webp" alt="GitHub" class="social-icon" style="filter:invert(1);" loading="lazy"></a>
-                    <a href="https://www.linkedin.com/in/lukasrozado/" target="_blank" rel="noopener noreferrer nofollow" aria-label="LinkedIn de Lukas Rozado"><img src="./assets/images/linkedin-data-engineer-lukas-rozado.webp" alt="LinkedIn" class="social-icon" style="filter:invert(1);" loading="lazy"></a>
-                    <a href="https://www.kaggle.com/datasets/lukasrozado/lck-spring-2024-players-statistics" target="_blank" rel="noopener noreferrer nofollow" aria-label="Dataset LCK Spring 2024 no Kaggle"><img src="./assets/images/kaggle-data-engineer-lukas-rozado.webp" alt="Dataset LCK" class="social-icon" style="filter:invert(1);" loading="lazy"></a>
-                </div>
+            <a class="btn-newsletter" href="https://www.linkedin.com/newsletters/dado-bruto-7498525638908321792/" target="_blank" rel="noopener noreferrer">Assinar no LinkedIn <span aria-hidden="true">&nearr;</span></a>
+        </div>
+
+        <div class="footer-bottom">
+            <p class="footer-copy" itemprop="copyrightYear">&copy; 2026 <span itemprop="copyrightHolder">Lukas Rozado</span></p>
+
+            <div id="social-links" role="navigation" aria-label="Redes sociais profissionais">
+                <a href="https://github.com/lukasrozado"
+                   target="_blank"
+                   rel="noopener noreferrer nofollow"
+                   id="profile-link"
+                   aria-label="GitHub de Lukas Rozado"><img src="./assets/images/github-data-engineer-lukas-rozado.webp"
+                        alt="Lukas Rozado no GitHub - Projetos de Engenheiro de Dados"
+                        class="social-icon"
+                        style="filter: invert(1);"
+                        loading="lazy"
+                        aria-hidden="true"
+                        itemprop="sameAs"></a>
+
+                <a href="https://www.linkedin.com/in/lukasrozado/"
+                   target="_blank"
+                   rel="noopener noreferrer nofollow"
+                   aria-label="LinkedIn de Lukas Rozado"><img src="./assets/images/linkedin-data-engineer-lukas-rozado.webp"
+                        alt="Perfil LinkedIn de Lukas Rozado - Engenheiro de Dados"
+                        class="social-icon"
+                        style="filter: invert(1);"
+                        loading="lazy"
+                        aria-hidden="true"
+                        itemprop="sameAs"></a>
+
+                <a href="https://www.kaggle.com/datasets/lukasrozado/lck-spring-2024-players-statistics"
+                   target="_blank"
+                   rel="noopener noreferrer nofollow"
+                   aria-label="Dataset LCK Spring 2024 de Lukas Rozado no Kaggle"><img src="./assets/images/kaggle-data-engineer-lukas-rozado.webp"
+                        alt="Dataset LCK Spring 2024 de Lukas Rozado no Kaggle - Dados de Esports"
+                        class="social-icon"
+                        style="filter: invert(1);"
+                        loading="lazy"
+                        aria-hidden="true"
+                        itemprop="sameAs"></a>
             </div>
         </div>
-    </footer>
+    </div>
+</footer>
+
+
+
 
     <script type="module">
         try { const { initMenu } = await import("./assets/js/modules/menu.js"); initMenu(); } catch(e){ console.error(e); }
