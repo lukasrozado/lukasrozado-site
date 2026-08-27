@@ -117,7 +117,7 @@ function initArchitectureModal() {
   const modalImg = document.getElementById("arch-modal-img");
   const closeBtn = document.getElementById("close-arch-modal");
 
-  document.querySelectorAll(".btn-view-arch").forEach((button) => {
+  document.querySelectorAll("button.btn-view-arch").forEach((button) => {
     button.addEventListener("click", (event) => {
       const img = event.currentTarget.getAttribute("data-img");
       if (img && img !== "#" && img !== "undefined" && img !== "") {
