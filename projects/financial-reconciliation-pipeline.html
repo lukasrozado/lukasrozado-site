@@ -96,7 +96,7 @@
 
             <h1 itemprop="name">High-Concurrency Financial Reconciliation Pipeline</h1>
 
-            <p class="lead" itemprop="description">Pipeline híbrido pra dado financeiro de alta transacionalidade: uma via de API quase em tempo real, guiada por high-water mark, e uma via diária que baixa CSV e faz anti-join contra o banco pra recuperar lacuna invisível à API (offset drift de paginação). A extração roda em arquitetura producer-consumer com fila limitada, e o checkpoint fica por página, não por dia, pra retomar do ponto exato de interrupção depois de qualquer falha. O backfill histórico roda num processo procedural estritamente sequencial, isolado da ingestão em produção.</p>
+            <p class="lead" itemprop="description">Dado financeiro de alta transacionalidade, ingerido por um pipeline híbrido: uma via de API quase em tempo real, guiada por high-water mark, e uma via diária que baixa CSV e faz anti-join contra o banco pra recuperar lacuna invisível à API (offset drift de paginação). A extração roda em arquitetura producer-consumer com fila limitada, e o checkpoint fica por página, não por dia, pra retomar do ponto exato de interrupção depois de qualquer falha. O backfill histórico roda num processo procedural estritamente sequencial, isolado da ingestão em produção.</p>
 
             <div class="project-tech-row">
                 <img src="../assets/icons/python.svg" alt="python" class="tech-icon" width="30" height="30">

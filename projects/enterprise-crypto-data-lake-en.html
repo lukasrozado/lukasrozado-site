@@ -97,7 +97,7 @@
             <h1 itemprop="name">Enterprise Crypto Data Lake: Multi-Account Ingestion</h1>
 
 
-            <p class="lead" itemprop="description">Architecture for continuous financial auditing across dozens of institutional accounts on a crypto exchange, with full historical backfill from each account's inception. At its core, a rate limiter shared across processes reads the official consumed-quota header on every HTTP response, never an estimate from call counts, which eliminates the IP-ban pattern that existed before this architecture. A mandatory Bronze layer keeps the raw payload in JSONB and feeds a full Medallion model; loading runs through native PostgreSQL <code>COPY</code>, a temp table and UPSERT, sustaining tens of millions of records a year with credentials isolated in Azure Key Vault.</p>
+            <p class="lead" itemprop="description">Dozens of institutional accounts on a crypto exchange, audited continuously, with full historical backfill from each account's inception. At the core, a rate limiter shared across processes reads the official consumed-quota header on every HTTP response, never an estimate from call counts, which eliminates the IP-ban pattern that existed before this architecture. A mandatory Bronze layer keeps the raw payload in JSONB and feeds a full Medallion model; loading runs through native PostgreSQL <code>COPY</code>, a temp table and UPSERT, sustaining tens of millions of records a year with credentials isolated in Azure Key Vault.</p>
 
             <div class="project-tech-row">
                 <img src="../assets/icons/python.svg" alt="python" class="tech-icon" width="30" height="30">

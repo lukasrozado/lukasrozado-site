@@ -97,7 +97,7 @@
             <h1 itemprop="name">Institutional Digital Asset Custody Integrator</h1>
 
 
-            <p class="lead" itemprop="description">Orquestrador de ingestão pra custódia institucional de criptoativos, com cada workspace regional isolado, credencial própria via Key Vault e duas esteiras paralelas: transação e snapshot de saldo por vault. Uma máquina de estado alterna sozinha entre backfill completo e modo incremental, com sobreposição de 5 minutos na virada pra nunca perder registro na borda da janela. Um auditor separado, mais barato, revarre só as transações ainda em status não-terminal, a partir do registro pendente mais antigo, e faz UPSERT no que mudou — sem re-escanear o histórico inteiro pra pegar uma transação que demorou a fechar.</p>
+            <p class="lead" itemprop="description">Custódia institucional de criptoativos, com cada workspace regional isolado, credencial própria via Key Vault e duas esteiras paralelas — transação e snapshot de saldo por vault — sob um único orquestrador de ingestão. Uma máquina de estado alterna sozinha entre backfill completo e modo incremental, com sobreposição de 5 minutos na virada pra nunca perder registro na borda da janela. Um auditor separado, mais barato, revarre só as transações ainda em status não-terminal, a partir do registro pendente mais antigo, e faz UPSERT no que mudou — sem re-escanear o histórico inteiro pra pegar uma transação que demorou a fechar.</p>
 
             <div class="project-tech-row">
                 <img src="../assets/icons/python.svg" alt="python" class="tech-icon" width="30" height="30">

@@ -97,7 +97,7 @@
             <h1 itemprop="name">Unified Multi-Chain Ledger Integrator</h1>
 
 
-            <p class="lead" itemprop="description">A resilient pipeline that consolidates transactions across dozens of blockchains and contracts (EVM and Solana), reading straight from the node via raw RPC (<code>eth_getLogs</code> filtered by event topic) instead of relying on a third-party indexer. Block ranges too dense for the API split recursively until they fit. The core differentiator is the self-healing reconciliation engine: it compares on-chain event counts against the database range by range, heals any mismatch on its own by deleting and re-extracting the batch, and closes with a final accounting check comparing total on-chain supply against the net supply computed in PostgreSQL.</p>
+            <p class="lead" itemprop="description">Transactions across dozens of blockchains and contracts (EVM and Solana), consolidated by a resilient pipeline reading straight from the node via raw RPC (<code>eth_getLogs</code> filtered by event topic) instead of relying on a third-party indexer. Block ranges too dense for the API split recursively until they fit. The core differentiator is the self-healing reconciliation engine: it compares on-chain event counts against the database range by range, heals any mismatch on its own by deleting and re-extracting the batch, and closes with a final accounting check comparing total on-chain supply against the net supply computed in PostgreSQL.</p>
 
             <div class="project-tech-row">
                 <img src="../assets/icons/python.svg" alt="python" class="tech-icon" width="30" height="30">

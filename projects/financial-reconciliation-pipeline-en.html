@@ -96,7 +96,7 @@
 
             <h1 itemprop="name">High-Concurrency Financial Reconciliation Pipeline</h1>
 
-            <p class="lead" itemprop="description">A hybrid ingestion pipeline for high-transaction financial data: a near real-time API lane driven by a high-water mark, and a daily lane that downloads a CSV and anti-joins it against the database to recover gaps invisible to the API (pagination offset drift). Extraction runs on a producer-consumer architecture with a bounded queue, and checkpoint state lives per page, not per day, resuming from the exact point of interruption after any failure. Historical backfill runs in a strictly sequential procedural process, isolated from the production ingestion.</p>
+            <p class="lead" itemprop="description">High-transaction financial data, ingested by a hybrid pipeline: a near real-time API lane driven by a high-water mark, and a daily lane that downloads a CSV and anti-joins it against the database to recover gaps invisible to the API (pagination offset drift). Extraction runs on a producer-consumer architecture with a bounded queue, and checkpoint state lives per page, not per day, resuming from the exact point of interruption after any failure. Historical backfill runs in a strictly sequential procedural process, isolated from the production ingestion.</p>
 
             <div class="project-tech-row">
                 <img src="../assets/icons/python.svg" alt="python" class="tech-icon" width="30" height="30">

@@ -97,7 +97,7 @@
             <h1 itemprop="name">BaaS &amp; Financial Settlement Data Sink</h1>
 
 
-            <p class="lead" itemprop="description">Pipeline de integração programática que centraliza dados de liquidação financeira multibancos (Banking-as-a-Service), desenhado pra garantir segurança máxima na comunicação entre sistemas isolados, com autenticação corporativa via Azure Active Directory e tokens. Antes de qualquer <code>COPY</code> nativo do PostgreSQL, toda carga passa por uma camada de sanitização dedicada; um motor de flattening transforma logs aninhados em colunas de auditoria consultáveis direto, sem <em>join</em>; e o script de backfill histórico roda isolado do checkpoint de produção, sem risco de reprocessar ou corromper o incremental em andamento.</p>
+            <p class="lead" itemprop="description">Dados de liquidação financeira espalhados entre múltiplos bancos (Banking-as-a-Service), centralizados por um pipeline de integração programática desenhado pra segurança máxima na comunicação entre sistemas isolados, com autenticação corporativa via Azure Active Directory e tokens. Antes de qualquer <code>COPY</code> nativo do PostgreSQL, toda carga passa por uma camada de sanitização dedicada; um motor de flattening transforma logs aninhados em colunas de auditoria consultáveis direto, sem <em>join</em>; e o script de backfill histórico roda isolado do checkpoint de produção, sem risco de reprocessar ou corromper o incremental em andamento.</p>
 
             <div class="project-tech-row">
                 <img src="../assets/icons/python.svg" alt="python" class="tech-icon" width="30" height="30">

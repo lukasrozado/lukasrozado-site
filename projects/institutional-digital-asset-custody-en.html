@@ -97,7 +97,7 @@
             <h1 itemprop="name">Institutional Digital Asset Custody Integrator</h1>
 
 
-            <p class="lead" itemprop="description">An ingestion orchestrator for institutional crypto asset custody, with each regional workspace isolated, its own credential loaded from a vault, and two parallel lanes: transactions and per-vault balance snapshots. A state machine switches on its own between full backfill and incremental mode, with a 5-minute overlap at the handoff so no record is lost at the window's edge. A separate, lighter auditor re-scans only the transactions still in a non-terminal status, starting from the oldest pending record, and upserts whatever changed, with no need to re-scan the entire history to catch a transaction that took a while to settle.</p>
+            <p class="lead" itemprop="description">Institutional crypto asset custody, with each regional workspace isolated, its own credential loaded from a vault, and two parallel lanes — transactions and per-vault balance snapshots — under a single ingestion orchestrator. A state machine switches on its own between full backfill and incremental mode, with a 5-minute overlap at the handoff so no record is lost at the window's edge. A separate, lighter auditor re-scans only the transactions still in a non-terminal status, starting from the oldest pending record, and upserts whatever changed, with no need to re-scan the entire history to catch a transaction that took a while to settle.</p>
 
             <div class="project-tech-row">
                 <img src="../assets/icons/python.svg" alt="python" class="tech-icon" width="30" height="30">
