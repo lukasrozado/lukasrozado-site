@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="pt-BR" itemscope itemtype="https://schema.org/Person">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,6 +32,7 @@
     <link rel="apple-touch-icon" href="../assets/icons/favicon-180x180.webp">
     <link rel="manifest" href="../site.webmanifest">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
     <link rel="stylesheet" href="../styles/main.css">
@@ -49,13 +50,13 @@
             {
                 "@type": "ListItem",
                 "position": 1,
-                "name": "Home",
+                "name": "Início",
                 "item": "https://lukasrozado.pages.dev/"
             },
             {
                 "@type": "ListItem",
                 "position": 2,
-                "name": "Projects",
+                "name": "Projetos",
                 "item": "https://lukasrozado.pages.dev/#projects"
             },
             {
@@ -70,10 +71,16 @@
         "@context": "https://schema.org",
         "@type": "Dataset",
         "name": "LCK Spring 2024 Players Statistics",
+        "headline": "LCK Spring 2024 Players Statistics",
         "description": "Dataset público e verificável com estatísticas completas do split Spring 2024 da LCK (League of Legends Champions Korea): jogadores, campeões e partidas organizados em três tabelas relacionais. Coleta via web scraping com BeautifulSoup e Selenium sobre o Gol.gg, normalização rigorosa de métricas e organização pronta para EDA, visualização e modelagem preditiva. Publicado no Kaggle com nota máxima de usabilidade.",
         "url": "https://lukasrozado.pages.dev/projects/lck-spring-2024-dataset",
         "inLanguage": "pt-BR",
         "keywords": "python, web-scraping",
+        "variableMeasured": [
+            "Estatísticas de jogadores",
+            "Estatísticas de campeões",
+            "Resultados de partidas"
+        ],
         "sameAs": "https://www.kaggle.com/datasets/lukasrozado/lck-spring-2024-players-statistics",
         "license": "https://creativecommons.org/licenses/by/4.0/",
         "isAccessibleForFree": true,
@@ -86,6 +93,11 @@
                 "https://github.com/lukasrozado",
                 "https://kaggle.com/lukasrozado"
             ]
+        },
+        "publisher": {
+            "@type": "Person",
+            "name": "Lukas Rozado",
+            "url": "https://lukasrozado.pages.dev/"
         },
         "creator": {
             "@type": "Person",
@@ -176,7 +188,7 @@
             <div class="social-proof social-proof--verified"><p><strong>Prova:</strong> Prova pública: dataset com nota 10.0 no Kaggle, 300+ downloads e notebooks de terceiros, verificável em https://www.kaggle.com/datasets/lukasrozado/lck-spring-2024-players-statistics</p></div>
 
                                                 <div class="mid-cta">
-                <p>Tem um caso parecido? Vamos desenhar a arquitetura que prova o resultado no seu contexto.</p>
+                <p>Precisa de um dataset público e auditável pra validar seu próprio pipeline de scraping? Vamos conversar sobre o seu caso.</p>
                 <a class="btn-primary" href="../contact">Falar sobre seu caso</a>
             </div>
                 <p class="newsletter-inline"><a href="https://www.linkedin.com/newsletters/dado-bruto-7498525638908321792/" target="_blank" rel="noopener noreferrer">Receba casos assim todo mês na newsletter <strong>Dado Bruto</strong> &nearr;</a></p>
@@ -206,7 +218,7 @@
 <footer itemscope itemtype="https://schema.org/WPFooter" role="contentinfo">
     <div class="footer-inner">
         <div class="footer-cta">
-            <img src="../assets/images/logo-dado-bruto-600.png" alt="Dado Bruto" style="height:96px;width:auto;flex-shrink:0;border-radius:10px;filter:drop-shadow(0 2px 8px rgba(0,212,255,.25))">
+            <img src="../assets/images/logo-dado-bruto-600.png" alt="Dado Bruto" width="96" height="96" style="height:96px;width:auto;flex-shrink:0;border-radius:10px;filter:drop-shadow(0 2px 8px rgba(0,212,255,.25))">
             <div class="footer-cta-text">
                 <p class="footer-newsletter-desc"><strong style="color:#00D4FF">Dado Bruto</strong>, newsletter &middot; Casos reais de engenharia de dados em produ&ccedil;&atilde;o: arquitetura, trade-off e o n&uacute;mero real por tr&aacute;s da decis&atilde;o.</p>
             </div>

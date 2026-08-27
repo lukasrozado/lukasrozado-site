@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" itemscope itemtype="https://schema.org/Person">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,6 +32,7 @@
     <link rel="apple-touch-icon" href="../assets/icons/favicon-180x180.webp">
     <link rel="manifest" href="../site.webmanifest">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
     <link rel="stylesheet" href="../styles/main.css">
@@ -70,6 +71,7 @@
         "@context": "https://schema.org",
         "@type": "TechArticle",
         "name": "Fiscal Document Consolidation Pipeline",
+        "headline": "Fiscal Document Consolidation Pipeline",
         "description": "Monthly incremental pipeline that downloads XML+PDF pairs of fiscal documents via a fiscal document provider's API, resolves the owning legal entity for each document by substring-matching the entity's tax identifier inside the raw decoded content (never trusting an explicit reference tag), and consolidates output into one combined ZIP plus one per-entity ZIP, organized by document type and date.",
         "url": "https://lukasrozado.pages.dev/projects/fiscal-document-consolidation-pipeline-en",
         "image": "https://lukasrozado.pages.dev/assets/images/og-image.webp",
@@ -84,6 +86,11 @@
                 "https://github.com/lukasrozado",
                 "https://kaggle.com/lukasrozado"
             ]
+        },
+        "publisher": {
+            "@type": "Person",
+            "name": "Lukas Rozado",
+            "url": "https://lukasrozado.pages.dev/"
         },
         "datePublished": "2026-08-26",
         "dateModified": "2026-08-26"
@@ -161,7 +168,7 @@
             <div class="social-proof"><p><strong>Outcome:</strong> Anonymized case: monthly fiscal document consolidation running with no manual intervention since deployment.</p></div>
 
                                                 <div class="mid-cta">
-                <p>Have a similar case? Let's design the architecture that proves the outcome in your context.</p>
+                <p>Need to consolidate fiscal documents across entities without relying on a reference tag? Let's design that resolution for your context.</p>
                 <a class="btn-primary" href="../contact-en">Discuss your case</a>
             </div>
                 <p class="newsletter-inline"><a href="https://www.linkedin.com/newsletters/dado-bruto-7498525638908321792/" target="_blank" rel="noopener noreferrer">Get cases like this every month in the <strong>Dado Bruto</strong> newsletter &nearr;</a></p>

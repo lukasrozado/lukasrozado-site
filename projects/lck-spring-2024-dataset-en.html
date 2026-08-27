@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en" itemscope itemtype="https://schema.org/Person">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,6 +32,7 @@
     <link rel="apple-touch-icon" href="../assets/icons/favicon-180x180.webp">
     <link rel="manifest" href="../site.webmanifest">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
     <link rel="stylesheet" href="../styles/main.css">
@@ -70,10 +71,16 @@
         "@context": "https://schema.org",
         "@type": "Dataset",
         "name": "LCK Spring 2024 Players Statistics",
+        "headline": "LCK Spring 2024 Players Statistics",
         "description": "Public, fully verifiable dataset covering the complete LCK (League of Legends Champions Korea) Spring 2024 split: players, champions, and matches organized into three relational tables. Collected via web scraping with BeautifulSoup and Selenium from Gol.gg, with rigorous metric normalization, ready for EDA, visualization, and predictive modeling. Published on Kaggle with a maximum usability score.",
         "url": "https://lukasrozado.pages.dev/projects/lck-spring-2024-dataset-en",
         "inLanguage": "en",
         "keywords": "python, web-scraping",
+        "variableMeasured": [
+            "Player statistics",
+            "Champion statistics",
+            "Match results"
+        ],
         "sameAs": "https://www.kaggle.com/datasets/lukasrozado/lck-spring-2024-players-statistics",
         "license": "https://creativecommons.org/licenses/by/4.0/",
         "isAccessibleForFree": true,
@@ -86,6 +93,11 @@
                 "https://github.com/lukasrozado",
                 "https://kaggle.com/lukasrozado"
             ]
+        },
+        "publisher": {
+            "@type": "Person",
+            "name": "Lukas Rozado",
+            "url": "https://lukasrozado.pages.dev/"
         },
         "creator": {
             "@type": "Person",
@@ -176,7 +188,7 @@
             <div class="social-proof social-proof--verified"><p><strong>Proof:</strong> Public proof: dataset rated 10.0 on Kaggle, 300+ downloads and third-party notebooks, verifiable at https://www.kaggle.com/datasets/lukasrozado/lck-spring-2024-players-statistics</p></div>
 
                                                 <div class="mid-cta">
-                <p>Have a similar case? Let's design the architecture that proves the outcome in your context.</p>
+                <p>Need a public, auditable dataset to validate your own scraping pipeline? Let's talk about your case.</p>
                 <a class="btn-primary" href="../contact-en">Discuss your case</a>
             </div>
                 <p class="newsletter-inline"><a href="https://www.linkedin.com/newsletters/dado-bruto-7498525638908321792/" target="_blank" rel="noopener noreferrer">Get cases like this every month in the <strong>Dado Bruto</strong> newsletter &nearr;</a></p>
@@ -206,7 +218,7 @@
 <footer itemscope itemtype="https://schema.org/WPFooter" role="contentinfo">
     <div class="footer-inner">
         <div class="footer-cta">
-            <img src="../assets/images/logo-dado-bruto-600.png" alt="Dado Bruto" style="height:96px;width:auto;flex-shrink:0;border-radius:10px;filter:drop-shadow(0 2px 8px rgba(0,212,255,.25))">
+            <img src="../assets/images/logo-dado-bruto-600.png" alt="Dado Bruto" width="96" height="96" style="height:96px;width:auto;flex-shrink:0;border-radius:10px;filter:drop-shadow(0 2px 8px rgba(0,212,255,.25))">
             <div class="footer-cta-text">
                 <p class="footer-newsletter-desc"><strong style="color:#00D4FF">Dado Bruto</strong>, newsletter &middot; Real data engineering cases in production: architecture, trade-offs, and the real number behind the decision.</p>
             </div>

@@ -10,7 +10,6 @@
     <link rel="alternate" hreflang="pt-BR" href="https://lukasrozado.pages.dev/">
     <link rel="alternate" hreflang="en" href="https://lukasrozado.pages.dev/index-en">
     <link rel="alternate" hreflang="x-default" href="https://lukasrozado.pages.dev/">
-    <meta name="generator" content="GitHub Pages">
     
     <meta name="description" content="Engenheiro de Dados especializado em arquiteturas de alta performance, data lakes, pipelines assíncronos e integrações em nuvem (Azure/AWS).">
     
@@ -36,6 +35,7 @@
     <meta name="twitter:description" content="Especialista em pipelines assíncronos, Azure e banco de dados de alta performance.">
     <meta name="twitter:image" content="https://lukasrozado.pages.dev/assets/images/twitter-card.webp">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" as="style">
     <link rel="preload" href="./assets/images/hero-data-engineer-lukas-rozado.webp" as="image">
@@ -172,7 +172,7 @@
         <div data-include="./components/pt/footer.html"><footer itemscope itemtype="https://schema.org/WPFooter" role="contentinfo">
     <div class="footer-inner">
         <div class="footer-cta">
-            <img src="./assets/images/logo-dado-bruto-600.png" alt="Dado Bruto" style="height:96px;width:auto;flex-shrink:0;border-radius:10px;filter:drop-shadow(0 2px 8px rgba(0,212,255,.25))">
+            <img src="./assets/images/logo-dado-bruto-600.png" alt="Dado Bruto" width="96" height="96" style="height:96px;width:auto;flex-shrink:0;border-radius:10px;filter:drop-shadow(0 2px 8px rgba(0,212,255,.25))">
             <div class="footer-cta-text">
                 <p class="footer-newsletter-desc"><strong style="color:#00D4FF">Dado Bruto</strong>, newsletter &middot; Casos reais de engenharia de dados em produ&ccedil;&atilde;o: arquitetura, trade-off e o n&uacute;mero real por tr&aacute;s da decis&atilde;o.</p>
             </div>
@@ -229,12 +229,12 @@
     <script defer src="./assets/js/main.js" type="module"></script>
     
     <script type="module">
-        import { getCLS, getFID, getLCP } 
-          from 'https://unpkg.com/web-vitals@3.0.0/dist/web-vitals.js';
-      
+        import { getCLS, getINP, getLCP }
+          from 'https://unpkg.com/web-vitals@3/dist/web-vitals.js';
+
         if (typeof window.gtag === 'function') {
           getCLS(metric => gtag('event', 'CLS', { value: metric.value }));
-          getFID(metric => gtag('event', 'FID', { value: metric.value }));
+          getINP(metric => gtag('event', 'INP', { value: metric.value }));
           getLCP(metric => gtag('event', 'LCP', { value: metric.value }));
         }
       </script>

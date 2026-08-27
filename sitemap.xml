@@ -49,6 +49,19 @@
         <lastmod>2026-08-26</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="https://lukasrozado.pages.dev/writing/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://lukasrozado.pages.dev/writing/index-en"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://lukasrozado.pages.dev/writing/"/>
+    </url>
+
+    <url>
+        <loc>https://lukasrozado.pages.dev/writing/index-en</loc>
+        <lastmod>2026-08-26</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="https://lukasrozado.pages.dev/writing/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://lukasrozado.pages.dev/writing/index-en"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://lukasrozado.pages.dev/writing/"/>
     </url>
 
     <url>

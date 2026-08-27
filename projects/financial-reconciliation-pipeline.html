@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="pt-BR" itemscope itemtype="https://schema.org/Person">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,6 +32,7 @@
     <link rel="apple-touch-icon" href="../assets/icons/favicon-180x180.webp">
     <link rel="manifest" href="../site.webmanifest">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
     <link rel="stylesheet" href="../styles/main.css">
@@ -49,13 +50,13 @@
             {
                 "@type": "ListItem",
                 "position": 1,
-                "name": "Home",
+                "name": "Início",
                 "item": "https://lukasrozado.pages.dev/"
             },
             {
                 "@type": "ListItem",
                 "position": 2,
-                "name": "Projects",
+                "name": "Projetos",
                 "item": "https://lukasrozado.pages.dev/#projects"
             },
             {
@@ -70,6 +71,7 @@
         "@context": "https://schema.org",
         "@type": "TechArticle",
         "name": "High-Concurrency Financial Reconciliation Pipeline",
+        "headline": "High-Concurrency Financial Reconciliation Pipeline",
         "description": "Pipeline híbrido de ingestão e reconciliação financeira (API near real-time + auto-cura via CSV D-1), com arquitetura producer-consumer, checkpoint por página, backfill sequencial isolado e carga via COPY + UPSERT em tabelas de alta transacionalidade.",
         "url": "https://lukasrozado.pages.dev/projects/financial-reconciliation-pipeline",
         "image": "https://lukasrozado.pages.dev/assets/images/financial-reconciliation-pipeline.webp",
@@ -84,6 +86,11 @@
                 "https://github.com/lukasrozado",
                 "https://kaggle.com/lukasrozado"
             ]
+        },
+        "publisher": {
+            "@type": "Person",
+            "name": "Lukas Rozado",
+            "url": "https://lukasrozado.pages.dev/"
         },
         "datePublished": "2026-08-26",
         "dateModified": "2026-08-27"
@@ -165,7 +172,7 @@
             <div class="social-proof"><p><strong>Resultado:</strong> Caso anonimizado: pipeline validado como livro-razão de transição até migração completa.</p></div>
 
                                                 <div class="mid-cta">
-                <p>Tem um caso parecido? Vamos desenhar a arquitetura que prova o resultado no seu contexto.</p>
+                <p>Precisa reconciliar dado financeiro de alta transacionalidade sem perder registro? Vamos desenhar esse pipeline no seu contexto.</p>
                 <a class="btn-primary" href="../contact">Falar sobre seu caso</a>
             </div>
                 <p class="newsletter-inline"><a href="https://www.linkedin.com/newsletters/dado-bruto-7498525638908321792/" target="_blank" rel="noopener noreferrer">Receba casos assim todo mês na newsletter <strong>Dado Bruto</strong> &nearr;</a></p>
