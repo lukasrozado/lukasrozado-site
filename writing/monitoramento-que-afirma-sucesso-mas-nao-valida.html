@@ -41,6 +41,13 @@
 
     <style>
         body { font-family: 'Roboto', 'Arial', 'Helvetica', sans-serif; }
+        .essay-summary,.essay-toc{background:#002d40;border:1px solid rgba(0,212,255,.2);border-radius:10px;padding:1rem 1.5rem;margin:0 0 1.75rem}
+        .essay-summary h2,.essay-toc h2{font-size:1rem;letter-spacing:.05em;text-transform:uppercase;margin:.25rem 0 .75rem}
+        .essay-summary ul,.essay-toc ol{margin:0;padding-left:1.25rem}
+        .essay-summary li,.essay-toc li{margin:0 0 .5rem}
+        .essay-summary li:last-child,.essay-toc li:last-child{margin-bottom:0}
+        .essay-toc a{text-decoration:none}
+        .essay-toc a:hover{text-decoration:underline}
     </style>
 
     <script type="application/ld+json">
@@ -79,6 +86,17 @@
         "datePublished": "2026-08-26",
         "dateModified": "2026-08-26",
         "inLanguage": "pt-BR",
+        "articleSection": [
+            "O que aconteceu: o painel ficou verde por 14,71 dias com o serving parado",
+            "Por que o alarme nunca poderia tocar",
+            "Um portão com exclusão diz “aprovado” sobre algo que nunca olhou",
+            "CI/CD que não rodou não é validação de qualidade",
+            "Quando o carimbo de outra pessoa ocupa o lugar da prova",
+            "A objeção mais forte: verificação sem proporção à consequência é cerimônia",
+            "Qual é a diferença entre não ter verificação e ter um falso verde?",
+            "Como verificar se a própria verificação continua funcionando"
+        ],
+        "keywords": "monitoramento, observabilidade, falso positivo, alarme que não toca, check de frescor, SLA, Asset Check, Dagster, portão de qualidade, CI/CD, bypass de verificação, quality assurance, reconciliação, engenharia de dados",
         "author": {
             "@type": "Person",
             "name": "Lukas Rozado",
@@ -93,6 +111,54 @@
             "@type": "Person",
             "name": "Lukas Rozado"
         }
+    },
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "inLanguage": "pt-BR",
+        "url": "https://lukasrozado.pages.dev/writing/monitoramento-que-afirma-sucesso-mas-nao-valida",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Por que um painel pode ficar verde enquanto o sistema está parado?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Porque o sinal de monitoramento vem do mesmo caminho que está quebrado. No caso descrito, o check de frescor tinha SLA de 26 horas e era rearmado a cada 19 minutos pelo próprio publish que não publicava nada, então o painel permaneceu verde durante os 14,71 dias em que o serving esteve parado."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Uma exclusão em um portão de qualidade apenas desliga o portão?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Não. A exclusão faz o portão dizer “aprovado” sobre algo que ele nunca olhou, e empurra a obrigação de garantir a qualidade para cada rota dentro daquele escopo sem que essa responsabilidade tenha sido decidida ou assumida explicitamente. Quem olha o resultado não consegue distinguir “verificado e aprovado” de “fora do escopo”."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Um job de CI/CD que não chegou a rodar conta como validação de qualidade?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Não. Se a verificação foi impedida de executar por limitações do provedor de Git, não se pode considerar que houve validação de qualidade. O job não falhou: ele não aconteceu. E não ter acontecido é indistinguível de ter passado para quem olha depois."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "O que é pior: não ter verificação nenhuma ou ter um sinal verde falso?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "O sinal verde falso. Sem verificação você simplesmente não sabe se o sistema está funcionando. Com um sinal que atesta funcionamento você acredita nele e, justamente por acreditar, deixa de perceber o problema que está acontecendo."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Como saber se a própria verificação continua funcionando?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Não basta verificar continuamente. A verificação anterior precisa ser confrontada com evidências reais de que aquilo que ela deveria detectar ainda pode ser detectado. É esse o papel do Quality Assurance como mecanismo de reconciliação."
+                }
+            }
+        ]
     }
 ]
     </script>
@@ -136,27 +202,68 @@
             </header>
 
             <div class="article-body">
+                <section class="essay-summary" aria-labelledby="em-resumo">
+                    <h2 id="em-resumo">Em resumo</h2>
+                    <ul>
+                        <li>O serving estava parado havia 14,71 dias e o painel permaneceu verde o tempo inteiro: o check de frescor tinha SLA de 26 horas e era rearmado a cada 19 minutos pelo próprio publish que não publicava nada.</li>
+                        <li>O alarme era impossível por construção: para tocar, seriam necessários 82 ciclos consecutivos sem rearme.</li>
+                        <li>Quando o sinal de saúde vem do mesmo caminho que deveria auditar, o instrumento se inverte: quanto pior o estado do sistema, mais firme o sinal de saúde.</li>
+                        <li>Uma exclusão não desliga o portão de qualidade; ela faz o portão dizer “aprovado” sobre algo que nunca olhou. E um job de CI/CD que não aconteceu é indistinguível de um que passou.</li>
+                        <li>Pior do que não ter verificação é acreditar em uma verificação que nunca foi reconciliada com a realidade.</li>
+                    </ul>
+                </section>
+
+                <nav class="essay-toc" aria-labelledby="neste-ensaio">
+                    <h2 id="neste-ensaio">Neste ensaio</h2>
+                    <ol>
+                        <li><a href="#o-que-aconteceu">O que aconteceu: o painel ficou verde por 14,71 dias com o serving parado</a></li>
+                        <li><a href="#por-que-o-alarme-nunca-tocou">Por que o alarme nunca poderia tocar</a></li>
+                        <li><a href="#portao-com-exclusao">Um portão com exclusão diz “aprovado” sobre algo que nunca olhou</a></li>
+                        <li><a href="#ci-cd-que-nao-rodou">CI/CD que não rodou não é validação de qualidade</a></li>
+                        <li><a href="#carimbo-no-lugar-da-prova">Quando o carimbo de outra pessoa ocupa o lugar da prova</a></li>
+                        <li><a href="#a-objecao-do-custo">A objeção mais forte: verificação sem proporção à consequência é cerimônia</a></li>
+                        <li><a href="#verificacao-ausente-vs-falso-verde">Qual é a diferença entre não ter verificação e ter um falso verde?</a></li>
+                        <li><a href="#reconciliar-a-verificacao">Como verificar se a própria verificação continua funcionando</a></li>
+                    </ol>
+                </nav>
+
+                <h2 id="o-que-aconteceu">O que aconteceu: o painel ficou verde por 14,71 dias com o serving parado</h2>
+
                 <p>Eu tinha uma aplicação de ingestão que publicava um snapshot para consumo. O painel estava verde, tudo parecia correto, mas algo me incomodava: a quantidade de dados não crescia como deveria. Fui olhar. O serving estava parado havia 14,71 dias, e o alarme permanecera verde o tempo inteiro. O check de frescor tinha SLA de 26 horas e era rearmado a cada 19 minutos pelo próprio publish que não publicava nada.</p>
 
+                <h2 id="por-que-o-alarme-nunca-tocou">Por que o alarme nunca poderia tocar</h2>
+
                 <p>O trigger do ETL disparava normalmente. Na hora do load, falhava. O Asset Check do Dagster rearmava mesmo assim, porque o sinal de monitoramento vinha do mesmo caminho que estava quebrado. Para o alarme soar, seriam necessários 82 ciclos consecutivos sem rearme impossível por construção. Nenhuma quantidade de sorte ruim faria aquele alarme tocar. E o defeito de fundo é pior que o silêncio: a falha que o vigia deveria reportar era a mesma coisa que o mantinha calado, o que inverte a função do instrumento quanto pior o estado do sistema, mais firme o sinal de saúde.</p>
+
+                <h2 id="portao-com-exclusao">Um portão com exclusão diz “aprovado” sobre algo que nunca olhou</h2>
 
                 <p>Se eu tenho um portão que garante a qualidade dos meus projetos e que, ao identificar uma aplicação com VETO ou BUGs, bloqueia o commit quando ela não passa pelo CI, esse portão precisa ser efetivamente uma barreira de proteção.</p>
 
                 <p>Se, por outro lado, é possível excluir um prefixo, uma regra ou qualquer outro ponto para contorná-lo, o problema não é simplesmente o bypass existir. A exclusão empurra a obrigação de garantir a qualidade para cada rota que está dentro daquele escopo, sem que essa responsabilidade tenha sido decidida ou assumida explicitamente. É aí que ocorre o mesmo erro: o portão continua reportando “passou”, mas “passou” passa a significar coisas diferentes dependendo de onde o commit caiu. Quem olha para o resultado não consegue distinguir entre “verificado e aprovado” e “fora do escopo”. A exclusão, portanto, não desliga o portão; ela faz o portão dizer “aprovado” sobre algo que ele nunca olhou.</p>
 
+                <h2 id="ci-cd-que-nao-rodou">CI/CD que não rodou não é validação de qualidade</h2>
+
                 <p>Se foi realizada uma mudança no código, com uma nova implementação, porém a verificação de CI/CD ficou impedida de ser executada devido a limitações impostas pelo provedor de Git, como, por exemplo, o limite permitido pelo GitHub Actions, ou qualquer outro mecanismo de restrição da plataforma, não se pode considerar que houve uma validação de qualidade. A ausência dessa verificação compromete a garantia de integridade do projeto, especialmente quando o CI/CD é responsável por controlar a quantidade ou o tamanho de um arquivo e garantir que, caso essa medição seja ultrapassada após uma alteração, a aplicação não seja comprometida e a mudança seja bloqueada de forma atômica. O job não falhou. Ele não aconteceu. E não ter acontecido é indistinguível de ter passado para quem olha depois.</p>
+
+                <h2 id="carimbo-no-lugar-da-prova">Quando o carimbo de outra pessoa ocupa o lugar da prova</h2>
 
                 <p>Há um caso complexo, semelhante ao de um romance em que um industrial terceiriza a decisão sobre a proteção de seu bem mais precioso: um metal que levou dez anos para desenvolver. Ao delegar a um operador em Washington essa escolha, permite que alguém fora de seu domínio determine o destino daquilo que levou uma década para construir, abrindo caminho para a ruína do projeto.</p>
 
                 <p>O ponto não é só ter delegado. É ter tomado o aval desse operador como se fosse a própria verificação. Sem conferir o resultado, recebeu a decisão de fora com a sensação de dever cumprido que só o exame direto daria. O carimbo ocupou o lugar da prova. É o mesmo verde dos outros casos, só que gerado por pessoa e não por máquina: o julgamento foi deslocado e tratado como se o fato já estivesse comprovado. Mudou a forma, não o erro: tomar por verificado o que nunca foi verificado.</p>
 
+                <h2 id="a-objecao-do-custo">A objeção mais forte: verificação sem proporção à consequência é cerimônia</h2>
+
                 <p><strong>A objeção mais forte contra tudo isso é outra.</strong></p>
 
                 <p>O custo de verificar é real e imediato; o custo de não verificar é hipotético e adiado. Na maioria dos sistemas, ausência de verificação e verificação bem-sucedida produzem exatamente o mesmo resultado e produzem por anos. Se o painel verde falso não causou perda concreta, o problema não é o falso positivo: é você exigir rigor onde a criticidade não justifica. Verificação sem proporção à consequência é cerimônia, não engenharia.</p>
 
+                <h2 id="verificacao-ausente-vs-falso-verde">Qual é a diferença entre não ter verificação e ter um falso verde?</h2>
+
                 <p>De fato, nem todo sistema precisa de um <em>check</em>, e tudo bem remover aquilo que não se justifica. Mas existe uma diferença fundamental entre um sistema que está funcionando de fato, um sistema que não possui qualquer mecanismo de verificação e um sistema que produz um sinal de que está funcionando quando, na realidade, não está.</p>
 
                 <p>No primeiro caso, você tem rastreabilidade, segurança e monitoramento: se algo ocorrer, existe evidência de que o sistema estava sendo verificado e mecanismos para identificar o problema e restaurar a aplicação rapidamente. No segundo, você simplesmente não sabe. Pode estar funcionando ou não, mas não existe um mecanismo que permita afirmar isso. O terceiro é o pior dos casos: existe algo que atesta que está funcionando, você acredita nesse sinal e, justamente por acreditar nele, deixa de perceber o problema que está acontecendo. É como ter uma faca presa às costas sem sentir dor: você não sabe que existe um problema, mas ele continua lá.</p>
+
+                <h2 id="reconciliar-a-verificacao">Como verificar se a própria verificação continua funcionando</h2>
 
                 <p>Por isso, o <em>Quality Assurance</em> entra como mecanismo de reconciliação: não basta verificar continuamente; é necessário verificar se a própria verificação continua funcionando. A verificação anterior precisa ser confrontada com evidências reais de que aquilo que ela deveria detectar ainda pode ser detectado.</p>
 

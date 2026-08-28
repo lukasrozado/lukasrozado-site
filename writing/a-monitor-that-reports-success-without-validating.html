@@ -41,6 +41,13 @@
 
     <style>
         body { font-family: 'Roboto', 'Arial', 'Helvetica', sans-serif; }
+        .essay-summary,.essay-toc{background:#002d40;border:1px solid rgba(0,212,255,.2);border-radius:10px;padding:1rem 1.5rem;margin:0 0 1.75rem}
+        .essay-summary h2,.essay-toc h2{font-size:1rem;letter-spacing:.05em;text-transform:uppercase;margin:.25rem 0 .75rem}
+        .essay-summary ul,.essay-toc ol{margin:0;padding-left:1.25rem}
+        .essay-summary li,.essay-toc li{margin:0 0 .5rem}
+        .essay-summary li:last-child,.essay-toc li:last-child{margin-bottom:0}
+        .essay-toc a{text-decoration:none}
+        .essay-toc a:hover{text-decoration:underline}
     </style>
 
     <script type="application/ld+json">
@@ -79,6 +86,17 @@
         "datePublished": "2026-08-26",
         "dateModified": "2026-08-26",
         "inLanguage": "en",
+        "articleSection": [
+            "What happened: the dashboard stayed green for 14.71 days while serving was down",
+            "Why the alarm could never fire",
+            "A gate with an exclusion says “approved” about something it never looked at",
+            "CI/CD that never ran is not quality validation",
+            "When someone else’s stamp takes the place of proof",
+            "The strongest objection: verification without proportion to consequence is ceremony",
+            "What is the difference between having no verification and having a false green?",
+            "How to verify that the verification itself keeps working"
+        ],
+        "keywords": "monitoring, observability, false positive, alarm that never fires, freshness check, SLA, Asset Check, Dagster, quality gate, CI/CD, verification bypass, quality assurance, reconciliation, data engineering",
         "author": {
             "@type": "Person",
             "name": "Lukas Rozado",
@@ -93,6 +111,54 @@
             "@type": "Person",
             "name": "Lukas Rozado"
         }
+    },
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "inLanguage": "en",
+        "url": "https://lukasrozado.pages.dev/writing/a-monitor-that-reports-success-without-validating",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Why can a dashboard stay green while the system is down?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Because the monitoring signal comes from the same path that is broken. In the case described, the freshness check had a 26-hour SLA and was rearmed every 19 minutes by the very publish that wasn't publishing anything, so the dashboard stayed green for the 14.71 days serving was down."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Does an exclusion in a quality gate simply turn the gate off?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "No. The exclusion makes the gate say “approved” about something it never looked at, and it pushes the obligation to guarantee quality onto each route inside that scope without that responsibility having been explicitly decided or assumed. Anyone looking at the result cannot distinguish “verified and approved” from “out of scope”."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Does a CI/CD job that never ran count as quality validation?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "No. If the verification was prevented from running due to limitations imposed by the Git provider, you cannot consider that quality validation happened. The job didn't fail: it didn't happen. And not having happened is indistinguishable from having passed for anyone looking later."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Which is worse: having no verification at all, or having a false green signal?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The false green signal. With no verification you simply don't know whether the system is working. With a signal attesting that it works, you believe it and, precisely because you believe it, you stop noticing the problem that is happening."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How do you know the verification itself still works?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Verifying continuously is not enough. The previous verification needs to be confronted with real evidence that what it should detect can still be detected. That is the role of Quality Assurance as a reconciliation mechanism."
+                }
+            }
+        ]
     }
 ]
     </script>
@@ -136,27 +202,68 @@
             </header>
 
             <div class="article-body">
+                <section class="essay-summary" aria-labelledby="key-takeaways">
+                    <h2 id="key-takeaways">Key takeaways</h2>
+                    <ul>
+                        <li>Serving had been down for 14.71 days and the dashboard stayed green the entire time: the freshness check had a 26-hour SLA and was rearmed every 19 minutes by the very publish that wasn't publishing anything.</li>
+                        <li>The alarm was impossible by construction: 82 consecutive cycles without rearm would have been needed for it to fire.</li>
+                        <li>When the health signal comes from the same path it should audit, the instrument is inverted: the worse the system state, the stronger the health signal.</li>
+                        <li>An exclusion does not turn the quality gate off; it makes the gate say “approved” about something it never looked at. And a CI/CD job that never happened is indistinguishable from one that passed.</li>
+                        <li>Worse than having no verification is believing in a verification that was never reconciled with reality.</li>
+                    </ul>
+                </section>
+
+                <nav class="essay-toc" aria-labelledby="in-this-essay">
+                    <h2 id="in-this-essay">In this essay</h2>
+                    <ol>
+                        <li><a href="#what-happened">What happened: the dashboard stayed green for 14.71 days while serving was down</a></li>
+                        <li><a href="#why-the-alarm-never-fired">Why the alarm could never fire</a></li>
+                        <li><a href="#gate-with-an-exclusion">A gate with an exclusion says “approved” about something it never looked at</a></li>
+                        <li><a href="#ci-cd-that-never-ran">CI/CD that never ran is not quality validation</a></li>
+                        <li><a href="#stamp-instead-of-proof">When someone else’s stamp takes the place of proof</a></li>
+                        <li><a href="#the-cost-objection">The strongest objection: verification without proportion to consequence is ceremony</a></li>
+                        <li><a href="#no-verification-vs-false-green">What is the difference between having no verification and having a false green?</a></li>
+                        <li><a href="#reconciling-the-verification">How to verify that the verification itself keeps working</a></li>
+                    </ol>
+                </nav>
+
+                <h2 id="what-happened">What happened: the dashboard stayed green for 14.71 days while serving was down</h2>
+
                 <p>I had an ingestion app that published a snapshot for consumption. The dashboard was green, everything looked fine, but something felt off: the data volume wasn't growing as it should. I checked. Serving had been down for 14.71 days, and the alarm had stayed green the entire time. The freshness check had a 26-hour SLA and was being rearmed every 19 minutes by the very publish that wasn't publishing anything.</p>
 
+                <h2 id="why-the-alarm-never-fired">Why the alarm could never fire</h2>
+
                 <p>The ETL trigger fired normally. At load time, it failed. Dagster's Asset Check rearmed anyway, because the monitoring signal came from the same path that was broken. For the alarm to fire, 82 consecutive cycles without rearm would be needed; impossible by construction. No amount of bad luck would make that alarm ring. And the underlying defect is worse than silence: the failure the watcher should report was the same thing that kept it quiet, which inverts the instrument's function; the worse the system state, the stronger the health signal.</p>
+
+                <h2 id="gate-with-an-exclusion">A gate with an exclusion says “approved” about something it never looked at</h2>
 
                 <p>If I have a gate that guarantees the quality of my projects and, upon identifying an app with VETO or BUGS, blocks the commit when it doesn't pass CI, that gate needs to effectively be a protective barrier.</p>
 
                 <p>If, on the other hand, it's possible to exclude a prefix, a rule, or any other point to bypass it, the problem isn't simply that the bypass exists. The exclusion pushes the obligation to guarantee quality onto each route inside that scope, without that responsibility having been explicitly decided or assumed. That's where the same error occurs: the gate keeps reporting “passed,” but “passed” starts meaning different things depending on where the commit landed. Anyone looking at the result can't distinguish between “verified and approved” and “out of scope.” The exclusion, therefore, doesn't turn the gate off; it makes the gate say “approved” about something it never looked at.</p>
 
+                <h2 id="ci-cd-that-never-ran">CI/CD that never ran is not quality validation</h2>
+
                 <p>If a code change is made, with a new implementation, but the CI/CD verification is prevented from running due to limitations imposed by the Git provider (for example, the limit allowed by GitHub Actions, or any other platform restriction mechanism), you cannot consider that quality validation happened. The absence of that verification compromises the integrity guarantee, especially when CI/CD is responsible for controlling the quantity or size of a file and ensuring that, if that measurement is exceeded after a change, the application isn't compromised and the change is atomically blocked. The job didn't fail. It didn't happen. And not having happened is indistinguishable from having passed for anyone looking later.</p>
+
+                <h2 id="stamp-instead-of-proof">When someone else’s stamp takes the place of proof</h2>
 
                 <p>There is a complex case, similar to one in a novel where an industrialist outsources the decision about protecting his most precious asset: a metal that took ten years to develop. By delegating that choice to an operator in Washington, he lets someone outside his domain determine the fate of what took a decade to build, paving the way for the project's ruin.</p>
 
                 <p>The point is not just having delegated. It's having taken that operator's approval as if it were the verification itself. Without checking the result, he received the external decision with the sense of duty done that only direct examination would give. The stamp took the place of proof. It's the same green as the other cases, only generated by a person instead of a machine: judgment was displaced and treated as if the fact had already been proven. The form changed, not the error: taking as verified what was never verified.</p>
 
+                <h2 id="the-cost-objection">The strongest objection: verification without proportion to consequence is ceremony</h2>
+
                 <p><strong>The strongest objection to all of this is another one.</strong></p>
 
                 <p>The cost of verifying is real and immediate; the cost of not verifying is hypothetical and deferred. In most systems, absence of verification and successful verification produce exactly the same result; and do so for years. If the false green dashboard caused no concrete loss, the problem isn't the false positive: it's you demanding rigor where criticality doesn't justify it. Verification without proportion to consequence is ceremony, not engineering.</p>
 
+                <h2 id="no-verification-vs-false-green">What is the difference between having no verification and having a false green?</h2>
+
                 <p>Indeed, not every system needs a <em>check</em>, and it's fine to remove what isn't justified. But there is a fundamental difference between a system that is actually working, a system that has no verification mechanism at all, and a system that produces a signal that it's working when, in reality, it isn't.</p>
 
                 <p>In the first case, you have traceability, security, and monitoring: if something happens, there is evidence that the system was being verified and mechanisms to identify the problem and restore the application quickly. In the second, you simply don't know. It may be working or not, but there is no mechanism to determine that. The third is the worst case: there is something attesting that it's working, you believe that signal and, precisely because you believe it, you stop noticing the problem that's happening. It's like having a knife stuck in your back without feeling pain: you don't know there's a problem, but it's still there.</p>
+
+                <h2 id="reconciling-the-verification">How to verify that the verification itself keeps working</h2>
 
                 <p>That's why <em>Quality Assurance</em> comes in as a reconciliation mechanism: it's not enough to verify continuously; you need to verify that the verification itself keeps working. The previous verification needs to be confronted with real evidence that what it should detect can still be detected.</p>
 

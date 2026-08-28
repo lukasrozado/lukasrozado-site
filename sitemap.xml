@@ -284,4 +284,22 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://lukasrozado.pages.dev/projects/lck-spring-2024-dataset-en"/>
         <xhtml:link rel="alternate" hreflang="x-default" href="https://lukasrozado.pages.dev/projects/lck-spring-2024-dataset"/>
     </url>
+    <url>
+        <loc>https://lukasrozado.pages.dev/faq</loc>
+        <lastmod>2026-08-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="https://lukasrozado.pages.dev/faq"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://lukasrozado.pages.dev/faq-en"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://lukasrozado.pages.dev/faq"/>
+    </url>
+    <url>
+        <loc>https://lukasrozado.pages.dev/faq-en</loc>
+        <lastmod>2026-08-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="https://lukasrozado.pages.dev/faq"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://lukasrozado.pages.dev/faq-en"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://lukasrozado.pages.dev/faq"/>
+    </url>
 </urlset>

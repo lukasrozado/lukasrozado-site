@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ: Data Engineering | Lukas Rozado</title>
+    <meta name="theme-color" content="#00D4FF">
+
+    <link rel="canonical" href="https://lukasrozado.pages.dev/faq-en">
+    <link rel="alternate" hreflang="pt-BR" href="https://lukasrozado.pages.dev/faq">
+    <link rel="alternate" hreflang="en" href="https://lukasrozado.pages.dev/faq-en">
+    <link rel="alternate" hreflang="x-default" href="https://lukasrozado.pages.dev/faq">
+
+    <meta name="description" content="Direct answers about Lukas Rozado's data engineering work: technologies, pipeline types, and how to handle a spreadsheet with no primary key, shared API quotas and pagination offset drift.">
+    <meta name="author" content="Lukas Rozado">
+    <meta name="robots" content="index,follow,max-image-preview:large">
+    <meta http-equiv="content-language" content="en">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://lukasrozado.pages.dev/faq-en">
+    <meta property="og:title" content="FAQ: Data Engineering | Lukas Rozado">
+    <meta property="og:description" content="Direct answers on data engineering: technologies, pipeline types, spreadsheets with no primary key, shared API quotas and pagination offset drift.">
+    <meta property="og:image" content="https://lukasrozado.pages.dev/assets/images/og-image.webp">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@RozadoLukas">
+    <meta name="twitter:title" content="FAQ: Data Engineering | Lukas Rozado">
+    <meta name="twitter:description" content="Direct answers on data engineering: technologies, pipeline types, spreadsheets with no primary key, shared API quotas and pagination offset drift.">
+    <meta name="twitter:image" content="https://lukasrozado.pages.dev/assets/images/og-image.webp">
+
+    <link rel="icon" href="./assets/icons/favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" href="./assets/icons/favicon-180x180.webp">
+    <link rel="manifest" href="./site.webmanifest">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <link rel="stylesheet" href="./styles/main.css">
+
+    <style>
+        body { font-family: 'Roboto', 'Arial', 'Helvetica', sans-serif; }
+    </style>
+
+    <script type="application/ld+json">
+[
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://lukasrozado.pages.dev/index-en"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "FAQ",
+                "item": "https://lukasrozado.pages.dev/faq-en"
+            }
+        ]
+    },
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "url": "https://lukasrozado.pages.dev/faq-en",
+        "inLanguage": "en",
+        "about": {
+            "@type": "Person",
+            "name": "Lukas Rozado",
+            "jobTitle": "Data Engineer",
+            "url": "https://lukasrozado.pages.dev/",
+            "sameAs": [
+                "https://linkedin.com/in/lukasrozado",
+                "https://github.com/lukasrozado",
+                "https://kaggle.com/lukasrozado"
+            ]
+        },
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What kind of data problems does Lukas Rozado solve?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Lukas Rozado is a data engineer working on ingestion, reconciliation and integration of critical financial and operational data. The published case studies cover a crypto asset data lake with continuous auditing, a unified banking and PIX ledger platform, OTC desk reconciliation, fiscal document consolidation and multi-blockchain integration. What they have in common is a hostile source: an API with no delta filter, a spreadsheet with no primary key, pagination that silently drops records, and an API quota shared across every key."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Which databases, languages and clouds does he work with?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Python and PostgreSQL appear in nearly every published case study, with SQL and REST APIs on top. The portfolio positions itself on Azure and AWS, and the case studies detail Azure in practice: Azure Key Vault to isolate credentials per account and Azure Active Directory for corporate authentication between systems. Outside the financial core there is also machine learning with scikit-learn and web scraping with BeautifulSoup, Selenium and pandas."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Does he build real-time pipelines or only batch?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Both, and usually combined in the same system. The unified banking ledger platform runs minute by minute as a persistent process, while the financial reconciliation pipeline uses a hybrid model: a near real-time API path driven by a high-water mark, plus a daily CSV path that recovers the gap the API let through. Purely batch pipelines show up where the source itself is batch, such as the daily OTC desk spreadsheet and the monthly fiscal document consolidation."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How do you reconcile a spreadsheet that has no stable primary key?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "With no stable primary key, the way out is to stop trying to identify the row at the source and reload the whole set instead. In the OTC desk case study the fact table is truncated and fully reloaded on every execution through the PostgreSQL COPY protocol, and each transaction gets a SHA-256 fingerprint over the logical signature of the row combined with an occurrence counter (nonce), which preserves identical legitimate splits instead of collapsing them as accidental duplicates. A schema-shielding layer extracts strictly the closed list of expected financial columns, so a new column created by the business side does not break the next day's ingestion."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "When should you use Full Replace instead of an incremental upsert?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Full Replace makes sense when the source offers no stable primary key and rows can be inserted, deleted and reordered with no traceability. In that scenario an incremental upsert becomes a source of ghost records: the row disappears at the source and stays alive in the database forever. Truncating and reloading in full guarantees the database is an exact mirror of the current source state, at the cost of reprocessing the whole volume on every run, which is only viable while the set fits an acceptable load window. When a reliable key does exist, the pattern used in the other case studies is the opposite: COPY into a temporary table and then UPSERT."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How do you capture only what is new from an API with no date filter?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The technique used is watermark early-exit: reading starts from the most recent page and stops on its own as soon as N consecutive pages fall entirely inside a date already covered before. That avoids both bad extremes, reprocessing the entire history on every run and stopping too early and losing records. For transactions that change status after they were already captured, a separate and cheaper auditor reads the API only from the oldest pending record onward and upserts whatever changed, without rescanning the full history."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How do you ingest from an API with a shared quota without getting the IP blocked?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The common mistake is estimating consumption by counting calls on the client side. In the crypto asset data lake architecture the rate limiter reads, on every HTTP response, the official consumed-quota header the provider itself returns, and keeps that state shared across processes, respecting a single per-minute ceiling instead of a per-key one. A priority carousel gives the turn to accounts with recent activity and pushes idle ones to wider cycles, spending no quota on what did not change. That architecture eliminated the IP blocking pattern that existed before it."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What do you do when API pagination drops or duplicates records?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "When the source suffers pagination offset drift, records vanish or duplicate without the API reporting anything, and no check made only against the API itself will detect it. The solution applied in the financial reconciliation pipeline was an independent second path: a daily routine downloads the consolidated CSV report and runs an anti-join against the database, filling exactly the gap the API path let through. The checkpoint is stored per page rather than per day, so a failure resumes from the exact point of interruption."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How do you prove the on-chain history stored in the database is complete?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Row counts do not prove completeness, which is why the multi-chain integrator closes with an accounting invariant: it compares the total token supply read straight from the contract against the net supply PostgreSQL computes by adding mints and subtracting burns. Before that, a self-reconciliation engine sweeps the history in batches and compares the on-chain event count against the database count, range by range; whenever they diverge it deletes the whole batch and re-extracts from scratch. Extraction reads the node directly over raw RPC, with eth_getLogs filtered by event topic, without depending on a third-party indexer."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How do you load millions of rows into PostgreSQL without blocking production writes?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The pattern used across the case studies is native COPY into a temporary table, followed by an UPSERT into the final table, with in-memory deduplication by primary key before each batch. Published batch sizes range from 5 thousand records per flush on the ledger platform up to 50 thousand on the financial reconciliation pipeline. New indexes are created with CONCURRENTLY so production writes are never blocked, and the historical backfill runs in a process separate from the incremental one, so it neither contends for locks nor overwrites the checkpoint of the ingestion already live."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Why can a pipeline look green in monitoring while it is broken?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "A pipeline looks green when the health signal travels the same path it is supposed to audit. In the case documented in the portfolio's writing section, the dashboard stayed green for 14.71 days while serving was down, and degrading the system actually strengthened the green, because the monitor measured its own execution rather than the result of it. The fix is to measure the effect at the destination, meaning rows written, counts reconciled and invariants closed, instead of measuring that the job finished without an exception."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How do you get in touch about a data project?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Through the contact form on the site, by email or on LinkedIn. The contact page states a reply within 2 business days. He also publishes the Dado Bruto newsletter on LinkedIn, covering data engineering case studies."
+                }
+            }
+        ]
+    }
+]
+    </script>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RD4581V881"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-RD4581V881');
+    </script>
+</head>
+<body>
+    <header role="banner">
+<header>
+    <nav id="navbar">
+        <div class="nav-header">
+            <a href="./index-en"><img src="./assets/images/logo-lukas-rozado.webp" alt="Lukas Rozado Logo" width="1120" height="1120"></a>
+            <div id="menu-toggle" class="menu-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <ul>
+            <li><a href="./index-en">Home</a></li>
+            <li><a href="./index-en#projects">Projects</a></li>
+            <li><a href="./writing/index-en">Writing</a></li>
+            <li><a href="./faq-en">FAQ</a></li>
+            <li><a href="./contact-en">Contact</a></li>
+            <li><a class="lang-switch" href="./faq" hreflang="pt-BR" data-lang="pt" lang="pt-BR">PT</a></li>
+        </ul>
+    </nav>
+</header>
+    </header>
+
+    <main id="main-content" role="main">
+        <article class="project-page">
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+                <a href="./index-en">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">FAQ</span>
+            </nav>
+
+            <div class="project-meta">
+                <span class="project-tag">Data Engineering</span>
+            </div>
+
+            <h1>Frequently asked questions</h1>
+
+            <p class="lead">Direct answers about the work of <strong>Lukas Rozado</strong>, data engineer, and about the technical problems the case studies published on this site solve: a spreadsheet with no stable primary key, an API with no delta filter, a quota shared across keys, pagination offset drift and on-chain history completeness. Every answer stands on its own and points to the case study where the decision was made.</p>
+
+            <section class="case-study" aria-labelledby="faq-heading">
+                <h2 id="faq-heading">About the work</h2>
+
+                <div class="case-block">
+                    <h3>What kind of data problems does Lukas Rozado solve?</h3>
+                    <p>Lukas Rozado is a data engineer working on ingestion, reconciliation and integration of critical financial and operational data. The published case studies cover a <a href="./projects/enterprise-crypto-data-lake-en">crypto asset data lake with continuous auditing</a>, a <a href="./projects/unified-banking-ledger-platform-en">unified banking and PIX ledger platform</a>, <a href="./projects/otc-desk-reconciliation-pipeline-en">OTC desk reconciliation</a>, <a href="./projects/fiscal-document-consolidation-pipeline-en">fiscal document consolidation</a> and <a href="./projects/multi-chain-ledger-integrator-en">multi-blockchain integration</a>. What they have in common is a hostile source: an API with no delta filter, a spreadsheet with no primary key, pagination that silently drops records, and an API quota shared across every key.</p>
+                </div>
+
+                <div class="case-block">
+                    <h3>Which databases, languages and clouds does he work with?</h3>
+                    <p>Python and PostgreSQL appear in nearly every published case study, with SQL and REST APIs on top. The portfolio positions itself on Azure and AWS, and the case studies detail Azure in practice: Azure Key Vault to isolate credentials per account and Azure Active Directory for corporate authentication between systems, as in the <a href="./projects/baas-financial-settlement-data-sink-en">multi-bank financial settlement pipeline</a>. Outside the financial core there is also machine learning with scikit-learn and web scraping with BeautifulSoup, Selenium and pandas.</p>
+                </div>
+
+                <div class="case-block">
+                    <h3>Does he build real-time pipelines or only batch?</h3>
+                    <p>Both, and usually combined in the same system. The <a href="./projects/unified-banking-ledger-platform-en">unified banking ledger platform</a> runs minute by minute as a persistent process, while the <a href="./projects/financial-reconciliation-pipeline-en">financial reconciliation pipeline</a> uses a hybrid model: a near real-time API path driven by a high-water mark, plus a daily CSV path that recovers the gap the API let through. Purely batch pipelines show up where the source itself is batch, such as the daily OTC desk spreadsheet and the monthly fiscal document consolidation.</p>
+                </div>
+
+                <h2 id="faq-technical-heading">Technical questions</h2>
+
+                <div class="case-block">
+                    <h3>How do you reconcile a spreadsheet that has no stable primary key?</h3>
+                    <p>With no stable primary key, the way out is to stop trying to identify the row at the source and reload the whole set instead. In the <a href="./projects/otc-desk-reconciliation-pipeline-en">OTC desk case study</a> the fact table is truncated and fully reloaded on every execution through the PostgreSQL COPY protocol, and each transaction gets a SHA-256 fingerprint over the logical signature of the row combined with an occurrence counter (nonce), which preserves identical legitimate splits instead of collapsing them as accidental duplicates. A schema-shielding layer extracts strictly the closed list of expected financial columns, so a new column created by the business side does not break the next day's ingestion.</p>
+                </div>
+
+                <div class="case-block">
+                    <h3>When should you use Full Replace instead of an incremental upsert?</h3>
+                    <p>Full Replace makes sense when the source offers no stable primary key and rows can be inserted, deleted and reordered with no traceability. In that scenario an incremental upsert becomes a source of ghost records: the row disappears at the source and stays alive in the database forever. Truncating and reloading in full guarantees the database is an exact mirror of the current source state, at the cost of reprocessing the whole volume on every run, which is only viable while the set fits an acceptable load window. When a reliable key does exist, the pattern used in the <a href="./projects/enterprise-crypto-data-lake-en">other case studies</a> is the opposite: COPY into a temporary table and then UPSERT.</p>
+                </div>
+
+                <div class="case-block">
+                    <h3>How do you capture only what is new from an API with no date filter?</h3>
+                    <p>The technique used is watermark early-exit: reading starts from the most recent page and stops on its own as soon as N consecutive pages fall entirely inside a date already covered before. That avoids both bad extremes, reprocessing the entire history on every run and stopping too early and losing records. For transactions that change status after they were already captured, a separate and cheaper auditor reads the API only from the oldest pending record onward and upserts whatever changed, without rescanning the full history. Both pieces live in the <a href="./projects/unified-banking-ledger-platform-en">unified ledger platform</a> and in the <a href="./projects/institutional-digital-asset-custody-en">institutional custody integrator</a>.</p>
+                </div>
+
+                <div class="case-block">
+                    <h3>How do you ingest from an API with a shared quota without getting the IP blocked?</h3>
+                    <p>The common mistake is estimating consumption by counting calls on the client side. In the <a href="./projects/enterprise-crypto-data-lake-en">crypto asset data lake</a> architecture the rate limiter reads, on every HTTP response, the official consumed-quota header the provider itself returns, and keeps that state shared across processes, respecting a single per-minute ceiling instead of a per-key one. A priority carousel gives the turn to accounts with recent activity and pushes idle ones to wider cycles, spending no quota on what did not change. That architecture eliminated the IP blocking pattern that existed before it.</p>
+                </div>
+
+                <div class="case-block">
+                    <h3>What do you do when API pagination drops or duplicates records?</h3>
+                    <p>When the source suffers pagination offset drift, records vanish or duplicate without the API reporting anything, and no check made only against the API itself will detect it. The solution applied in the <a href="./projects/financial-reconciliation-pipeline-en">financial reconciliation pipeline</a> was an independent second path: a daily routine downloads the consolidated CSV report and runs an anti-join against the database, filling exactly the gap the API path let through. The checkpoint is stored per page rather than per day, so a failure resumes from the exact point of interruption.</p>
+                </div>
+
+                <div class="case-block">
+                    <h3>How do you prove the on-chain history stored in the database is complete?</h3>
+                    <p>Row counts do not prove completeness, which is why the <a href="./projects/multi-chain-ledger-integrator-en">multi-chain integrator</a> closes with an accounting invariant: it compares the total token supply read straight from the contract against the net supply PostgreSQL computes by adding mints and subtracting burns. Before that, a self-reconciliation engine sweeps the history in batches and compares the on-chain event count against the database count, range by range; whenever they diverge it deletes the whole batch and re-extracts from scratch. Extraction reads the node directly over raw RPC, with <code>eth_getLogs</code> filtered by event topic, without depending on a third-party indexer.</p>
+                </div>
+
+                <div class="case-block">
+                    <h3>How do you load millions of rows into PostgreSQL without blocking production writes?</h3>
+                    <p>The pattern used across the case studies is native <code>COPY</code> into a temporary table, followed by an UPSERT into the final table, with in-memory deduplication by primary key before each batch. Published batch sizes range from 5 thousand records per flush on the <a href="./projects/unified-banking-ledger-platform-en">ledger platform</a> up to 50 thousand on the <a href="./projects/financial-reconciliation-pipeline-en">financial reconciliation pipeline</a>. New indexes are created with <code>CONCURRENTLY</code> so production writes are never blocked, and the historical backfill runs in a process separate from the incremental one, so it neither contends for locks nor overwrites the checkpoint of the ingestion already live.</p>
+                </div>
+
+                <div class="case-block">
+                    <h3>Why can a pipeline look green in monitoring while it is broken?</h3>
+                    <p>A pipeline looks green when the health signal travels the same path it is supposed to audit. In the <a href="./writing/a-monitor-that-reports-success-without-validating">case documented in the portfolio's writing section</a>, the dashboard stayed green for 14.71 days while serving was down, and degrading the system actually strengthened the green, because the monitor measured its own execution rather than the result of it. The fix is to measure the effect at the destination, meaning rows written, counts reconciled and invariants closed, instead of measuring that the job finished without an exception.</p>
+                </div>
+
+                <div class="case-block">
+                    <h3>How do you get in touch about a data project?</h3>
+                    <p>Through the <a href="./contact-en">contact form</a> on the site, by email or on LinkedIn. The contact page states a reply within 2 business days. He also publishes the <strong>Dado Bruto</strong> newsletter on LinkedIn, covering data engineering case studies.</p>
+                </div>
+            </section>
+
+            <div class="mid-cta">
+                <p>Your question is not here? Describe the data problem you have today and I will answer with the technical path.</p>
+                <a class="btn-primary" href="./contact-en">Discuss your case</a>
+            </div>
+
+            <p class="newsletter-inline"><a href="https://www.linkedin.com/newsletters/dado-bruto-7498525638908321792/" target="_blank" rel="noopener noreferrer">Get case studies like these every month in the <strong>Dado Bruto</strong> newsletter &nearr;</a></p>
+
+            <div class="project-actions">
+                <a class="btn-outline" href="./index-en#projects">&larr; See the projects</a>
+                <a class="btn-primary" href="./contact-en">Discuss your case</a>
+            </div>
+        </article>
+    </main>
+
+    <footer role="contentinfo">
+<footer itemscope itemtype="https://schema.org/WPFooter" role="contentinfo">
+    <div class="footer-inner">
+        <div class="footer-cta">
+            <div class="footer-cta-text">
+                <p class="footer-newsletter-title">Dado Bruto</p>
+                <p class="footer-newsletter-desc">Data Engineering newsletter, published on LinkedIn. No spam, straight to the point.</p>
+            </div>
+            <a class="btn-newsletter" href="https://www.linkedin.com/newsletters/dado-bruto-7498525638908321792/" target="_blank" rel="noopener noreferrer">Subscribe on LinkedIn <span aria-hidden="true">&nearr;</span></a>
+        </div>
+
+        <div class="footer-bottom">
+            <p class="footer-copy" itemprop="copyrightYear">&copy; 2026 <span itemprop="copyrightHolder">Lukas Rozado</span></p>
+
+            <div id="social-links" role="navigation" aria-label="Professional social profiles">
+                <a href="https://github.com/lukasrozado"
+                   target="_blank"
+                   rel="noopener noreferrer nofollow"
+                   id="profile-link"
+                   aria-label="Lukas Rozado's GitHub"><img src="./assets/images/github-data-engineer-lukas-rozado.webp"
+                        alt="Lukas Rozado's GitHub - Data Engineer Projects"
+                        class="social-icon"
+                        style="filter: invert(1);"
+                        loading="lazy"
+                        aria-hidden="true"
+                        itemprop="sameAs" width="512" height="512"></a>
+
+                <a href="https://www.linkedin.com/in/lukasrozado/"
+                   target="_blank"
+                   rel="noopener noreferrer nofollow"
+                   aria-label="Lukas Rozado's LinkedIn"><img src="./assets/images/linkedin-data-engineer-lukas-rozado.webp"
+                        alt="Lukas Rozado's LinkedIn Profile - Data Engineer"
+                        class="social-icon"
+                        style="filter: invert(1);"
+                        loading="lazy"
+                        aria-hidden="true"
+                        itemprop="sameAs" width="512" height="512"></a>
+
+                <a href="https://www.kaggle.com/datasets/lukasrozado/lck-spring-2024-players-statistics"
+                   target="_blank"
+                   rel="noopener noreferrer nofollow"
+                   aria-label="Lukas Rozado's LCK Spring 2024 dataset on Kaggle"><img src="./assets/images/kaggle-data-engineer-lukas-rozado.webp"
+                        alt="Lukas Rozado's LCK Spring 2024 dataset on Kaggle - Esports Data"
+                        class="social-icon"
+                        style="filter: invert(1);"
+                        loading="lazy"
+                        aria-hidden="true"
+                        itemprop="sameAs" width="512" height="512"></a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </footer>
+
+    <script type="module">
+        try {
+            const { initMenu } = await import("./assets/js/modules/menu.js");
+            initMenu();
+        } catch (error) {
+            console.error("Menu unavailable:", error);
+        }
+    </script>
+</body>
+</html>
