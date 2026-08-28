@@ -19,6 +19,8 @@
 - Institutional Custody Integrator: https://lukasrozado.pages.dev/projects/institutional-digital-asset-custody
 - BaaS Financial Settlement Data Sink: https://lukasrozado.pages.dev/projects/baas-financial-settlement-data-sink
 - Predictive Pipeline & ML: https://lukasrozado.pages.dev/projects/predictive-pipeline-ml
+- OTC Desk Reconciliation Pipeline: https://lukasrozado.pages.dev/projects/otc-desk-reconciliation-pipeline
+- Fiscal Document Consolidation Pipeline: https://lukasrozado.pages.dev/projects/fiscal-document-consolidation-pipeline
 - LCK Dataset (public proof): https://lukasrozado.pages.dev/projects/lck-spring-2024-dataset
 
 ## Writing
