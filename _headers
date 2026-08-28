@@ -4,11 +4,14 @@
 /*.png
   Cache-Control: public, max-age=31536000, immutable
 
+# Sem hash no nome do arquivo, um max-age longo prende o visitante recorrente
+# na versao antiga ate expirar. 1h com must-revalidate mantem o ganho dentro da
+# sessao e faz a correcao chegar no mesmo dia; a revalidacao devolve 304, barato.
 /*.js
-  Cache-Control: public, max-age=604800
+  Cache-Control: public, max-age=3600, must-revalidate
 
 /*.css
-  Cache-Control: public, max-age=604800
+  Cache-Control: public, max-age=3600, must-revalidate
 
 /*
   Permissions-Policy: geolocation=(), microphone=()
