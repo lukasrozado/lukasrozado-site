@@ -8,7 +8,8 @@
 - Projects: https://lukasrozado.pages.dev/#projects
 - Writing: https://lukasrozado.pages.dev/writing/
 - Contact: https://lukasrozado.pages.dev/contact
-- RSS: https://lukasrozado.pages.dev/feed.xml
+- RSS (PT): https://lukasrozado.pages.dev/feed.xml
+- RSS (EN): https://lukasrozado.pages.dev/feed-en.xml
 - Sitemap: https://lukasrozado.pages.dev/sitemap.xml
 
 ## Case Studies

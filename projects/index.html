@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projetos | Lukas Rozado - Engenheiro de Dados</title>
+    <meta name="theme-color" content="#00D4FF">
+
+    <link rel="canonical" href="https://lukasrozado.pages.dev/projects/">
+    <link rel="alternate" hreflang="pt-BR" href="https://lukasrozado.pages.dev/projects/">
+    <link rel="alternate" hreflang="en" href="https://lukasrozado.pages.dev/projects/index-en">
+    <link rel="alternate" hreflang="x-default" href="https://lukasrozado.pages.dev/projects/">
+
+    <meta name="description" content="Dez projetos de engenharia de dados em produção: pipelines financeiros, ingestão bancária, integração multi-chain, custódia de criptoativos, machine learning e um dataset público no Kaggle.">
+    <meta name="author" content="Lukas Rozado">
+    <meta name="robots" content="index,follow,max-image-preview:large">
+    <meta http-equiv="content-language" content="pt-BR">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://lukasrozado.pages.dev/projects/">
+    <meta property="og:title" content="Projetos | Lukas Rozado - Engenheiro de Dados">
+    <meta property="og:description" content="Dez projetos de engenharia de dados em produção: pipelines financeiros, ingestão bancária, integração multi-chain, custódia de criptoativos e machine learning.">
+    <meta property="og:image" content="https://lukasrozado.pages.dev/assets/images/og-image.webp">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@RozadoLukas">
+    <meta name="twitter:title" content="Projetos | Lukas Rozado">
+    <meta name="twitter:description" content="Dez casos de engenharia de dados em produção: pipelines financeiros, blockchain, custódia de criptoativos e machine learning.">
+    <meta name="twitter:image" content="https://lukasrozado.pages.dev/assets/images/og-image.webp">
+
+    <link rel="icon" href="../assets/icons/favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" href="../assets/icons/favicon-180x180.webp">
+    <link rel="manifest" href="../site.webmanifest">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <link rel="stylesheet" href="../styles/main.css">
+
+    <style>
+        body { font-family: 'Roboto', 'Arial', 'Helvetica', sans-serif; }
+        .project-group { margin-top: 2.5rem; }
+        .project-group > h2 { color:#00d4ff; font-size:1.5rem; margin:0 0 .25rem; border-bottom:1px solid rgba(0,212,255,.2); padding-bottom:.4rem; }
+        .project-group > p.group-note { color:#999; font-size:.9rem; margin:.5rem 0 0; }
+        .post-card h3 { color:#00d4ff; font-size:1.2rem; margin:0 0 .6rem; }
+        .project-thumb { display:block; width:100%; height:auto; border-radius:8px; border:1px solid #1e293b; margin:0 0 .8rem; }
+        .project-stack { color:#999; font-size:.85rem; margin:.6rem 0 0; }
+    </style>
+
+    <script type="application/ld+json">
+[
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Início",
+                "item": "https://lukasrozado.pages.dev/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Projetos",
+                "item": "https://lukasrozado.pages.dev/projects/"
+            }
+        ]
+    },
+    {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "Projetos",
+        "url": "https://lukasrozado.pages.dev/projects/",
+        "inLanguage": "pt-BR",
+        "isPartOf": {
+            "@type": "WebSite",
+            "url": "https://lukasrozado.pages.dev/",
+            "name": "Lukas Rozado"
+        },
+        "about": {
+            "@type": "Person",
+            "name": "Lukas Rozado",
+            "url": "https://lukasrozado.pages.dev/"
+        },
+        "hasPart": [
+            {
+                "@type": "TechArticle",
+                "name": "Unified Banking Ledger Platform",
+                "url": "https://lukasrozado.pages.dev/projects/unified-banking-ledger-platform"
+            },
+            {
+                "@type": "TechArticle",
+                "name": "High-Concurrency Financial Reconciliation Pipeline",
+                "url": "https://lukasrozado.pages.dev/projects/financial-reconciliation-pipeline"
+            },
+            {
+                "@type": "TechArticle",
+                "name": "BaaS & Financial Settlement Data Sink",
+                "url": "https://lukasrozado.pages.dev/projects/baas-financial-settlement-data-sink"
+            },
+            {
+                "@type": "TechArticle",
+                "name": "OTC Desk Reconciliation Pipeline",
+                "url": "https://lukasrozado.pages.dev/projects/otc-desk-reconciliation-pipeline"
+            },
+            {
+                "@type": "TechArticle",
+                "name": "Fiscal Document Consolidation Pipeline",
+                "url": "https://lukasrozado.pages.dev/projects/fiscal-document-consolidation-pipeline"
+            },
+            {
+                "@type": "TechArticle",
+                "name": "Enterprise Crypto Data Lake: Ingestão Multi-Conta",
+                "url": "https://lukasrozado.pages.dev/projects/enterprise-crypto-data-lake"
+            },
+            {
+                "@type": "TechArticle",
+                "name": "Unified Multi-Chain Ledger Integrator",
+                "url": "https://lukasrozado.pages.dev/projects/multi-chain-ledger-integrator"
+            },
+            {
+                "@type": "TechArticle",
+                "name": "Institutional Digital Asset Custody Integrator",
+                "url": "https://lukasrozado.pages.dev/projects/institutional-digital-asset-custody"
+            },
+            {
+                "@type": "TechArticle",
+                "name": "Pipeline Preditivo no Competitivo e ML Engine",
+                "url": "https://lukasrozado.pages.dev/projects/predictive-pipeline-ml"
+            },
+            {
+                "@type": "Dataset",
+                "name": "LCK Spring 2024 Players Statistics",
+                "url": "https://lukasrozado.pages.dev/projects/lck-spring-2024-dataset"
+            }
+        ]
+    }
+]
+    </script>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RD4581V881"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-RD4581V881');
+    </script>
+</head>
+<body>
+    <header role="banner">
+<header>
+    <nav id="navbar">
+        <div class="nav-header">
+            <a href="../"><img src="../assets/images/logo-lukas-rozado.webp" alt="Lukas Rozado Logo" width="1120" height="1120"></a>
+            <div id="menu-toggle" class="menu-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <ul>
+            <li><a href="../">Início</a></li>
+            <li><a href="./">Projetos</a></li>
+            <li><a href="../writing/">Escritos</a></li>
+            <li><a href="../contact">Contato</a></li>
+            <li><a class="lang-switch" href="./index-en" hreflang="en" data-lang="en" lang="en">EN</a></li>
+        </ul>
+    </nav>
+</header>
+    </header>
+
+    <main id="main-content" role="main">
+        <section class="writing-index">
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+                <a href="../">Início</a> <span aria-hidden="true">›</span> <span aria-current="page">Projetos</span>
+            </nav>
+
+            <h1>Projetos</h1>
+
+            <p class="writing-intro">
+                Dez sistemas de dados que rodaram, ou ainda rodam, em produção: ingestão contínua,
+                reconciliação contábil, recuperação de falha e modelagem preditiva. Os casos
+                corporativos aparecem de forma anonimizada por sigilo, sem nome de empresa, de
+                cliente ou de contraparte, e sem volume financeiro. O que fica é a decisão de
+                arquitetura, o trade-off e o mecanismo que sustenta o resultado. A única exceção
+                é o dataset da LCK Spring 2024, público no Kaggle e auditável por qualquer pessoa.
+            </p>
+
+            <section class="project-group" aria-labelledby="grupo-financeiro">
+                <h2 id="grupo-financeiro">Dados financeiros e bancários</h2>
+                <p class="group-note">Cinco pipelines de ingestão e reconciliação sobre dado transacional, bancário e fiscal.</p>
+
+                <ul class="post-list">
+                    <li>
+                        <a class="post-card" href="./unified-banking-ledger-platform">
+                            <h3>Unified Banking Ledger Platform</h3>
+                            <img class="project-thumb" src="../assets/images/unified-banking-ledger-platform.webp" alt="Unified Banking Ledger Platform - diagrama de arquitetura" width="1200" height="800" loading="lazy" decoding="async">
+                            <p class="post-excerpt">Plataforma unificada de ingestão bancária, PIX, ledger e mesa OTC, com isolamento de estado por domínio e auditor de ciclo de vida.</p>
+                            <p class="project-stack">Python &middot; PostgreSQL &middot; Azure &middot; SQL</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="post-card" href="./financial-reconciliation-pipeline">
+                            <h3>High-Concurrency Financial Reconciliation Pipeline</h3>
+                            <img class="project-thumb" src="../assets/images/financial-reconciliation-pipeline.webp" alt="High-Concurrency Financial Reconciliation Pipeline - diagrama de arquitetura" width="1200" height="800" loading="lazy" decoding="async">
+                            <p class="post-excerpt">Pipeline híbrido de ingestão e reconciliação financeira, com auto-cura via anti-join, checkpoint por página e backfill sequencial isolado.</p>
+                            <p class="project-stack">Python &middot; PostgreSQL &middot; Azure &middot; SQL</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="post-card" href="./baas-financial-settlement-data-sink">
+                            <h3>BaaS &amp; Financial Settlement Data Sink</h3>
+                            <img class="project-thumb" src="../assets/images/baas_financial_settlement_data_sink_v2.webp" alt="BaaS &amp; Financial Settlement Data Sink - diagrama de arquitetura" width="1200" height="800" loading="lazy" decoding="async">
+                            <p class="post-excerpt">Pipeline de integração programática que centraliza liquidação financeira multibancária (BaaS), com sanitização de payload e backfill isolado do checkpoint.</p>
+                            <p class="project-stack">Python &middot; Azure &middot; REST API &middot; PostgreSQL</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="post-card" href="./otc-desk-reconciliation-pipeline">
+                            <h3>OTC Desk Reconciliation Pipeline</h3>
+                            <img class="project-thumb" src="../assets/images/otc_desk_reconciliation_pipeline_v1.webp" alt="OTC Desk Reconciliation Pipeline - diagrama de arquitetura" width="2326" height="498" loading="lazy" decoding="async">
+                            <p class="post-excerpt">ETL diário que reconcilia planilha operacional sem chave primária estável, com fuzzy matching, blindagem de schema e Full Replace.</p>
+                            <p class="project-stack">Python &middot; PostgreSQL &middot; SQL</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="post-card" href="./fiscal-document-consolidation-pipeline">
+                            <h3>Fiscal Document Consolidation Pipeline</h3>
+                            <img class="project-thumb" src="../assets/images/fiscal_document_consolidation_pipeline_v1.webp" alt="Fiscal Document Consolidation Pipeline - diagrama de arquitetura" width="1960" height="683" loading="lazy" decoding="async">
+                            <p class="post-excerpt">Pipeline mensal que baixa XML e PDF de documentos fiscais via API, resolve o dono de cada documento por substring match e consolida por empresa.</p>
+                            <p class="project-stack">Python &middot; PostgreSQL &middot; REST API</p>
+                        </a>
+                    </li>
+                </ul>
+            </section>
+
+            <section class="project-group" aria-labelledby="grupo-cripto">
+                <h2 id="grupo-cripto">Ativos digitais e blockchain</h2>
+                <p class="group-note">Três integrações sobre exchange, custódia institucional e leitura direta de nó blockchain.</p>
+
+                <ul class="post-list">
+                    <li>
+                        <a class="post-card" href="./enterprise-crypto-data-lake">
+                            <h3>Enterprise Crypto Data Lake: Ingestão Multi-Conta</h3>
+                            <img class="project-thumb" src="../assets/images/crypto_data_lake_ingestion_architecture_v2.webp" alt="Enterprise Crypto Data Lake: Ingestão Multi-Conta - diagrama de arquitetura" width="1200" height="800" loading="lazy" decoding="async">
+                            <p class="post-excerpt">Pipeline de ingestão para dezenas de contas institucionais em exchange de cripto, com rate limiter por header oficial e &gt;99,9% de uptime em produção.</p>
+                            <p class="project-stack">Python &middot; PostgreSQL &middot; Azure &middot; SQL</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="post-card" href="./multi-chain-ledger-integrator">
+                            <h3>Unified Multi-Chain Ledger Integrator</h3>
+                            <img class="project-thumb" src="../assets/images/unified_multi_chain_ledger_integrator_v2.webp" alt="Unified Multi-Chain Ledger Integrator - diagrama de arquitetura" width="1200" height="800" loading="lazy" decoding="async">
+                            <p class="post-excerpt">Pipeline resiliente para consolidar transações em dezenas de blockchains (EVM e Solana) via RPC, com reconciliação de 100% contra o supply on-chain.</p>
+                            <p class="project-stack">Python &middot; PostgreSQL &middot; Azure &middot; SQL</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="post-card" href="./institutional-digital-asset-custody">
+                            <h3>Institutional Digital Asset Custody Integrator</h3>
+                            <img class="project-thumb" src="../assets/images/institutional_digital_asset_custody_integrator_v2.webp" alt="Institutional Digital Asset Custody Integrator - diagrama de arquitetura" width="1200" height="800" loading="lazy" decoding="async">
+                            <p class="post-excerpt">Orquestrador de ingestão para custódia institucional de criptoativos, com workspace isolado por credencial e sobreposição de 5min no backfill.</p>
+                            <p class="project-stack">Python &middot; REST API &middot; Azure &middot; PostgreSQL</p>
+                        </a>
+                    </li>
+                </ul>
+            </section>
+
+            <section class="project-group" aria-labelledby="grupo-ml">
+                <h2 id="grupo-ml">Dados abertos e machine learning</h2>
+                <p class="group-note">Modelagem preditiva em produção e um dataset público, verificável por terceiros.</p>
+
+                <ul class="post-list">
+                    <li>
+                        <a class="post-card" href="./predictive-pipeline-ml">
+                            <h3>Pipeline Preditivo no Competitivo e ML Engine</h3>
+                            <img class="project-thumb" src="../assets/images/automated_esports_quant_trader.webp" alt="Pipeline Preditivo no Competitivo e ML Engine - diagrama de arquitetura" width="1200" height="800" loading="lazy" decoding="async">
+                            <p class="post-excerpt">Motor algorítmico end-to-end para trading quantitativo, com scraping diário massivo e modelo preditivo validado com mais de 68% de precisão.</p>
+                            <p class="project-stack">Python &middot; PostgreSQL &middot; Azure &middot; SQL &middot; Machine Learning</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="post-card" href="./lck-spring-2024-dataset">
+                            <h3>LCK Spring 2024 Players Statistics</h3>
+                            <p class="post-excerpt">Dataset público e verificável do split Spring 2024 da LCK, em três tabelas relacionais. Nota 10.0 no Kaggle, 300+ downloads.</p>
+                            <p class="project-stack">Python &middot; Web Scraping</p>
+                        </a>
+                    </li>
+                </ul>
+            </section>
+
+            <div class="project-actions">
+                <a class="btn-primary" href="../contact">Falar sobre seu caso</a>
+            </div>
+        </section>
+    </main>
+
+    <footer role="contentinfo">
+<footer itemscope itemtype="https://schema.org/WPFooter" role="contentinfo">
+    <div class="footer-inner">
+        <div class="footer-cta">
+            <div class="footer-cta-text">
+                <p class="footer-newsletter-title">Dado Bruto</p>
+                <p class="footer-newsletter-desc">Newsletter de Engenharia de Dados no LinkedIn. Sem spam, direto ao ponto.</p>
+            </div>
+            <a class="btn-newsletter" href="https://www.linkedin.com/newsletters/dado-bruto-7498525638908321792/" target="_blank" rel="noopener noreferrer">Assinar no LinkedIn <span aria-hidden="true">&nearr;</span></a>
+        </div>
+
+        <div class="footer-bottom">
+            <p class="footer-copy" itemprop="copyrightYear">&copy; 2026 <span itemprop="copyrightHolder">Lukas Rozado</span></p>
+
+            <div id="social-links" role="navigation" aria-label="Redes sociais profissionais">
+                <a href="https://github.com/lukasrozado"
+                   target="_blank"
+                   rel="noopener noreferrer nofollow"
+                   id="profile-link"
+                   aria-label="GitHub de Lukas Rozado"><img src="../assets/images/github-data-engineer-lukas-rozado.webp"
+                        alt="Lukas Rozado no GitHub - Projetos de Engenheiro de Dados"
+                        class="social-icon"
+                        style="filter: invert(1);"
+                        loading="lazy"
+                        aria-hidden="true"
+                        itemprop="sameAs" width="512" height="512"></a>
+
+                <a href="https://www.linkedin.com/in/lukasrozado/"
+                   target="_blank"
+                   rel="noopener noreferrer nofollow"
+                   aria-label="LinkedIn de Lukas Rozado"><img src="../assets/images/linkedin-data-engineer-lukas-rozado.webp"
+                        alt="Perfil LinkedIn de Lukas Rozado - Engenheiro de Dados"
+                        class="social-icon"
+                        style="filter: invert(1);"
+                        loading="lazy"
+                        aria-hidden="true"
+                        itemprop="sameAs" width="512" height="512"></a>
+
+                <a href="https://www.kaggle.com/datasets/lukasrozado/lck-spring-2024-players-statistics"
+                   target="_blank"
+                   rel="noopener noreferrer nofollow"
+                   aria-label="Dataset LCK Spring 2024 de Lukas Rozado no Kaggle"><img src="../assets/images/kaggle-data-engineer-lukas-rozado.webp"
+                        alt="Dataset LCK Spring 2024 de Lukas Rozado no Kaggle - Dados de Esports"
+                        class="social-icon"
+                        style="filter: invert(1);"
+                        loading="lazy"
+                        aria-hidden="true"
+                        itemprop="sameAs" width="512" height="512"></a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </footer>
+
+    <script type="module">
+        try {
+            const { initMenu } = await import("../assets/js/modules/menu.js");
+            initMenu();
+        } catch (error) {
+            console.error("Menu unavailable:", error);
+        }
+    </script>
+</body>
+</html>
