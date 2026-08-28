@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-        
     <url>
         <loc>https://lukasrozado.pages.dev/</loc>
         <image:image>
@@ -10,7 +9,133 @@
         </image:image>
         <image:image>
             <image:loc>https://lukasrozado.pages.dev/assets/images/og-image.webp</image:loc>
-            <image:title>Portfólio Profissional</image:title>
+            <image:caption>Portfólio Profissional</image:caption>
+        </image:image>
+    </url>
+    <url>
+        <loc>https://lukasrozado.pages.dev/projects/baas-financial-settlement-data-sink-en</loc>
+        <image:image>
+            <image:loc>https://lukasrozado.pages.dev/assets/images/baas_financial_settlement_data_sink_v2.webp</image:loc>
+            <image:caption>BaaS &amp; Financial Settlement Data Sink - architecture diagram</image:caption>
+        </image:image>
+    </url>
+    <url>
+        <loc>https://lukasrozado.pages.dev/projects/baas-financial-settlement-data-sink</loc>
+        <image:image>
+            <image:loc>https://lukasrozado.pages.dev/assets/images/baas_financial_settlement_data_sink_v2.webp</image:loc>
+            <image:caption>BaaS &amp; Financial Settlement Data Sink - diagrama de arquitetura</image:caption>
+        </image:image>
+    </url>
+    <url>
+        <loc>https://lukasrozado.pages.dev/projects/enterprise-crypto-data-lake-en</loc>
+        <image:image>
+            <image:loc>https://lukasrozado.pages.dev/assets/images/crypto_data_lake_ingestion_architecture_v2.webp</image:loc>
+            <image:caption>Enterprise Crypto Data Lake: Multi-Account Ingestion - architecture diagram</image:caption>
+        </image:image>
+    </url>
+    <url>
+        <loc>https://lukasrozado.pages.dev/projects/enterprise-crypto-data-lake</loc>
+        <image:image>
+            <image:loc>https://lukasrozado.pages.dev/assets/images/crypto_data_lake_ingestion_architecture_v2.webp</image:loc>
+            <image:caption>Enterprise Crypto Data Lake: Ingestão Multi-Conta - diagrama de arquitetura</image:caption>
+        </image:image>
+    </url>
+    <url>
+        <loc>https://lukasrozado.pages.dev/projects/financial-reconciliation-pipeline-en</loc>
+        <image:image>
+            <image:loc>https://lukasrozado.pages.dev/assets/images/financial-reconciliation-pipeline.webp</image:loc>
+            <image:caption>High-Concurrency Financial Reconciliation Pipeline - architecture diagram</image:caption>
+        </image:image>
+    </url>
+    <url>
+        <loc>https://lukasrozado.pages.dev/projects/financial-reconciliation-pipeline</loc>
+        <image:image>
+            <image:loc>https://lukasrozado.pages.dev/assets/images/financial-reconciliation-pipeline.webp</image:loc>
+            <image:caption>High-Concurrency Financial Reconciliation Pipeline - diagrama de arquitetura</image:caption>
+        </image:image>
+    </url>
+    <url>
+        <loc>https://lukasrozado.pages.dev/projects/fiscal-document-consolidation-pipeline-en</loc>
+        <image:image>
+            <image:loc>https://lukasrozado.pages.dev/assets/images/fiscal_document_consolidation_pipeline_v1.webp</image:loc>
+            <image:caption>Fiscal Document Consolidation Pipeline - architecture diagram</image:caption>
+        </image:image>
+    </url>
+    <url>
+        <loc>https://lukasrozado.pages.dev/projects/fiscal-document-consolidation-pipeline</loc>
+        <image:image>
+            <image:loc>https://lukasrozado.pages.dev/assets/images/fiscal_document_consolidation_pipeline_v1.webp</image:loc>
+            <image:caption>Fiscal Document Consolidation Pipeline - diagrama de arquitetura</image:caption>
+        </image:image>
+    </url>
+    <url>
+        <loc>https://lukasrozado.pages.dev/projects/institutional-digital-asset-custody-en</loc>
+        <image:image>
+            <image:loc>https://lukasrozado.pages.dev/assets/images/institutional_digital_asset_custody_integrator_v2.webp</image:loc>
+            <image:caption>Institutional Digital Asset Custody Integrator - architecture diagram</image:caption>
+        </image:image>
+    </url>
+    <url>
+        <loc>https://lukasrozado.pages.dev/projects/institutional-digital-asset-custody</loc>
+        <image:image>
+            <image:loc>https://lukasrozado.pages.dev/assets/images/institutional_digital_asset_custody_integrator_v2.webp</image:loc>
+            <image:caption>Institutional Digital Asset Custody Integrator - diagrama de arquitetura</image:caption>
+        </image:image>
+    </url>
+    <url>
+        <loc>https://lukasrozado.pages.dev/projects/multi-chain-ledger-integrator-en</loc>
+        <image:image>
+            <image:loc>https://lukasrozado.pages.dev/assets/images/unified_multi_chain_ledger_integrator_v2.webp</image:loc>
+            <image:caption>Unified Multi-Chain Ledger Integrator - architecture diagram</image:caption>
+        </image:image>
+    </url>
+    <url>
+        <loc>https://lukasrozado.pages.dev/projects/multi-chain-ledger-integrator</loc>
+        <image:image>
+            <image:loc>https://lukasrozado.pages.dev/assets/images/unified_multi_chain_ledger_integrator_v2.webp</image:loc>
+            <image:caption>Unified Multi-Chain Ledger Integrator - diagrama de arquitetura</image:caption>
+        </image:image>
+    </url>
+    <url>
+        <loc>https://lukasrozado.pages.dev/projects/otc-desk-reconciliation-pipeline-en</loc>
+        <image:image>
+            <image:loc>https://lukasrozado.pages.dev/assets/images/otc_desk_reconciliation_pipeline_v1.webp</image:loc>
+            <image:caption>OTC Desk Reconciliation Pipeline - architecture diagram</image:caption>
+        </image:image>
+    </url>
+    <url>
+        <loc>https://lukasrozado.pages.dev/projects/otc-desk-reconciliation-pipeline</loc>
+        <image:image>
+            <image:loc>https://lukasrozado.pages.dev/assets/images/otc_desk_reconciliation_pipeline_v1.webp</image:loc>
+            <image:caption>OTC Desk Reconciliation Pipeline - diagrama de arquitetura</image:caption>
+        </image:image>
+    </url>
+    <url>
+        <loc>https://lukasrozado.pages.dev/projects/predictive-pipeline-ml-en</loc>
+        <image:image>
+            <image:loc>https://lukasrozado.pages.dev/assets/images/automated_esports_quant_trader.webp</image:loc>
+            <image:caption>Predictive Pipeline in Competitive and ML Engine - architecture diagram</image:caption>
+        </image:image>
+    </url>
+    <url>
+        <loc>https://lukasrozado.pages.dev/projects/predictive-pipeline-ml</loc>
+        <image:image>
+            <image:loc>https://lukasrozado.pages.dev/assets/images/automated_esports_quant_trader.webp</image:loc>
+            <image:caption>Pipeline Preditivo no Competitivo e ML Engine - diagrama de arquitetura</image:caption>
+        </image:image>
+    </url>
+    <url>
+        <loc>https://lukasrozado.pages.dev/projects/unified-banking-ledger-platform-en</loc>
+        <image:image>
+            <image:loc>https://lukasrozado.pages.dev/assets/images/unified-banking-ledger-platform.webp</image:loc>
+            <image:caption>Unified Banking Ledger Platform - architecture diagram</image:caption>
+        </image:image>
+    </url>
+    <url>
+        <loc>https://lukasrozado.pages.dev/projects/unified-banking-ledger-platform</loc>
+        <image:image>
+            <image:loc>https://lukasrozado.pages.dev/assets/images/unified-banking-ledger-platform.webp</image:loc>
+            <image:caption>Unified Banking Ledger Platform - diagrama de arquitetura</image:caption>
         </image:image>
     </url>
 </urlset>
