@@ -57,7 +57,7 @@
                 "@type": "ListItem",
                 "position": 2,
                 "name": "Projetos",
-                "item": "https://lukasrozado.pages.dev/#projects"
+                "item": "https://lukasrozado.pages.dev/projects/"
             },
             {
                 "@type": "ListItem",
@@ -120,8 +120,10 @@
         </div>
         <ul>
             <li><a href="../">Início</a></li>
-            <li><a href="../#projects">Projetos</a></li>
+            <li><a href="./">Projetos</a></li>
             <li><a href="../writing/">Escritos</a></li>
+            <li><a href="../about">Sobre</a></li>
+            <li><a href="../faq">FAQ</a></li>
             <li><a href="../contact">Contato</a></li>
             <li><a class="lang-switch" href="../index-en" hreflang="en" data-lang="en" lang="en">EN</a></li>
         </ul>
@@ -132,7 +134,7 @@
     <main id="main-content" role="main">
         <article class="project-page" itemscope itemtype="https://schema.org/CreativeWork">
                         <nav class="breadcrumb" aria-label="Breadcrumb">
-                <a href="../">Início</a> <span aria-hidden="true">›</span> <a href="../#projects">Projetos</a> <span aria-hidden="true">›</span> <span aria-current="page">OTC desk reconciliation pipeline</span>
+                <a href="../">Início</a> <span aria-hidden="true">›</span> <a href="./">Projetos</a> <span aria-hidden="true">›</span> <span aria-current="page">OTC desk reconciliation pipeline</span>
             </nav>
 
             <div class="project-meta">
@@ -141,7 +143,7 @@
 
             <h1 itemprop="name">OTC Desk Reconciliation Pipeline</h1>
 
-            <p class="lead" itemprop="description">ETL diário de reconciliação da mesa OTC, que ingere planilha operacional mantida por humanos (sem chave primária estável, com linhas reordenadas, apagadas e recriadas na origem) pra um data warehouse relacional, resolvendo nome de contraparte digitado de forma inconsistente via fuzzy matching com limiar de <strong>92% de similaridade</strong>. Em vez de upsert incremental, a carga usa Full Replace (truncate + reload integral) a cada execução, garantindo que o banco seja sempre espelho fiel da planilha. Deduplicação roda por hash SHA-256 sobre a assinatura da transação mais um contador de ocorrência (nonce), preservando de propósito splits legítimos idênticos em vez de colapsá-los. Uma camada de blindagem de schema extrai estritamente as colunas financeiras esperadas e ignora qualquer coluna nova que a área de negócio adicione sem aviso, pra que edição de usuário não quebre a ingestão.</p>
+            <p class="lead" itemprop="description">ETL diário de reconciliação da mesa OTC, que ingere planilha operacional mantida por humanos (sem chave primária estável, com linhas reordenadas, apagadas e recriadas na origem) para um data warehouse relacional, resolvendo nome de contraparte digitado de forma inconsistente via fuzzy matching com limiar de <strong>92% de similaridade</strong>. Em vez de upsert incremental, a carga usa Full Replace (truncate + reload integral) a cada execução, garantindo que o banco seja sempre espelho fiel da planilha. Deduplicação roda por hash SHA-256 sobre a assinatura da transação mais um contador de ocorrência (nonce), preservando de propósito splits legítimos idênticos em vez de colapsá-los. Uma camada de blindagem de schema extrai estritamente as colunas financeiras esperadas e ignora qualquer coluna nova que a área de negócio adicione sem aviso, para que edição de usuário não quebre a ingestão.</p>
 
             <div class="project-tech-row">
                 <img src="../assets/icons/python.svg" alt="python" class="tech-icon" width="30" height="30">
@@ -161,7 +163,7 @@
                 </div>
                 <div class="case-block">
                     <h3>Solu&ccedil;&atilde;o</h3>
-                    <p>Sem chave primária, upsert incremental viraria uma fonte de registros fantasmas assim que uma linha fosse reordenada ou apagada na origem. A carga usa <strong>Full Replace</strong> em vez disso: a cada execução, a tabela de fatos é truncada por inteiro e recarregada via protocolo <code>COPY</code> do PostgreSQL, garantindo que o banco seja sempre um espelho exato do estado atual da planilha, sem herdar histórico incoerente. Como não existe PK pra deduplicar contra, cada transação recebe um <em>fingerprint</em> SHA-256 calculado sobre a assinatura lógica da linha (tipo de operação, contraparte, ativo, quantidade, data, hash de origem) combinada com um contador de ocorrência, o nonce. Isso preserva de propósito splits legítimos idênticos em vez de colapsá-los como se fossem duplicata acidental. A extração aplica uma blindagem de schema: em vez de ler a planilha inteira, ela extrai estritamente uma lista fechada de colunas financeiras esperadas e ignora qualquer coluna desconhecida, temporária ou de cálculo solto; uma edição de usuário de negócio na planilha não derruba a ingestão do dia seguinte. Por fim, o nome de contraparte passa por resolução em cascata: primeiro contra uma tabela de alias explícita, depois por correspondência exata contra a dimensão já conhecida, e só depois por fuzzy matching (limiar de 92% de similaridade) contra a lista de contrapartes cadastradas; abaixo do limiar, o nome é sinalizado como cliente novo em vez de forçado a um match errado.</p>
+                    <p>Sem chave primária, upsert incremental viraria uma fonte de registros fantasmas assim que uma linha fosse reordenada ou apagada na origem. A carga usa <strong>Full Replace</strong> em vez disso: a cada execução, a tabela de fatos é truncada por inteiro e recarregada via protocolo <code>COPY</code> do PostgreSQL, garantindo que o banco seja sempre um espelho exato do estado atual da planilha, sem herdar histórico incoerente. Como não existe PK para deduplicar contra, cada transação recebe um <em>fingerprint</em> SHA-256 calculado sobre a assinatura lógica da linha (tipo de operação, contraparte, ativo, quantidade, data, hash de origem) combinada com um contador de ocorrência, o nonce. Isso preserva de propósito splits legítimos idênticos em vez de colapsá-los como se fossem duplicata acidental. A extração aplica uma blindagem de schema: em vez de ler a planilha inteira, ela extrai estritamente uma lista fechada de colunas financeiras esperadas e ignora qualquer coluna desconhecida, temporária ou de cálculo solto; uma edição de usuário de negócio na planilha não derruba a ingestão do dia seguinte. Por fim, o nome de contraparte passa por resolução em cascata: primeiro contra uma tabela de alias explícita, depois por correspondência exata contra a dimensão já conhecida, e só depois por fuzzy matching (limiar de 92% de similaridade) contra a lista de contrapartes cadastradas; abaixo do limiar, o nome é sinalizado como cliente novo em vez de forçado a um match errado.</p>
                 </div>
                 <div class="case-block">
                     <h3>Impacto</h3>
@@ -194,7 +196,7 @@
 
             <div class="project-actions">
 
-                <a class="btn-outline" href="../#projects">&larr; Voltar aos projetos</a>
+                <a class="btn-outline" href="./">&larr; Voltar aos projetos</a>
                 <a class="btn-primary" href="../contact">Falar sobre seu caso</a>
             </div>
         </article>

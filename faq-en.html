@@ -83,23 +83,23 @@
                 "name": "What kind of data problems does Lukas Rozado solve?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Lukas Rozado is a data engineer working on ingestion, reconciliation and integration of critical financial and operational data. The published case studies cover a crypto asset data lake with continuous auditing, a unified banking and PIX ledger platform, OTC desk reconciliation, fiscal document consolidation and multi-blockchain integration. What they have in common is a hostile source: an API with no delta filter, a spreadsheet with no primary key, pagination that silently drops records, and an API quota shared across every key."
+                    "text": "I am a data engineer working on ingestion, reconciliation and integration of critical financial and operational data. The published case studies cover a crypto asset data lake with continuous auditing, a unified banking and PIX ledger platform, OTC desk reconciliation, fiscal document consolidation and multi-blockchain integration. What they have in common is a hostile source: an API with no delta filter, a spreadsheet with no primary key, pagination that silently drops records, and an API quota shared across every key."
                 }
             },
             {
                 "@type": "Question",
-                "name": "Which databases, languages and clouds does he work with?",
+                "name": "Which databases, languages and clouds does Lukas Rozado work with?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Python and PostgreSQL appear in nearly every published case study, with SQL and REST APIs on top. The portfolio positions itself on Azure and AWS, and the case studies detail Azure in practice: Azure Key Vault to isolate credentials per account and Azure Active Directory for corporate authentication between systems. Outside the financial core there is also machine learning with scikit-learn and web scraping with BeautifulSoup, Selenium and pandas."
+                    "text": "I use Python and PostgreSQL in nearly every published case study, with SQL and REST APIs on top. My portfolio positions itself on Azure and AWS, and the case studies detail Azure in practice: Azure Key Vault to isolate credentials per account and Azure Active Directory for corporate authentication between systems, as in the multi-bank financial settlement pipeline. Outside the financial core I also work with machine learning in scikit-learn and web scraping with BeautifulSoup, Selenium and pandas."
                 }
             },
             {
                 "@type": "Question",
-                "name": "Does he build real-time pipelines or only batch?",
+                "name": "Does Lukas Rozado build real-time pipelines or only batch?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Both, and usually combined in the same system. The unified banking ledger platform runs minute by minute as a persistent process, while the financial reconciliation pipeline uses a hybrid model: a near real-time API path driven by a high-water mark, plus a daily CSV path that recovers the gap the API let through. Purely batch pipelines show up where the source itself is batch, such as the daily OTC desk spreadsheet and the monthly fiscal document consolidation."
+                    "text": "I build both, and usually combine them in the same system. The unified banking ledger platform runs minute by minute as a persistent process, while the financial reconciliation pipeline uses a hybrid model: a near real-time API path driven by a high-water mark, plus a daily CSV path that recovers the gap the API let through. Purely batch pipelines show up where the source itself is batch, such as the daily OTC desk spreadsheet and the monthly fiscal document consolidation."
                 }
             },
             {
@@ -123,7 +123,7 @@
                 "name": "How do you capture only what is new from an API with no date filter?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "The technique used is watermark early-exit: reading starts from the most recent page and stops on its own as soon as N consecutive pages fall entirely inside a date already covered before. That avoids both bad extremes, reprocessing the entire history on every run and stopping too early and losing records. For transactions that change status after they were already captured, a separate and cheaper auditor reads the API only from the oldest pending record onward and upserts whatever changed, without rescanning the full history."
+                    "text": "The technique used is watermark early-exit: reading starts from the most recent page and stops on its own as soon as N consecutive pages fall entirely inside a date already covered before. That avoids both bad extremes, reprocessing the entire history on every run and stopping too early and losing records. For transactions that change status after they were already captured, a separate and cheaper auditor reads the API only from the oldest pending record onward and upserts whatever changed, without rescanning the full history. Both pieces live in the unified ledger platform and in the institutional custody integrator."
                 }
             },
             {
@@ -163,7 +163,7 @@
                 "name": "Why can a pipeline look green in monitoring while it is broken?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "A pipeline looks green when the health signal travels the same path it is supposed to audit. In the case documented in the portfolio's writing section, the dashboard stayed green for 14.71 days while serving was down, and degrading the system actually strengthened the green, because the monitor measured its own execution rather than the result of it. The fix is to measure the effect at the destination, meaning rows written, counts reconciled and invariants closed, instead of measuring that the job finished without an exception."
+                    "text": "A pipeline looks green when the health signal travels the same path it is supposed to audit. In the case I documented in the portfolio's writing section, the dashboard stayed green for 14.71 days while serving was down, and degrading the system actually strengthened the green, because the monitor measured its own execution rather than the result of it. The fix is to measure the effect at the destination, meaning rows written, counts reconciled and invariants closed, instead of measuring that the job finished without an exception."
                 }
             },
             {
@@ -171,7 +171,7 @@
                 "name": "How do you get in touch about a data project?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Through the contact form on the site, by email or on LinkedIn. The contact page states a reply within 2 business days. He also publishes the Dado Bruto newsletter on LinkedIn, covering data engineering case studies."
+                    "text": "Through the contact form on the site, by email or on LinkedIn. The contact page states a reply within 2 business days. I also publish the Dado Bruto newsletter on LinkedIn, covering data engineering case studies."
                 }
             }
         ]
@@ -201,8 +201,9 @@
         </div>
         <ul>
             <li><a href="./index-en">Home</a></li>
-            <li><a href="./index-en#projects">Projects</a></li>
+            <li><a href="./projects/index-en">Projects</a></li>
             <li><a href="./writing/index-en">Writing</a></li>
+            <li><a href="./about-en">About</a></li>
             <li><a href="./faq-en">FAQ</a></li>
             <li><a href="./contact-en">Contact</a></li>
             <li><a class="lang-switch" href="./faq" hreflang="pt-BR" data-lang="pt" lang="pt-BR">PT</a></li>
@@ -223,24 +224,24 @@
 
             <h1>Frequently asked questions</h1>
 
-            <p class="lead">Direct answers about the work of <strong>Lukas Rozado</strong>, data engineer, and about the technical problems the case studies published on this site solve: a spreadsheet with no stable primary key, an API with no delta filter, a quota shared across keys, pagination offset drift and on-chain history completeness. Every answer stands on its own and points to the case study where the decision was made.</p>
+            <p class="lead">I am <strong>Lukas Rozado</strong>, a data engineer. Here are direct answers about my work and about the technical problems the case studies published on this site solve: a spreadsheet with no stable primary key, an API with no delta filter, a quota shared across keys, pagination offset drift and on-chain history completeness. Every answer stands on its own and points to the case study where the decision was made.</p>
 
             <section class="case-study" aria-labelledby="faq-heading">
                 <h2 id="faq-heading">About the work</h2>
 
                 <div class="case-block">
                     <h3>What kind of data problems does Lukas Rozado solve?</h3>
-                    <p>Lukas Rozado is a data engineer working on ingestion, reconciliation and integration of critical financial and operational data. The published case studies cover a <a href="./projects/enterprise-crypto-data-lake-en">crypto asset data lake with continuous auditing</a>, a <a href="./projects/unified-banking-ledger-platform-en">unified banking and PIX ledger platform</a>, <a href="./projects/otc-desk-reconciliation-pipeline-en">OTC desk reconciliation</a>, <a href="./projects/fiscal-document-consolidation-pipeline-en">fiscal document consolidation</a> and <a href="./projects/multi-chain-ledger-integrator-en">multi-blockchain integration</a>. What they have in common is a hostile source: an API with no delta filter, a spreadsheet with no primary key, pagination that silently drops records, and an API quota shared across every key.</p>
+                    <p>I am a data engineer working on ingestion, reconciliation and integration of critical financial and operational data. The published case studies cover a <a href="./projects/enterprise-crypto-data-lake-en">crypto asset data lake with continuous auditing</a>, a <a href="./projects/unified-banking-ledger-platform-en">unified banking and PIX ledger platform</a>, <a href="./projects/otc-desk-reconciliation-pipeline-en">OTC desk reconciliation</a>, <a href="./projects/fiscal-document-consolidation-pipeline-en">fiscal document consolidation</a> and <a href="./projects/multi-chain-ledger-integrator-en">multi-blockchain integration</a>. What they have in common is a hostile source: an API with no delta filter, a spreadsheet with no primary key, pagination that silently drops records, and an API quota shared across every key.</p>
                 </div>
 
                 <div class="case-block">
-                    <h3>Which databases, languages and clouds does he work with?</h3>
-                    <p>Python and PostgreSQL appear in nearly every published case study, with SQL and REST APIs on top. The portfolio positions itself on Azure and AWS, and the case studies detail Azure in practice: Azure Key Vault to isolate credentials per account and Azure Active Directory for corporate authentication between systems, as in the <a href="./projects/baas-financial-settlement-data-sink-en">multi-bank financial settlement pipeline</a>. Outside the financial core there is also machine learning with scikit-learn and web scraping with BeautifulSoup, Selenium and pandas.</p>
+                    <h3>Which databases, languages and clouds does Lukas Rozado work with?</h3>
+                    <p>I use Python and PostgreSQL in nearly every published case study, with SQL and REST APIs on top. My portfolio positions itself on Azure and AWS, and the case studies detail Azure in practice: Azure Key Vault to isolate credentials per account and Azure Active Directory for corporate authentication between systems, as in the <a href="./projects/baas-financial-settlement-data-sink-en">multi-bank financial settlement pipeline</a>. Outside the financial core I also work with machine learning in scikit-learn and web scraping with BeautifulSoup, Selenium and pandas.</p>
                 </div>
 
                 <div class="case-block">
-                    <h3>Does he build real-time pipelines or only batch?</h3>
-                    <p>Both, and usually combined in the same system. The <a href="./projects/unified-banking-ledger-platform-en">unified banking ledger platform</a> runs minute by minute as a persistent process, while the <a href="./projects/financial-reconciliation-pipeline-en">financial reconciliation pipeline</a> uses a hybrid model: a near real-time API path driven by a high-water mark, plus a daily CSV path that recovers the gap the API let through. Purely batch pipelines show up where the source itself is batch, such as the daily OTC desk spreadsheet and the monthly fiscal document consolidation.</p>
+                    <h3>Does Lukas Rozado build real-time pipelines or only batch?</h3>
+                    <p>I build both, and usually combine them in the same system. The <a href="./projects/unified-banking-ledger-platform-en">unified banking ledger platform</a> runs minute by minute as a persistent process, while the <a href="./projects/financial-reconciliation-pipeline-en">financial reconciliation pipeline</a> uses a hybrid model: a near real-time API path driven by a high-water mark, plus a daily CSV path that recovers the gap the API let through. Purely batch pipelines show up where the source itself is batch, such as the daily OTC desk spreadsheet and the monthly fiscal document consolidation.</p>
                 </div>
 
                 <h2 id="faq-technical-heading">Technical questions</h2>
@@ -282,12 +283,12 @@
 
                 <div class="case-block">
                     <h3>Why can a pipeline look green in monitoring while it is broken?</h3>
-                    <p>A pipeline looks green when the health signal travels the same path it is supposed to audit. In the <a href="./writing/a-monitor-that-reports-success-without-validating">case documented in the portfolio's writing section</a>, the dashboard stayed green for 14.71 days while serving was down, and degrading the system actually strengthened the green, because the monitor measured its own execution rather than the result of it. The fix is to measure the effect at the destination, meaning rows written, counts reconciled and invariants closed, instead of measuring that the job finished without an exception.</p>
+                    <p>A pipeline looks green when the health signal travels the same path it is supposed to audit. In the <a href="./writing/a-monitor-that-reports-success-without-validating">case I documented in the portfolio's writing section</a>, the dashboard stayed green for 14.71 days while serving was down, and degrading the system actually strengthened the green, because the monitor measured its own execution rather than the result of it. The fix is to measure the effect at the destination, meaning rows written, counts reconciled and invariants closed, instead of measuring that the job finished without an exception.</p>
                 </div>
 
                 <div class="case-block">
                     <h3>How do you get in touch about a data project?</h3>
-                    <p>Through the <a href="./contact-en">contact form</a> on the site, by email or on LinkedIn. The contact page states a reply within 2 business days. He also publishes the <strong>Dado Bruto</strong> newsletter on LinkedIn, covering data engineering case studies.</p>
+                    <p>Through the <a href="./contact-en">contact form</a> on the site, by email or on LinkedIn. The contact page states a reply within 2 business days. I also publish the <strong>Dado Bruto</strong> newsletter on LinkedIn, covering data engineering case studies.</p>
                 </div>
             </section>
 

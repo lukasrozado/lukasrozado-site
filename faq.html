@@ -83,23 +83,23 @@
                 "name": "Que tipo de problema de dados o Lukas Rozado resolve?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Lukas Rozado é engenheiro de dados e trabalha em ingestão, reconciliação e integração de dados financeiros e operacionais críticos. Os cases publicados cobrem data lake de criptoativos com auditoria contínua, plataforma unificada de ledger bancário e PIX, reconciliação de mesa OTC, consolidação de documento fiscal e integração multi-blockchain. O padrão comum entre eles é a fonte hostil: API sem filtro de delta, planilha sem chave primária, paginação que perde registro e cota de API compartilhada entre todas as chaves."
+                    "text": "Sou engenheiro de dados e trabalho em ingestão, reconciliação e integração de dados financeiros e operacionais críticos. Os cases publicados cobrem data lake de criptoativos com auditoria contínua, plataforma unificada de ledger bancário e PIX, reconciliação de mesa OTC, consolidação de documento fiscal e integração multi-blockchain. O padrão comum entre eles é a fonte hostil: API sem filtro de delta, planilha sem chave primária, paginação que perde registro e cota de API compartilhada entre todas as chaves."
                 }
             },
             {
                 "@type": "Question",
-                "name": "Com quais bancos de dados, linguagens e nuvens ele trabalha?",
+                "name": "Com quais bancos de dados, linguagens e nuvens o Lukas Rozado trabalha?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Python e PostgreSQL aparecem em praticamente todos os cases publicados, com SQL e APIs REST por cima. O portfólio se posiciona em Azure e AWS, e os cases detalham Azure na prática: Azure Key Vault para isolar credencial por conta e Azure Active Directory para autenticação corporativa entre sistemas. Fora do núcleo financeiro há também machine learning com scikit-learn e web scraping com BeautifulSoup, Selenium e pandas."
+                    "text": "Uso Python e PostgreSQL em praticamente todos os cases publicados, com SQL e APIs REST por cima. Meu portfólio se posiciona em Azure e AWS, e os cases detalham Azure na prática: Azure Key Vault para isolar credencial por conta e Azure Active Directory para autenticação corporativa entre sistemas, como no pipeline de liquidação financeira multibancos. Fora do núcleo financeiro, também trabalho com machine learning em scikit-learn e web scraping com BeautifulSoup, Selenium e pandas."
                 }
             },
             {
                 "@type": "Question",
-                "name": "Ele constrói pipeline em tempo real ou só batch?",
+                "name": "O Lukas Rozado constrói pipeline em tempo real ou só batch?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Os dois, e normalmente combinados no mesmo sistema. A plataforma unificada de ledger bancário roda de minuto em minuto, de forma persistente, enquanto o pipeline de reconciliação financeira usa um modelo híbrido: uma via de API quase em tempo real guiada por high-water mark e uma via diária em CSV que recupera a lacuna que a API deixou passar. Pipeline puramente batch aparece onde a fonte é batch por natureza, como a planilha diária da mesa OTC e a consolidação mensal de documento fiscal."
+                    "text": "Construo os dois, e normalmente os combino no mesmo sistema. A plataforma unificada de ledger bancário roda de minuto em minuto, de forma persistente, enquanto o pipeline de reconciliação financeira usa um modelo híbrido: uma via de API quase em tempo real guiada por high-water mark e uma via diária em CSV que recupera a lacuna que a API deixou passar. Pipeline puramente batch aparece onde a fonte é batch por natureza, como a planilha diária da mesa OTC e a consolidação mensal de documento fiscal."
                 }
             },
             {
@@ -123,7 +123,7 @@
                 "name": "Como capturar só o que é novo numa API que não tem filtro de data?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "A técnica aplicada é early-exit por marca d'água: a leitura começa da página mais recente e para sozinha assim que N páginas seguidas caem inteiramente numa data já coberta antes. Isso evita os dois extremos ruins, reprocessar o histórico inteiro toda execução e parar cedo demais perdendo registro. Para o caso da transação que muda de status depois de já capturada, um auditor separado e mais barato lê a API só a partir do registro pendente mais antigo e faz UPSERT no que mudou, sem revarrer o histórico completo."
+                    "text": "A técnica aplicada é early-exit por marca d'água: a leitura começa da página mais recente e para sozinha assim que N páginas seguidas caem inteiramente numa data já coberta antes. Isso evita os dois extremos ruins, reprocessar o histórico inteiro toda execução e parar cedo demais perdendo registro. Para o caso da transação que muda de status depois de já capturada, um auditor separado e mais barato lê a API só a partir do registro pendente mais antigo e faz UPSERT no que mudou, sem revarrer o histórico completo. As duas peças estão na plataforma unificada de ledger e no integrador de custódia institucional."
                 }
             },
             {
@@ -163,15 +163,15 @@
                 "name": "Por que um pipeline pode aparecer verde no monitoramento estando quebrado?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Um pipeline aparece verde quando o sinal de saúde vem do mesmo caminho que ele deveria auditar. No caso documentado nos escritos do portfólio, o painel ficou verde por 14,71 dias enquanto o serving estava parado, e piorar o sistema chegava a fortalecer o verde, porque o monitor media a própria execução e não o resultado dela. A correção é medir o efeito no destino, ou seja, dado gravado, contagem reconciliada e invariante fechado, em vez de medir que o job terminou sem exceção."
+                    "text": "Um pipeline aparece verde quando o sinal de saúde vem do mesmo caminho que ele deveria auditar. No caso que documentei nos escritos do portfólio, o painel ficou verde por 14,71 dias enquanto o serving estava parado, e piorar o sistema chegava a fortalecer o verde, porque o monitor media a própria execução e não o resultado dela. A correção é medir o efeito no destino, ou seja, dado gravado, contagem reconciliada e invariante fechado, em vez de medir que o job terminou sem exceção."
                 }
             },
             {
                 "@type": "Question",
-                "name": "Como falar com ele sobre um projeto de dados?",
+                "name": "Como falar com o Lukas Rozado sobre um projeto de dados?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Pelo formulário da página de contato do site, por email ou por LinkedIn. A página de contato informa resposta em até 2 dias úteis. Ele também publica a newsletter Dado Bruto no LinkedIn, com casos de engenharia de dados."
+                    "text": "Pelo formulário da página de contato do site, por email ou por LinkedIn. A página de contato informa resposta em até 2 dias úteis. Também publico a newsletter Dado Bruto no LinkedIn, com casos de engenharia de dados."
                 }
             }
         ]
@@ -201,8 +201,9 @@
         </div>
         <ul>
             <li><a href="./">Início</a></li>
-            <li><a href="./#projects">Projetos</a></li>
+            <li><a href="./projects/">Projetos</a></li>
             <li><a href="./writing/">Escritos</a></li>
+            <li><a href="./about">Sobre</a></li>
             <li><a href="./faq">FAQ</a></li>
             <li><a href="./contact">Contato</a></li>
             <li><a class="lang-switch" href="./faq-en" hreflang="en" data-lang="en" lang="en">EN</a></li>
@@ -223,24 +224,24 @@
 
             <h1>Perguntas frequentes</h1>
 
-            <p class="lead">Respostas diretas sobre o trabalho de <strong>Lukas Rozado</strong>, engenheiro de dados, e sobre os problemas técnicos que os cases publicados neste site resolvem: planilha sem chave primária estável, API sem filtro de delta, cota compartilhada entre chaves, offset drift de paginação e completude de histórico on-chain. Cada resposta vale por si só e aponta para o case onde a decisão foi tomada.</p>
+            <p class="lead">Sou <strong>Lukas Rozado</strong>, engenheiro de dados. Aqui estão respostas diretas sobre o meu trabalho e sobre os problemas técnicos que os cases publicados neste site resolvem: planilha sem chave primária estável, API sem filtro de delta, cota compartilhada entre chaves, offset drift de paginação e completude de histórico on-chain. Cada resposta vale por si só e aponta para o case onde a decisão foi tomada.</p>
 
             <section class="case-study" aria-labelledby="faq-heading">
                 <h2 id="faq-heading">Sobre o trabalho</h2>
 
                 <div class="case-block">
                     <h3>Que tipo de problema de dados o Lukas Rozado resolve?</h3>
-                    <p>Lukas Rozado é engenheiro de dados e trabalha em ingestão, reconciliação e integração de dados financeiros e operacionais críticos. Os cases publicados cobrem <a href="./projects/enterprise-crypto-data-lake">data lake de criptoativos com auditoria contínua</a>, <a href="./projects/unified-banking-ledger-platform">plataforma unificada de ledger bancário e PIX</a>, <a href="./projects/otc-desk-reconciliation-pipeline">reconciliação de mesa OTC</a>, <a href="./projects/fiscal-document-consolidation-pipeline">consolidação de documento fiscal</a> e <a href="./projects/multi-chain-ledger-integrator">integração multi-blockchain</a>. O padrão comum entre eles é a fonte hostil: API sem filtro de delta, planilha sem chave primária, paginação que perde registro e cota de API compartilhada entre todas as chaves.</p>
+                    <p>Sou engenheiro de dados e trabalho em ingestão, reconciliação e integração de dados financeiros e operacionais críticos. Os cases publicados cobrem <a href="./projects/enterprise-crypto-data-lake">data lake de criptoativos com auditoria contínua</a>, <a href="./projects/unified-banking-ledger-platform">plataforma unificada de ledger bancário e PIX</a>, <a href="./projects/otc-desk-reconciliation-pipeline">reconciliação de mesa OTC</a>, <a href="./projects/fiscal-document-consolidation-pipeline">consolidação de documento fiscal</a> e <a href="./projects/multi-chain-ledger-integrator">integração multi-blockchain</a>. O padrão comum entre eles é a fonte hostil: API sem filtro de delta, planilha sem chave primária, paginação que perde registro e cota de API compartilhada entre todas as chaves.</p>
                 </div>
 
                 <div class="case-block">
-                    <h3>Com quais bancos de dados, linguagens e nuvens ele trabalha?</h3>
-                    <p>Python e PostgreSQL aparecem em praticamente todos os cases publicados, com SQL e APIs REST por cima. O portfólio se posiciona em Azure e AWS, e os cases detalham Azure na prática: Azure Key Vault para isolar credencial por conta e Azure Active Directory para autenticação corporativa entre sistemas, como no <a href="./projects/baas-financial-settlement-data-sink">pipeline de liquidação financeira multibancos</a>. Fora do núcleo financeiro há também machine learning com scikit-learn e web scraping com BeautifulSoup, Selenium e pandas.</p>
+                    <h3>Com quais bancos de dados, linguagens e nuvens o Lukas Rozado trabalha?</h3>
+                    <p>Uso Python e PostgreSQL em praticamente todos os cases publicados, com SQL e APIs REST por cima. Meu portfólio se posiciona em Azure e AWS, e os cases detalham Azure na prática: Azure Key Vault para isolar credencial por conta e Azure Active Directory para autenticação corporativa entre sistemas, como no <a href="./projects/baas-financial-settlement-data-sink">pipeline de liquidação financeira multibancos</a>. Fora do núcleo financeiro, também trabalho com machine learning em scikit-learn e web scraping com BeautifulSoup, Selenium e pandas.</p>
                 </div>
 
                 <div class="case-block">
-                    <h3>Ele constrói pipeline em tempo real ou só batch?</h3>
-                    <p>Os dois, e normalmente combinados no mesmo sistema. A <a href="./projects/unified-banking-ledger-platform">plataforma unificada de ledger bancário</a> roda de minuto em minuto, de forma persistente, enquanto o <a href="./projects/financial-reconciliation-pipeline">pipeline de reconciliação financeira</a> usa um modelo híbrido: uma via de API quase em tempo real guiada por high-water mark e uma via diária em CSV que recupera a lacuna que a API deixou passar. Pipeline puramente batch aparece onde a fonte é batch por natureza, como a planilha diária da mesa OTC e a consolidação mensal de documento fiscal.</p>
+                    <h3>O Lukas Rozado constrói pipeline em tempo real ou só batch?</h3>
+                    <p>Construo os dois, e normalmente os combino no mesmo sistema. A <a href="./projects/unified-banking-ledger-platform">plataforma unificada de ledger bancário</a> roda de minuto em minuto, de forma persistente, enquanto o <a href="./projects/financial-reconciliation-pipeline">pipeline de reconciliação financeira</a> usa um modelo híbrido: uma via de API quase em tempo real guiada por high-water mark e uma via diária em CSV que recupera a lacuna que a API deixou passar. Pipeline puramente batch aparece onde a fonte é batch por natureza, como a planilha diária da mesa OTC e a consolidação mensal de documento fiscal.</p>
                 </div>
 
                 <h2 id="faq-tecnico-heading">Perguntas técnicas</h2>
@@ -282,12 +283,12 @@
 
                 <div class="case-block">
                     <h3>Por que um pipeline pode aparecer verde no monitoramento estando quebrado?</h3>
-                    <p>Um pipeline aparece verde quando o sinal de saúde vem do mesmo caminho que ele deveria auditar. No <a href="./writing/monitoramento-que-afirma-sucesso-mas-nao-valida">caso documentado nos escritos do portfólio</a>, o painel ficou verde por 14,71 dias enquanto o serving estava parado, e piorar o sistema chegava a fortalecer o verde, porque o monitor media a própria execução e não o resultado dela. A correção é medir o efeito no destino, ou seja, dado gravado, contagem reconciliada e invariante fechado, em vez de medir que o job terminou sem exceção.</p>
+                    <p>Um pipeline aparece verde quando o sinal de saúde vem do mesmo caminho que ele deveria auditar. No <a href="./writing/monitoramento-que-afirma-sucesso-mas-nao-valida">caso que documentei nos escritos do portfólio</a>, o painel ficou verde por 14,71 dias enquanto o serving estava parado, e piorar o sistema chegava a fortalecer o verde, porque o monitor media a própria execução e não o resultado dela. A correção é medir o efeito no destino, ou seja, dado gravado, contagem reconciliada e invariante fechado, em vez de medir que o job terminou sem exceção.</p>
                 </div>
 
                 <div class="case-block">
-                    <h3>Como falar com ele sobre um projeto de dados?</h3>
-                    <p>Pelo <a href="./contact">formulário da página de contato</a> do site, por email ou por LinkedIn. A página de contato informa resposta em até 2 dias úteis. Ele também publica a newsletter <strong>Dado Bruto</strong> no LinkedIn, com casos de engenharia de dados.</p>
+                    <h3>Como falar com o Lukas Rozado sobre um projeto de dados?</h3>
+                    <p>Pelo <a href="./contact">formulário da página de contato</a> do site, por email ou por LinkedIn. A página de contato informa resposta em até 2 dias úteis. Também publico a newsletter <strong>Dado Bruto</strong> no LinkedIn, com casos de engenharia de dados.</p>
                 </div>
             </section>
 

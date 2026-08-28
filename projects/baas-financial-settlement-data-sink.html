@@ -57,7 +57,7 @@
                 "@type": "ListItem",
                 "position": 2,
                 "name": "Projetos",
-                "item": "https://lukasrozado.pages.dev/#projects"
+                "item": "https://lukasrozado.pages.dev/projects/"
             },
             {
                 "@type": "ListItem",
@@ -120,8 +120,10 @@
         </div>
         <ul>
             <li><a href="../">Início</a></li>
-            <li><a href="../#projects">Projetos</a></li>
+            <li><a href="./">Projetos</a></li>
             <li><a href="../writing/">Escritos</a></li>
+            <li><a href="../about">Sobre</a></li>
+            <li><a href="../faq">FAQ</a></li>
             <li><a href="../contact">Contato</a></li>
             <li><a class="lang-switch" href="../index-en" hreflang="en" data-lang="en" lang="en">EN</a></li>
         </ul>
@@ -132,7 +134,7 @@
     <main id="main-content" role="main">
         <article class="project-page" itemscope itemtype="https://schema.org/CreativeWork">
                         <nav class="breadcrumb" aria-label="Breadcrumb">
-                <a href="../">Início</a> <span aria-hidden="true">›</span> <a href="../#projects">Projetos</a> <span aria-hidden="true">›</span> <span aria-current="page">baas financial settlement data sink</span>
+                <a href="../">Início</a> <span aria-hidden="true">›</span> <a href="./">Projetos</a> <span aria-hidden="true">›</span> <span aria-current="page">baas financial settlement data sink</span>
             </nav>
 
             <div class="project-meta">
@@ -162,7 +164,7 @@
                 </div>
                 <div class="case-block">
                     <h3>Solu&ccedil;&atilde;o</h3>
-                    <p>Antes de qualquer <code>COPY</code>, um motor de sanitização dedicado converte cada lista pro formato nativo de array do Postgres. Na camada Silver, o flattening é total: o transformer abre o payload aninhado e joga suas colunas, já prefixadas, direto na tabela de log; auditoria vira um <code>SELECT</code> só. O script de backfill é passivo por completo, nunca grava no checkpoint de produção, e cada extrator trata endpoint sem contrato como volume zero, sem derrubar o resto do pipeline.</p>
+                    <p>Antes de qualquer <code>COPY</code>, um motor de sanitização dedicado converte cada lista para o formato nativo de array do Postgres. Na camada Silver, o flattening é total: o transformer abre o payload aninhado e joga suas colunas, já prefixadas, direto na tabela de log; auditoria vira um <code>SELECT</code> só. O script de backfill é passivo por completo, nunca grava no checkpoint de produção, e cada extrator trata endpoint sem contrato como volume zero, sem derrubar o resto do pipeline.</p>
                 </div>
                 <div class="case-block">
                     <h3>Impacto</h3>
@@ -194,7 +196,7 @@
 
             <div class="project-actions">
 
-                <a class="btn-outline" href="../#projects">&larr; Voltar aos projetos</a>
+                <a class="btn-outline" href="./">&larr; Voltar aos projetos</a>
                 <a class="btn-primary" href="../contact">Falar sobre seu caso</a>
             </div>
         </article>

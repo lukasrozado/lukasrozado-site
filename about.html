@@ -133,7 +133,7 @@
         </div>
         <ul>
             <li><a href="./">Início</a></li>
-            <li><a href="./#projects">Projetos</a></li>
+            <li><a href="./projects/">Projetos</a></li>
             <li><a href="./writing/">Escritos</a></li>
             <li><a href="./about">Sobre</a></li>
             <li><a href="./faq">FAQ</a></li>
@@ -163,7 +163,7 @@
 
                 <div class="case-block">
                     <h3>O payload bruto fica gravado, sempre</h3>
-                    <p>Coluna tipada é conveniência montada por cima do dado, nunca substituta dele. No <a href="./projects/enterprise-crypto-data-lake">data lake de criptoativos</a>, uma camada Bronze obrigatória guarda a resposta original em JSONB antes de qualquer transformação, e é ela que alimenta o modelo Medallion completo. O teste é simples: se responder a uma pergunta nova exige ligar de volta no provedor por um dado que ele já mandou uma vez, a camada bruta está errada. Consertar a camada bruta é mais barato que queimar cota de API para recuperar o que já esteve em casa.</p>
+                    <p>Coluna tipada é conveniência montada por cima do dado, nunca substituta dele. O que muda de um projeto para outro é o formato de armazenamento, JSONB no banco, arquivo em bucket ou Parquet particionado, e nunca a regra: a camada bruta vem antes de qualquer transformação e o modelo Medallion se apoia nela. No <a href="./projects/enterprise-crypto-data-lake">data lake de criptoativos</a>, uma camada Bronze obrigatória guarda a resposta original em JSONB antes de qualquer transformação, e é ela que alimenta o modelo Medallion completo. O teste é simples: se responder a uma pergunta nova exige ligar de volta no provedor por um dado que ele já mandou uma vez, a camada bruta está errada. Consertar a camada bruta é mais barato que queimar cota de API para recuperar o que já esteve em casa.</p>
                 </div>
 
                 <div class="case-block">
