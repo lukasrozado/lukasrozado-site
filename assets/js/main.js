@@ -19,6 +19,10 @@ document.addEventListener("DOMContentLoaded", async () => {
           console.warn(`Elemento não encontrado para: ${component}`);
           continue;
         }
+        // O componente já vem inline no HTML (SEO/no-JS). Buscar de novo só repetiria
+        // conteúdo idêntico e custa 2 requisições por componente, porque o Cloudflare
+        // Pages redireciona .html para a URL sem extensão. Só busca se vier vazio.
+        if (element.children.length > 0) continue;
         const response = await fetch(`./components/${lang}/${component}.html`);
         if (!response.ok) throw new Error(`${component} não encontrado`);
         const html = await response.text();
@@ -49,24 +53,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   };
 
-  const reportKeywordCoverage = () => {
-    try {
-      const content = document.body.innerText.toLowerCase();
-      const keywords = {
-        pt: ["python", "dados", "machine learning", "análise", "dashboard"],
-        en: ["python", "data", "machine learning", "analysis", "visualization"]
-      };
-      const lang = document.documentElement.lang === "pt-BR" ? "pt" : "en";
-      const report = keywords[lang].map((kw) => ({
-        keyword: kw,
-        count: content.match(new RegExp(kw, "gi"))?.length || 0
-      }));
-      console.table(report);
-    } catch (error) {
-      console.error("Keyword coverage report failed:", error);
-    }
-  };
-
   const showNonDestructiveError = () => {
     if (document.getElementById("critical-error-banner")) return;
     const banner = document.createElement("div");
@@ -84,7 +70,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     await loadComponents();
     await loadDynamicContent();
     await initInteractiveModules();
-    reportKeywordCoverage();
   } catch (error) {
     console.error("Critical error:", error);
     showNonDestructiveError();
