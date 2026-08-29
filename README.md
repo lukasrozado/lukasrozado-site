@@ -1,9 +1,9 @@
-# lukasrozado.github.io
+# [https://lukasrozado.pages.dev/](https://lukasrozado.pages.dev/)
 
 Personal portfolio and technical writing site for Lukas Rozado, Data Engineer.
 Static HTML/CSS/JS, no build step, no framework, deployed via GitHub Pages.
 
-Live: https://lukasrozado.github.io
+Live: https://lukasrozado.pages.dev/
 
 ## Stack
 
