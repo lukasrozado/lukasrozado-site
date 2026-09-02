@@ -3,34 +3,34 @@
 > Site hub for data engineering case studies, pipelines and writing. POSSE: publish on own site, syndicate elsewhere.
 
 ## Core
-- Home (PT): https://lukasrozado.com/
-- Home (EN): https://lukasrozado.com/index-en
-- Projects: https://lukasrozado.com/#projects
-- Writing: https://lukasrozado.com/writing/
-- About (PT): https://lukasrozado.com/about
-- About (EN): https://lukasrozado.com/about-en
-- FAQ (PT): https://lukasrozado.com/faq
-- FAQ (EN): https://lukasrozado.com/faq-en
-- Contact: https://lukasrozado.com/contact
-- RSS (PT): https://lukasrozado.com/feed.xml
-- RSS (EN): https://lukasrozado.com/feed-en.xml
-- Sitemap: https://lukasrozado.com/sitemap.xml
+- [Home (PT)](https://lukasrozado.com/)
+- [Home (EN)](https://lukasrozado.com/index-en)
+- [Projects](https://lukasrozado.com/#projects)
+- [Writing](https://lukasrozado.com/writing/)
+- [About (PT)](https://lukasrozado.com/about)
+- [About (EN)](https://lukasrozado.com/about-en)
+- [FAQ (PT)](https://lukasrozado.com/faq)
+- [FAQ (EN)](https://lukasrozado.com/faq-en)
+- [Contact](https://lukasrozado.com/contact)
+- [RSS (PT)](https://lukasrozado.com/feed.xml)
+- [RSS (EN)](https://lukasrozado.com/feed-en.xml)
+- [Sitemap](https://lukasrozado.com/sitemap.xml)
 
 ## Case Studies
-- Enterprise Crypto Data Lake: https://lukasrozado.com/projects/enterprise-crypto-data-lake
-- Unified Banking Ledger Platform: https://lukasrozado.com/projects/unified-banking-ledger-platform
-- Financial Reconciliation Pipeline: https://lukasrozado.com/projects/financial-reconciliation-pipeline
-- Multi-Chain Ledger Integrator: https://lukasrozado.com/projects/multi-chain-ledger-integrator
-- Institutional Custody Integrator: https://lukasrozado.com/projects/institutional-digital-asset-custody
-- BaaS Financial Settlement Data Sink: https://lukasrozado.com/projects/baas-financial-settlement-data-sink
-- Predictive Pipeline & ML: https://lukasrozado.com/projects/predictive-pipeline-ml
-- OTC Desk Reconciliation Pipeline: https://lukasrozado.com/projects/otc-desk-reconciliation-pipeline
-- Fiscal Document Consolidation Pipeline: https://lukasrozado.com/projects/fiscal-document-consolidation-pipeline
-- LCK Dataset (public proof): https://lukasrozado.com/projects/lck-spring-2024-dataset
+- [Enterprise Crypto Data Lake](https://lukasrozado.com/projects/enterprise-crypto-data-lake): multi-account ingestion, shared rate limiter, Bronze/Medallion model.
+- [Unified Banking Ledger Platform](https://lukasrozado.com/projects/unified-banking-ledger-platform): merged PIX and ledger reconciliation pipelines.
+- [Financial Reconciliation Pipeline](https://lukasrozado.com/projects/financial-reconciliation-pipeline): hybrid API + CSV anti-join reconciliation.
+- [Multi-Chain Ledger Integrator](https://lukasrozado.com/projects/multi-chain-ledger-integrator): EVM/Solana raw RPC ingestion with self-healing reconciliation.
+- [Institutional Custody Integrator](https://lukasrozado.com/projects/institutional-digital-asset-custody): multi-region ingestion orchestrator for crypto custody.
+- [BaaS Financial Settlement Data Sink](https://lukasrozado.com/projects/baas-financial-settlement-data-sink): multi-bank settlement data centralization.
+- [Predictive Pipeline & ML](https://lukasrozado.com/projects/predictive-pipeline-ml): end-to-end quant trading engine with 42-feature model factory.
+- [OTC Desk Reconciliation Pipeline](https://lukasrozado.com/projects/otc-desk-reconciliation-pipeline): fuzzy-matched ETL from an unkeyed operational spreadsheet.
+- [Fiscal Document Consolidation Pipeline](https://lukasrozado.com/projects/fiscal-document-consolidation-pipeline): monthly XML+PDF fiscal document consolidation.
+- [LCK Dataset (public proof)](https://lukasrozado.com/projects/lck-spring-2024-dataset): public, verifiable Kaggle dataset.
 
 ## Writing
-- Um monitoramento que afirma que deu sucesso, mas não valida (PT, 2026-08-26): https://lukasrozado.com/writing/monitoramento-que-afirma-sucesso-mas-nao-valida
-- A monitor that reports success without validating (EN, 2026-08-26): https://lukasrozado.com/writing/a-monitor-that-reports-success-without-validating
+- [Um monitoramento que afirma que deu sucesso, mas não valida](https://lukasrozado.com/writing/monitoramento-que-afirma-sucesso-mas-nao-valida): PT, 2026-08-26.
+- [A monitor that reports success without validating](https://lukasrozado.com/writing/a-monitor-that-reports-success-without-validating): EN, 2026-08-26.
 
 ## Key facts (auditable)
 - Enterprise Crypto Data Lake: >99.9% uptime, tens of millions of records/year, full backfill since account inception (some since 2019).
