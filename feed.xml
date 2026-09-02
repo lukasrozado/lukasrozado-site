@@ -2,15 +2,15 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Lukas Rozado: Ensaios de Engenharia de Dados</title>
-    <link>https://lukasrozado.pages.dev/writing/</link>
+    <link>https://lukasrozado.com/writing/</link>
     <description>Ensaios sobre engenharia de dados: arquitetura de pipelines, ingestão em escala, bancos relacionais e decisões de engenharia em produção. Full-text.</description>
     <language>pt-br</language>
-    <atom:link rel="self" type="application/rss+xml" href="https://lukasrozado.pages.dev/feed.xml"/>
+    <atom:link rel="self" type="application/rss+xml" href="https://lukasrozado.com/feed.xml"/>
     <lastBuildDate>Wed, 26 Aug 2026 18:00:00 +0000</lastBuildDate>
     <item>
       <title>Um monitoramento que afirma que deu sucesso, mas não valida</title>
-      <link>https://lukasrozado.pages.dev/writing/monitoramento-que-afirma-sucesso-mas-nao-valida</link>
-      <guid isPermaLink="true">https://lukasrozado.pages.dev/writing/monitoramento-que-afirma-sucesso-mas-nao-valida</guid>
+      <link>https://lukasrozado.com/writing/monitoramento-que-afirma-sucesso-mas-nao-valida</link>
+      <guid isPermaLink="true">https://lukasrozado.com/writing/monitoramento-que-afirma-sucesso-mas-nao-valida</guid>
       <pubDate>Wed, 26 Aug 2026 18:00:00 +0000</pubDate>
       <description><![CDATA[
 <p>Eu tinha uma aplicação de ingestão que publicava um snapshot para consumo. O painel estava verde, tudo parecia correto, mas algo me incomodava: a quantidade de dados não crescia como deveria. Fui olhar. O serving estava parado havia 14,71 dias, e o alarme permanecera verde o tempo inteiro. O check de frescor tinha SLA de 26 horas e era rearmado a cada 19 minutos pelo próprio publish que não publicava nada.</p>

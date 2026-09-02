@@ -1,9 +1,9 @@
-# [https://lukasrozado.pages.dev/](https://lukasrozado.pages.dev/)
+# [https://lukasrozado.com/](https://lukasrozado.com/)
 
 Personal portfolio and technical writing site for Lukas Rozado, Data Engineer.
 Static HTML/CSS/JS, no build step, no framework, deployed via Cloudflare Pages.
 
-Live: https://lukasrozado.pages.dev/
+Live: https://lukasrozado.com/
 
 ## Stack
 

@@ -20,8 +20,8 @@ Allow: /
 User-agent: CCBot
 Allow: /
 
-Sitemap: https://lukasrozado.pages.dev/sitemap.xml
-Sitemap: https://lukasrozado.pages.dev/sitemap-images.xml
+Sitemap: https://lukasrozado.com/sitemap.xml
+Sitemap: https://lukasrozado.com/sitemap-images.xml
 
 # Security
 User-agent: MJ12bot

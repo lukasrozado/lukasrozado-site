@@ -2,15 +2,15 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Lukas Rozado: Data Engineering Essays</title>
-    <link>https://lukasrozado.pages.dev/writing/index-en</link>
+    <link>https://lukasrozado.com/writing/index-en</link>
     <description>Essays on data engineering: pipeline architecture, ingestion at scale, relational databases and engineering decisions in production. Full-text.</description>
     <language>en</language>
-    <atom:link rel="self" type="application/rss+xml" href="https://lukasrozado.pages.dev/feed-en.xml"/>
+    <atom:link rel="self" type="application/rss+xml" href="https://lukasrozado.com/feed-en.xml"/>
     <lastBuildDate>Wed, 26 Aug 2026 18:00:00 +0000</lastBuildDate>
     <item>
       <title>A monitor that reports success without validating</title>
-      <link>https://lukasrozado.pages.dev/writing/a-monitor-that-reports-success-without-validating</link>
-      <guid isPermaLink="true">https://lukasrozado.pages.dev/writing/a-monitor-that-reports-success-without-validating</guid>
+      <link>https://lukasrozado.com/writing/a-monitor-that-reports-success-without-validating</link>
+      <guid isPermaLink="true">https://lukasrozado.com/writing/a-monitor-that-reports-success-without-validating</guid>
       <pubDate>Wed, 26 Aug 2026 18:00:00 +0000</pubDate>
       <description><![CDATA[
 <p>I had an ingestion app that published a snapshot for consumption. The dashboard was green, everything looked fine, but something felt off: the data volume wasn't growing as it should. I checked. Serving had been down for 14.71 days, and the alarm had stayed green the entire time. The freshness check had a 26-hour SLA and was being rearmed every 19 minutes by the very publish that wasn't publishing anything.</p>

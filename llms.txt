@@ -3,30 +3,30 @@
 > Site hub for data engineering case studies, pipelines and writing. POSSE: publish on own site, syndicate elsewhere.
 
 ## Core
-- Home (PT): https://lukasrozado.pages.dev/
-- Home (EN): https://lukasrozado.pages.dev/index-en
-- Projects: https://lukasrozado.pages.dev/#projects
-- Writing: https://lukasrozado.pages.dev/writing/
-- Contact: https://lukasrozado.pages.dev/contact
-- RSS (PT): https://lukasrozado.pages.dev/feed.xml
-- RSS (EN): https://lukasrozado.pages.dev/feed-en.xml
-- Sitemap: https://lukasrozado.pages.dev/sitemap.xml
+- Home (PT): https://lukasrozado.com/
+- Home (EN): https://lukasrozado.com/index-en
+- Projects: https://lukasrozado.com/#projects
+- Writing: https://lukasrozado.com/writing/
+- Contact: https://lukasrozado.com/contact
+- RSS (PT): https://lukasrozado.com/feed.xml
+- RSS (EN): https://lukasrozado.com/feed-en.xml
+- Sitemap: https://lukasrozado.com/sitemap.xml
 
 ## Case Studies
-- Enterprise Crypto Data Lake: https://lukasrozado.pages.dev/projects/enterprise-crypto-data-lake
-- Unified Banking Ledger Platform: https://lukasrozado.pages.dev/projects/unified-banking-ledger-platform
-- Financial Reconciliation Pipeline: https://lukasrozado.pages.dev/projects/financial-reconciliation-pipeline
-- Multi-Chain Ledger Integrator: https://lukasrozado.pages.dev/projects/multi-chain-ledger-integrator
-- Institutional Custody Integrator: https://lukasrozado.pages.dev/projects/institutional-digital-asset-custody
-- BaaS Financial Settlement Data Sink: https://lukasrozado.pages.dev/projects/baas-financial-settlement-data-sink
-- Predictive Pipeline & ML: https://lukasrozado.pages.dev/projects/predictive-pipeline-ml
-- OTC Desk Reconciliation Pipeline: https://lukasrozado.pages.dev/projects/otc-desk-reconciliation-pipeline
-- Fiscal Document Consolidation Pipeline: https://lukasrozado.pages.dev/projects/fiscal-document-consolidation-pipeline
-- LCK Dataset (public proof): https://lukasrozado.pages.dev/projects/lck-spring-2024-dataset
+- Enterprise Crypto Data Lake: https://lukasrozado.com/projects/enterprise-crypto-data-lake
+- Unified Banking Ledger Platform: https://lukasrozado.com/projects/unified-banking-ledger-platform
+- Financial Reconciliation Pipeline: https://lukasrozado.com/projects/financial-reconciliation-pipeline
+- Multi-Chain Ledger Integrator: https://lukasrozado.com/projects/multi-chain-ledger-integrator
+- Institutional Custody Integrator: https://lukasrozado.com/projects/institutional-digital-asset-custody
+- BaaS Financial Settlement Data Sink: https://lukasrozado.com/projects/baas-financial-settlement-data-sink
+- Predictive Pipeline & ML: https://lukasrozado.com/projects/predictive-pipeline-ml
+- OTC Desk Reconciliation Pipeline: https://lukasrozado.com/projects/otc-desk-reconciliation-pipeline
+- Fiscal Document Consolidation Pipeline: https://lukasrozado.com/projects/fiscal-document-consolidation-pipeline
+- LCK Dataset (public proof): https://lukasrozado.com/projects/lck-spring-2024-dataset
 
 ## Writing
-- Um monitoramento que afirma que deu sucesso, mas não valida (PT, 2026-08-26): https://lukasrozado.pages.dev/writing/monitoramento-que-afirma-sucesso-mas-nao-valida
-- A monitor that reports success without validating (EN, 2026-08-26): https://lukasrozado.pages.dev/writing/a-monitor-that-reports-success-without-validating
+- Um monitoramento que afirma que deu sucesso, mas não valida (PT, 2026-08-26): https://lukasrozado.com/writing/monitoramento-que-afirma-sucesso-mas-nao-valida
+- A monitor that reports success without validating (EN, 2026-08-26): https://lukasrozado.com/writing/a-monitor-that-reports-success-without-validating
 
 ## Key facts (auditable)
 - Enterprise Crypto Data Lake: >99.9% uptime, tens of millions of records/year, full backfill since account inception (some since 2019).
