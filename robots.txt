@@ -23,6 +23,8 @@ Allow: /
 Sitemap: https://lukasrozado.com/sitemap.xml
 Sitemap: https://lukasrozado.com/sitemap-images.xml
 
+IndexNow: https://lukasrozado.com/29a03f5e16579c9c6d433b1f153d8e49.txt
+
 # Security
 User-agent: MJ12bot
 Disallow: /

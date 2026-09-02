@@ -12,7 +12,7 @@
     <link rel="alternate" hreflang="en" href="https://lukasrozado.com/index-en">
     <link rel="alternate" hreflang="x-default" href="https://lukasrozado.com/">
     
-    <meta name="description" content="Engenheiro de Dados especializado em arquitetura de pipelines de alta performance, data lakes e integrações em nuvem (Azure/AWS). Case studies de sistemas rodando em produção.">
+    <meta name="description" content="Engenheiro de Dados especializado em pipelines de alta performance, data lakes e integrações em nuvem (Azure/AWS). Case studies de sistemas em produção.">
     
     <meta name="keywords" content="engenheiro de dados, data engineer, pipelines python, postgresql, azure data, data lake architecture, etl streaming">
 
@@ -64,6 +64,7 @@
     {
         "@context": "https://schema.org",
         "@type": "Person",
+        "@id": "https://lukasrozado.com/#person",
         "name": "Lukas Rozado",
         "jobTitle": "Data Engineer",
         "url": "https://lukasrozado.com/",
@@ -72,7 +73,12 @@
             "https://github.com/lukasrozado",
             "https://www.kaggle.com/lukasrozado"
         ],
-        "image": "https://lukasrozado.com/assets/images/lukas-rozado.webp",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://lukasrozado.com/assets/images/lukas-rozado.webp",
+            "width": 800,
+            "height": 800
+        },
         "description": "Engenheiro de Dados especializado em arquitetura de dados em nuvem, pipelines assíncronos e otimização de bancos relacionais."
     }
     </script>
@@ -85,7 +91,19 @@
         "name": "Lukas Rozado",
         "url": "https://lukasrozado.com/",
         "inLanguage": "pt-BR",
-        "publisher": {"@type": "Person", "name": "Lukas Rozado"}
+        "publisher": {"@id": "https://lukasrozado.com/#person"}
+    },
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "@id": "https://lukasrozado.com/#dado-bruto",
+        "name": "Dado Bruto",
+        "description": "Newsletter sobre casos reais de engenharia de dados em produção: arquitetura, trade-offs e o número real por trás da decisão.",
+        "logo": "https://lukasrozado.com/assets/images/logo-dado-bruto-600.webp",
+        "sameAs": [
+            "https://www.linkedin.com/newsletters/dado-bruto-7498525638908321792/"
+        ],
+        "founder": {"@id": "https://lukasrozado.com/#person"}
     },
     {
         "@context": "https://schema.org",
@@ -272,7 +290,7 @@
     
     <script type="module">
         import { getCLS, getINP, getLCP }
-          from 'https://unpkg.com/web-vitals@3/dist/web-vitals.js';
+          from './assets/js/vendor/web-vitals.js';
 
         if (typeof window.gtag === 'function') {
           getCLS(metric => gtag('event', 'CLS', { value: metric.value }));

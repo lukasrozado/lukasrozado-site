@@ -12,7 +12,7 @@
     <link rel="alternate" hreflang="en" href="https://lukasrozado.com/index-en">
     <link rel="alternate" hreflang="x-default" href="https://lukasrozado.com/">
     
-    <meta name="description" content="Data Engineer specialized in high-performance pipeline architecture, data lakes and cloud integrations (Azure/AWS). Real case studies of systems running in production.">
+    <meta name="description" content="Data Engineer specialized in high-performance pipelines, data lakes and cloud integrations (Azure/AWS). Case studies of systems running in production.">
     
     <meta name="keywords" content="data engineer, pipelines python, postgresql, azure data, data lake architecture, etl streaming">
 
@@ -65,6 +65,7 @@
     {
         "@context": "https://schema.org",
         "@type": "Person",
+        "@id": "https://lukasrozado.com/#person",
         "name": "Lukas Rozado",
         "jobTitle": "Data Engineer",
         "url": "https://lukasrozado.com/index-en",
@@ -73,7 +74,12 @@
             "https://github.com/lukasrozado",
             "https://www.kaggle.com/lukasrozado"
         ],
-        "image": "https://lukasrozado.com/assets/images/lukas-rozado.webp",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://lukasrozado.com/assets/images/lukas-rozado.webp",
+            "width": 800,
+            "height": 800
+        },
         "description": "Data Engineer specialized in cloud data architecture, asynchronous pipelines, and relational database optimization."
     }
     </script>
@@ -86,7 +92,19 @@
         "name": "Lukas Rozado",
         "url": "https://lukasrozado.com/index-en",
         "inLanguage": "en",
-        "publisher": {"@type": "Person", "name": "Lukas Rozado"}
+        "publisher": {"@id": "https://lukasrozado.com/#person"}
+    },
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "@id": "https://lukasrozado.com/#dado-bruto",
+        "name": "Dado Bruto",
+        "description": "Newsletter covering real data engineering cases in production: architecture, trade-offs, and the real number behind the decision.",
+        "logo": "https://lukasrozado.com/assets/images/logo-dado-bruto-600.webp",
+        "sameAs": [
+            "https://www.linkedin.com/newsletters/dado-bruto-7498525638908321792/"
+        ],
+        "founder": {"@id": "https://lukasrozado.com/#person"}
     },
     {
         "@context": "https://schema.org",
@@ -272,7 +290,7 @@
     
     <script type="module">
         import { getCLS, getINP, getLCP }
-          from 'https://unpkg.com/web-vitals@3/dist/web-vitals.js';
+          from './assets/js/vendor/web-vitals.js';
 
         if (typeof window.gtag === 'function') {
           getCLS(metric => gtag('event', 'CLS', { value: metric.value }));
