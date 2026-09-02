@@ -214,9 +214,9 @@
       ],
       "category": "Data Engineering & ML",
       "caseStudy": {
-        "problem": "Lack of automated ingestion and real-time processing for volatile predictive decision-making.",
-        "solution": "Data pipeline orchestration with an isolated Feature Engine feeding live inference.",
-        "impact": "Sustained algorithmic predictive accuracy of >68% across multiple seasons without manual intervention."
+        "problem": "Predictive decisions in a volatile window with no automated ingestion: matches and tournaments, player stats and odds came from separate web sources, in different formats, with no normalization and no comparable history to train and evaluate the model.",
+        "solution": "A daily Task Scheduler triggers three automated extractors; a cleaning and normalization ETL feeds an isolated Feature Engine (Pre & Global) that produces 42 structural variables. Historical features train the Model Factory, whose weights pass through the Backtesting Engine before being deployed to live inference, which consumes the same features in real time.",
+        "impact": "Training and inference share the same variable definition, and the retraining, backtesting and weight-deployment cycle runs without manual intervention: the model sustains >68% predictive accuracy across multiple seasons, with predictions and probabilities feeding the audited hedge strategy and the analytics dashboard."
       }
     },
     {

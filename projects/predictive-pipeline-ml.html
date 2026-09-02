@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -82,9 +82,9 @@
             "name": "Lukas Rozado",
             "url": "https://lukasrozado.com/",
             "sameAs": [
-                "https://linkedin.com/in/lukasrozado",
+                "https://www.linkedin.com/in/lukasrozado/",
                 "https://github.com/lukasrozado",
-                "https://kaggle.com/lukasrozado"
+                "https://www.kaggle.com/lukasrozado"
             ]
         },
         "publisher": {
@@ -153,22 +153,22 @@
             </div>
 
             <figure class="project-diagram">
-                <img src="../assets/images/automated_esports_quant_trader.webp" alt="Pipeline Preditivo no Competitivo e ML Engine - diagrama de arquitetura" width="1200" height="800" loading="lazy" decoding="async" itemprop="image">
+                <img src="../assets/images/automated_esports_quant_trader.webp" alt="Pipeline Preditivo no Competitivo e ML Engine - diagrama de arquitetura" width="2966" height="1011" loading="lazy" decoding="async" itemprop="image">
                 <figcaption>Arquitetura do sistema</figcaption>
             </figure>
             <section class="case-study" aria-labelledby="case-study-heading">
                 <h2 id="case-study-heading">Estudo de caso</h2>
                 <div class="case-block">
                     <h3>Problema</h3>
-                    <p>Falta de ingestão automatizada e processamento em tempo real para tomada de decisão preditiva volátil.</p>
+                    <p>Decisão preditiva em janela volátil sem ingestão automatizada: partidas e torneios, estatísticas de jogadores e odds vinham de fontes web separadas, em formatos distintos, sem normalização nem histórico comparável para treinar e avaliar o modelo.</p>
                 </div>
                 <div class="case-block">
                     <h3>Solu&ccedil;&atilde;o</h3>
-                    <p>Orquestração de pipeline de dados com Feature Engine isolada alimentando inferência ao vivo.</p>
+                    <p>Orquestração diária por Task Scheduler acionando três extratores automatizados; ETL de limpeza e normalização alimenta uma Feature Engine isolada (Pre &amp; Global) que produz 42 variáveis estruturais. As features históricas treinam a Model Factory, cujos pesos passam pelo Backtesting Engine antes de serem publicados para a inferência ao vivo, que consome as mesmas features em tempo real.</p>
                 </div>
                 <div class="case-block">
                     <h3>Impacto</h3>
-                    <p>Sustentação algorítmica de &gt;68% de precisão preditiva ao longo de múltiplas temporadas sem intervenção manual.</p>
+                    <p>Treino e inferência compartilham a mesma definição de variável, e o ciclo de retreinamento, backtest e publicação de pesos roda sem intervenção manual: o modelo sustenta &gt;68% de precisão preditiva ao longo de múltiplas temporadas, com predições e probabilidades alimentando a estratégia de hedge auditada e o dashboard analítico.</p>
                 </div>
             </section>
 
@@ -227,7 +227,7 @@
                         style="filter: invert(1);"
                         loading="lazy"
                         aria-hidden="true"
-                        itemprop="sameAs" width="512" height="512"></a>
+                        width="512" height="512"></a>
 
                 <a href="https://www.linkedin.com/in/lukasrozado/"
                    target="_blank"
@@ -238,7 +238,7 @@
                         style="filter: invert(1);"
                         loading="lazy"
                         aria-hidden="true"
-                        itemprop="sameAs" width="512" height="512"></a>
+                        width="512" height="512"></a>
 
                 <a href="https://www.kaggle.com/datasets/lukasrozado/lck-spring-2024-players-statistics"
                    target="_blank"
@@ -249,7 +249,7 @@
                         style="filter: invert(1);"
                         loading="lazy"
                         aria-hidden="true"
-                        itemprop="sameAs" width="512" height="512"></a>
+                        width="512" height="512"></a>
             </div>
         </div>
     </div>

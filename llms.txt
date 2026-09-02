@@ -7,6 +7,10 @@
 - Home (EN): https://lukasrozado.com/index-en
 - Projects: https://lukasrozado.com/#projects
 - Writing: https://lukasrozado.com/writing/
+- About (PT): https://lukasrozado.com/about
+- About (EN): https://lukasrozado.com/about-en
+- FAQ (PT): https://lukasrozado.com/faq
+- FAQ (EN): https://lukasrozado.com/faq-en
 - Contact: https://lukasrozado.com/contact
 - RSS (PT): https://lukasrozado.com/feed.xml
 - RSS (EN): https://lukasrozado.com/feed-en.xml

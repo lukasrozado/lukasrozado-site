@@ -214,9 +214,9 @@
       ],
       "category": "Engenharia de Dados & ML",
       "caseStudy": {
-        "problem": "Falta de ingestão automatizada e processamento em tempo real para tomada de decisão preditiva volátil.",
-        "solution": "Orquestração de pipeline de dados com Feature Engine isolada alimentando inferência ao vivo.",
-        "impact": "Sustentação algorítmica de >68% de precisão preditiva ao longo de múltiplas temporadas sem intervenção manual."
+        "problem": "Decisão preditiva em janela volátil sem ingestão automatizada: partidas e torneios, estatísticas de jogadores e odds vinham de fontes web separadas, em formatos distintos, sem normalização nem histórico comparável para treinar e avaliar o modelo.",
+        "solution": "Orquestração diária por Task Scheduler acionando três extratores automatizados; ETL de limpeza e normalização alimenta uma Feature Engine isolada (Pre & Global) que produz 42 variáveis estruturais. As features históricas treinam a Model Factory, cujos pesos passam pelo Backtesting Engine antes de serem publicados para a inferência ao vivo, que consome as mesmas features em tempo real.",
+        "impact": "Treino e inferência compartilham a mesma definição de variável, e o ciclo de retreinamento, backtest e publicação de pesos roda sem intervenção manual: o modelo sustenta >68% de precisão preditiva ao longo de múltiplas temporadas, com predições e probabilidades alimentando a estratégia de hedge auditada e o dashboard analítico."
       }
     },
     {

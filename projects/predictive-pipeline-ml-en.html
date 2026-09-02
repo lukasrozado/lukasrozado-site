@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -82,9 +82,9 @@
             "name": "Lukas Rozado",
             "url": "https://lukasrozado.com/",
             "sameAs": [
-                "https://linkedin.com/in/lukasrozado",
+                "https://www.linkedin.com/in/lukasrozado/",
                 "https://github.com/lukasrozado",
-                "https://kaggle.com/lukasrozado"
+                "https://www.kaggle.com/lukasrozado"
             ]
         },
         "publisher": {
@@ -153,22 +153,22 @@
             </div>
 
             <figure class="project-diagram">
-                <img src="../assets/images/automated_esports_quant_trader.webp" alt="Predictive Pipeline in Competitive and ML Engine - architecture diagram" width="1200" height="800" loading="lazy" decoding="async" itemprop="image">
+                <img src="../assets/images/automated_esports_quant_trader.webp" alt="Predictive Pipeline in Competitive and ML Engine - architecture diagram" width="2966" height="1011" loading="lazy" decoding="async" itemprop="image">
                 <figcaption>System architecture</figcaption>
             </figure>
             <section class="case-study" aria-labelledby="case-study-heading">
                 <h2 id="case-study-heading">Case Study</h2>
                 <div class="case-block">
                     <h3>Problem</h3>
-                    <p>Lack of automated ingestion and real-time processing for volatile predictive decision-making.</p>
+                    <p>Predictive decisions in a volatile window with no automated ingestion: matches and tournaments, player stats and odds came from separate web sources, in different formats, with no normalization and no comparable history to train and evaluate the model.</p>
                 </div>
                 <div class="case-block">
                     <h3>Solution</h3>
-                    <p>Data pipeline orchestration with an isolated Feature Engine feeding live inference.</p>
+                    <p>A daily Task Scheduler triggers three automated extractors; a cleaning and normalization ETL feeds an isolated Feature Engine (Pre &amp; Global) that produces 42 structural variables. Historical features train the Model Factory, whose weights pass through the Backtesting Engine before being deployed to live inference, which consumes the same features in real time.</p>
                 </div>
                 <div class="case-block">
                     <h3>Impact</h3>
-                    <p>Sustained algorithmic predictive accuracy of &gt;68% across multiple seasons without manual intervention.</p>
+                    <p>Training and inference share the same variable definition, and the retraining, backtesting and weight-deployment cycle runs without manual intervention: the model sustains &gt;68% predictive accuracy across multiple seasons, with predictions and probabilities feeding the audited hedge strategy and the analytics dashboard.</p>
                 </div>
             </section>
 
@@ -227,7 +227,7 @@
                         style="filter: invert(1);"
                         loading="lazy"
                         aria-hidden="true"
-                        itemprop="sameAs" width="512" height="512"></a>
+                        width="512" height="512"></a>
 
                 <a href="https://www.linkedin.com/in/lukasrozado/"
                    target="_blank"
@@ -238,7 +238,7 @@
                         style="filter: invert(1);"
                         loading="lazy"
                         aria-hidden="true"
-                        itemprop="sameAs" width="512" height="512"></a>
+                        width="512" height="512"></a>
 
                 <a href="https://www.kaggle.com/datasets/lukasrozado/lck-spring-2024-players-statistics"
                    target="_blank"
@@ -249,7 +249,7 @@
                         style="filter: invert(1);"
                         loading="lazy"
                         aria-hidden="true"
-                        itemprop="sameAs" width="512" height="512"></a>
+                        width="512" height="512"></a>
             </div>
         </div>
     </div>
