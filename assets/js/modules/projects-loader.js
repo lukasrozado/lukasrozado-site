@@ -106,7 +106,7 @@ function initArchitectureModal() {
             <div id="arch-modal" class="architecture-modal">
                 <div class="architecture-modal-content">
                     <button id="close-arch-modal" class="close-modal-btn" aria-label="Fechar modal">&times;</button>
-                    <img id="arch-modal-img" src="" alt="Diagrama de Arquitetura do Sistema">
+                    <img id="arch-modal-img" src="" alt="Diagrama de Arquitetura do Sistema" width="1100" height="620">
                 </div>
             </div>
         `;

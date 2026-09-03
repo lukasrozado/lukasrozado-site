@@ -139,12 +139,43 @@
 ]
     </script>
 
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RD4581V881"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'G-RD4581V881');
+
+      // Do NOT put gtag.js back in <head>: it is ~166 KiB and ~200 ms of main-thread
+      // script time (measured), and from <head> that lands inside the critical window.
+      // The calls above queue in dataLayer and are replayed when gtag.js initialises,
+      // so deferring the tag loses no events. `load` is the hard boundary; the idle
+      // slot after it is the soft one, capped at 2 s so a bouncing visitor still counts.
+      // Unconditional ceiling below is independent of `load`: a hanging
+      // subresource (e.g. a font that never resolves) otherwise means `load`
+      // never fires, requestIdleCallback is never scheduled, and analytics is
+      // lost for the whole visit. `done` makes loadGtag idempotent so the
+      // ceiling and the load-triggered path can never double-inject the tag.
+      (function () {
+        var done = false;
+        function loadGtag() {
+          if (done) return;
+          done = true;
+          var s = document.createElement('script');
+          s.async = true;
+          s.src = 'https://www.googletagmanager.com/gtag/js?id=G-RD4581V881';
+          document.head.appendChild(s);
+        }
+        function schedule() {
+          if (typeof window.requestIdleCallback === 'function') {
+            requestIdleCallback(loadGtag, { timeout: 2000 });
+          } else {
+            setTimeout(loadGtag, 0);
+          }
+        }
+        if (document.readyState === 'complete') schedule();
+        else window.addEventListener('load', schedule, { once: true });
+        setTimeout(loadGtag, 5000);
+      })();
     </script>
 </head>
 <body>
