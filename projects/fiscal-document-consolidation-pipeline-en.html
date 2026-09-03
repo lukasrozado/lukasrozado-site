@@ -74,7 +74,12 @@
         "headline": "Fiscal Document Consolidation Pipeline",
         "description": "Monthly incremental pipeline that downloads XML+PDF pairs of fiscal documents via a fiscal document provider's API, resolves the owning legal entity for each document by substring-matching the entity's tax identifier inside the raw decoded content (never trusting an explicit reference tag), and consolidates output into one combined ZIP plus one per-entity ZIP, organized by document type and date.",
         "url": "https://lukasrozado.com/projects/fiscal-document-consolidation-pipeline-en",
-        "image": "https://lukasrozado.com/assets/images/fiscal_document_consolidation_pipeline_v1.webp",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://lukasrozado.com/assets/images/fiscal_document_consolidation_pipeline_v1.webp",
+            "width": 1960,
+            "height": 683
+        },
         "inLanguage": "en",
         "keywords": "python, postgresql, rest-api",
         "author": {
@@ -111,7 +116,7 @@
 <header>
     <nav id="navbar">
         <div class="nav-header">
-            <a href="../index-en"><img src="../assets/images/logo-lukas-rozado.webp" alt="Lukas Rozado Logo" width="1120" height="1120"></a>
+            <a href="../index-en"><img src="../assets/images/logo-lukas-rozado.webp" alt="Lukas Rozado Logo" width="240" height="240"></a>
             <div id="menu-toggle" class="menu-icon">
                 <span></span>
                 <span></span>
@@ -226,7 +231,7 @@
                         style="filter: invert(1);"
                         loading="lazy"
                         aria-hidden="true"
-                        width="512" height="512"></a>
+                        width="96" height="96"></a>
 
                 <a href="https://www.linkedin.com/in/lukasrozado/"
                    target="_blank"
@@ -237,7 +242,7 @@
                         style="filter: invert(1);"
                         loading="lazy"
                         aria-hidden="true"
-                        width="512" height="512"></a>
+                        width="96" height="96"></a>
 
                 <a href="https://www.kaggle.com/datasets/lukasrozado/lck-spring-2024-players-statistics"
                    target="_blank"
@@ -248,7 +253,7 @@
                         style="filter: invert(1);"
                         loading="lazy"
                         aria-hidden="true"
-                        width="512" height="512"></a>
+                        width="96" height="96"></a>
             </div>
         </div>
     </div>

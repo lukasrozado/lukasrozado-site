@@ -39,7 +39,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" as="style">
-    <link rel="preload" href="./assets/images/hero-data-engineer-lukas-rozado.webp" as="image">
+    <link rel="preload" href="./assets/images/hero-data-engineer-lukas-rozado.webp" as="image" fetchpriority="high">
 
     <link rel="icon" href="./assets/icons/favicon.ico" sizes="any">
     <link rel="apple-touch-icon" href="./assets/icons/favicon-180x180.webp">
@@ -107,11 +107,15 @@
     },
     {
         "@context": "https://schema.org",
-        "@type": "ItemList",
-        "name": "Projetos",
+        "@type": "CollectionPage",
+        "@id": "https://lukasrozado.com/#projects-page",
         "url": "https://lukasrozado.com/#projects",
-        "numberOfItems": 10,
-        "itemListElement": [
+        "name": "Projetos",
+        "mainEntity": {
+            "@type": "ItemList",
+            "name": "Projetos",
+            "numberOfItems": 10,
+            "itemListElement": [
             {"@type": "ListItem", "position": 1, "url": "https://lukasrozado.com/projects/enterprise-crypto-data-lake", "name": "Enterprise Crypto Data Lake: Ingestão Multi-Conta"},
             {"@type": "ListItem", "position": 2, "url": "https://lukasrozado.com/projects/unified-banking-ledger-platform", "name": "Unified Banking Ledger Platform"},
             {"@type": "ListItem", "position": 3, "url": "https://lukasrozado.com/projects/financial-reconciliation-pipeline", "name": "High-Concurrency Financial Reconciliation Pipeline"},
@@ -122,7 +126,8 @@
             {"@type": "ListItem", "position": 8, "url": "https://lukasrozado.com/projects/baas-financial-settlement-data-sink", "name": "BaaS & Financial Settlement Data Sink"},
             {"@type": "ListItem", "position": 9, "url": "https://lukasrozado.com/projects/predictive-pipeline-ml", "name": "Pipeline Preditivo no Competitivo e ML Engine"},
             {"@type": "ListItem", "position": 10, "url": "https://lukasrozado.com/projects/lck-spring-2024-dataset", "name": "LCK Spring 2024 Players Statistics"}
-        ]
+            ]
+        }
     }
     ]
     </script>
@@ -141,7 +146,7 @@
         <div data-include="./components/pt/header.html"><header>
     <nav id="navbar">
         <div class="nav-header">
-            <a href="./"><img src="./assets/images/logo-lukas-rozado.webp" alt="Lukas Rozado Logo" width="1120" height="1120"></a>
+            <a href="./"><img src="./assets/images/logo-lukas-rozado.webp" alt="Lukas Rozado Logo" width="240" height="240"></a>
             <div id="menu-toggle" class="menu-icon">
                 <span></span>
                 <span></span>
@@ -181,8 +186,9 @@
     <div class="image-container" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
         <img src="./assets/images/hero-data-engineer-lukas-rozado.webp" 
              alt="Engenheiro de Dados projetando pipelines de dados e arquitetura em nuvem" 
-             width="800" 
-             height="600"
+             width="1120" 
+             height="1120"
+             fetchpriority="high"
              loading="eager"
              decoding="async"
              itemprop="contentUrl">
@@ -232,7 +238,7 @@
         <div data-include="./components/pt/footer.html"><footer itemscope itemtype="https://schema.org/WPFooter" role="contentinfo">
     <div class="footer-inner">
         <div class="footer-cta">
-            <img src="./assets/images/logo-dado-bruto-600.webp" alt="Dado Bruto" width="96" height="96" style="height:96px;width:auto;flex-shrink:0;border-radius:10px;filter:drop-shadow(0 2px 8px rgba(0,212,255,.25))">
+            <img src="./assets/images/logo-dado-bruto-600.webp" alt="Dado Bruto" width="288" height="288" style="height:96px;width:auto;flex-shrink:0;border-radius:10px;filter:drop-shadow(0 2px 8px rgba(0,212,255,.25))">
             <div class="footer-cta-text">
                 <p class="footer-newsletter-desc"><strong style="color:#00D4FF">Dado Bruto</strong>, newsletter &middot; Casos reais de engenharia de dados em produ&ccedil;&atilde;o: arquitetura, trade-off e o n&uacute;mero real por tr&aacute;s da decis&atilde;o.</p>
             </div>
@@ -253,7 +259,7 @@
                         style="filter: invert(1);"
                         loading="lazy"
                         aria-hidden="true"
-                        width="512" height="512"></a>
+                        width="96" height="96"></a>
 
                 <a href="https://www.linkedin.com/in/lukasrozado/"
                    target="_blank"
@@ -264,7 +270,7 @@
                         style="filter: invert(1);"
                         loading="lazy"
                         aria-hidden="true"
-                        width="512" height="512"></a>
+                        width="96" height="96"></a>
 
                 <a href="https://www.kaggle.com/datasets/lukasrozado/lck-spring-2024-players-statistics"
                    target="_blank"
@@ -275,7 +281,7 @@
                         style="filter: invert(1);"
                         loading="lazy"
                         aria-hidden="true"
-                        width="512" height="512"></a>
+                        width="96" height="96"></a>
             </div>
         </div>
     </div>

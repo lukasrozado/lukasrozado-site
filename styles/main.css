@@ -82,7 +82,63 @@ footer{background:#0a0a23;color:#fff;font-size:.9rem}
 @media (min-width:769px){#menu-toggle{display:none}}@media (max-width:1024px){#hero{padding:40px 20px}#hero .content{max-width:60%}#hero p{font-size:1rem}#welcome text{font-size:5rem}}@media (max-width:768px){#welcome,.menu-icon,header nav ul.active{display:flex}#hero,#welcome,#welcome text{text-align:center}.projects-grid{grid-template-columns:1fr;max-width:500px;margin:0 auto}.filter-btn{padding:.5rem 1rem;font-size:.85rem}header nav{flex-direction:column;padding:10px 20px}header nav ul{display:none;position:relative;flex-direction:column;text-align:left;padding:10px 40px;width:100%;margin-top:20px;background:rgba(0,212,255,.1);border-radius:8px;animation:.3s slideDown}header nav img{height:80px;margin-left:-30%}.menu-icon{position:relative;right:0;top:0}.menu-icon.active span:first-child{transform:rotate(45deg) translate(5px,5px)}.menu-icon.active span:nth-child(2){opacity:0}.menu-icon.active span:nth-child(3){transform:rotate(-45deg) translate(7px,-6px)}main{transition:margin-top .3s}.navbar-active main{margin-top:200px}#hero{height:100%;flex-direction:column;padding:40px 20px;max-width:300vw}#hero .content{max-width:100%;margin-bottom:20px}#hero .image-container{max-width:100%;padding:0}#hero .image-container img{max-width:90%;height:100%}#welcome{padding-bottom:10px;align-items:center;justify-content:center;flex-direction:column;margin-bottom:0!important;margin-top:0!important;margin-left:0!important}.welcome-container{width:100%;display:flex;align-items:center;justify-content:center;margin-bottom:10px}#welcome text{font-size:10rem;flex-direction:column;margin:5px}}@media (max-width:580px){.projects{flex-direction:column}}@media (max-width:480px){#hero{min-height:20vh;max-height:120vh;padding:20px}header nav img{height:80px;margin-left:-30%}#hero .image-container img{max-width:90%;height:auto}#hero p{font-size:.9rem}#welcome{margin-left:40px}#welcome text{font-size:10rem}}
 .project-card--collapsed{display:none}
 
-.architecture-modal{position:fixed;top:0;left:0;width:100vw;height:100vh;background-color:rgba(11,18,32,.95);display:flex;justify-content:center;align-items:center;z-index:9999;opacity:0;pointer-events:none;transition:opacity .3s ease-in-out}.architecture-modal.active{opacity:1;pointer-events:auto}.architecture-modal-content{position:relative;max-width:90vw;max-height:90vh;transform:scale(.95);transition:transform .3s ease-in-out}.architecture-modal.active .architecture-modal-content{transform:scale(1)}.architecture-modal img{width:100%;height:auto;max-height:85vh;object-fit:contain;border-radius:12px;box-shadow:0 25px 50px -12px rgba(0,0,0,.5);border:1px solid #1e293b}.close-modal-btn{position:absolute;top:-40px;right:0;background:0 0;border:none;color:#00d4ff;font-size:2rem;cursor:pointer;transition:color .2s}.close-modal-btn:hover{color:#fff}
+.architecture-modal{position:fixed;top:0;left:0;width:100vw;height:100vh;background-color:rgba(11,18,32,.95);display:flex;justify-content:center;align-items:center;z-index:9999;opacity:0;pointer-events:none;transition:opacity .3s ease-in-out}.architecture-modal.active{opacity:1;pointer-events:auto}.architecture-modal-content{position:relative;max-width:90vw;max-height:90vh;width:min(90vw,1100px);min-height:min(60vh,520px);display:flex;align-items:center;justify-content:center;transform:scale(.95);transition:transform .3s ease-in-out}.architecture-modal.active .architecture-modal-content{transform:scale(1)}.architecture-modal img{width:100%;height:auto;min-height:inherit;max-height:85vh;object-fit:contain;background-color:#0b1220;border-radius:12px;box-shadow:0 25px 50px -12px rgba(0,0,0,.5);border:1px solid #1e293b}.close-modal-btn{position:absolute;top:-40px;right:0;background:0 0;border:none;color:#00d4ff;font-size:2rem;cursor:pointer;transition:color .2s}.close-modal-btn:hover{color:#fff}
 /* Link inline em prosa: sem esta regra o navegador aplica #0000EE, azul escuro ilegivel sobre o fundo escuro do site. Usa o mesmo ciano de acento do resto da navegacao. */
 .case-block a,.article-body a,.project-page .lead a,.faq-answer a,.writing-index a.inline,.essay-summary a{color:#00d4ff;text-decoration:underline;text-underline-offset:2px;text-decoration-color:rgba(0,212,255,.45);transition:.2s}
 .case-block a:hover,.article-body a:hover,.project-page .lead a:hover,.faq-answer a:hover,.essay-summary a:hover{color:#fff;text-decoration-color:#fff}
+
+/* ==========================================================================
+   ALVOS DE TOQUE - WCAG 2.2 SC 2.5.8 (AA, 24x24) e SC 2.5.5 (AAA, 44x44).
+   APENAS AREA DE CLIQUE. Nada aqui pinta pixel: cada regra adiciona um ::after
+   transparente com position:absolute - fora do fluxo, incapaz de mover layout,
+   sem background nem borda. Tamanho de icone, borda, border-radius, o "pill" de
+   hover, gaps e margens ficam intactos; a renderizacao visivel e identica.
+   Blocos novos no fim do arquivo de proposito: nao tocam .projects-grid nem
+   .architecture-modal img (linhas 7 e 85), em edicao por outro agente.
+   ========================================================================== */
+
+/* Icones sociais do rodape: a caixa do <a> era 30x30 (o proprio .social-icon).
+   Passa no minimo AA de 24px, falha no alvo 44px de Apple/Material.
+   inline-block faz a caixa do <a> ser exatamente a margin box do img (baseline
+   inalterada); o ::after centra 44x44 transparente. O passo entre icones e 54px,
+   entao as areas ampliadas nao se sobrepoem. */
+#social-links a{position:relative;display:inline-block}
+#social-links a::after{content:"";position:absolute;top:50%;left:50%;width:44px;height:44px;transform:translate(-50%,-50%)}
+
+/* Filtros de projeto: ~35px de altura (fonte UA de botao 13,3px + 16px padding
+   + 4px borda). Amplia so a altura; .filters usa gap 16px, entao linhas
+   quebradas continuam sem sobreposicao. */
+.filter-btn{position:relative}
+.filter-btn::after{content:"";position:absolute;left:0;right:0;top:50%;height:44px;transform:translateY(-50%)}
+
+/* Toggle de diagrama v1/v2: ~30px (fonte 12,8px + 12,8px padding + 2px borda). */
+.diagram-toggle{position:relative}
+.diagram-toggle::after{content:"";position:absolute;left:0;right:0;top:50%;height:44px;transform:translateY(-50%)}
+
+/* Botao fechar do modal de arquitetura: a caixa do glifo "x" e ~31x39. O botao
+   ja e position:absolute, logo ja e o proprio bloco continente. */
+.close-modal-btn::after{content:"";position:absolute;top:50%;left:50%;width:44px;height:44px;transform:translate(-50%,-50%)}
+
+/* Acao do card, botoes outline/copiar-link e link de compartilhar: ~36-39px.
+   Entre .project-link e .btn-view-arch ha 20px (margin-top), maior que os 2,5px
+   de expansao - as areas nao se cruzam. */
+.btn-view-arch,.btn-outline,.share-bar a{position:relative}
+.btn-view-arch::after,.btn-outline::after,.share-bar a::after{content:"";position:absolute;left:0;right:0;top:50%;height:44px;transform:translateY(-50%)}
+
+/* Botao da newsletter no rodape: ~37px (9px padding + linha de .9rem + 2px borda). */
+.btn-newsletter{position:relative}
+.btn-newsletter::after{content:"";position:absolute;left:0;right:0;top:50%;height:44px;transform:translateY(-50%)}
+
+/* CTAs de texto que NAO estao dentro de uma frase - a excecao "inline" da
+   SC 2.5.8 nao os cobre. Medidos em ~19px de altura (line box de 1rem, sem
+   padding): as duas unicas falhas reais do minimo de 24px. */
+.linkedin-discuss{position:relative}
+.linkedin-discuss::after{content:"";position:absolute;left:0;right:0;top:50%;height:44px;transform:translateY(-50%)}
+.newsletter-inline a{position:relative}
+.newsletter-inline a::after{content:"";position:absolute;left:0;right:0;top:50%;height:44px;transform:translateY(-50%)}
+
+/* Breadcrumb: ~16px de altura, flex items com gap de 6,4px. Elevado apenas ao
+   minimo AA de 24px (nao 44) para a area nao alcancar o h1 abaixo; a largura
+   nao muda, entao migalhas vizinhas continuam sem sobreposicao. */
+.breadcrumb a{position:relative}
+.breadcrumb a::after{content:"";position:absolute;left:0;right:0;top:50%;height:24px;transform:translateY(-50%)}
