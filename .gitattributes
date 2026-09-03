@@ -1,0 +1,25 @@
+# Line endings are a CSP correctness control on this repo, not a style preference.
+#
+# `_headers` pins every inline <script>/<style> block by SHA-256. Cloudflare Pages
+# builds from the git blob, and the blob is LF. If the Windows working tree holds
+# CRLF - which `core.autocrlf=true` produces on every `git checkout`, including a
+# revert - then `.claude/tests/verify_csp_hashes.py` hashes CRLF bytes the browser
+# never receives: the gate goes green locally while production blocks every inline
+# block on the affected page.
+#
+# Measured 2026-09-02 at HEAD 6d7cf9a: two reverts re-checked-out index.html and
+# index-en.html, they came back CRLF (23928 B / 23756 B on disk vs 23606 B / 23435 B
+# actually served), the regenerated hashes went into `_headers`, and production
+# answered with 8 CSP violations - GA4, the web-vitals module and the service-worker
+# cleanup all blocked on both homepages. `eol=lf` keeps disk == blob == served, the
+# only state in which a locally computed hash means anything.
+#
+# Deliberately scoped to *.html: that is exactly the surface CSP hashes. Other text
+# types (*.svg, *.webmanifest, .gitignore) still drift to CRLF on checkout, and that
+# is tolerated because nothing hashes their bytes - widening this rule would rewrite
+# assets owned elsewhere for no security gain. Revisit if a hash ever covers them.
+*.html text eol=lf
+
+# The policy file itself: keep the working copy from drifting to CRLF so a human
+# diffing `_headers` sees the bytes Cloudflare parses, not a converted copy.
+_headers text eol=lf
